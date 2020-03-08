@@ -1,4 +1,4 @@
-module github.com/terraform-linters/tflint-ruleset-template
+module github.com/terraform-linters/tflint-ruleset-azurerm
 
 go 1.13
 

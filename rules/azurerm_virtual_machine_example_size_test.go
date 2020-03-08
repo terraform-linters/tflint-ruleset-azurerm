@@ -7,7 +7,7 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/helper"
 )
 
-func Test_AwsInstanceExampleType(t *testing.T) {
+func Test_AzurermVirtualMachineExampleSize(t *testing.T) {
 	cases := []struct {
 		Name     string
 		Content  string
@@ -16,24 +16,24 @@ func Test_AwsInstanceExampleType(t *testing.T) {
 		{
 			Name: "issue found",
 			Content: `
-resource "aws_instance" "web" {
-    instance_type = "t2.micro"
+resource "azurerm_virtual_machine" "main" {
+    vm_size = "Standard_DS1_v2"
 }`,
 			Expected: helper.Issues{
 				{
-					Rule:    NewAwsInstanceExampleTypeRule(),
-					Message: "instance type is t2.micro",
+					Rule:    NewAzurermVirtualMachineExampleSizeRule(),
+					Message: "VM size is Standard_DS1_v2",
 					Range: hcl.Range{
 						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 3, Column: 21},
-						End:      hcl.Pos{Line: 3, Column: 31},
+						Start:    hcl.Pos{Line: 3, Column: 15},
+						End:      hcl.Pos{Line: 3, Column: 32},
 					},
 				},
 			},
 		},
 	}
 
-	rule := NewAwsInstanceExampleTypeRule()
+	rule := NewAzurermVirtualMachineExampleSizeRule()
 
 	for _, tc := range cases {
 		runner := helper.TestRunner(t, map[string]string{"resource.tf": tc.Content})
