@@ -1,0 +1,3 @@
+[submodule "tools/apispec-rule-gen/azure-rest-api-specs"]
+	path = tools/apispec-rule-gen/azure-rest-api-specs
+	url = https://github.com/Azure/azure-rest-api-specs
