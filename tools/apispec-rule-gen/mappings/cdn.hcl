@@ -1,0 +1,21 @@
+mapping "azurerm_cdn_endpoint" {
+  import_path = "azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/stable/2020-03-31/cdn.json"
+
+  resource_group_name           = resourceGroupNameParameter
+  is_http_allowed               = EndpointPropertiesUpdateParameters.isHttpAllowed
+  is_https_allowed              = EndpointPropertiesUpdateParameters.isHttpsAllowed
+  content_types_to_compress     = EndpointPropertiesUpdateParameters.contentTypesToCompress
+  is_compression_enabled        = EndpointPropertiesUpdateParameters.isCompressionEnabled
+  querystring_caching_behaviour = QueryStringCachingBehavior
+  optimization_type             = OptimizationType
+  origin_host_header            = EndpointPropertiesUpdateParameters.originHostHeader
+  origin_path                   = EndpointPropertiesUpdateParameters.originPath
+  probe_path                    = EndpointPropertiesUpdateParameters.probePath
+}
+
+mapping "azurerm_cdn_profile" {
+  import_path = "azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/stable/2020-03-31/cdn.json"
+
+  resource_group_name = resourceGroupNameParameter
+  sku                 = Sku.name
+}
