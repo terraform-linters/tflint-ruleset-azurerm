@@ -1,0 +1,25 @@
+{
+  "issues": [
+    {
+      "rule": {
+        "name": "azurerm_virtual_machine_invalid_vm_size",
+        "severity": "error",
+        "link": ""
+      },
+      "message": "\"Standard_DS1_v3\" is an invalid value as vm_size",
+      "range": {
+        "filename": "main.tf",
+        "start": {
+          "line": 3,
+          "column": 25
+        },
+        "end": {
+          "line": 3,
+          "column": 42
+        }
+      },
+      "callers": []
+    }
+  ],
+  "errors": []
+}
