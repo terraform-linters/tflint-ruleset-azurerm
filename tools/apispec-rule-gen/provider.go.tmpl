@@ -8,6 +8,7 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 )
 
+// Rules is a list of rules generated from azure-rest-api-specs
 var Rules = []tflint.Rule{
 	{{- range $v := .RuleNameCCList }}
 	New{{ $v }}Rule(),
