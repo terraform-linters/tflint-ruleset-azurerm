@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strings"
 	"text/template"
 
 	hcl "github.com/hashicorp/hcl/v2"
@@ -36,10 +37,15 @@ type ruleMeta struct {
 	Min           int
 	Pattern       string
 	Enum          []string
+	ReferenceURL  string
 }
 
 type providerMeta struct {
 	RuleNameCCList []string
+}
+
+type ruleDocIndexMeta struct {
+	RuleNameList []string
 }
 
 func main() {
@@ -66,7 +72,8 @@ func main() {
 
 	provider := loadProviderSchema()
 
-	generatedRules := []string{}
+	generatedRuleNames := []string{}
+	generatedRuleNameCCs := []string{}
 	for _, mappingFile := range mappingFiles {
 		for _, mapping := range mappingFile.Mappings {
 			raw, err := ioutil.ReadFile(fmt.Sprintf("apispec-rule-gen/%s", mapping.ImportPath))
@@ -112,15 +119,18 @@ func main() {
 
 				if validMapping(definition) {
 					attrSchema := extractAttrSchema(mapping.Resource, attribute, definition, provider)
-					generatedRule := generateRuleFile(mapping.Resource, attribute, definition, attrSchema)
-					generatedRules = append(generatedRules, generatedRule)
+					meta := generateRuleFile(mapping, attribute, definition, attrSchema)
+					generatedRuleNames = append(generatedRuleNames, meta.RuleName)
+					generatedRuleNameCCs = append(generatedRuleNameCCs, meta.RuleNameCC)
 				}
 			}
 		}
 	}
 
-	sort.Strings(generatedRules)
-	generateProviderFile(generatedRules)
+	sort.Strings(generatedRuleNameCCs)
+	generateProviderFile(generatedRuleNameCCs)
+	sort.Strings(generatedRuleNames)
+	generateRulesIndexDoc(generatedRuleNames)
 }
 
 func validMapping(definition map[string]interface{}) bool {
@@ -181,27 +191,29 @@ func extractAttrSchema(resource, attribute string, definition map[string]interfa
 	return attrSchema
 }
 
-func generateRuleFile(resource, attribute string, definition map[string]interface{}, schema attribute) string {
-	ruleName := fmt.Sprintf("%s_invalid_%s", resource, attribute)
+func generateRuleFile(mapping mapping, attribute string, definition map[string]interface{}, schema attribute) *ruleMeta {
+	ruleName := fmt.Sprintf("%s_invalid_%s", mapping.Resource, attribute)
 
 	meta := &ruleMeta{
 		RuleName:      ruleName,
 		RuleNameCC:    snaker.SnakeToCamel(ruleName),
-		ResourceType:  resource,
+		ResourceType:  mapping.Resource,
 		AttributeName: attribute,
 		Sensitive:     schema.Sensitive,
 		Max:           fetchNumber(definition, "maximum"),
 		Min:           fetchNumber(definition, "minimum"),
 		Pattern:       fetchString(definition, "pattern"),
 		Enum:          fetchStrings(definition, "enum"),
+		ReferenceURL:  fmt.Sprintf("https://github.com/Azure/azure-rest-api-specs/tree/master%s", strings.TrimPrefix(mapping.ImportPath, "azure-rest-api-specs")),
 	}
 
 	// Testing generated regexp
 	regexp.MustCompile(meta.Pattern)
 
 	generateFile(fmt.Sprintf("../rules/apispec/%s.go", ruleName), "apispec-rule-gen/rule.go.tmpl", meta)
+	generateFile(fmt.Sprintf("../docs/rules/%s.md", ruleName), "apispec-rule-gen/rule.md.tmpl", meta)
 
-	return meta.RuleNameCC
+	return meta
 }
 
 func generateProviderFile(ruleNames []string) {
@@ -212,6 +224,16 @@ func generateProviderFile(ruleNames []string) {
 	}
 
 	generateFile("../rules/apispec/provider.go", "apispec-rule-gen/provider.go.tmpl", meta)
+}
+
+func generateRulesIndexDoc(ruleNames []string) {
+	meta := &ruleDocIndexMeta{}
+
+	for _, ruleName := range ruleNames {
+		meta.RuleNameList = append(meta.RuleNameList, ruleName)
+	}
+
+	generateFile("../docs/README.md", "apispec-rule-gen/doc_README.md.tmpl", meta)
 }
 
 func fetchNumber(definition map[string]interface{}, key string) int {
