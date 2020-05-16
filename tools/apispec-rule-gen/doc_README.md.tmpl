@@ -1,0 +1,13 @@
+# Rules
+
+This documentation describes a list of rules available by enabling this ruleset.
+
+## API Specification Rules
+
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, {{ len .RuleNameList}} rules are available.
+
+|Rule|Enabled by default|
+| --- | --- |
+{{- range $v := .RuleNameList }}
+|[{{ $v }}](rules/{{ $v }}.md)|✔|
+{{- end }}

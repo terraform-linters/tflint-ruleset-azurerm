@@ -6,6 +6,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule checks the pattern is valid
@@ -41,7 +42,7 @@ func (r *AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule) Severity() str
 
 // Link returns the rule reference link
 func (r *AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid

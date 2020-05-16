@@ -7,6 +7,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermHdinsightHbaseClusterInvalidTierRule checks the pattern is valid
@@ -45,7 +46,7 @@ func (r *AzurermHdinsightHbaseClusterInvalidTierRule) Severity() string {
 
 // Link returns the rule reference link
 func (r *AzurermHdinsightHbaseClusterInvalidTierRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid

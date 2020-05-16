@@ -7,6 +7,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermVirtualMachineInvalidVMSizeRule checks the pattern is valid
@@ -209,7 +210,7 @@ func (r *AzurermVirtualMachineInvalidVMSizeRule) Severity() string {
 
 // Link returns the rule reference link
 func (r *AzurermVirtualMachineInvalidVMSizeRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid

@@ -6,6 +6,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermFirewallApplicationRuleCollectionInvalidPriorityRule checks the pattern is valid
@@ -43,7 +44,7 @@ func (r *AzurermFirewallApplicationRuleCollectionInvalidPriorityRule) Severity()
 
 // Link returns the rule reference link
 func (r *AzurermFirewallApplicationRuleCollectionInvalidPriorityRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
