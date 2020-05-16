@@ -7,6 +7,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermServiceFabricClusterInvalidReliabilityLevelRule checks the pattern is valid
@@ -48,7 +49,7 @@ func (r *AzurermServiceFabricClusterInvalidReliabilityLevelRule) Severity() stri
 
 // Link returns the rule reference link
 func (r *AzurermServiceFabricClusterInvalidReliabilityLevelRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid

@@ -8,6 +8,7 @@ import (
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermNetappVolumeInvalidPoolNameRule checks the pattern is valid
@@ -43,7 +44,7 @@ func (r *AzurermNetappVolumeInvalidPoolNameRule) Severity() string {
 
 // Link returns the rule reference link
 func (r *AzurermNetappVolumeInvalidPoolNameRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
