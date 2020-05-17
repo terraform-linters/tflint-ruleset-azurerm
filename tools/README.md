@@ -23,7 +23,7 @@ $ go run ./apispec-rule-gen
 $ cd apispec-rule-gen/schema
 $ tfenv install
 # Edit provider.tf to update provider version
-$ terraform show --json > schema.json
+$ terraform providers schema -json > schema.json
 $ cd ../../
 $ go run ./apispec-rule-gen
 ```
