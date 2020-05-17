@@ -4,7 +4,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 280 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 279 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -126,7 +126,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_eventgrid_event_subscription_invalid_event_delivery_schema](rules/azurerm_eventgrid_event_subscription_invalid_event_delivery_schema.md)|✔|
 |[azurerm_eventhub_namespace_invalid_capacity](rules/azurerm_eventhub_namespace_invalid_capacity.md)|✔|
 |[azurerm_eventhub_namespace_invalid_sku](rules/azurerm_eventhub_namespace_invalid_sku.md)|✔|
-|[azurerm_express_route_circuit_peering_invalid_peer_asn](rules/azurerm_express_route_circuit_peering_invalid_peer_asn.md)|✔|
 |[azurerm_express_route_circuit_peering_invalid_peering_type](rules/azurerm_express_route_circuit_peering_invalid_peering_type.md)|✔|
 |[azurerm_firewall_application_rule_collection_invalid_action](rules/azurerm_firewall_application_rule_collection_invalid_action.md)|✔|
 |[azurerm_firewall_application_rule_collection_invalid_priority](rules/azurerm_firewall_application_rule_collection_invalid_priority.md)|✔|

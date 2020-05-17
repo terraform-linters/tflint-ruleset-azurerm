@@ -128,7 +128,6 @@ var Rules = []tflint.Rule{
 	NewAzurermEventgridEventSubscriptionInvalidEventDeliverySchemaRule(),
 	NewAzurermEventhubNamespaceInvalidCapacityRule(),
 	NewAzurermEventhubNamespaceInvalidSkuRule(),
-	NewAzurermExpressRouteCircuitPeeringInvalidPeerAsnRule(),
 	NewAzurermExpressRouteCircuitPeeringInvalidPeeringTypeRule(),
 	NewAzurermFirewallApplicationRuleCollectionInvalidActionRule(),
 	NewAzurermFirewallApplicationRuleCollectionInvalidPriorityRule(),
