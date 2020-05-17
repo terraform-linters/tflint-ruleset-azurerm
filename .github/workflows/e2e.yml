@@ -12,8 +12,11 @@ on:
 
 jobs:
   e2e:
-    name: windows-latest
-    runs-on: windows-latest
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -22,13 +25,12 @@ jobs:
       with:
         go-version: 1.14
     - name: Install TFLint
-      run: |
-        curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_windows_amd64.zip")" -o tflint.zip
-        unzip tflint.zip -d /bin
-        rm tflint.zip
-        tflint -v
-      shell: bash
-    - name: Install plugin
+      run: curl -sL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+    - name: Install plugin (Linux)
+      if: runner.os == 'Linux'
+      run: make install
+    - name: Install plugin (Windows)
+      if: runner.os == 'Windows'
       run: |
         mkdir -p ~/.tflint.d/plugins
         go build -o ~/.tflint.d/plugins/tflint-ruleset-azurerm.exe
