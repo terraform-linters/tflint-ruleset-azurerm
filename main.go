@@ -4,7 +4,7 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/plugin"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
-	"github.com/terraform-linters/tflint-ruleset-azurerm/rules/apispec"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/rules"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 		RuleSet: tflint.RuleSet{
 			Name:    "azurerm",
 			Version: project.Version,
-			Rules:   apispec.Rules,
+			Rules:   rules.Rules,
 		},
 	})
 }
