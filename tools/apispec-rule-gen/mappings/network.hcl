@@ -29,7 +29,7 @@ mapping "azurerm_express_route_circuit_peering" {
   secondary_peer_address_prefix = ExpressRouteCircuitPeeringPropertiesFormat.secondaryPeerAddressPrefix
   vlan_id                       = ExpressRouteCircuitPeeringPropertiesFormat.vlanId
   shared_key                    = ExpressRouteCircuitPeeringPropertiesFormat.sharedKey
-  peer_asn                      = ExpressRouteCircuitPeeringPropertiesFormat.peerASN
+  peer_asn                      = any // ExpressRouteCircuitPeeringPropertiesFormat.peerASN
 }
 
 mapping "azurerm_express_route_gateway" {
