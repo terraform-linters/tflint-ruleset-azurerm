@@ -37,7 +37,7 @@ resource "azurerm_virtual_machine" "main" {
 resource "azurerm_virtual_machine" "main" {
     vm_size = "Standard_DS1_v2"
 }`,
-			Expected: nil, // FIXME: Should be `helper.Issues{}`
+			Expected: helper.Issues{},
 		},
 	}
 
@@ -84,7 +84,7 @@ resource "azurerm_mysql_firewall_rule" "main" {
 resource "azurerm_mysql_firewall_rule" "main" {
     start_ip_address = "192.168.0.1"
 }`,
-			Expected: nil, // FIXME: Should be `helper.Issues{}`
+			Expected: helper.Issues{},
 		},
 	}
 
@@ -131,7 +131,7 @@ resource "azurerm_search_service" "main" {
 resource "azurerm_search_service" "main" {
     partition_count = 1
 }`,
-			Expected: nil, // FIXME: Should be `helper.Issues{}`
+			Expected: helper.Issues{},
 		},
 	}
 
@@ -178,7 +178,7 @@ resource "azurerm_search_service" "main" {
 resource "azurerm_search_service" "main" {
     partition_count = 10
 }`,
-			Expected: nil, // FIXME: Should be `helper.Issues{}`
+			Expected: helper.Issues{},
 		},
 	}
 
