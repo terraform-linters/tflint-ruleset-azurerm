@@ -53,11 +53,10 @@ func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidNumberOfNodesRule) Ch
 
 		return runner.EnsureNoError(err, func() error {
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"number_of_nodes must be 1 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

@@ -63,11 +63,10 @@ func (r *AzurermImageInvalidHyperVGenerationRule) Check(runner tflint.Runner) er
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as hyper_v_generation`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

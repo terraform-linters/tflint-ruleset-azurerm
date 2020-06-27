@@ -55,11 +55,10 @@ func (r *AzurermHpcCacheInvalidNameRule) Check(runner tflint.Runner) error {
 
 		return runner.EnsureNoError(err, func() error {
 			if !r.pattern.MatchString(val) {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-0-9a-zA-Z_]{1,80}$`),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

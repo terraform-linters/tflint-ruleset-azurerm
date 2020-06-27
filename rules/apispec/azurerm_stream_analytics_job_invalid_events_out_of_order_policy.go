@@ -63,11 +63,10 @@ func (r *AzurermStreamAnalyticsJobInvalidEventsOutOfOrderPolicyRule) Check(runne
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as events_out_of_order_policy`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

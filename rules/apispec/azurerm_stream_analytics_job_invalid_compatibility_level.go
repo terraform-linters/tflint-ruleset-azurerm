@@ -62,11 +62,10 @@ func (r *AzurermStreamAnalyticsJobInvalidCompatibilityLevelRule) Check(runner tf
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as compatibility_level`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

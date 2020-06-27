@@ -53,11 +53,10 @@ func (r *AzurermEventhubNamespaceInvalidCapacityRule) Check(runner tflint.Runner
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"capacity must be 20 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

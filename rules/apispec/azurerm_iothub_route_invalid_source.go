@@ -66,11 +66,10 @@ func (r *AzurermIothubRouteInvalidSourceRule) Check(runner tflint.Runner) error 
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as source`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

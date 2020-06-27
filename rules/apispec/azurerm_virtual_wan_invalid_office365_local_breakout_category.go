@@ -65,11 +65,10 @@ func (r *AzurermVirtualWanInvalidOffice365LocalBreakoutCategoryRule) Check(runne
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as office365_local_breakout_category`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil
