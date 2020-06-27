@@ -126,11 +126,10 @@ func (r *AzurermSQLDatabaseInvalidRequestedServiceObjectiveNameRule) Check(runne
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as requested_service_objective_name`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

@@ -55,11 +55,10 @@ func (r *AzurermDataFactoryLinkedServicePostgresqlInvalidNameRule) Check(runner 
 
 		return runner.EnsureNoError(err, func() error {
 			if !r.pattern.MatchString(val) {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[A-Za-z0-9_][^<>*#.%&:\\+?/]*$`),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

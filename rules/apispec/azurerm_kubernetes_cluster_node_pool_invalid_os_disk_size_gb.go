@@ -53,11 +53,10 @@ func (r *AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule) Check(runner t
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"os_disk_size_gb must be 1023 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

@@ -55,19 +55,17 @@ func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"batch_frequency_in_seconds must be 720 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"batch_frequency_in_seconds must be 60 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

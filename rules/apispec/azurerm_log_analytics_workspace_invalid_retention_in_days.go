@@ -55,19 +55,17 @@ func (r *AzurermLogAnalyticsWorkspaceInvalidRetentionInDaysRule) Check(runner tf
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"retention_in_days must be 730 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"retention_in_days must be -1 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

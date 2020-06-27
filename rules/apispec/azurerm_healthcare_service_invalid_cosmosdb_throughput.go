@@ -55,19 +55,17 @@ func (r *AzurermHealthcareServiceInvalidCosmosdbThroughputRule) Check(runner tfl
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"cosmosdb_throughput must be 10000 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"cosmosdb_throughput must be 400 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

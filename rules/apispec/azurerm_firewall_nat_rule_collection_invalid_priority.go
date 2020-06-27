@@ -55,19 +55,17 @@ func (r *AzurermFirewallNatRuleCollectionInvalidPriorityRule) Check(runner tflin
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"priority must be 65000 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"priority must be 100 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

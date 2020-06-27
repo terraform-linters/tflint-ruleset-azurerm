@@ -53,11 +53,10 @@ func (r *AzurermDedicatedHostInvalidPlatformFaultDomainRule) Check(runner tflint
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"platform_fault_domain must be 2 or less",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

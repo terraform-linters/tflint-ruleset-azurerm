@@ -53,11 +53,10 @@ func (r *AzurermFrontdoorInvalidBackendPoolsSendReceiveTimeoutSecondsRule) Check
 
 		return runner.EnsureNoError(err, func() error {
 			if val < r.min {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					"backend_pools_send_receive_timeout_seconds must be 16 or higher",
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil

@@ -63,11 +63,10 @@ func (r *AzurermLinuxVirtualMachineScaleSetInvalidEvictionPolicyRule) Check(runn
 				}
 			}
 			if !found {
-				runner.EmitIssue(
+				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as eviction_policy`, truncateLongMessage(val)),
-					attribute.Expr.Range(),
-					tflint.Metadata{Expr: attribute.Expr},
+					attribute.Expr,
 				)
 			}
 			return nil
