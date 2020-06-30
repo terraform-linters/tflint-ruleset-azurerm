@@ -6,7 +6,7 @@
         "severity": "error",
         "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.2.0/docs/rules/azurerm_virtual_machine_invalid_vm_size.md"
       },
-      "message": "\"Standard_DS1_v3\" is an invalid value as vm_size",
+      "message": "\"Standard_D2ds_v4\" is an invalid value as vm_size",
       "range": {
         "filename": "main.tf",
         "start": {

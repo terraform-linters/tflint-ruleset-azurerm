@@ -1,12 +1,12 @@
 mapping "azurerm_availability_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   platform_update_domain_count = AvailabilitySetProperties.platformUpdateDomainCount
   platform_fault_domain_count  = AvailabilitySetProperties.platformFaultDomainCount
 }
 
 mapping "azurerm_dedicated_host" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   sku_name                = Sku.name
   platform_fault_domain   = DedicatedHostProperties.platformFaultDomain
@@ -15,28 +15,28 @@ mapping "azurerm_dedicated_host" {
 }
 
 mapping "azurerm_dedicated_host_group" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   platform_fault_domain_count = DedicatedHostGroupProperties.platformFaultDomainCount
   zones                       = DedicatedHostGroup.zones
 }
 
 mapping "azurerm_disk_encryption_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-11-01/disk.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-05-01/disk.json"
 
   name                = DiskEncryptionSetNameParameter
   resource_group_name = ResourceGroupNameParameter
 }
 
 mapping "azurerm_image" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   zone_resilient     = ImageStorageProfile.zoneResilient
   hyper_v_generation = HyperVGenerationType
 }
 
 mapping "azurerm_linux_virtual_machine" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   admin_username                  = OSProfile.adminUsername
   size                            = HardwareProfile.vmSize
@@ -52,7 +52,7 @@ mapping "azurerm_linux_virtual_machine" {
 }
 
 mapping "azurerm_linux_virtual_machine_scale_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   admin_username                                    = VirtualMachineScaleSetOSProfile.adminUsername
   sku                                               = HardwareProfile.vmSize
@@ -85,7 +85,7 @@ mapping "azurerm_managed_application_definition" {
 }
 
 mapping "azurerm_managed_disk" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-11-01/disk.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-05-01/disk.json"
 
   name                 = DiskNameParameter
   resource_group_name  = ResourceGroupNameParameter
@@ -100,7 +100,7 @@ mapping "azurerm_managed_disk" {
 }
 
 mapping "azurerm_shared_image" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/gallery.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/gallery.json"
 
   resource_group_name   = ResourceGroupNameParameter
   os_type               = GalleryImageProperties.osType
@@ -111,21 +111,21 @@ mapping "azurerm_shared_image" {
 }
 
 mapping "azurerm_shared_image_gallery" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/gallery.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/gallery.json"
 
   resource_group_name = ResourceGroupNameParameter
   description         = GalleryImageProperties.description
 }
 
 mapping "azurerm_shared_image_version" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/gallery.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/gallery.json"
 
   resource_group_name = ResourceGroupNameParameter
   exclude_from_latest = GalleryArtifactPublishingProfileBase.excludeFromLatest
 }
 
 mapping "azurerm_snapshot" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-11-01/disk.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-05-01/disk.json"
 
   name                = SnapshotNameParameter
   resource_group_name = ResourceGroupNameParameter
@@ -137,14 +137,14 @@ mapping "azurerm_snapshot" {
 }
 
 mapping "azurerm_virtual_machine" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   vm_size      = HardwareProfile.vmSize
   license_type = VirtualMachineProperties.licenseType
 }
 
 mapping "azurerm_virtual_machine_data_disk_attachment" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   lun                       = VirtualMachineScaleSetDataDisk.lun
   caching                   = Caching
@@ -153,7 +153,7 @@ mapping "azurerm_virtual_machine_data_disk_attachment" {
 }
 
 mapping "azurerm_virtual_machine_extension" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   publisher                  = VirtualMachineExtensionProperties.publisher
   type                       = VirtualMachineExtensionProperties.type
@@ -164,7 +164,7 @@ mapping "azurerm_virtual_machine_extension" {
 }
 
 mapping "azurerm_virtual_machine_scale_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   upgrade_policy_mode    = UpgradePolicy.mode
   eviction_policy        = evictionPolicy
@@ -175,7 +175,7 @@ mapping "azurerm_virtual_machine_scale_set" {
 }
 
 mapping "azurerm_virtual_machine_scale_set_extension" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   publisher                  = VirtualMachineScaleSetExtensionProperties.publisher
   type                       = VirtualMachineScaleSetExtensionProperties.type
@@ -188,7 +188,7 @@ mapping "azurerm_virtual_machine_scale_set_extension" {
 }
 
 mapping "azurerm_windows_virtual_machine" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   admin_password             = OSProfile.adminPassword
   admin_username             = OSProfile.adminUsername
@@ -205,7 +205,7 @@ mapping "azurerm_windows_virtual_machine" {
 }
 
 mapping "azurerm_windows_virtual_machine_scale_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2020-06-01/compute.json"
 
   admin_password                                    = VirtualMachineScaleSetOSProfile.adminPassword
   admin_username                                    = VirtualMachineScaleSetOSProfile.adminUsername

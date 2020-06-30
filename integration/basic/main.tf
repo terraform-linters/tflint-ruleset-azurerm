@@ -1,6 +1,6 @@
-resource "azurerm_virtual_machine" "main" {
+resource "azurerm_linux_virtual_machine" "main" {
   name                = "main-vm"
-  vm_size             = "Standard_DS1_v3"
-  location            = "West US 2"
+  vm_size             = "Standard_D2ds_v4"
+  location            = "westus2"
   resource_group_name = "example"
 }
