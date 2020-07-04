@@ -24,8 +24,8 @@ func NewAzurermEventgridEventSubscriptionInvalidEventDeliverySchemaRule() *Azure
 		attributeName: "event_delivery_schema",
 		enum: []string{
 			"EventGridSchema",
-			"CloudEventV01Schema",
 			"CustomInputSchema",
+			"CloudEventSchemaV1_0",
 		},
 	}
 }

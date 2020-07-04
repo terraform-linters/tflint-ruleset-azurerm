@@ -1,6 +1,5 @@
 mapping "azurerm_template_deployment" {
-  import_path = "azure-rest-api-specs/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/deploymentmanager.json"
+  import_path = "azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json"
 
-  resource_group_name = ServiceUnitProperties.targetResourceGroup
-  deployment_mode     = ServiceUnitProperties.deploymentMode
+  deployment_mode     = DeploymentProperties.mode
 }

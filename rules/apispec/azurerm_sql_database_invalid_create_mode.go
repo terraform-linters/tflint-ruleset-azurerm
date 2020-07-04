@@ -23,13 +23,15 @@ func NewAzurermSQLDatabaseInvalidCreateModeRule() *AzurermSQLDatabaseInvalidCrea
 		resourceType:  "azurerm_sql_database",
 		attributeName: "create_mode",
 		enum: []string{
-			"Copy",
 			"Default",
-			"NonReadableSecondary",
+			"Copy",
+			"Secondary",
 			"OnlineSecondary",
 			"PointInTimeRestore",
-			"Recovery",
 			"Restore",
+			"Recovery",
+			"RestoreExternalBackup",
+			"RestoreExternalBackupSecondary",
 			"RestoreLongTermRetentionBackup",
 		},
 	}

@@ -10,7 +10,7 @@ mapping "azurerm_container_group" {
 }
 
 mapping "azurerm_container_registry" {
-  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json"
+  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2017-10-01/containerregistry.json"
 
   name                = RegistryNameParameter
   resource_group_name = ResourceGroupParameter
@@ -20,7 +20,7 @@ mapping "azurerm_container_registry" {
 }
 
 mapping "azurerm_container_registry_webhook" {
-  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json"
+  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2017-10-01/containerregistry.json"
 
   name                = WebhookNameParameter
   resource_group_name = ResourceGroupParameter

@@ -5,13 +5,15 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
-- Copy
 - Default
-- NonReadableSecondary
+- Copy
+- Secondary
 - OnlineSecondary
 - PointInTimeRestore
-- Recovery
 - Restore
+- Recovery
+- RestoreExternalBackup
+- RestoreExternalBackupSecondary
 - RestoreLongTermRetentionBackup
 
 ## Example
@@ -47,4 +49,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/databases.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/databases.json
