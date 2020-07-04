@@ -31,8 +31,6 @@ func NewAzurermDevTestPolicyInvalidNameRule() *AzurermDevTestPolicyInvalidNameRu
 			"GalleryImage",
 			"UserOwnedLabVmCountInSubnet",
 			"LabTargetCost",
-			"EnvironmentTemplate",
-			"ScheduleEditPermission",
 		},
 	}
 }

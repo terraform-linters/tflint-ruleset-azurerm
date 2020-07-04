@@ -6,8 +6,8 @@ Warns about values that appear to be invalid based on [azure-rest-api-specs](htt
 
 Allowed values are:
 - EventGridSchema
-- CloudEventV01Schema
 - CustomInputSchema
+- CloudEventSchemaV1_0
 
 ## Example
 
@@ -42,4 +42,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2019-02-01-preview/EventGrid.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json

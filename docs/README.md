@@ -4,7 +4,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 279 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 264 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -185,7 +185,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|
 |[azurerm_log_analytics_workspace_invalid_retention_in_days](rules/azurerm_log_analytics_workspace_invalid_retention_in_days.md)|✔|
-|[azurerm_log_analytics_workspace_invalid_sku](rules/azurerm_log_analytics_workspace_invalid_sku.md)|✔|
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
 |[azurerm_maintenance_configuration_invalid_scope](rules/azurerm_maintenance_configuration_invalid_scope.md)|✔|
 |[azurerm_managed_application_definition_invalid_lock_level](rules/azurerm_managed_application_definition_invalid_lock_level.md)|✔|
@@ -197,10 +196,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_mariadb_server_invalid_ssl_enforcement](rules/azurerm_mariadb_server_invalid_ssl_enforcement.md)|✔|
 |[azurerm_mariadb_server_invalid_version](rules/azurerm_mariadb_server_invalid_version.md)|✔|
 |[azurerm_monitor_scheduled_query_rules_alert_invalid_severity](rules/azurerm_monitor_scheduled_query_rules_alert_invalid_severity.md)|✔|
-|[azurerm_mssql_database_invalid_create_mode](rules/azurerm_mssql_database_invalid_create_mode.md)|✔|
-|[azurerm_mssql_database_invalid_license_type](rules/azurerm_mssql_database_invalid_license_type.md)|✔|
-|[azurerm_mssql_database_invalid_sample_name](rules/azurerm_mssql_database_invalid_sample_name.md)|✔|
-|[azurerm_mssql_server_security_alert_policy_invalid_state](rules/azurerm_mssql_server_security_alert_policy_invalid_state.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_connectivity_type](rules/azurerm_mssql_virtual_machine_invalid_sql_connectivity_type.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_license_type](rules/azurerm_mssql_virtual_machine_invalid_sql_license_type.md)|✔|
 |[azurerm_mysql_firewall_rule_invalid_end_ip_address](rules/azurerm_mysql_firewall_rule_invalid_end_ip_address.md)|✔|
@@ -209,14 +204,9 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_mysql_server_invalid_version](rules/azurerm_mysql_server_invalid_version.md)|✔|
 |[azurerm_nat_gateway_invalid_sku_name](rules/azurerm_nat_gateway_invalid_sku_name.md)|✔|
 |[azurerm_netapp_account_invalid_resource_group_name](rules/azurerm_netapp_account_invalid_resource_group_name.md)|✔|
-|[azurerm_netapp_pool_invalid_name](rules/azurerm_netapp_pool_invalid_name.md)|✔|
 |[azurerm_netapp_pool_invalid_resource_group_name](rules/azurerm_netapp_pool_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_pool_invalid_service_level](rules/azurerm_netapp_pool_invalid_service_level.md)|✔|
-|[azurerm_netapp_snapshot_invalid_pool_name](rules/azurerm_netapp_snapshot_invalid_pool_name.md)|✔|
 |[azurerm_netapp_snapshot_invalid_resource_group_name](rules/azurerm_netapp_snapshot_invalid_resource_group_name.md)|✔|
-|[azurerm_netapp_snapshot_invalid_volume_name](rules/azurerm_netapp_snapshot_invalid_volume_name.md)|✔|
-|[azurerm_netapp_volume_invalid_name](rules/azurerm_netapp_volume_invalid_name.md)|✔|
-|[azurerm_netapp_volume_invalid_pool_name](rules/azurerm_netapp_volume_invalid_pool_name.md)|✔|
 |[azurerm_netapp_volume_invalid_resource_group_name](rules/azurerm_netapp_volume_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_volume_invalid_service_level](rules/azurerm_netapp_volume_invalid_service_level.md)|✔|
 |[azurerm_network_security_rule_invalid_access](rules/azurerm_network_security_rule_invalid_access.md)|✔|
@@ -241,7 +231,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_search_service_invalid_partition_count](rules/azurerm_search_service_invalid_partition_count.md)|✔|
 |[azurerm_search_service_invalid_replica_count](rules/azurerm_search_service_invalid_replica_count.md)|✔|
 |[azurerm_search_service_invalid_sku](rules/azurerm_search_service_invalid_sku.md)|✔|
-|[azurerm_security_center_subscription_pricing_invalid_tier](rules/azurerm_security_center_subscription_pricing_invalid_tier.md)|✔|
 |[azurerm_sentinel_alert_rule_ms_security_incident_invalid_product_filter](rules/azurerm_sentinel_alert_rule_ms_security_incident_invalid_product_filter.md)|✔|
 |[azurerm_service_fabric_cluster_invalid_reliability_level](rules/azurerm_service_fabric_cluster_invalid_reliability_level.md)|✔|
 |[azurerm_service_fabric_cluster_invalid_upgrade_mode](rules/azurerm_service_fabric_cluster_invalid_upgrade_mode.md)|✔|
@@ -251,10 +240,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_shared_image_invalid_os_type](rules/azurerm_shared_image_invalid_os_type.md)|✔|
 |[azurerm_snapshot_invalid_create_option](rules/azurerm_snapshot_invalid_create_option.md)|✔|
 |[azurerm_sql_database_invalid_create_mode](rules/azurerm_sql_database_invalid_create_mode.md)|✔|
-|[azurerm_sql_database_invalid_edition](rules/azurerm_sql_database_invalid_edition.md)|✔|
-|[azurerm_sql_database_invalid_requested_service_objective_name](rules/azurerm_sql_database_invalid_requested_service_objective_name.md)|✔|
-|[azurerm_sql_elasticpool_invalid_edition](rules/azurerm_sql_elasticpool_invalid_edition.md)|✔|
-|[azurerm_sql_server_invalid_version](rules/azurerm_sql_server_invalid_version.md)|✔|
 |[azurerm_storage_account_invalid_access_tier](rules/azurerm_storage_account_invalid_access_tier.md)|✔|
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|
 |[azurerm_storage_account_invalid_resource_group_name](rules/azurerm_storage_account_invalid_resource_group_name.md)|✔|

@@ -23,7 +23,7 @@ func NewAzurermBatchApplicationInvalidAccountNameRule() *AzurermBatchApplication
 	return &AzurermBatchApplicationInvalidAccountNameRule{
 		resourceType:  "azurerm_batch_application",
 		attributeName: "account_name",
-		pattern:       regexp.MustCompile(`^[a-zA-Z0-9]+$`),
+		pattern:       regexp.MustCompile(`^[-\w\._]+$`),
 	}
 }
 
@@ -57,7 +57,7 @@ func (r *AzurermBatchApplicationInvalidAccountNameRule) Check(runner tflint.Runn
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssueOnExpr(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9]+$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-\w\._]+$`),
 					attribute.Expr,
 				)
 			}

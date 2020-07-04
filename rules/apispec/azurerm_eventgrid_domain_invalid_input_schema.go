@@ -25,7 +25,7 @@ func NewAzurermEventgridDomainInvalidInputSchemaRule() *AzurermEventgridDomainIn
 		enum: []string{
 			"EventGridSchema",
 			"CustomEventSchema",
-			"CloudEventV01Schema",
+			"CloudEventSchemaV1_0",
 		},
 	}
 }
