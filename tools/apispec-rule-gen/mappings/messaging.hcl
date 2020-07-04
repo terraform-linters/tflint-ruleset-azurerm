@@ -1,11 +1,11 @@
 mapping "azurerm_eventgrid_domain" {
-  import_path = "azure-rest-api-specs/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2019-02-01-preview/EventGrid.json"
+  import_path = "azure-rest-api-specs/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json"
 
   input_schema = DomainProperties.inputSchema
 }
 
 mapping "azurerm_eventgrid_event_subscription" {
-  import_path = "azure-rest-api-specs/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2019-02-01-preview/EventGrid.json"
+  import_path = "azure-rest-api-specs/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json"
 
   event_delivery_schema = EventSubscriptionProperties.eventDeliverySchema
   topic_name            = EventSubscriptionProperties.topic
@@ -14,7 +14,7 @@ mapping "azurerm_eventgrid_event_subscription" {
 }
 
 mapping "azurerm_eventhub_namespace" {
-  import_path = "azure-rest-api-specs/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/namespaces.json"
+  import_path = "azure-rest-api-specs/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/namespaces-preview.json"
 
   sku      = Sku.name
   capacity = Sku.capacity
@@ -46,10 +46,10 @@ mapping "azurerm_relay_namespace" {
 }
 
 mapping "azurerm_servicebus_namespace" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/servicebus-preview.json"
 
-  name                = NamespaceNameParameter
-  resource_group_name = ResourceGroupNameParameter
+  name                = any
+  resource_group_name = any
   sku                 = SBSku.name
   capacity            = SBSku.capacity
 }
@@ -63,10 +63,10 @@ mapping "azurerm_servicebus_namespace_authorization_rule" {
 }
 
 mapping "azurerm_servicebus_namespace_network_rule_set" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/servicebus-preview.json"
 
-  resource_group_name = ResourceGroupNameParameter
-  namespace_name      = NamespaceNameParameter
+  resource_group_name = any
+  namespace_name      = any
 }
 
 mapping "azurerm_servicebus_queue" {

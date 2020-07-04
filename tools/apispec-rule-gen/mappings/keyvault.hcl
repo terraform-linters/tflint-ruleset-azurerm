@@ -1,5 +1,5 @@
 mapping "azurerm_key_vault" {
-  import_path = "azure-rest-api-specs/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2019-09-01/keyvault.json"
+  import_path = "azure-rest-api-specs/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2018-02-14/keyvault.json"
 
   name                            = VaultName
   resource_group_name             = ResourceGroupName
@@ -13,7 +13,7 @@ mapping "azurerm_key_vault" {
 }
 
 mapping "azurerm_key_vault_access_policy" {
-  import_path = "azure-rest-api-specs/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2019-09-01/keyvault.json"
+  import_path = "azure-rest-api-specs/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2018-02-14/keyvault.json"
 
   tenant_id      = AccessPolicyEntry.tenantId
   object_id      = AccessPolicyEntry.objectId

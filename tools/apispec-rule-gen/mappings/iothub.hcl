@@ -1,5 +1,5 @@
 mapping "azurerm_iothub" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                        = resourceName
   resource_group_name         = resourceGroupName
@@ -8,7 +8,7 @@ mapping "azurerm_iothub" {
 }
 
 mapping "azurerm_iothub_consumer_group" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = resourceName
   iothub_name         = resourceName
@@ -16,14 +16,14 @@ mapping "azurerm_iothub_consumer_group" {
 }
 
 mapping "azurerm_iothub_dps" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = resourceName
   resource_group_name = resourceGroupName
 }
 
 mapping "azurerm_iothub_dps_certificate" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = resourceName
   resource_group_name = resourceGroupName
@@ -32,7 +32,7 @@ mapping "azurerm_iothub_dps_certificate" {
 }
 
 mapping "azurerm_iothub_dps_shared_access_policy" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = resourceName
   resource_group_name = resourceGroupName
@@ -40,28 +40,28 @@ mapping "azurerm_iothub_dps_shared_access_policy" {
 }
 
 mapping "azurerm_iothub_endpoint_eventhub" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name              = resourceName
   connection_string = RoutingEventHubProperties.connectionString
 }
 
 mapping "azurerm_iothub_endpoint_servicebus_queue" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name              = resourceName
   connection_string = RoutingServiceBusQueueEndpointProperties.connectionString
 } 
 
 mapping "azurerm_iothub_endpoint_servicebus_topic" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name              = resourceName
   connection_string = RoutingServiceBusTopicEndpointProperties.connectionString
 }
 
 mapping "azurerm_iothub_endpoint_storage_container" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                       = RoutingStorageContainerProperties.name
   resource_group_name        = RoutingStorageContainerProperties.resourceGroup
@@ -75,7 +75,7 @@ mapping "azurerm_iothub_endpoint_storage_container" {
 }
 
 mapping "azurerm_iothub_fallback_route" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   resource_group_name = resourceGroupName
   iothub_name         = resourceName
@@ -85,7 +85,7 @@ mapping "azurerm_iothub_fallback_route" {
 }
 
 mapping "azurerm_iothub_route" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = RouteProperties.name
   resource_group_name = resourceGroupName
@@ -97,7 +97,7 @@ mapping "azurerm_iothub_route" {
 }
 
 mapping "azurerm_iothub_shared_access_policy" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/preview/2019-03-22-preview/iothub.json"
 
   name                = resourceName
   resource_group_name = resourceGroupName
