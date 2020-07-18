@@ -16,17 +16,17 @@ func Test_generatedEnumRule(t *testing.T) {
 		{
 			Name: "invalid",
 			Content: `
-resource "azurerm_virtual_machine" "main" {
-    vm_size = "Standard_DS1_v1"
+resource "azurerm_analysis_services_server" "main" {
+    querypool_connection_mode = "Write"
 }`,
 			Expected: helper.Issues{
 				{
-					Rule:    NewAzurermVirtualMachineInvalidVMSizeRule(),
-					Message: `"Standard_DS1_v1" is an invalid value as vm_size`,
+					Rule:    NewAzurermAnalysisServicesServerInvalidQuerypoolConnectionModeRule(),
+					Message: `"Write" is an invalid value as querypool_connection_mode`,
 					Range: hcl.Range{
 						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 3, Column: 15},
-						End:      hcl.Pos{Line: 3, Column: 32},
+						Start:    hcl.Pos{Line: 3, Column: 33},
+						End:      hcl.Pos{Line: 3, Column: 40},
 					},
 				},
 			},
@@ -34,14 +34,14 @@ resource "azurerm_virtual_machine" "main" {
 		{
 			Name: "valid",
 			Content: `
-resource "azurerm_virtual_machine" "main" {
-    vm_size = "Standard_DS1_v2"
+resource "azurerm_analysis_services_server" "main" {
+    querypool_connection_mode = "ReadOnly"
 }`,
 			Expected: helper.Issues{},
 		},
 	}
 
-	rule := NewAzurermVirtualMachineInvalidVMSizeRule()
+	rule := NewAzurermAnalysisServicesServerInvalidQuerypoolConnectionModeRule()
 
 	for _, tc := range cases {
 		runner := helper.TestRunner(t, map[string]string{"resource.tf": tc.Content})

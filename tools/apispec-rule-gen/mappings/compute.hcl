@@ -39,7 +39,7 @@ mapping "azurerm_linux_virtual_machine" {
   import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
 
   admin_username                  = OSProfile.adminUsername
-  size                            = HardwareProfile.vmSize
+  size                            = any //HardwareProfile.vmSize
   admin_password                  = OSProfile.adminPassword
   allow_extension_operations      = OSProfile.allowExtensionOperations
   computer_name                   = OSProfile.computerName
@@ -55,7 +55,7 @@ mapping "azurerm_linux_virtual_machine_scale_set" {
   import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
 
   admin_username                                    = VirtualMachineScaleSetOSProfile.adminUsername
-  sku                                               = HardwareProfile.vmSize
+  sku                                               = any //HardwareProfile.vmSize
   admin_password                                    = VirtualMachineScaleSetOSProfile.adminPassword
   computer_name_prefix                              = VirtualMachineScaleSetOSProfile.computerNamePrefix
   custom_data                                       = VirtualMachineScaleSetOSProfile.customData
@@ -139,7 +139,7 @@ mapping "azurerm_snapshot" {
 mapping "azurerm_virtual_machine" {
   import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-12-01/compute.json"
 
-  vm_size      = HardwareProfile.vmSize
+  vm_size      = any //HardwareProfile.vmSize
   license_type = VirtualMachineProperties.licenseType
 }
 
@@ -192,7 +192,7 @@ mapping "azurerm_windows_virtual_machine" {
 
   admin_password             = OSProfile.adminPassword
   admin_username             = OSProfile.adminUsername
-  size                       = HardwareProfile.vmSize
+  size                       = any //HardwareProfile.vmSize
   allow_extension_operations = OSProfile.allowExtensionOperations
   computer_name              = OSProfile.computerName
   custom_data                = OSProfile.customData
@@ -209,7 +209,7 @@ mapping "azurerm_windows_virtual_machine_scale_set" {
 
   admin_password                                    = VirtualMachineScaleSetOSProfile.adminPassword
   admin_username                                    = VirtualMachineScaleSetOSProfile.adminUsername
-  sku                                               = HardwareProfile.vmSize
+  sku                                               = any //HardwareProfile.vmSize
   computer_name_prefix                              = VirtualMachineScaleSetOSProfile.computerNamePrefix
   custom_data                                       = VirtualMachineScaleSetOSProfile.customData
   do_not_run_extensions_on_overprovisioned_machines = VirtualMachineScaleSetProperties.doNotRunExtensionsOnOverprovisionedVMs

@@ -2,9 +2,19 @@
 
 This documentation describes a list of rules available by enabling this ruleset.
 
+## Basic Rules
+
+|Rule|Enabled by default|
+| --- | --- |
+|[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
+|[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
+|[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
+|[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
+|[azurerm_windows_virtual_machine_scale_set_invalid_sku](rules/azurerm_windows_virtual_machine_scale_set_invalid_sku.md)|✔|
+
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 264 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 259 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -179,10 +189,8 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_lb_rule_invalid_protocol](rules/azurerm_lb_rule_invalid_protocol.md)|✔|
 |[azurerm_linux_virtual_machine_invalid_eviction_policy](rules/azurerm_linux_virtual_machine_invalid_eviction_policy.md)|✔|
 |[azurerm_linux_virtual_machine_invalid_priority](rules/azurerm_linux_virtual_machine_invalid_priority.md)|✔|
-|[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_priority](rules/azurerm_linux_virtual_machine_scale_set_invalid_priority.md)|✔|
-|[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|
 |[azurerm_log_analytics_workspace_invalid_retention_in_days](rules/azurerm_log_analytics_workspace_invalid_retention_in_days.md)|✔|
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
@@ -254,7 +262,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_traffic_manager_profile_invalid_traffic_routing_method](rules/azurerm_traffic_manager_profile_invalid_traffic_routing_method.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_caching](rules/azurerm_virtual_machine_data_disk_attachment_invalid_caching.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_create_option](rules/azurerm_virtual_machine_data_disk_attachment_invalid_create_option.md)|✔|
-|[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_priority](rules/azurerm_virtual_machine_scale_set_invalid_priority.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_upgrade_policy_mode](rules/azurerm_virtual_machine_scale_set_invalid_upgrade_policy_mode.md)|✔|
@@ -267,8 +274,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_virtual_wan_invalid_office365_local_breakout_category](rules/azurerm_virtual_wan_invalid_office365_local_breakout_category.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_eviction_policy](rules/azurerm_windows_virtual_machine_invalid_eviction_policy.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_priority](rules/azurerm_windows_virtual_machine_invalid_priority.md)|✔|
-|[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_priority](rules/azurerm_windows_virtual_machine_scale_set_invalid_priority.md)|✔|
-|[azurerm_windows_virtual_machine_scale_set_invalid_sku](rules/azurerm_windows_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_windows_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|
