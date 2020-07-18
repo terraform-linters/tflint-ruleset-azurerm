@@ -1,6 +1,15 @@
 package rules
 
-import "github.com/terraform-linters/tflint-ruleset-azurerm/rules/apispec"
+import (
+	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/rules/apispec"
+)
 
 // Rules is a list of all rules
-var Rules = apispec.Rules
+var Rules = append([]tflint.Rule{
+	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
+	NewAzurermLinuxVirtualMachineScaleSetInvalidSkuRule(),
+	NewAzurermVirtualMachineInvalidVMSizeRule(),
+	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
+	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
+}, apispec.Rules...)
