@@ -73,8 +73,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
-github.com/terraform-linters/tflint-plugin-sdk v0.2.0 h1:kLNBJatWgylUL1Iieys3DnaCVHChTMEqft5BW7+NVyk=
-github.com/terraform-linters/tflint-plugin-sdk v0.2.0/go.mod h1:QoSqSV/8GSOrQy3OStK3EEdsA3yZm13My4BQcnx3Zic=
+github.com/terraform-linters/tflint-plugin-sdk v0.3.0 h1:TUMBlM17mZKMzaZtp1KLj6T6BHLTunVQ/8f2cWOaMjY=
+github.com/terraform-linters/tflint-plugin-sdk v0.3.0/go.mod h1:QoSqSV/8GSOrQy3OStK3EEdsA3yZm13My4BQcnx3Zic=
 github.com/vmihailenco/msgpack v3.3.3+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/zclconf/go-cty v1.2.0 h1:sPHsy7ADcIZQP3vILvTjrh74ZA175TFP5vqiNK1UmlI=
 github.com/zclconf/go-cty v1.2.0/go.mod h1:hOPWgoHbaTUnI5k4D2ld+GRpFJSCe6bCM7m1q/N4PQ8=
