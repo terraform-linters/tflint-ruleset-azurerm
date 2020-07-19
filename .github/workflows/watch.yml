@@ -32,18 +32,16 @@ jobs:
           }
 
           const fs = require('fs')
-          fs.readFile('snapshot.diff', (err, data) => {
-            if (err) throw err
-            if (data === "") {
-              console.log("No diff. Skipped.")
-              return
-            }
+          const data = fs.readFileSync('snapshot.diff', 'utf-8')
+          if (data === "") {
+            console.log("No diff. Skipped.")
+            return
+          }
 
-            github.issues.create({            
-              owner: 'terraform-linters',
-              repo: 'tflint-ruleset-azurerm',
-              title: '🤖 MicrosoftDocs/azure-docs Changes Report',
-              body: "Changes found from the saved snapshots :eyes:\n\n```diff\n" + data + "```\n\nhttps://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/linux/sizes.md",
-              labels: ['bot'],
-            })
+          github.issues.create({
+            owner: 'terraform-linters',
+            repo: 'tflint-ruleset-azurerm',
+            title: '🤖 MicrosoftDocs/azure-docs Changes Report',
+            body: "Changes found from the saved snapshots :eyes:\n\n```diff\n" + data + "```\n\nhttps://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/linux/sizes.md",
+            labels: ['bot'],
           })
