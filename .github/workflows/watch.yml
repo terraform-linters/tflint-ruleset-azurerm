@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Calculate diff
       run: |
-        curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/virtual-machines/linux/sizes.md --output .github/snapshots/size.md
+        curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/virtual-machines/sizes.md --output .github/snapshots/size.md
         git diff > snapshot.diff
     - name: Create an issue
       uses: actions/github-script@v2
