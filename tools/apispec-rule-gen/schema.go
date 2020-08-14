@@ -10,7 +10,7 @@ type schema struct {
 }
 
 type providerSchema struct {
-	AzureRM provider `json:"azurerm"`
+	AzureRM provider `json:"registry.terraform.io/hashicorp/azurerm"`
 }
 
 type provider struct {
@@ -27,8 +27,8 @@ type block struct {
 }
 
 type attribute struct {
-	Type interface{} `json:"type"`
-	Sensitive bool `json:"sensitive"`
+	Type      interface{} `json:"type"`
+	Sensitive bool        `json:"sensitive"`
 }
 
 func loadProviderSchema() provider {
