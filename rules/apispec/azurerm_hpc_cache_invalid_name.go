@@ -23,7 +23,7 @@ func NewAzurermHpcCacheInvalidNameRule() *AzurermHpcCacheInvalidNameRule {
 	return &AzurermHpcCacheInvalidNameRule{
 		resourceType:  "azurerm_hpc_cache",
 		attributeName: "name",
-		pattern:       regexp.MustCompile(`^[-0-9a-zA-Z_]{1,31}$`),
+		pattern:       regexp.MustCompile(`^[-0-9a-zA-Z_]{1,80}$`),
 	}
 }
 
@@ -57,7 +57,7 @@ func (r *AzurermHpcCacheInvalidNameRule) Check(runner tflint.Runner) error {
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssueOnExpr(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-0-9a-zA-Z_]{1,31}$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-0-9a-zA-Z_]{1,80}$`),
 					attribute.Expr,
 				)
 			}
