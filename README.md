@@ -7,7 +7,7 @@ TFLint ruleset plugin for Terraform Provider for Azure (Resource Manager)
 
 ## Requirements
 
-- TFLint v0.18+
+- TFLint v0.19+
 - Go v1.14
 
 ## Installation

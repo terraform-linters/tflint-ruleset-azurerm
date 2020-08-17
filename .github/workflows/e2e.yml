@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        version: [v0.18.0, latest]
+        version: [v0.19.0, latest]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
