@@ -1,3 +1,21 @@
+## 0.4.0 (2020-08-17)
+
+The minimum supported version of TFLint has changed in this version. TFLint v0.19.0+ is required for this plugin to work.
+
+### Breaking Changes
+
+- [#50](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/50): Bump tflint-plugin-sdk to v0.4.0
+
+### Enhancements
+
+- [#47](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/47): Update VM machine sizes
+- [#48](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/48): Bump terraform-provider-azurerm to v2.23.0 from v2.19.0
+
+### Chores
+
+- [#43](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/43): Update azure-docs snapshots
+- [#46](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/46): Bump github.com/google/go-cmp from 0.5.0 to 0.5.1
+
 ## 0.3.0 (2020-07-19)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.18.0+ is required for this plugin to work.
