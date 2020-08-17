@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-In this rule, the string must match the regular expression `^[-0-9a-zA-Z_]{1,31}$``.
+In this rule, the string must match the regular expression `^[-0-9a-zA-Z_]{1,80}$``.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_hpc_cache" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: "..." does not match valid pattern ^[-0-9a-zA-Z_]{1,31}$ (azurerm_hpc_cache_invalid_name)
+Error: "..." does not match valid pattern ^[-0-9a-zA-Z_]{1,80}$ (azurerm_hpc_cache_invalid_name)
 
   on template.tf line 2:
   2:   name = ... // invalid value

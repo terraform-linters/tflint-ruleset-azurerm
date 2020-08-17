@@ -93,6 +93,8 @@ func main() {
 			}
 
 			for attribute, value := range mapping.Attrs {
+				fmt.Printf("Generating rule for `%s.%s`\n", mapping.Resource, attribute)
+
 				variable := value.Expr.Variables()[0]
 				props := []string{}
 				for _, prop := range variable {
