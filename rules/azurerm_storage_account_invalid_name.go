@@ -21,7 +21,7 @@ func NewAzurermStorageAccountInvalidNameRule() *AzurermStorageAccountInvalidName
 	return &AzurermStorageAccountInvalidNameRule{
 		resourceType:  "azurerm_storage_account",
 		attributeName: "name",
-		pattern:       regexp.MustCompile(`^[a-z]{3, 24}$`),
+		pattern:       regexp.MustCompile(`^[a-z0-9]{3,24}$`),
 	}
 }
 
@@ -55,7 +55,7 @@ func (r *AzurermStorageAccountInvalidNameRule) Check(runner tflint.Runner) error
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssueOnExpr(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-z]{3, 24}$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-z0-9]{3,24}$`),
 					attribute.Expr,
 				)
 			}
