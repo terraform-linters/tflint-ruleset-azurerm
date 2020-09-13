@@ -46,7 +46,7 @@ mapping "azurerm_relay_namespace" {
 }
 
 mapping "azurerm_servicebus_namespace" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/servicebus-preview.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/namespace-preview.json"
 
   name                = any
   resource_group_name = any
@@ -54,27 +54,19 @@ mapping "azurerm_servicebus_namespace" {
   capacity            = SBSku.capacity
 }
 
-mapping "azurerm_servicebus_namespace_authorization_rule" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
-
-  name                = RuleNameParameter
-  namespace_name      = NamespaceNameParameter
-  resource_group_name = ResourceGroupNameParameter
-}
-
 mapping "azurerm_servicebus_namespace_network_rule_set" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/servicebus-preview.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2018-01-01-preview/namespace-preview.json"
 
   resource_group_name = any
   namespace_name      = any
 }
 
 mapping "azurerm_servicebus_queue" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/Queue.json"
 
-  name                                    = QueueNameParameter
-  namespace_name                          = NamespaceNameParameter
-  resource_group_name                     = ResourceGroupNameParameter
+  name                                    = any
+  namespace_name                          = any
+  resource_group_name                     = any
   auto_delete_on_idle                     = SBQueueProperties.autoDeleteOnIdle
   default_message_ttl                     = SBQueueProperties.defaultMessageTimeToLive
   duplicate_detection_history_time_window = SBQueueProperties.duplicateDetectionHistoryTimeWindow
@@ -88,22 +80,13 @@ mapping "azurerm_servicebus_queue" {
   max_delivery_count                      = SBQueueProperties.maxDeliveryCount
 }
 
-mapping "azurerm_servicebus_queue_authorization_rule" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
-
-  name                = AuthorizationRuleNameParameter
-  namespace_name      = NamespaceNameParameter
-  queue_name          = QueueNameParameter
-  resource_group_name = ResourceGroupNameParameter
-}
-
 mapping "azurerm_servicebus_subscription" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/subscriptions.json"
 
-  name                                 = SubscriptionNameParameter
-  namespace_name                       = NamespaceNameParameter
-  topic_name                           = TopicNameParameter
-  resource_group_name                  = ResourceGroupNameParameter
+  name                                 = any
+  namespace_name                       = any
+  topic_name                           = any
+  resource_group_name                  = any
   max_delivery_count                   = SBSubscriptionProperties.maxDeliveryCount
   auto_delete_on_idle                  = SBSubscriptionProperties.autoDeleteOnIdle
   default_message_ttl                  = SBSubscriptionProperties.defaultMessageTimeToLive
@@ -116,40 +99,31 @@ mapping "azurerm_servicebus_subscription" {
 }
 
 mapping "azurerm_servicebus_subscription_rule" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/Rules.json"
 
-  namespace_name      = NamespaceNameParameter
-  topic_name          = TopicNameParameter
-  subscription_name   = SubscriptionNameParameter
-  resource_group_name = ResourceGroupNameParameter
+  namespace_name      = any
+  topic_name          = any
+  subscription_name   = any
+  resource_group_name = any
   filter_type         = FilterType
 }
 
 mapping "azurerm_servicebus_topic" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/common/v1/definitions.json"
 
-  name                                    = TopicNameParameter
-  namespace_name                          = NamespaceNameParameter
-  resource_group_name                     = ResourceGroupNameParameter
+  name                                    = any
+  namespace_name                          = any
+  resource_group_name                     = any
   status                                  = EntityStatus
-  auto_delete_on_idle                     = SBTopicProperties.autoDeleteOnIdle
-  default_message_ttl                     = SBTopicProperties.defaultMessageTimeToLive
-  duplicate_detection_history_time_window = SBTopicProperties.duplicateDetectionHistoryTimeWindow
-  enable_batched_operations               = SBTopicProperties.enableBatchedOperations
-  enable_express                          = SBTopicProperties.enableExpress
-  enable_partitioning                     = SBTopicProperties.enablePartitioning
-  max_size_in_megabytes                   = SBTopicProperties.maxSizeInMegabytes
-  requires_duplicate_detection            = SBTopicProperties.requiresDuplicateDetection
-  support_ordering                        = SBTopicProperties.supportOrdering
-}
-
-mapping "azurerm_servicebus_topic_authorization_rule" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2017-04-01/servicebus.json"
-
-  name                = AuthorizationRuleNameParameter
-  namespace_name      = NamespaceNameParameter
-  topic_name          = TopicNameParameter
-  resource_group_name = ResourceGroupNameParameter
+  auto_delete_on_idle                     = any
+  default_message_ttl                     = any
+  duplicate_detection_history_time_window = any
+  enable_batched_operations               = any
+  enable_express                          = any
+  enable_partitioning                     = any
+  max_size_in_megabytes                   = any
+  requires_duplicate_detection            = any
+  support_ordering                        = any
 }
 
 mapping "azurerm_signalr_service" {
