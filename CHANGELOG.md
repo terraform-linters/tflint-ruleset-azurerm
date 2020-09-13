@@ -1,3 +1,22 @@
+## 0.5.0 (2020-09-14)
+
+The minimum supported version of TFLint has changed in this version. TFLint v0.20.0+ is required for this plugin to work. Also, this release is built with Go v1.15. As a result, darwin/386 build will no longer available from the release.
+
+### Breaking Changes
+
+- [#61](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/61): Bump tflint-plugin-sdk to v0.5.0
+
+### Chores
+
+- [#53](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/53): chore(deps): bump go to v1.15
+- [#54](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/54): Update GitHub Actions by Dependabot
+- [#55](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/55): Bump actions/setup-go from v1 to v2.1.2
+- [#56](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/56): Bump actions/github-script from v2 to v3
+- [#57](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/57): Bump github.com/google/go-cmp from 0.5.1 to 0.5.2
+- [#59](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/59): Update doc snapshot
+- [#60](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/60): Bump terraform-provider-azurerm to v2.27.0 from v2.23.0
+- [#62](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/62): Bump goreleaser version
+
 ## 0.4.0 (2020-08-17)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.19.0+ is required for this plugin to work.
