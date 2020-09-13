@@ -41,4 +41,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2018-02-14/keyvault.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2019-09-01/keyvault.json
