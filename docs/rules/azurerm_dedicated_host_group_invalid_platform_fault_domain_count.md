@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be in the range 1 <= x <= 3.
+The rule requires the value to be 1 or higher.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_dedicated_host_group" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: platform_fault_domain_count must be 3 or less (azurerm_dedicated_host_group_invalid_platform_fault_domain_count)
+Error: platform_fault_domain_count must be 1 or higher (azurerm_dedicated_host_group_invalid_platform_fault_domain_count)
 
   on template.tf line 2:
   2:   platform_fault_domain_count = ... // invalid value
