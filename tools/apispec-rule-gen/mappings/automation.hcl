@@ -5,7 +5,7 @@ mapping "azurerm_automation_account" {
 }
 
 mapping "azurerm_automation_runbook" {
-  import_path = "azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/runbook.json"
+  import_path = "azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/runbook.json"
 
   runbook_type = RunbookProperties.runbookType
 }

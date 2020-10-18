@@ -19,10 +19,10 @@ import (
 type {{ .RuleNameCC }}Rule struct {
 	resourceType  string
 	attributeName string
-{{- if ne .Max 0 }}
+{{- if .SetMax }}
 	max           int
 {{- end }}
-{{- if ne .Min 0 }}
+{{- if .SetMin }}
 	min           int
 {{- end }}
 {{- if ne .Pattern "" }}
@@ -38,10 +38,10 @@ func New{{ .RuleNameCC }}Rule() *{{ .RuleNameCC }}Rule {
 	return &{{ .RuleNameCC }}Rule{
 		resourceType:  "{{ .ResourceType }}",
 		attributeName: "{{ .AttributeName }}",
-{{- if ne .Max 0 }}
+{{- if .SetMax }}
 		max:           {{ .Max }},
 {{- end }}
-{{- if ne .Min 0 }}
+{{- if .SetMin }}
 		min:           {{ .Min }},
 {{- end }}
 {{- if ne .Pattern "" }}
@@ -80,7 +80,7 @@ func (r *{{ .RuleNameCC }}Rule) Link() string {
 // Check checks the pattern is valid
 func (r *{{ .RuleNameCC }}Rule) Check(runner tflint.Runner) error {
 	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
-{{- if (or (ne .Max 0) (ne .Min 0)) }}
+{{- if (or (.SetMax) (.SetMin)) }}
 		var val int
 {{- else }}
 		var val string
@@ -88,7 +88,7 @@ func (r *{{ .RuleNameCC }}Rule) Check(runner tflint.Runner) error {
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-{{- if ne .Max 0 }}
+{{- if .SetMax }}
 			if val > r.max {
 				runner.EmitIssueOnExpr(
 					r,
@@ -98,7 +98,7 @@ func (r *{{ .RuleNameCC }}Rule) Check(runner tflint.Runner) error {
 			}
 {{- end }}
 
-{{- if ne .Min 0 }}
+{{- if .SetMin }}
 			if val < r.min {
 				runner.EmitIssueOnExpr(
 					r,

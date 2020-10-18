@@ -13,7 +13,7 @@ import (
 type AzurermDedicatedHostInvalidPlatformFaultDomainRule struct {
 	resourceType  string
 	attributeName string
-	max           int
+	min           int
 }
 
 // NewAzurermDedicatedHostInvalidPlatformFaultDomainRule returns new rule with default attributes
@@ -21,7 +21,7 @@ func NewAzurermDedicatedHostInvalidPlatformFaultDomainRule() *AzurermDedicatedHo
 	return &AzurermDedicatedHostInvalidPlatformFaultDomainRule{
 		resourceType:  "azurerm_dedicated_host",
 		attributeName: "platform_fault_domain",
-		max:           2,
+		min:           0,
 	}
 }
 
@@ -52,10 +52,10 @@ func (r *AzurermDedicatedHostInvalidPlatformFaultDomainRule) Check(runner tflint
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-			if val > r.max {
+			if val < r.min {
 				runner.EmitIssueOnExpr(
 					r,
-					"platform_fault_domain must be 2 or less",
+					"platform_fault_domain must be 0 or higher",
 					attribute.Expr,
 				)
 			}

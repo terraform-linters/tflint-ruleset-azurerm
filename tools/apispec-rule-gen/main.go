@@ -34,7 +34,9 @@ type ruleMeta struct {
 	AttributeName string
 	Sensitive     bool
 	Max           int
+	SetMax        bool
 	Min           int
+	SetMin        bool
 	Pattern       string
 	Enum          []string
 	ReferenceURL  string
@@ -203,7 +205,9 @@ func generateRuleFile(mapping mapping, attribute string, definition map[string]i
 		AttributeName: attribute,
 		Sensitive:     schema.Sensitive,
 		Max:           fetchNumber(definition, "maximum"),
+		SetMax:        numberExists(definition, "maximum"),
 		Min:           fetchNumber(definition, "minimum"),
+		SetMin:        numberExists(definition, "minimum"),
 		Pattern:       fetchString(definition, "pattern"),
 		Enum:          fetchStrings(definition, "enum"),
 		ReferenceURL:  fmt.Sprintf("https://github.com/Azure/azure-rest-api-specs/tree/master%s", strings.TrimPrefix(mapping.ImportPath, "azure-rest-api-specs")),
@@ -243,6 +247,11 @@ func fetchNumber(definition map[string]interface{}, key string) int {
 		return int(v.(float64))
 	}
 	return 0
+}
+
+func numberExists(definition map[string]interface{}, key string) bool {
+	_, ok := definition[key]
+	return ok
 }
 
 func fetchString(definition map[string]interface{}, key string) string {

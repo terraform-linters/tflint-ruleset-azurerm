@@ -13,7 +13,6 @@ import (
 type AzurermDedicatedHostGroupInvalidPlatformFaultDomainCountRule struct {
 	resourceType  string
 	attributeName string
-	max           int
 	min           int
 }
 
@@ -22,7 +21,6 @@ func NewAzurermDedicatedHostGroupInvalidPlatformFaultDomainCountRule() *AzurermD
 	return &AzurermDedicatedHostGroupInvalidPlatformFaultDomainCountRule{
 		resourceType:  "azurerm_dedicated_host_group",
 		attributeName: "platform_fault_domain_count",
-		max:           3,
 		min:           1,
 	}
 }
@@ -54,13 +52,6 @@ func (r *AzurermDedicatedHostGroupInvalidPlatformFaultDomainCountRule) Check(run
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-			if val > r.max {
-				runner.EmitIssueOnExpr(
-					r,
-					"platform_fault_domain_count must be 3 or less",
-					attribute.Expr,
-				)
-			}
 			if val < r.min {
 				runner.EmitIssueOnExpr(
 					r,

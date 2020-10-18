@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be 20 or less.
+The rule requires the value to be in the range 0 <= x <= 20.
 
 ## Example
 

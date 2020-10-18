@@ -14,6 +14,7 @@ type AzurermEventhubNamespaceInvalidCapacityRule struct {
 	resourceType  string
 	attributeName string
 	max           int
+	min           int
 }
 
 // NewAzurermEventhubNamespaceInvalidCapacityRule returns new rule with default attributes
@@ -22,6 +23,7 @@ func NewAzurermEventhubNamespaceInvalidCapacityRule() *AzurermEventhubNamespaceI
 		resourceType:  "azurerm_eventhub_namespace",
 		attributeName: "capacity",
 		max:           20,
+		min:           0,
 	}
 }
 
@@ -56,6 +58,13 @@ func (r *AzurermEventhubNamespaceInvalidCapacityRule) Check(runner tflint.Runner
 				runner.EmitIssueOnExpr(
 					r,
 					"capacity must be 20 or less",
+					attribute.Expr,
+				)
+			}
+			if val < r.min {
+				runner.EmitIssueOnExpr(
+					r,
+					"capacity must be 0 or higher",
 					attribute.Expr,
 				)
 			}
