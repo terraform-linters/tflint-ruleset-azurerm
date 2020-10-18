@@ -12,7 +12,7 @@ mapping "azurerm_hpc_cache_nfs_target" {
 }
 
 mapping "azurerm_storage_account" {
-  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-04-01/storage.json"
+  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json"
 
   name                      = StorageAccountName
   resource_group_name       = ResourceGroupName
@@ -23,14 +23,14 @@ mapping "azurerm_storage_account" {
 }
 
 mapping "azurerm_storage_account_customer_managed_key" {
-  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-04-01/storage.json"
+  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json"
 
   key_name    = KeyVaultProperties.keyname
   key_version = KeyVaultProperties.keyversion
 }
 
 mapping "azurerm_storage_account_network_rules" {
-  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-04-01/storage.json"
+  import_path = "azure-rest-api-specs/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json"
 
   storage_account_name = StorageAccountName
   resource_group_name  = ResourceGroupName
