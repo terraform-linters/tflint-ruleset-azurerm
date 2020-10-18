@@ -1,3 +1,13 @@
+## 0.5.1 (2020-10-19)
+
+### Enhancements
+
+- [#65](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/65): Bump terraform-provider-azurerm to v2.32.0 from v2.27.0
+
+### Chores
+
+- [#63](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/63): Bump actions/setup-go from v2.1.2 to v2.1.3
+
 ## 0.5.0 (2020-09-14)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.20.0+ is required for this plugin to work. Also, this release is built with Go v1.15. As a result, darwin/386 build will no longer available from the release.
