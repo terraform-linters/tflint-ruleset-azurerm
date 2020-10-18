@@ -14,6 +14,7 @@ type AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule struct {
 	resourceType  string
 	attributeName string
 	max           int
+	min           int
 }
 
 // NewAzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule returns new rule with default attributes
@@ -22,6 +23,7 @@ func NewAzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule() *AzurermKubern
 		resourceType:  "azurerm_kubernetes_cluster_node_pool",
 		attributeName: "os_disk_size_gb",
 		max:           1023,
+		min:           0,
 	}
 }
 
@@ -56,6 +58,13 @@ func (r *AzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule) Check(runner t
 				runner.EmitIssueOnExpr(
 					r,
 					"os_disk_size_gb must be 1023 or less",
+					attribute.Expr,
+				)
+			}
+			if val < r.min {
+				runner.EmitIssueOnExpr(
+					r,
+					"os_disk_size_gb must be 0 or higher",
 					attribute.Expr,
 				)
 			}

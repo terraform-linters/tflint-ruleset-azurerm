@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-
+The rule requires the value to be 0 or higher.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_dedicated_host" "foo" {
 $ tflint
 1 issue(s) found:
 
-
+Error: platform_fault_domain must be 0 or higher (azurerm_dedicated_host_invalid_platform_fault_domain)
 
   on template.tf line 2:
   2:   platform_fault_domain = ... // invalid value

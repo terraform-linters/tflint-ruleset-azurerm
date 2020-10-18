@@ -18,13 +18,13 @@ In this rule, the string must match the regular expression `{{ .Pattern }}``.
 
 {{- else -}}
 
-{{- if and (ne .Max 0) (ne .Min 0) -}}
+{{- if and (.SetMax) (.SetMin) -}}
 The rule requires the value to be in the range {{ .Min }} <= x <= {{ .Max }}.
 {{- else -}}
-{{- if ne .Max 0 -}}
+{{- if .SetMax -}}
 The rule requires the value to be {{ .Max }} or less.
 {{- end -}}
-{{- if ne .Min 0 -}}
+{{- if .SetMin -}}
 The rule requires the value to be {{ .Min }} or higher.
 {{- end -}}
 {{- end -}}
@@ -59,11 +59,11 @@ Error: {{ .AttributeName }} does not match valid pattern {{ .Pattern }} ({{ .Rul
 Error: "..." does not match valid pattern {{ .Pattern }} ({{ .RuleName }})
 {{- end -}}
 
-{{- else if ne .Max 0 -}}
+{{- else if .SetMax -}}
 
 Error: {{ .AttributeName }} must be {{ .Max }} or less ({{ .RuleName }})
 
-{{- else if ne .Min 0 -}}
+{{- else if .SetMin -}}
 
 Error: {{ .AttributeName }} must be {{ .Min }} or higher ({{ .RuleName }})
 
