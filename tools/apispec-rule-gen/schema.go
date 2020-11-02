@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 )
 
@@ -32,7 +33,10 @@ type attribute struct {
 }
 
 func loadProviderSchema() provider {
-	src, err := ioutil.ReadFile("apispec-rule-gen/schema/schema.json")
+	schemaPath := getFullPath("schema/schema.json")
+	fmt.Println(schemaPath)
+	src, err := ioutil.ReadFile(schemaPath)
+
 	if err != nil {
 		panic(err)
 	}

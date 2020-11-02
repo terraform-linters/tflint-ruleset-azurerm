@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -50,8 +51,25 @@ type ruleDocIndexMeta struct {
 	RuleNameList []string
 }
 
+var BasePath string
+var RulesPath string
+var DocsPath string
+
+func getFullPath(path string) string {
+	return fmt.Sprintf("%s/%s", BasePath, path)
+}
+
+func parseFlags() {
+	flag.StringVar(&BasePath, "base-path", "apispec-rule-gen", "a string var")
+	flag.StringVar(&RulesPath, "rules-path", "../rules", "a string var")
+	flag.StringVar(&DocsPath, "docs-path", "../docs", "a string var")
+	flag.Parse()
+}
+
 func main() {
-	files, err := filepath.Glob("apispec-rule-gen/mappings/*.hcl")
+	parseFlags()
+
+	files, err := filepath.Glob(getFullPath("mappings/*.hcl"))
 	if err != nil {
 		panic(err)
 	}
@@ -78,7 +96,7 @@ func main() {
 	generatedRuleNameCCs := []string{}
 	for _, mappingFile := range mappingFiles {
 		for _, mapping := range mappingFile.Mappings {
-			raw, err := ioutil.ReadFile(fmt.Sprintf("apispec-rule-gen/%s", mapping.ImportPath))
+			raw, err := ioutil.ReadFile(fmt.Sprintf(getFullPath("%s"), mapping.ImportPath))
 			if err != nil {
 				panic(err)
 			}
@@ -216,8 +234,8 @@ func generateRuleFile(mapping mapping, attribute string, definition map[string]i
 	// Testing generated regexp
 	regexp.MustCompile(meta.Pattern)
 
-	generateFile(fmt.Sprintf("../rules/apispec/%s.go", ruleName), "apispec-rule-gen/rule.go.tmpl", meta)
-	generateFile(fmt.Sprintf("../docs/rules/%s.md", ruleName), "apispec-rule-gen/rule.md.tmpl", meta)
+	generateFile(fmt.Sprintf("%s/apispec/%s.go", RulesPath, ruleName), getFullPath("rule.go.tmpl"), meta)
+	generateFile(fmt.Sprintf("%s/rules/%s.md", DocsPath, ruleName), getFullPath("rule.md.tmpl"), meta)
 
 	return meta
 }
@@ -229,7 +247,7 @@ func generateProviderFile(ruleNames []string) {
 		meta.RuleNameCCList = append(meta.RuleNameCCList, ruleName)
 	}
 
-	generateFile("../rules/apispec/provider.go", "apispec-rule-gen/provider.go.tmpl", meta)
+	generateFile(fmt.Sprintf("%s/apispec/provider.go", RulesPath), getFullPath("provider.go.tmpl"), meta)
 }
 
 func generateRulesIndexDoc(ruleNames []string) {
@@ -239,7 +257,7 @@ func generateRulesIndexDoc(ruleNames []string) {
 		meta.RuleNameList = append(meta.RuleNameList, ruleName)
 	}
 
-	generateFile("../docs/README.md", "apispec-rule-gen/doc_README.md.tmpl", meta)
+	generateFile(fmt.Sprintf("%s/README.md", DocsPath), getFullPath("doc_README.md.tmpl"), meta)
 }
 
 func fetchNumber(definition map[string]interface{}, key string) int {
