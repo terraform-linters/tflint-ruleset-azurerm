@@ -9,18 +9,18 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermVirtualMachineInvalidAdminUserNameRule ensures that invalid usernames are not set.
-type AzurermVirtualMachineInvalidAdminUserNameRule struct {
+// AzurermWindowsVirtualMachineInvalidAdminUserNameRule ensures that invalid usernames are not set.
+type AzurermWindowsVirtualMachineInvalidAdminUserNameRule struct {
 	resourceType  string
 	attributeName string
 	enum          []string
 }
 
-// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm
-// NewAzurermVirtualMachineInvalidAdminUserNameRule returns new rule with default attributes
-func NewAzurermVirtualMachineInvalidAdminUserNameRule() *AzurermVirtualMachineInvalidAdminUserNameRule {
-	return &AzurermVirtualMachineInvalidAdminUserNameRule{
-		resourceType:  "azurerm_virtual_machine",
+// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq
+// NewAzurermWindowsVirtualMachineInvalidSizeRule returns new rule with default attributes
+func NewAzurermWindowsVirtualMachineInvalidAdminUserNameRule() *AzurermWindowsVirtualMachineInvalidAdminUserNameRule {
+	return &AzurermWindowsVirtualMachineInvalidAdminUserNameRule{
+		resourceType:  "azurerm_windows_virtual_machine",
 		attributeName: "admin_username",
 		enum: []string{
 			"azureuser",
@@ -62,27 +62,27 @@ func NewAzurermVirtualMachineInvalidAdminUserNameRule() *AzurermVirtualMachineIn
 }
 
 // Name returns the rule name
-func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Name() string {
-	return "azurerm_virtual_machine_invalid_admin_username"
+func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Name() string {
+	return "azurerm_windows_virtual_machine_invalid_admin_username"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Enabled() bool {
+func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Severity() string {
+func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Severity() string {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Link() string {
+func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runner) error {
+func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runner) error {
 	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
 		var val string
 		err := runner.EvaluateExpr(attribute.Expr, &val)
@@ -98,7 +98,7 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runn
 			if found {
 				runner.EmitIssueOnExpr(
 					r,
-					fmt.Sprintf(`"%s" is not a valid VM Admin username`, val),
+					fmt.Sprintf(`"%s" is not a valid Windows VM Admin username`, val),
 					attribute.Expr,
 				)
 			}
