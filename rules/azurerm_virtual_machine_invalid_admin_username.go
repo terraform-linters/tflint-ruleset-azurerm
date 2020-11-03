@@ -1,5 +1,7 @@
 package rules
 
+// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm
+
 import (
 	"fmt"
 	"strings"
@@ -16,7 +18,6 @@ type AzurermVirtualMachineInvalidAdminUserNameRule struct {
 	enum          []string
 }
 
-// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm
 // NewAzurermVirtualMachineInvalidAdminUserNameRule returns new rule with default attributes
 func NewAzurermVirtualMachineInvalidAdminUserNameRule() *AzurermVirtualMachineInvalidAdminUserNameRule {
 	return &AzurermVirtualMachineInvalidAdminUserNameRule{

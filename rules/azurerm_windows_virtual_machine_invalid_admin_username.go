@@ -1,5 +1,7 @@
 package rules
 
+// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq
+
 import (
 	"fmt"
 	"strings"
@@ -16,8 +18,7 @@ type AzurermWindowsVirtualMachineInvalidAdminUserNameRule struct {
 	enum          []string
 }
 
-// Please see: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq
-// NewAzurermWindowsVirtualMachineInvalidSizeRule returns new rule with default attributes
+// NewAzurermWindowsVirtualMachineInvalidAdminUserNameRule returns new rule with default attributes
 func NewAzurermWindowsVirtualMachineInvalidAdminUserNameRule() *AzurermWindowsVirtualMachineInvalidAdminUserNameRule {
 	return &AzurermWindowsVirtualMachineInvalidAdminUserNameRule{
 		resourceType:  "azurerm_windows_virtual_machine",
