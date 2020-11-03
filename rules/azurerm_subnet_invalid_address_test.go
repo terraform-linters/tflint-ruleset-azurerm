@@ -42,7 +42,7 @@ var testCases = []struct {
 		testName: "Invalid CIDR",
 		hcl: `
 			resource "azurerm_subnet" "test" {
-				address_prefixes     = ["10.0.1.0/asd"]
+				address_prefixes     = "192.168.100.0/22"
 			}
 		`,
 		expected: helper.Issues{
