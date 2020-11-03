@@ -48,11 +48,11 @@ func (r *AzurermSubnetInvalidAddressPrefixRule) Link() string {
 // Check checks the pattern is valid
 func (r *AzurermSubnetInvalidAddressPrefixRule) Check(runner tflint.Runner) error {
 	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
-		var val []string
+		var val string
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-			if !r.pattern.MatchString(val[0]) {
+			if !r.pattern.MatchString(val) {
 				runner.EmitIssueOnExpr(
 					r,
 					fmt.Sprintf(`"%s" is not a valid CIDR`, val),

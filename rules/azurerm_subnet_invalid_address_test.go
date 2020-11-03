@@ -37,7 +37,6 @@ var testCases = []struct {
 	hcl      string
 	expected helper.Issues
 }{
-
 	{
 		testID:   1,
 		testName: "Invalid CIDR",
@@ -49,7 +48,7 @@ var testCases = []struct {
 		expected: helper.Issues{
 			{
 				Rule:    NewAzurermSubnetInvalidAddressPrefixRule(),
-				Message: "\"NotavalidCIDR\" does not match valid pattern",
+				Message: "\"NotValidCIDR\" does not match valid pattern",
 				Range: hcl.Range{
 					Filename: "instances.tf",
 					Start:    hcl.Pos{Line: 3, Column: 12},
