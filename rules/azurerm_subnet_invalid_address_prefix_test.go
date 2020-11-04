@@ -102,7 +102,7 @@ var AzurermSubnetInvalidAddressPrefixRuleTestCases = []struct {
 		testName: "Valid CIDR",
 		hcl: `
 			resource "azurerm_subnet" "test" {
-				address_prefixe    = "10.0.1.0/24"
+				address_prefix    = "10.0.1.0/24"
 			}
 		`,
 		expected: helper.Issues{},
