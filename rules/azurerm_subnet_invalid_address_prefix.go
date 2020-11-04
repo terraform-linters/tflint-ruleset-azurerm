@@ -20,14 +20,14 @@ type AzurermSubnetInvalidAddressPrefixRule struct {
 func NewAzurermSubnetInvalidAddressPrefixRule() *AzurermSubnetInvalidAddressPrefixRule {
 	return &AzurermSubnetInvalidAddressPrefixRule{
 		resourceType:  "azurerm_subnet",
-		attributeName: "address_prefixes",
+		attributeName: "address_prefix",
 		pattern:       regexp.MustCompile(`^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))?$`),
 	}
 }
 
 // Name returns the rule name
 func (r *AzurermSubnetInvalidAddressPrefixRule) Name() string {
-	return "azurerm_subnet_invalid_address"
+	return "azurerm_subnet_invalid_address_prefix"
 }
 
 // Enabled returns whether the rule is enabled by default
