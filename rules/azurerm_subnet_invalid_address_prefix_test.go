@@ -10,7 +10,7 @@ import (
 )
 
 func Test_AzurermSubnetAddressPrefixRule(t *testing.T) {
-	for _, test := range testCases {
+	for _, test := range AzurermSubnetInvalidAddressPrefixRuleTestCases {
 		testDisplay := fmt.Sprintf("%d - %s", test.testID, test.testName)
 		t.Run(testDisplay, func(t *testing.T) {
 			//arrange
@@ -31,7 +31,7 @@ func Test_AzurermSubnetAddressPrefixRule(t *testing.T) {
 	}
 }
 
-var testCases = []struct {
+var AzurermSubnetInvalidAddressPrefixRuleTestCases = []struct {
 	testID   int
 	testName string
 	hcl      string
