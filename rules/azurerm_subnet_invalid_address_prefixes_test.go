@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/helper"
 )
@@ -16,8 +15,6 @@ func Test_AzurermSubnetAddressPrefixesRule(t *testing.T) {
 			//arrange
 			rule := *(NewAzurermSubnetInvalidAddressPrefixesRule())
 			runner := helper.TestRunner(t, map[string]string{"instances.tf": test.hcl})
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
 
 			//act
 			if err := rule.Check(runner); err != nil {
@@ -39,10 +36,10 @@ var AzurermSubnetInvalidAddressPrefixesTestCases = []struct {
 }{
 	{
 		testID:   1,
-		testName: "Invalid CIDR",
+		testName: "Invalid CIDR, one item in list",
 		hcl: `
 			resource "azurerm_subnet" "test" {
-				address_prefix     = "invalid_cidr"
+				address_prefixes     = ["invalid_cidr","10.0.1.0/24"]
 			}
 		`,
 		expected: helper.Issues{
@@ -51,8 +48,8 @@ var AzurermSubnetInvalidAddressPrefixesTestCases = []struct {
 				Message: "\"invalid_cidr\" is not a valid CIDR",
 				Range: hcl.Range{
 					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 26},
-					End:      hcl.Pos{Line: 3, Column: 40},
+					Start:    hcl.Pos{Line: 3, Column: 28},
+					End:      hcl.Pos{Line: 3, Column: 58},
 				},
 			},
 		},
