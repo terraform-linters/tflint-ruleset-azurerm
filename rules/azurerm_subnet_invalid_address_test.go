@@ -42,17 +42,17 @@ var testCases = []struct {
 		testName: "Invalid CIDR",
 		hcl: `
 			resource "azurerm_subnet" "test" {
-				address_prefixes     = "192.168.100.0/22"
+				address_prefixes     = "invalid_cidr"
 			}
 		`,
 		expected: helper.Issues{
 			{
 				Rule:    NewAzurermSubnetInvalidAddressPrefixRule(),
-				Message: "\"NotValidCIDR\" does not match valid pattern",
+				Message: "\"invalid_cidr\" is not a valid CIDR",
 				Range: hcl.Range{
 					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 12},
-					End:      hcl.Pos{Line: 3, Column: 27},
+					Start:    hcl.Pos{Line: 3, Column: 28},
+					End:      hcl.Pos{Line: 3, Column: 42},
 				},
 			},
 		},
