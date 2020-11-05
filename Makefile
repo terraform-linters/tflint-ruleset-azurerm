@@ -20,4 +20,11 @@ lint:
 tools:
 	go install golang.org/x/lint/golint
 
-.PHONY: test e2e build install lint tools
+updateSubmodule:
+	cd ./tools/apispec-rule-gen/azure-rest-api-specs/
+	git submodule update --init --recursive
+	cd ../../..
+
+
+
+.PHONY: test e2e build install lint tools updateSubmodule
