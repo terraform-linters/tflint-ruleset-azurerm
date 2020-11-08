@@ -4,7 +4,6 @@ package rules
 
 import (
 	"fmt"
-	"strings"
 
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
@@ -15,7 +14,6 @@ import (
 type AzurermLinuxVirtualMachineInvalidAdminUserNameRule struct {
 	resourceType  string
 	attributeName string
-	enum          []string
 }
 
 // NewAzurermLinuxVirtualMachineInvalidAdminUserNameRule returns new rule with default attributes
@@ -23,42 +21,6 @@ func NewAzurermLinuxVirtualMachineInvalidAdminUserNameRule() *AzurermLinuxVirtua
 	return &AzurermLinuxVirtualMachineInvalidAdminUserNameRule{
 		resourceType:  "azurerm_linux_virtual_machine",
 		attributeName: "admin_username",
-		enum: []string{
-			"azureuser",
-			"1",
-			"123",
-			"a",
-			"actuser",
-			"adm",
-			"admin",
-			"admin1",
-			"admin2",
-			"administrator",
-			"aspnet",
-			"backup",
-			"console",
-			"david",
-			"guest",
-			"john",
-			"owner",
-			"root",
-			"server",
-			"sql",
-			"support_388945a0",
-			"support",
-			"sys",
-			"test",
-			"test1",
-			"test2",
-			"test3",
-			"user",
-			"user1",
-			"user2",
-			"user3",
-			"user4",
-			"user5",
-			"video",
-		},
 	}
 }
 
@@ -89,21 +51,20 @@ func (r *AzurermLinuxVirtualMachineInvalidAdminUserNameRule) Check(runner tflint
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-			found := false
-			val = strings.ToLower(val)
-			for _, item := range r.enum {
-				if strings.ToLower(item) == val {
-					found = true
-				}
+			valid, err := isVlidVMAdminUserNames(val)
+			if err != nil {
+				panic(err)
 			}
-			if found {
-				runner.EmitIssueOnExpr(
-					r,
-					fmt.Sprintf(`"%s" is not a valid Linux VM Admin username`, val),
-					attribute.Expr,
-				)
+
+			if valid {
+				return nil
 			}
-			return nil
+
+			return runner.EmitIssueOnExpr(
+				r,
+				fmt.Sprintf(`"%s" is not a valid Linux VM Admin username`, val),
+				attribute.Expr,
+			)
 		})
 	})
 }

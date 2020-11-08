@@ -88,7 +88,7 @@ var AzurermLinuxVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 		expected: helper.Issues{
 			{
 				Rule:    NewAzurermLinuxVirtualMachineInvalidAdminUserNameRule(),
-				Message: "\"azureuser\" is not a valid Linux VM Admin username",
+				Message: "\"AzureUser\" is not a valid Linux VM Admin username",
 				Range: hcl.Range{
 					Filename: "instances.tf",
 					Start:    hcl.Pos{Line: 3, Column: 22},
