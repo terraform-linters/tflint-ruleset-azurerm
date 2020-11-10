@@ -42,17 +42,37 @@ var AzurermVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 		testName: "123 is not allowed.",
 		hcl: `
 			resource "azurerm_virtual_machine" "test" {
-				admin_username = "123"
+				os_profile {
+					admin_username = "123"
+				}
 			}
 		`,
 		expected: helper.Issues{
 			{
 				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
+				Message: "`os_profile` block found",
+				Range: hcl.Range{
+					Filename: "instances.tf",
+					Start:    hcl.Pos{Line: 3, Column: 5},
+					End:      hcl.Pos{Line: 3, Column: 15},
+				},
+			},
+			{
+				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
+				Message: "`admin_username` attribute found",
+				Range: hcl.Range{
+					Filename: "instances.tf",
+					Start:    hcl.Pos{Line: 4, Column: 23},
+					End:      hcl.Pos{Line: 4, Column: 28},
+				},
+			},
+			{
+				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
 				Message: "\"123\" is not a valid VM Admin username",
 				Range: hcl.Range{
 					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 22},
-					End:      hcl.Pos{Line: 3, Column: 27},
+					Start:    hcl.Pos{Line: 4, Column: 23},
+					End:      hcl.Pos{Line: 4, Column: 28},
 				},
 			},
 		},
@@ -62,37 +82,37 @@ var AzurermVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 		testName: "root is not allowed.",
 		hcl: `
 			resource "azurerm_virtual_machine" "test" {
-				admin_username = "root"
+				os_profile {
+					admin_username = "root"
+				}
 			}
 		`,
 		expected: helper.Issues{
+			{
+				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
+				Message: "`os_profile` block found",
+				Range: hcl.Range{
+					Filename: "instances.tf",
+					Start:    hcl.Pos{Line: 3, Column: 5},
+					End:      hcl.Pos{Line: 3, Column: 15},
+				},
+			},
+			{
+				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
+				Message: "`admin_username` attribute found",
+				Range: hcl.Range{
+					Filename: "instances.tf",
+					Start:    hcl.Pos{Line: 4, Column: 23},
+					End:      hcl.Pos{Line: 4, Column: 29},
+				},
+			},
 			{
 				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
 				Message: "\"root\" is not a valid VM Admin username",
 				Range: hcl.Range{
 					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 22},
-					End:      hcl.Pos{Line: 3, Column: 28},
-				},
-			},
-		},
-	},
-	{
-		testID:   3,
-		testName: "azureUser is not allowed.",
-		hcl: `
-			resource "azurerm_virtual_machine" "test" {
-				admin_username = "AzureUser"
-			}
-		`,
-		expected: helper.Issues{
-			{
-				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
-				Message: "\"AzureUser\" is not a valid VM Admin username",
-				Range: hcl.Range{
-					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 22},
-					End:      hcl.Pos{Line: 3, Column: 33},
+					Start:    hcl.Pos{Line: 4, Column: 23},
+					End:      hcl.Pos{Line: 4, Column: 29},
 				},
 			},
 		},

@@ -20,7 +20,7 @@ type AzurermVirtualMachineInvalidAdminUserNameRule struct {
 func NewAzurermVirtualMachineInvalidAdminUserNameRule() *AzurermVirtualMachineInvalidAdminUserNameRule {
 	return &AzurermVirtualMachineInvalidAdminUserNameRule{
 		resourceType:  "azurerm_virtual_machine",
-		attributeName: "admin_username",
+		attributeName: "os_profile",
 	}
 }
 
@@ -46,16 +46,31 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Link() string {
 
 // Check checks the pattern is valid
 func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
-		var val string
-		err := runner.EvaluateExpr(attribute.Expr, &val)
+	return runner.WalkResourceBlocks("azurerm_virtual_machine", "os_profile", func(block *hcl.Block) error {
+		if err := runner.EmitIssue(r, "`os_profile` block found", block.DefRange); err != nil {
+			return err
+		}
 
-		return runner.EnsureNoError(err, func() error {
+		content, _, diags := block.Body.PartialContent(&hcl.BodySchema{
+			Attributes: []hcl.AttributeSchema{
+				{Name: "admin_username"},
+			},
+		})
+		if diags.HasErrors() {
+			return diags
+		}
+
+		if attr, exists := content.Attributes["admin_username"]; exists {
+			if err := runner.EmitIssueOnExpr(r, "`admin_username` attribute found", attr.Expr); err != nil {
+				return err
+			}
+
+			var val string
+			err := runner.EvaluateExpr(attr.Expr, &val)
 			valid, err := isVlidVMAdminUserNames(val)
 			if err != nil {
 				panic(err)
 			}
-
 			if valid {
 				return nil
 			}
@@ -63,8 +78,9 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runn
 			return runner.EmitIssueOnExpr(
 				r,
 				fmt.Sprintf(`"%s" is not a valid VM Admin username`, val),
-				attribute.Expr,
+				attr.Expr,
 			)
-		})
+		}
+		return nil
 	})
 }
