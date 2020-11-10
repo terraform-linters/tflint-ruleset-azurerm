@@ -42,7 +42,7 @@ var validVMAdminUserNames = map[string]bool{
 	"video":            false,
 }
 
-func isValidVMAdminUserNames(userName string) (bool, error) {
+func isValidVMAdminUserName(userName string) (bool, error) {
 	if userName == "" {
 		return false, errors.New("userName is empty")
 	}

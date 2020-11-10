@@ -52,7 +52,7 @@ func (r *AzurermWindowsVirtualMachineInvalidAdminUserNameRule) Check(runner tfli
 		err := runner.EvaluateExpr(attribute.Expr, &val)
 
 		return runner.EnsureNoError(err, func() error {
-			valid, err := isValidVMAdminUserNames(val)
+			valid, err := isValidVMAdminUserName(val)
 			if err != nil {
 				panic(err)
 			}

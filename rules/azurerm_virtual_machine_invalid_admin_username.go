@@ -59,7 +59,7 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runn
 		if attr, exists := content.Attributes["admin_username"]; exists {
 			var val string
 			err := runner.EvaluateExpr(attr.Expr, &val)
-			valid, err := isValidVMAdminUserNames(val)
+			valid, err := isValidVMAdminUserName(val)
 			if err != nil {
 				panic(err)
 			}
