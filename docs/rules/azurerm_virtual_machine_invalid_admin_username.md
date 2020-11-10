@@ -1,4 +1,4 @@
-# azurerm_linux_virtual_machine_invalid_size
+# azurerm_virtual_machine_invalid_admin_username
 
 Warns about admin user values that appear to be invalid based on https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm
 

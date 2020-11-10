@@ -6,12 +6,12 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 |Rule|Enabled by default|
 | --- | --- |
-|[azurerm_linux_virtual_machine_admin_username](rules/azurerm_linux_virtual_machine_admin_username.md)|✔|
+|[azurerm_linux_virtual_machine_invalid_admin_username](rules/azurerm_linux_virtual_machine_invalid_admin_username.md)|✔|
 |[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
-|[azurerm_virtual_machine_admin_username](rules/azurerm_linux_virtual_machine_admin_username.md)|✔|
+|[azurerm_virtual_machine_invalid_admin_username](rules/azurerm_virtual_machine_invalid_admin_username.md)|✔|
 |[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
-|[azurerm_windows_virtual_machine_admin_username](rules/azurerm_windows_virtual_machine_admin_username.md)|✔|
+|[azurerm_windows_virtual_machine_invalid_admin_username](rules/azurerm_windows_virtual_machine_invalid_admin_username.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_sku](rules/azurerm_windows_virtual_machine_scale_set_invalid_sku.md)|✔|
 
