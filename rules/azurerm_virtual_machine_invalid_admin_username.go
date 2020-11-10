@@ -47,10 +47,6 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Link() string {
 // Check checks the pattern is valid
 func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runner) error {
 	return runner.WalkResourceBlocks("azurerm_virtual_machine", "os_profile", func(block *hcl.Block) error {
-		if err := runner.EmitIssue(r, "`os_profile` block found", block.DefRange); err != nil {
-			return err
-		}
-
 		content, _, diags := block.Body.PartialContent(&hcl.BodySchema{
 			Attributes: []hcl.AttributeSchema{
 				{Name: "admin_username"},
@@ -61,13 +57,9 @@ func (r *AzurermVirtualMachineInvalidAdminUserNameRule) Check(runner tflint.Runn
 		}
 
 		if attr, exists := content.Attributes["admin_username"]; exists {
-			if err := runner.EmitIssueOnExpr(r, "`admin_username` attribute found", attr.Expr); err != nil {
-				return err
-			}
-
 			var val string
 			err := runner.EvaluateExpr(attr.Expr, &val)
-			valid, err := isVlidVMAdminUserNames(val)
+			valid, err := isValidVMAdminUserNames(val)
 			if err != nil {
 				panic(err)
 			}

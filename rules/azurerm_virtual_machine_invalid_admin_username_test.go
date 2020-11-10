@@ -50,24 +50,6 @@ var AzurermVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 		expected: helper.Issues{
 			{
 				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
-				Message: "`os_profile` block found",
-				Range: hcl.Range{
-					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 5},
-					End:      hcl.Pos{Line: 3, Column: 15},
-				},
-			},
-			{
-				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
-				Message: "`admin_username` attribute found",
-				Range: hcl.Range{
-					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 4, Column: 23},
-					End:      hcl.Pos{Line: 4, Column: 28},
-				},
-			},
-			{
-				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
 				Message: "\"123\" is not a valid VM Admin username",
 				Range: hcl.Range{
 					Filename: "instances.tf",
@@ -88,24 +70,6 @@ var AzurermVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 			}
 		`,
 		expected: helper.Issues{
-			{
-				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
-				Message: "`os_profile` block found",
-				Range: hcl.Range{
-					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 3, Column: 5},
-					End:      hcl.Pos{Line: 3, Column: 15},
-				},
-			},
-			{
-				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
-				Message: "`admin_username` attribute found",
-				Range: hcl.Range{
-					Filename: "instances.tf",
-					Start:    hcl.Pos{Line: 4, Column: 23},
-					End:      hcl.Pos{Line: 4, Column: 29},
-				},
-			},
 			{
 				Rule:    NewAzurermVirtualMachineInvalidAdminUserNameRule(),
 				Message: "\"root\" is not a valid VM Admin username",

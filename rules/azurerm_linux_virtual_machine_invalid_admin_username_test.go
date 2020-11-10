@@ -97,4 +97,14 @@ var AzurermLinuxVirtualMachineInvalidAdminUserNameRuleTestCases = []struct {
 			},
 		},
 	},
+	{
+		testID:   4,
+		testName: "testUserFoo is allowed.",
+		hcl: `
+			resource "azurerm_linux_virtual_machine" "test" {
+				admin_username = "testUserFoo"
+			}
+		`,
+		expected: helper.Issues{},
+	},
 }
