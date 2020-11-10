@@ -11,7 +11,8 @@ This documentation describes a list of rules available by enabling this ruleset.
 |[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_sku](rules/azurerm_windows_virtual_machine_scale_set_invalid_sku.md)|✔|
-
+|[azurerm_subnet_invalid_address_prefix](rules/azurerm_subnet_invalid_address_prefix.md)|✔|
+|[azurerm_subnet_invalid_address_prefixes](rules/azurerm_subnet_invalid_address_prefixes.md)|✔|
 ## API Specification Rules
 
 These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 259 rules are available.

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/helper"
 )
@@ -16,8 +15,6 @@ func Test_AzurermSubnetAddressPrefixRule(t *testing.T) {
 			//arrange
 			rule := *(NewAzurermSubnetInvalidAddressPrefixRule())
 			runner := helper.TestRunner(t, map[string]string{"instances.tf": test.hcl})
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
 
 			//act
 			if err := rule.Check(runner); err != nil {

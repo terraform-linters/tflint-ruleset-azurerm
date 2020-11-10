@@ -36,7 +36,7 @@ var AzurermSubnetInvalidAddressPrefixesTestCases = []struct {
 }{
 	{
 		testID:   1,
-		testName: "Invalid CIDR, one item in list",
+		testName: "Invalid CIDR, two items in list",
 		hcl: `
 			resource "azurerm_subnet" "test" {
 				address_prefixes     = ["invalid_cidr","10.0.1.0/24"]
@@ -50,6 +50,26 @@ var AzurermSubnetInvalidAddressPrefixesTestCases = []struct {
 					Filename: "instances.tf",
 					Start:    hcl.Pos{Line: 3, Column: 28},
 					End:      hcl.Pos{Line: 3, Column: 58},
+				},
+			},
+		},
+	},
+	{
+		testID:   2,
+		testName: "Invalid CIDR, one item in list",
+		hcl: `
+			resource "azurerm_subnet" "test" {
+				address_prefixes     = ["invalid_cidr"]
+			}
+		`,
+		expected: helper.Issues{
+			{
+				Rule:    NewAzurermSubnetInvalidAddressPrefixesRule(),
+				Message: "\"invalid_cidr\" is not a valid CIDR",
+				Range: hcl.Range{
+					Filename: "instances.tf",
+					Start:    hcl.Pos{Line: 3, Column: 28},
+					End:      hcl.Pos{Line: 3, Column: 44},
 				},
 			},
 		},
