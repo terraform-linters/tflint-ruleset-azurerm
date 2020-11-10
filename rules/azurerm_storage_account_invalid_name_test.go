@@ -5,7 +5,6 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/terraform-linters/tflint-plugin-sdk/helper"
 )
@@ -22,8 +21,6 @@ func Test_AzurermStorageAccountNameRule(t *testing.T) {
 		t.Run(testDisplay, func(t *testing.T) {
 			//arrange
 			runner := helper.TestRunner(t, map[string]string{"instances.tf": test.hcl})
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
 
 			//act
 			if err := rule.Check(runner); err != nil {

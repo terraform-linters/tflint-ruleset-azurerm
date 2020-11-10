@@ -6,6 +6,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 |Rule|Enabled by default|
 | --- | --- |
+|[azurerm_storage_account_invalid_name](rules/azurerm_storage_account_invalid_name.md)|✔|
 |[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
