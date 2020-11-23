@@ -1,3 +1,26 @@
+## 0.6.0 (2020-11-24)
+
+The minimum supported version of TFLint has changed in this version. TFLint v0.21.0+ is required for this plugin to work.
+
+### Breaking Changes
+
+- [#79](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/79): Bump tflint-plugin-sdk to v0.6.0
+  - Added support for JSON configuration syntax
+
+### Enhancements
+
+- [#78](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/78): Bump terraform-provider-azurerm to v2.37.0 from v2.32.0
+
+### Chores
+
+- [#68](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/68): Added input parameters for generation paths. Also debugging configs for VS Code
+- [#71](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/71): Refactor of Mapping Files
+- [#72](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/72): Add a make command to update the api spec submodule
+- [#74](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/74): Bump github.com/google/go-cmp from 0.5.2 to 0.5.3
+- [#75](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/75): Stop using set-env commands
+- [#76](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/76): Bump github.com/hashicorp/hcl/v2 from 2.6.0 to 2.7.1 in /tools
+- [#77](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/77): Bump github.com/hashicorp/hcl/v2 from 2.6.0 to 2.7.1
+
 ## 0.5.1 (2020-10-19)
 
 ### Enhancements
