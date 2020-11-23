@@ -28,6 +28,8 @@ func NewAzurermSentinelAlertRuleMsSecurityIncidentInvalidProductFilterRule() *Az
 			"Azure Advanced Threat Protection",
 			"Azure Active Directory Identity Protection",
 			"Azure Security Center for IoT",
+			"Office 365 Advanced Threat Protection",
+			"Microsoft Defender Advanced Threat Protection",
 		},
 	}
 }
