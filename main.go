@@ -9,7 +9,7 @@ import (
 
 func main() {
 	plugin.Serve(&plugin.ServeOpts{
-		RuleSet: tflint.RuleSet{
+		RuleSet: &tflint.BuiltinRuleSet{
 			Name:    "azurerm",
 			Version: project.Version,
 			Rules:   rules.Rules,
