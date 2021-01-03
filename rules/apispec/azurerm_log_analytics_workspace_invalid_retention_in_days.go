@@ -23,7 +23,7 @@ func NewAzurermLogAnalyticsWorkspaceInvalidRetentionInDaysRule() *AzurermLogAnal
 		resourceType:  "azurerm_log_analytics_workspace",
 		attributeName: "retention_in_days",
 		max:           730,
-		min:           -1,
+		min:           30,
 	}
 }
 
@@ -64,7 +64,7 @@ func (r *AzurermLogAnalyticsWorkspaceInvalidRetentionInDaysRule) Check(runner tf
 			if val < r.min {
 				runner.EmitIssueOnExpr(
 					r,
-					"retention_in_days must be -1 or higher",
+					"retention_in_days must be 30 or higher",
 					attribute.Expr,
 				)
 			}
