@@ -51,7 +51,7 @@ func (r *AzurermFirewallApplicationRuleCollectionInvalidPriorityRule) Link() str
 func (r *AzurermFirewallApplicationRuleCollectionInvalidPriorityRule) Check(runner tflint.Runner) error {
 	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
 		var val int
-		err := runner.EvaluateExpr(attribute.Expr, &val)
+		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
 		return runner.EnsureNoError(err, func() error {
 			if val > r.max {
