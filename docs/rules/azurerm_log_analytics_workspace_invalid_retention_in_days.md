@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be in the range -1 <= x <= 730.
+The rule requires the value to be in the range 30 <= x <= 730.
 
 ## Example
 
@@ -39,4 +39,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2015-11-01-preview/OperationalInsights.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/Workspaces.json
