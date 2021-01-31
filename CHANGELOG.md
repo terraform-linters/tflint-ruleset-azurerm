@@ -1,3 +1,7 @@
+## 0.8.1 (2021-02-01)
+
+- [#94](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/94): Remove rules which checks about overflow integer
+
 ## 0.8.0 (2021-01-31)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.24.0+ is required for this plugin to work.
