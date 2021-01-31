@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 259 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 265 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -217,11 +217,17 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_netapp_snapshot_invalid_resource_group_name](rules/azurerm_netapp_snapshot_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_volume_invalid_resource_group_name](rules/azurerm_netapp_volume_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_volume_invalid_service_level](rules/azurerm_netapp_volume_invalid_service_level.md)|✔|
+|[azurerm_network_packet_capture_invalid_maximum_bytes_per_packet](rules/azurerm_network_packet_capture_invalid_maximum_bytes_per_packet.md)|✔|
+|[azurerm_network_packet_capture_invalid_maximum_bytes_per_session](rules/azurerm_network_packet_capture_invalid_maximum_bytes_per_session.md)|✔|
+|[azurerm_network_packet_capture_invalid_maximum_capture_duration](rules/azurerm_network_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_network_security_rule_invalid_access](rules/azurerm_network_security_rule_invalid_access.md)|✔|
 |[azurerm_network_security_rule_invalid_direction](rules/azurerm_network_security_rule_invalid_direction.md)|✔|
 |[azurerm_network_security_rule_invalid_protocol](rules/azurerm_network_security_rule_invalid_protocol.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_namespace_type](rules/azurerm_notification_hub_namespace_invalid_namespace_type.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_sku_name](rules/azurerm_notification_hub_namespace_invalid_sku_name.md)|✔|
+|[azurerm_packet_capture_invalid_maximum_bytes_per_packet](rules/azurerm_packet_capture_invalid_maximum_bytes_per_packet.md)|✔|
+|[azurerm_packet_capture_invalid_maximum_bytes_per_session](rules/azurerm_packet_capture_invalid_maximum_bytes_per_session.md)|✔|
+|[azurerm_packet_capture_invalid_maximum_capture_duration](rules/azurerm_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_end_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_end_ip_address.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_start_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_start_ip_address.md)|✔|
 |[azurerm_postgresql_server_invalid_ssl_enforcement](rules/azurerm_postgresql_server_invalid_ssl_enforcement.md)|✔|
