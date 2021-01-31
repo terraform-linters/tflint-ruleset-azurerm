@@ -2,19 +2,19 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azurerm" {
-  version     = "2.41.0"
-  constraints = "2.41.0"
+  version     = "2.45.1"
+  constraints = "2.45.1"
   hashes = [
-    "h1:dx1cMQk26YyuFOaCVG0aMrozcdG/+018hLz9BOAhpOg=",
-    "zh:0b9b76d58601b51f79592d2c07dbb5f5805060feb0605561074e4e899d4c7b9d",
-    "zh:3b70983bc741c0f639671b08d3bbb2eb8984c007a32c08094fc6b77f547f6c6b",
-    "zh:46a801034dc0d289ca46edf1b7f9e63a6c89824de31a79b1f470b1bc424501dc",
-    "zh:62e249c56b1b5560bee663664cd7dbc94a663548adbdf7836d4c43ac26908aa9",
-    "zh:67bf0b2d342907a8a545caf653e26b2638cd41ad69b295f67d765efada6dde87",
-    "zh:8e1d5741b75c0333aca0d8df0f5eb614ee39e94d39f17527a673efdecafdca29",
-    "zh:9ed544e4ed8a74048834d9ffa0bffe2de5e919f24ed66dc047e332020f23c688",
-    "zh:a3408b85558dd4631320a02a4609ec18f991f68ea0b8de4e20ad483b64f094b5",
-    "zh:d3a25a072641c887f7b0a7a0b48b09778d30187d6fe61ee702a91e02d7ec7599",
-    "zh:f2f1ede1bcf9d738de0a74b54a1a356ce16bba509ccb109ad1809ebeb4f3e8fa",
+    "h1:vCu4CAiHEWphgAb+RtSfuz7KhZdtojtn66v9sCcd68E=",
+    "zh:257cc6e06e7b4f5eb7b8e5999ed59a984a16d2c7582da01c4318be4270d3274f",
+    "zh:49dffa76925d3db2634668630d5cdc33d80b7ffbdc39787b180ed41ee657a4fa",
+    "zh:6d1c28e9e35e7a6ff6a7ce57a5ffe34213c263ff135f2aa2900474f51568037b",
+    "zh:80c0f6c5e83ce57a08a8552b4b9b8b1f4d42a7bc3b050a408e003cbe20e55272",
+    "zh:9a30b2821d5ee4a7aa2145f6467639f414a5851e7c658346d57b94bde56c7ec4",
+    "zh:a6ba84564b768b821726fe2fc34763bece99e2ef190420a49e6c94e7a86d279e",
+    "zh:c32d250618b841aac2ef5c1af40d9f4d551162957d5f9c2106851e9363b37b4d",
+    "zh:cc4af260a0d017a6fcda436c8ddb9e5d049ec9a38d51d141498ebaeeadd1fa22",
+    "zh:e0cfe4d5a9a19d02ab19123ad9bccde8e0f87f130bd3d93760e651968f6da637",
+    "zh:e65803c7d2625ad2217543f177494b4fcb737c391e21649cfb167541aa9a9d64",
   ]
 }
