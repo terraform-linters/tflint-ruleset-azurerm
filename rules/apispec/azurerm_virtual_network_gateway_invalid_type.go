@@ -25,6 +25,7 @@ func NewAzurermVirtualNetworkGatewayInvalidTypeRule() *AzurermVirtualNetworkGate
 		enum: []string{
 			"Vpn",
 			"ExpressRoute",
+			"LocalGateway",
 		},
 	}
 }

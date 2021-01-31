@@ -1,5 +1,5 @@
 mapping "azurerm_batch_application" {
-  import_path = "azure-rest-api-specs/specification/batch/resource-manager/Microsoft.Batch/stable/2019-08-01/BatchManagement.json"
+  import_path = "azure-rest-api-specs/specification/batch/resource-manager/Microsoft.Batch/stable/2020-03-01/BatchManagement.json"
 
   name                = ApplicationNameParameter
   resource_group_name = ResourceGroupNameParameter

@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-In this rule, the string must match the regular expression `^[-\w\._]+$``.
+In this rule, the string must match the regular expression `^[a-zA-Z0-9]+$``.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_batch_pool" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: "..." does not match valid pattern ^[-\w\._]+$ (azurerm_batch_pool_invalid_account_name)
+Error: "..." does not match valid pattern ^[a-zA-Z0-9]+$ (azurerm_batch_pool_invalid_account_name)
 
   on template.tf line 2:
   2:   account_name = ... // invalid value
@@ -39,4 +39,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/batch/resource-manager/Microsoft.Batch/stable/2019-08-01/BatchManagement.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/batch/resource-manager/Microsoft.Batch/stable/2020-03-01/BatchManagement.json

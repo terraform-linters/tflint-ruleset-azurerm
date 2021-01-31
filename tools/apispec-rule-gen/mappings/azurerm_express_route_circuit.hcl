@@ -1,5 +1,5 @@
 mapping "azurerm_express_route_circuit" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2020-05-01/expressRouteCircuit.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/expressRouteCircuit.json"
 
   service_provider_name    = ExpressRouteCircuitServiceProviderProperties.serviceProviderName
   peering_location         = ExpressRouteCircuitServiceProviderProperties.peeringLocation
