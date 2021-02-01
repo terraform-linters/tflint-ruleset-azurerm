@@ -1,3 +1,7 @@
+## 0.8.2 (2021-02-02)
+
+- [#95](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/95): Bump tflint-plugin-sdk to v0.8.1
+
 ## 0.8.1 (2021-02-01)
 
 - [#94](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/94): Remove rules which checks about overflow integer
