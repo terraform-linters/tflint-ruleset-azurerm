@@ -1,3 +1,16 @@
+## 0.9.0 (2021-03-07)
+
+### Breaking Changes
+
+- [#99](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/99): Bump terraform-provider-azurerm to v2.50.0 from v2.45.1
+  - Remove `azurerm_log_analytics_workspace_invalid_retention_in_days` rule
+
+### Chores
+
+- [#96](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/96): Upgrade to Go 1.16
+- [#97](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/97): Bump github.com/hashicorp/hcl/v2 from 2.8.2 to 2.9.0 in /tools
+- [#98](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/98): Bump github.com/hashicorp/hcl/v2 from 2.8.2 to 2.9.0
+
 ## 0.8.2 (2021-02-02)
 
 - [#95](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/95): Bump tflint-plugin-sdk to v0.8.1
