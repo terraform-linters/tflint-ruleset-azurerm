@@ -18,7 +18,7 @@ lint:
 	go vet ./...
 
 tools:
-	go install golang.org/x/lint/golint
+	go install golang.org/x/lint/golint@latest
 
 updateSubmodule:
 	cd ./tools/apispec-rule-gen/azure-rest-api-specs/
