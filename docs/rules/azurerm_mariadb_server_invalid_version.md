@@ -5,8 +5,8 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
-- 5.6
-- 5.7
+- 10.2
+- 10.3
 
 ## Example
 
