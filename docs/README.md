@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 261 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 260 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -192,7 +192,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_priority](rules/azurerm_linux_virtual_machine_scale_set_invalid_priority.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|
-|[azurerm_log_analytics_workspace_invalid_retention_in_days](rules/azurerm_log_analytics_workspace_invalid_retention_in_days.md)|✔|
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
 |[azurerm_maintenance_configuration_invalid_scope](rules/azurerm_maintenance_configuration_invalid_scope.md)|✔|
 |[azurerm_managed_application_definition_invalid_lock_level](rules/azurerm_managed_application_definition_invalid_lock_level.md)|✔|

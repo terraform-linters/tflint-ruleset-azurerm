@@ -184,7 +184,6 @@ var Rules = []tflint.Rule{
 	NewAzurermLinuxVirtualMachineScaleSetInvalidEvictionPolicyRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidPriorityRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidUpgradeModeRule(),
-	NewAzurermLogAnalyticsWorkspaceInvalidRetentionInDaysRule(),
 	NewAzurermLogicAppTriggerRecurrenceInvalidFrequencyRule(),
 	NewAzurermMaintenanceConfigurationInvalidScopeRule(),
 	NewAzurermManagedApplicationDefinitionInvalidLockLevelRule(),

@@ -23,8 +23,8 @@ func NewAzurermMariadbServerInvalidVersionRule() *AzurermMariadbServerInvalidVer
 		resourceType:  "azurerm_mariadb_server",
 		attributeName: "version",
 		enum: []string{
-			"5.6",
-			"5.7",
+			"10.2",
+			"10.3",
 		},
 	}
 }
