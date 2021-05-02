@@ -42,6 +42,6 @@ jobs:
             owner: 'terraform-linters',
             repo: 'tflint-ruleset-azurerm',
             title: '🤖 MicrosoftDocs/azure-docs Changes Report',
-            body: "Changes found from the saved snapshots :eyes:\n\n```diff\n" + data + "```\n\nhttps://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/linux/sizes.md",
+            body: "Changes found from the saved snapshots :eyes:\n\n```diff\n" + data + "```\n\nhttps://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/sizes.md",
             labels: ['bot'],
           })
