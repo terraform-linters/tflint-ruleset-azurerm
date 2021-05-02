@@ -4,7 +4,7 @@
       "rule": {
         "name": "azurerm_virtual_machine_invalid_vm_size",
         "severity": "error",
-        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.9.0/docs/rules/azurerm_virtual_machine_invalid_vm_size.md"
+        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.9.1/docs/rules/azurerm_virtual_machine_invalid_vm_size.md"
       },
       "message": "\"Standard_DS1_v3\" is an invalid value as vm_size",
       "range": {

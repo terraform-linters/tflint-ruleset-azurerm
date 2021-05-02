@@ -1,3 +1,18 @@
+## 0.9.1 (2021-05-02)
+
+### Enhancements
+
+- [#105](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/105) [#112](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/112): Bump terraform-provider-azurerm to v2.57.0 from v2.50.0
+- [#111](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/111): rules: Add support for HBv3 series and update other sizes
+
+### Chores
+
+- [#100](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/100): Bump github.com/google/go-cmp from 0.5.4 to 0.5.5
+- [#102](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/102) [#108](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/108): Bump github.com/hashicorp/hcl/v2 from 2.9.0 to 2.10.0 in /tools
+- [#103](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/103) [#109](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/109): Bump github.com/hashicorp/hcl/v2 from 2.9.0 to 2.10.0
+- [#106](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/106): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.8.1 to 0.8.2
+- [#110](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/110): Bump actions/github-script from v3 to v4.0.2
+
 ## 0.9.0 (2021-03-07)
 
 ### Breaking Changes
