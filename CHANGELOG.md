@@ -1,3 +1,14 @@
+## 0.10.0 (2021-06-05)
+
+### Enhancements
+
+- [#114](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/114): Bump terraform-provider-azurerm to v2.62.0 from v2.57.0
+
+### Chores
+
+- [#113](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/113): Bump github.com/google/go-cmp from 0.5.5 to 0.5.6
+- [#115](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/115): Add notes about auto installation
+
 ## 0.9.1 (2021-05-02)
 
 ### Enhancements
