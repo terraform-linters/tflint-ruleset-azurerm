@@ -190,6 +190,7 @@ var Rules = []tflint.Rule{
 	NewAzurermManagedDiskInvalidCreateOptionRule(),
 	NewAzurermManagedDiskInvalidOSTypeRule(),
 	NewAzurermManagedDiskInvalidStorageAccountTypeRule(),
+	NewAzurermMapsAccountInvalidSkuNameRule(),
 	NewAzurermMariadbFirewallRuleInvalidEndIPAddressRule(),
 	NewAzurermMariadbFirewallRuleInvalidStartIPAddressRule(),
 	NewAzurermMariadbServerInvalidSslEnforcementRule(),

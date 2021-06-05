@@ -1,5 +1,5 @@
 mapping "azurerm_route_table" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/routeTable.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2020-11-01/routeTable.json"
 
   disable_bgp_route_propagation = RouteTablePropertiesFormat.disableBgpRoutePropagation
 }
