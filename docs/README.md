@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 260 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 261 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -198,6 +198,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_managed_disk_invalid_create_option](rules/azurerm_managed_disk_invalid_create_option.md)|✔|
 |[azurerm_managed_disk_invalid_os_type](rules/azurerm_managed_disk_invalid_os_type.md)|✔|
 |[azurerm_managed_disk_invalid_storage_account_type](rules/azurerm_managed_disk_invalid_storage_account_type.md)|✔|
+|[azurerm_maps_account_invalid_sku_name](rules/azurerm_maps_account_invalid_sku_name.md)|✔|
 |[azurerm_mariadb_firewall_rule_invalid_end_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_end_ip_address.md)|✔|
 |[azurerm_mariadb_firewall_rule_invalid_start_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_start_ip_address.md)|✔|
 |[azurerm_mariadb_server_invalid_ssl_enforcement](rules/azurerm_mariadb_server_invalid_ssl_enforcement.md)|✔|

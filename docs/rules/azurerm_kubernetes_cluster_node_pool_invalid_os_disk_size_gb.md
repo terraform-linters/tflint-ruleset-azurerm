@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be in the range 0 <= x <= 1023.
+The rule requires the value to be in the range 0 <= x <= 2048.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: os_disk_size_gb must be 1023 or less (azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb)
+Error: os_disk_size_gb must be 2048 or less (azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb)
 
   on template.tf line 2:
   2:   os_disk_size_gb = ... // invalid value
@@ -39,4 +39,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2021-02-01/managedClusters.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2021-03-01/managedClusters.json
