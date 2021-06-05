@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be in the range 0 <= x <= 20.
+The rule requires the value to be 0 or higher.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_eventhub_namespace" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: capacity must be 20 or less (azurerm_eventhub_namespace_invalid_capacity)
+Error: capacity must be 0 or higher (azurerm_eventhub_namespace_invalid_capacity)
 
   on template.tf line 2:
   2:   capacity = ... // invalid value
