@@ -1,3 +1,9 @@
+## 0.10.1 (2021-06-12)
+
+### Chores
+
+- [#116](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/116): build: Add support for darwin/arm64 build
+
 ## 0.10.0 (2021-06-05)
 
 ### Enhancements
