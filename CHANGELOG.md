@@ -1,3 +1,16 @@
+## 0.11.0 (2021-07-05)
+
+The minimum supported version of TFLint has changed in this version. TFLint v0.30.0+ is required for this plugin to work.
+
+### Breaking Changes
+
+- [#118](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/118): Bump tflint-plugin-sdk to v0.9.0
+
+### Enhancements
+
+- [#119](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/119): rule: Add support for FX series and update other sizes
+- [#120](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/120): Bump terraform-provider-azurerm to v2.66.0 from v2.62.0
+
 ## 0.10.1 (2021-06-12)
 
 ### Chores
