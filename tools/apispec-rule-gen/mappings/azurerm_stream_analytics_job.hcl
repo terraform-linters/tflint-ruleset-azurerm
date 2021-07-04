@@ -3,7 +3,7 @@ mapping "azurerm_stream_analytics_job" {
 
   name                                     = StreamingJobNameParameter
   resource_group_name                      = ResourceGroupNameParameter
-  location                                 = Resource.location
+  location                                 = any //Resource.location
   compatibility_level                      = CompatibilityLevel
   data_locale                              = StreamingJobProperties.dataLocale
   events_late_arrival_max_delay_in_seconds = StreamingJobProperties.eventsLateArrivalMaxDelayInSeconds

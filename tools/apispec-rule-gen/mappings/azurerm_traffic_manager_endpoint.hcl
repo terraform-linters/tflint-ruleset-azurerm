@@ -1,5 +1,5 @@
 mapping "azurerm_traffic_manager_endpoint" {
-  import_path = "azure-rest-api-specs/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-04-01/trafficmanager.json"
+  import_path = "azure-rest-api-specs/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/trafficmanager.json"
 
   endpoint_status     = EndpointProperties.endpointStatus
   target              = EndpointProperties.target
