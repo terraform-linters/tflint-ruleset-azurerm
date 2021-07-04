@@ -1,9 +1,9 @@
 mapping "azurerm_cognitive_account" {
-  import_path = "azure-rest-api-specs/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2017-04-18/cognitiveservices.json"
+  import_path = "azure-rest-api-specs/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2021-04-30/cognitiveservices.json"
 
-  name                 = CognitiveServicesAccount.name
+  name                 = accountNameParameter
   location             = locationParameter
-  kind                 = CognitiveServicesAccountKind
+  kind                 = Kind
   sku_name             = SkuName
-  qna_runtime_endpoint = CognitiveServicesAccountApiProperties.qnaRuntimeEndpoint
+  qna_runtime_endpoint = ApiProperties.qnaRuntimeEndpoint
 }
