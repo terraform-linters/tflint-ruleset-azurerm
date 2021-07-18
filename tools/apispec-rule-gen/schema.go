@@ -23,8 +23,8 @@ type resourceSchema struct {
 }
 
 type block struct {
-	Attributes map[string]attribute   `json:"attributes"`
-	BlockTypes map[string]interface{} `json:"block_types"`
+	Attributes map[string]attribute      `json:"attributes"`
+	BlockTypes map[string]resourceSchema `json:"block_types"`
 }
 
 type attribute struct {
