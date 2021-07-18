@@ -7,4 +7,8 @@ mapping "azurerm_kubernetes_cluster" {
   enable_pod_security_policy = ManagedClusterProperties.enablePodSecurityPolicy
   kubernetes_version         = ManagedClusterProperties.kubernetesVersion
   node_resource_group        = ManagedClusterProperties.nodeResourceGroup
+
+  default_node_pool = {
+    vm_size = ContainerServiceVMSize
+  }
 }
