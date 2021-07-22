@@ -47,3 +47,13 @@ plugin "azurerm" {
     enabled = true
 }
 ```
+
+## Add a new rule
+
+If you are interested in adding a new rule to this ruleset, you can use the generator. Run the following command:
+
+```
+$ go run ./rules/generator
+```
+
+Follow the instructions to edit the generated files and open a new pull request.
