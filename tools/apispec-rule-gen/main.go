@@ -15,7 +15,9 @@ import (
 	hcl "github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hclparse"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/serenize/snaker"
+	"github.com/zclconf/go-cty/cty/gocty"
 )
 
 type mappingFile struct {
@@ -28,10 +30,44 @@ type mapping struct {
 	Attrs      hcl.Attributes `hcl:",remain"`
 }
 
+type apiSpec struct {
+	definitions map[string]interface{}
+	parameters  map[string]interface{}
+}
+
+type attributeRef struct {
+	resource  string
+	block     *string
+	attribute string
+	value     hcl.Expression
+}
+
+func (r *attributeRef) String() string {
+	if r.block != nil {
+		return fmt.Sprintf("%s.%s.%s", r.resource, *r.block, r.attribute)
+	}
+	return fmt.Sprintf("%s.%s", r.resource, r.attribute)
+}
+
+func (r *attributeRef) RuleName() string {
+	if r.block != nil {
+		return fmt.Sprintf("%s_%s_invalid_%s", r.resource, *r.block, r.attribute)
+	}
+	return fmt.Sprintf("%s_invalid_%s", r.resource, r.attribute)
+}
+
+func (r *attributeRef) RuleTemplate() string {
+	if r.block != nil {
+		return getFullPath("rule_block.go.tmpl")
+	}
+	return getFullPath("rule.go.tmpl")
+}
+
 type ruleMeta struct {
 	RuleName      string
 	RuleNameCC    string
 	ResourceType  string
+	BlockType     string
 	AttributeName string
 	Sensitive     bool
 	Max           int
@@ -66,16 +102,21 @@ func parseFlags() {
 	flag.Parse()
 }
 
+var terraformSchema provider
+var generatedRuleNames []string = []string{}
+var generatedRuleNameCCs []string = []string{}
+
 func main() {
 	parseFlags()
+	terraformSchema = loadProviderSchema()
 
 	files, err := filepath.Glob(getFullPath("mappings/*.hcl"))
 	if err != nil {
 		panic(err)
 	}
 
-	mappingFiles := []mappingFile{}
-	for _, file := range files {
+	mappingFiles := make([]mappingFile, len(files))
+	for idx, file := range files {
 		parser := hclparse.NewParser()
 		f, diags := parser.ParseHCLFile(file)
 		if diags.HasErrors() {
@@ -87,13 +128,9 @@ func main() {
 		if diags.HasErrors() {
 			panic(diags)
 		}
-		mappingFiles = append(mappingFiles, mf)
+		mappingFiles[idx] = mf
 	}
 
-	provider := loadProviderSchema()
-
-	generatedRuleNames := []string{}
-	generatedRuleNameCCs := []string{}
 	for _, mappingFile := range mappingFiles {
 		for _, mapping := range mappingFile.Mappings {
 			raw, err := ioutil.ReadFile(fmt.Sprintf(getFullPath("%s"), mapping.ImportPath))
@@ -111,40 +148,10 @@ func main() {
 			if params, exists := spec["parameters"]; exists {
 				parameters = params.(map[string]interface{})
 			}
+			apiSpec := apiSpec{definitions: definitions, parameters: parameters}
 
 			for attribute, value := range mapping.Attrs {
-				fmt.Printf("Generating rule for `%s.%s`\n", mapping.Resource, attribute)
-
-				variable := value.Expr.Variables()[0]
-				props := []string{}
-				for _, prop := range variable {
-					if len(props) == 0 {
-						props = []string{prop.(hcl.TraverseRoot).Name}
-					} else {
-						props = append(props, prop.(hcl.TraverseAttr).Name)
-					}
-				}
-
-				var definition map[string]interface{}
-				if len(props) == 1 {
-					if props[0] == "any" {
-						continue
-					}
-					if definitions[props[0]] != nil {
-						definition = definitions[props[0]].(map[string]interface{})
-					} else {
-						definition = parameters[props[0]].(map[string]interface{})
-					}
-				} else {
-					definition = definitions[props[0]].(map[string]interface{})["properties"].(map[string]interface{})[props[1]].(map[string]interface{})
-				}
-
-				if validMapping(definition) {
-					attrSchema := extractAttrSchema(mapping.Resource, attribute, definition, provider)
-					meta := generateRuleFile(mapping, attribute, definition, attrSchema)
-					generatedRuleNames = append(generatedRuleNames, meta.RuleName)
-					generatedRuleNameCCs = append(generatedRuleNameCCs, meta.RuleNameCC)
-				}
+				processAttribute(apiSpec, mapping, attributeRef{resource: mapping.Resource, attribute: attribute, value: value.Expr})
 			}
 		}
 	}
@@ -153,6 +160,68 @@ func main() {
 	generateProviderFile(generatedRuleNameCCs)
 	sort.Strings(generatedRuleNames)
 	generateRulesIndexDoc(generatedRuleNames)
+}
+
+func processAttribute(apiSpec apiSpec, mapping mapping, ref attributeRef) {
+	switch expr := ref.value.(type) {
+	// attribute = Foo.Bar
+	case *hclsyntax.ScopeTraversalExpr:
+		fmt.Printf("Generating rule for `%s`\n", ref.String())
+
+		// expr always consist of variables
+		variable := expr.Variables()[0]
+		props := make([]string, len(variable))
+		for idx, prop := range variable {
+			switch p := prop.(type) {
+			case hcl.TraverseRoot:
+				props[idx] = p.Name
+			case hcl.TraverseAttr:
+				props[idx] = p.Name
+			}
+		}
+
+		var definition map[string]interface{}
+		if len(props) == 1 {
+			// attribute = Foo ("definitions" or "parameters" fields)
+			if props[0] == "any" {
+				return
+			}
+			if apiSpec.definitions[props[0]] != nil {
+				definition = apiSpec.definitions[props[0]].(map[string]interface{})
+			} else {
+				definition = apiSpec.parameters[props[0]].(map[string]interface{})
+			}
+		} else {
+			// attribute = Foo.Bar ("properties" fields)
+			definition = apiSpec.definitions[props[0]].(map[string]interface{})["properties"].(map[string]interface{})[props[1]].(map[string]interface{})
+		}
+
+		if validMapping(definition) {
+			attrSchema := extractAttrSchema(ref, definition)
+			meta := generateRuleFile(mapping, ref, definition, attrSchema)
+			generatedRuleNames = append(generatedRuleNames, meta.RuleName)
+			generatedRuleNameCCs = append(generatedRuleNameCCs, meta.RuleNameCC)
+		}
+	// attribute = {
+	//   child = Foo.Bar
+	// }
+	case *hclsyntax.ObjectConsExpr:
+		for _, item := range expr.Items {
+			childRef := attributeRef{resource: ref.resource, block: &ref.attribute, value: item.ValueExpr}
+
+			val, diags := item.KeyExpr.Value(nil)
+			if diags.HasErrors() {
+				panic(diags)
+			}
+
+			err := gocty.FromCtyValue(val, &childRef.attribute)
+			if err != nil {
+				panic(err)
+			}
+
+			processAttribute(apiSpec, mapping, childRef)
+		}
+	}
 }
 
 func validMapping(definition map[string]interface{}) bool {
@@ -179,32 +248,38 @@ func validMapping(definition map[string]interface{}) bool {
 	}
 }
 
-func extractAttrSchema(resource, attribute string, definition map[string]interface{}, provider provider) attribute {
-	resourceSchema, ok := provider.ResourceSchemas[resource]
+func extractAttrSchema(ref attributeRef, definition map[string]interface{}) attribute {
+	resourceSchema, ok := terraformSchema.ResourceSchemas[ref.resource]
 	if !ok {
-		panic(fmt.Sprintf("resource `%s` not found in the Terraform schema", resource))
+		panic(fmt.Sprintf("resource `%s` not found in the Terraform schema", ref.resource))
 	}
-	attrSchema, ok := resourceSchema.Block.Attributes[attribute]
+	if ref.block != nil {
+		resourceSchema, ok = resourceSchema.Block.BlockTypes[*ref.block]
+		if !ok {
+			panic(fmt.Sprintf("block `%s.%s` not found in the Terraform schema", ref.resource, *ref.block))
+		}
+	}
+	attrSchema, ok := resourceSchema.Block.Attributes[ref.attribute]
 	if !ok {
-		panic(fmt.Sprintf("`%s.%s` not found in the Terraform schema", resource, attribute))
+		panic(fmt.Sprintf("`%s` not found in the Terraform schema", ref.String()))
 	}
 
 	switch definition["type"].(string) {
 	case "string":
 		ty, ok := attrSchema.Type.(string)
 		if !ok {
-			panic(fmt.Sprintf("`%s.%s` is expected as string, but not (%s)", resource, attribute, attrSchema.Type))
+			panic(fmt.Sprintf("`%s` is expected as string, but not (%s)", ref.String(), attrSchema.Type))
 		}
 		if ty != "string" && ty != "number" {
-			panic(fmt.Sprintf("`%s.%s` is expected as string, but not (%s)", resource, attribute, attrSchema.Type))
+			panic(fmt.Sprintf("`%s` is expected as string, but not (%s)", ref.String(), attrSchema.Type))
 		}
 	case "integer":
 		ty, ok := attrSchema.Type.(string)
 		if !ok {
-			panic(fmt.Sprintf("`%s.%s` is expected as integer, but not (%s)", resource, attribute, attrSchema.Type))
+			panic(fmt.Sprintf("`%s` is expected as integer, but not (%s)", ref.String(), attrSchema.Type))
 		}
 		if ty != "number" && ty != "string" {
-			panic(fmt.Sprintf("`%s.%s` is expected as integer, but not (%s)", resource, attribute, attrSchema.Type))
+			panic(fmt.Sprintf("`%s` is expected as integer, but not (%s)", ref.String(), attrSchema.Type))
 		}
 	default:
 		// noop
@@ -213,14 +288,19 @@ func extractAttrSchema(resource, attribute string, definition map[string]interfa
 	return attrSchema
 }
 
-func generateRuleFile(mapping mapping, attribute string, definition map[string]interface{}, schema attribute) *ruleMeta {
-	ruleName := fmt.Sprintf("%s_invalid_%s", mapping.Resource, attribute)
+func generateRuleFile(mapping mapping, ref attributeRef, definition map[string]interface{}, schema attribute) *ruleMeta {
+	ruleName := ref.RuleName()
+	var blockType string
+	if ref.block != nil {
+		blockType = *ref.block
+	}
 
 	meta := &ruleMeta{
 		RuleName:      ruleName,
 		RuleNameCC:    snaker.SnakeToCamel(ruleName),
+		BlockType:     blockType,
 		ResourceType:  mapping.Resource,
-		AttributeName: attribute,
+		AttributeName: ref.attribute,
 		Sensitive:     schema.Sensitive,
 		Max:           fetchNumber(definition, "maximum"),
 		SetMax:        numberExists(definition, "maximum"),
@@ -234,29 +314,19 @@ func generateRuleFile(mapping mapping, attribute string, definition map[string]i
 	// Testing generated regexp
 	regexp.MustCompile(meta.Pattern)
 
-	generateFile(fmt.Sprintf("%s/apispec/%s.go", RulesPath, ruleName), getFullPath("rule.go.tmpl"), meta)
+	generateFile(fmt.Sprintf("%s/apispec/%s.go", RulesPath, ruleName), ref.RuleTemplate(), meta)
 	generateFile(fmt.Sprintf("%s/rules/%s.md", DocsPath, ruleName), getFullPath("rule.md.tmpl"), meta)
 
 	return meta
 }
 
 func generateProviderFile(ruleNames []string) {
-	meta := &providerMeta{}
-
-	for _, ruleName := range ruleNames {
-		meta.RuleNameCCList = append(meta.RuleNameCCList, ruleName)
-	}
-
+	meta := &providerMeta{RuleNameCCList: ruleNames}
 	generateFile(fmt.Sprintf("%s/apispec/provider.go", RulesPath), getFullPath("provider.go.tmpl"), meta)
 }
 
 func generateRulesIndexDoc(ruleNames []string) {
-	meta := &ruleDocIndexMeta{}
-
-	for _, ruleName := range ruleNames {
-		meta.RuleNameList = append(meta.RuleNameList, ruleName)
-	}
-
+	meta := &ruleDocIndexMeta{RuleNameList: ruleNames}
 	generateFile(fmt.Sprintf("%s/README.md", DocsPath), getFullPath("doc_README.md.tmpl"), meta)
 }
 

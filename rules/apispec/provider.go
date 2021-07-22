@@ -166,6 +166,7 @@ var Rules = []tflint.Rule{
 	NewAzurermKeyVaultInvalidSkuNameRule(),
 	NewAzurermKeyVaultKeyInvalidCurveRule(),
 	NewAzurermKeyVaultKeyInvalidKeyTypeRule(),
+	NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
 	NewAzurermKubernetesClusterInvalidNameRule(),
 	NewAzurermKubernetesClusterNodePoolInvalidOSDiskSizeGbRule(),
 	NewAzurermKubernetesClusterNodePoolInvalidOSTypeRule(),
