@@ -1,3 +1,18 @@
+## 0.12.0 (2021-08-08)
+
+### Enhancements
+
+- [#122](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/122): Add `azurerm_kubernetes_cluster_default_node_pool_invalid_vm_size` rule
+- [#128](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/128): Bump terraform-provider-azurerm to v2.71.0 from v2.66.0
+
+### Chores
+
+- [#123](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/123): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.9.0 to 0.9.1
+- [#124](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/124): Add rule generator
+- [#125](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/125): Bump github.com/zclconf/go-cty from 1.8.0 to 1.9.0 in /tools
+- [#126](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/126): Bump github.com/hashicorp/hcl/v2 from 2.10.0 to 2.10.1 in /tools
+- [#127](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/127): Bump github.com/hashicorp/hcl/v2 from 2.10.0 to 2.10.1
+
 ## 0.11.0 (2021-07-05)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.30.0+ is required for this plugin to work.

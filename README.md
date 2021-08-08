@@ -17,7 +17,7 @@ You can install the plugin by adding a config to `.tflint.hcl` and running `tfli
 ```hcl
 plugin "azurerm" {
     enabled = true
-    version = "0.11.0"
+    version = "0.12.0"
     source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 }
 ```
