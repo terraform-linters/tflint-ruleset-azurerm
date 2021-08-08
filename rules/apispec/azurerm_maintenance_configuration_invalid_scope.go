@@ -23,10 +23,12 @@ func NewAzurermMaintenanceConfigurationInvalidScopeRule() *AzurermMaintenanceCon
 		resourceType:  "azurerm_maintenance_configuration",
 		attributeName: "scope",
 		enum: []string{
-			"All",
 			"Host",
-			"Resource",
-			"InResource",
+			"OSImage",
+			"Extension",
+			"InGuestPatch",
+			"SQLDB",
+			"SQLManagedInstance",
 		},
 	}
 }
