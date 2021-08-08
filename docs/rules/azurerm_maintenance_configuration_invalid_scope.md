@@ -5,10 +5,12 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
-- All
 - Host
-- Resource
-- InResource
+- OSImage
+- Extension
+- InGuestPatch
+- SQLDB
+- SQLManagedInstance
 
 ## Example
 
@@ -43,4 +45,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2018-06-01-preview/Maintenance.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2021-05-01/Maintenance.json

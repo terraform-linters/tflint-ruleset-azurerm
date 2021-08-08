@@ -23,7 +23,7 @@ func NewAzurermBotConnectionInvalidNameRule() *AzurermBotConnectionInvalidNameRu
 	return &AzurermBotConnectionInvalidNameRule{
 		resourceType:  "azurerm_bot_connection",
 		attributeName: "name",
-		pattern:       regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9_.-]*$`),
+		pattern:       regexp.MustCompile(`^[a-zA-Z0-9][\sa-zA-Z0-9_.-]*$`),
 	}
 }
 
@@ -57,7 +57,7 @@ func (r *AzurermBotConnectionInvalidNameRule) Check(runner tflint.Runner) error 
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssueOnExpr(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9][a-zA-Z0-9_.-]*$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9][\sa-zA-Z0-9_.-]*$`),
 					attribute.Expr,
 				)
 			}

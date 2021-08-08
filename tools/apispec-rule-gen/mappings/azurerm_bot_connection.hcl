@@ -1,5 +1,5 @@
 mapping "azurerm_bot_connection" {
-  import_path = "azure-rest-api-specs/specification/botservice/resource-manager/Microsoft.BotService/preview/2018-07-12/botservice.json"
+  import_path = "azure-rest-api-specs/specification/botservice/resource-manager/Microsoft.BotService/stable/2021-03-01/botservice.json"
 
   name                  = connectionNameParameter
   resource_group_name   = resourceGroupNameParameter
