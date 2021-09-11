@@ -15,9 +15,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up Go
-      uses: actions/setup-go@v2.1.4
+      uses: actions/setup-go@v2
       with:
-        go-version: 1.16
+        go-version: 1.17
     - name: Run linters
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin

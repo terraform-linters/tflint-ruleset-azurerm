@@ -16,7 +16,7 @@ jobs:
         curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/virtual-machines/sizes.md --output .github/snapshots/size.md
         git diff > snapshot.diff
     - name: Create an issue
-      uses: actions/github-script@v4.1
+      uses: actions/github-script@v4
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
