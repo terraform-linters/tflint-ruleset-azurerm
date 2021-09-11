@@ -1,3 +1,17 @@
+## 0.13.0 (2021-09-12)
+
+### Enhancements
+
+- [#136](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/136): Bump terraform-provider-azurerm to v2.76.0 from v2.71.0
+
+### Chores
+
+- [#130](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/130): Bump actions/github-script from 4.0.2 to 4.1
+- [#131](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/131): Bump github.com/zclconf/go-cty from 1.9.0 to 1.9.1 in /tools
+- [#132](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/132): Bump actions/setup-go from 2.1.3 to 2.1.4
+- [#134](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/134): Update doc snapshot
+- [#135](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/135): build: Go 1.17
+
 ## 0.12.0 (2021-08-08)
 
 ### Enhancements
