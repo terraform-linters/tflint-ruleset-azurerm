@@ -25,6 +25,7 @@ func NewAzurermLbInvalidSkuRule() *AzurermLbInvalidSkuRule {
 		enum: []string{
 			"Basic",
 			"Standard",
+			"Gateway",
 		},
 	}
 }

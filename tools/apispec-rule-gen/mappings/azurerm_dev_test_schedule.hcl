@@ -1,5 +1,5 @@
 mapping "azurerm_dev_test_schedule" {
-  import_path = "azure-rest-api-specs/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2016-05-15/DTL.json"
+  import_path = "azure-rest-api-specs/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json"
 
   location            = locationName
   resource_group_name = resourceGroupName

@@ -27,7 +27,7 @@ func NewAzurermKustoDatabasePrincipalInvalidRoleRule() *AzurermKustoDatabasePrin
 			"Ingestor",
 			"Monitor",
 			"User",
-			"UnrestrictedViewers",
+			"UnrestrictedViewer",
 			"Viewer",
 		},
 	}
