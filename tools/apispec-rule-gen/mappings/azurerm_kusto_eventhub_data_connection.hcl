@@ -1,5 +1,5 @@
 mapping "azurerm_kusto_eventhub_data_connection" {
-  import_path = "azure-rest-api-specs/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2020-02-15/kusto.json"
+  import_path = "azure-rest-api-specs/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-01-01/kusto.json"
 
   name                = DataConnectionNameParameter
   resource_group_name = ResourceGroupParameter

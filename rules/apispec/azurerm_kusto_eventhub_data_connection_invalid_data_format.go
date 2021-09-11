@@ -37,6 +37,8 @@ func NewAzurermKustoEventhubDataConnectionInvalidDataFormatRule() *AzurermKustoE
 			"TSVE",
 			"PARQUET",
 			"ORC",
+			"APACHEAVRO",
+			"W3CLOGFILE",
 		},
 	}
 }

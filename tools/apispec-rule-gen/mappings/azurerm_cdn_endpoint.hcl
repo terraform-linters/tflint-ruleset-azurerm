@@ -1,5 +1,5 @@
 mapping "azurerm_cdn_endpoint" {
-  import_path = "azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/stable/2019-04-15/cdn.json"
+  import_path = "azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/stable/2020-09-01/cdn.json"
 
   resource_group_name           = resourceGroupNameParameter
   is_http_allowed               = EndpointPropertiesUpdateParameters.isHttpAllowed

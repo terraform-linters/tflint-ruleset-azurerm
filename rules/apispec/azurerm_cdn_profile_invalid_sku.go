@@ -30,6 +30,13 @@ func NewAzurermCdnProfileInvalidSkuRule() *AzurermCdnProfileInvalidSkuRule {
 			"Standard_ChinaCdn",
 			"Standard_Microsoft",
 			"Premium_ChinaCdn",
+			"Standard_AzureFrontDoor",
+			"Premium_AzureFrontDoor",
+			"Standard_955BandWidth_ChinaCdn",
+			"Standard_AvgBandWidth_ChinaCdn",
+			"StandardPlus_ChinaCdn",
+			"StandardPlus_955BandWidth_ChinaCdn",
+			"StandardPlus_AvgBandWidth_ChinaCdn",
 		},
 	}
 }

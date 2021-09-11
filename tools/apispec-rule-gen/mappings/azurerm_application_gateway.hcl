@@ -1,5 +1,5 @@
 mapping "azurerm_application_gateway" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2020-11-01/applicationGateway.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2021-02-01/applicationGateway.json"
 
   zones        = ApplicationGateway.zones
   enable_http2 = ApplicationGatewayPropertiesFormat.enableHttp2
