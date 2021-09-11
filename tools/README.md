@@ -40,7 +40,7 @@ The launch.json file provides default values for the tool base path, rule genera
 
 ```console
 $ cd apispec-rule-gen/azure-rest-api-specs
-$ git pull origin master
+$ git pull origin main
 $ cd ../../
 $ go run ./apispec-rule-gen
 ```
@@ -50,7 +50,8 @@ $ go run ./apispec-rule-gen
 ```console
 $ cd apispec-rule-gen/schema
 $ tfenv install
-# Edit provider.tf to update provider version
+# Edit provider.tf
+$ terraform init -upgrade
 $ terraform providers schema -json > schema.json
 $ cd ../../
 $ go run ./apispec-rule-gen
