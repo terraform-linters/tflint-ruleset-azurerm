@@ -1,3 +1,10 @@
+## 0.13.1 (2021-09-12)
+
+### BugFixes
+
+- [#137](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/137): build: Update GoReleaser version
+  - v0.13.0 release doesn't include darwin/arm64 build. This change fixes the issue.
+
 ## 0.13.0 (2021-09-12)
 
 ### Enhancements
