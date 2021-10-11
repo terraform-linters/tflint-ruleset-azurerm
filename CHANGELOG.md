@@ -1,3 +1,13 @@
+## 0.13.2 (2021-10-12)
+
+### Enhancements
+
+- [#140](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/140): Bump terraform-provider-azurerm to v2.80.0 from v2.76.0
+
+### Chores
+
+- [#139](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/139): Bump actions/github-script from 4 to 5
+
 ## 0.13.1 (2021-09-12)
 
 ### BugFixes
