@@ -5,9 +5,8 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
-- 5.6
 - 5.7
-- 8.0
+- 8.0.21
 
 ## Example
 
@@ -42,4 +41,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/mysql.json

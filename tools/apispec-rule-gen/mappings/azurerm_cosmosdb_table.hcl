@@ -1,5 +1,5 @@
 mapping "azurerm_cosmosdb_table" {
-  import_path = "azure-rest-api-specs/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2021-06-15/cosmos-db.json"
+  import_path = "azure-rest-api-specs/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2021-10-15/cosmos-db.json"
 
   name                = tableNameParameter
   resource_group_name = resourceGroupNameParameter
