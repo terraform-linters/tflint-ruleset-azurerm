@@ -26,6 +26,7 @@ func NewAzurermNetappPoolInvalidServiceLevelRule() *AzurermNetappPoolInvalidServ
 			"Standard",
 			"Premium",
 			"Ultra",
+			"StandardZRS",
 		},
 	}
 }

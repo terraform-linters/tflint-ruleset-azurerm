@@ -1,10 +1,10 @@
 mapping "azurerm_mysql_server" {
-  import_path = "azure-rest-api-specs/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json"
+  import_path = "azure-rest-api-specs/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/mysql.json"
 
   name                         = ServerNameParameter
   sku_name                     = Sku.name
-  administrator_login          = ServerPropertiesForDefaultCreate.administratorLogin
-  administrator_login_password = ServerPropertiesForDefaultCreate.administratorLoginPassword
+  administrator_login          = ServerProperties.administratorLogin
+  administrator_login_password = ServerProperties.administratorLoginPassword
   version                      = ServerVersion
-  ssl_enforcement              = SslEnforcement
+  ssl_enforcement              = any //SslEnforcement
 }

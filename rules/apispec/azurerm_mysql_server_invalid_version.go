@@ -23,9 +23,8 @@ func NewAzurermMysqlServerInvalidVersionRule() *AzurermMysqlServerInvalidVersion
 		resourceType:  "azurerm_mysql_server",
 		attributeName: "version",
 		enum: []string{
-			"5.6",
 			"5.7",
-			"8.0",
+			"8.0.21",
 		},
 	}
 }
