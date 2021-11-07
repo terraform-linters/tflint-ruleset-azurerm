@@ -1,3 +1,19 @@
+## 0.14.0 (2021-11-07)
+
+### Breaking Changes
+
+- [#144](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/144): Bump terraform-provider-azurerm to v2.84.0 from v2.80.0
+  - Remove `azurerm_mysql_server_invalid_ssl_enforcement` rule
+- [#145](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/145): build: Remove unsupported build targets
+
+### Enhancements
+
+- [#143](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/143): Update machine sizes
+
+### Chores
+
+- [#141](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/141): Fix github-script to v5
+
 ## 0.13.2 (2021-10-12)
 
 ### Enhancements
