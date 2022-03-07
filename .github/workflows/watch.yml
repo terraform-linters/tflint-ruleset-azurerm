@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Calculate diff
       run: |
         curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/virtual-machines/sizes.md --output .github/snapshots/size.md
