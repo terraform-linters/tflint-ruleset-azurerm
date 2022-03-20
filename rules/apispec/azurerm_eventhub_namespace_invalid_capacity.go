@@ -4,13 +4,15 @@ package apispec
 
 import (
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermEventhubNamespaceInvalidCapacityRule checks the pattern is valid
 type AzurermEventhubNamespaceInvalidCapacityRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	min           int
@@ -36,7 +38,7 @@ func (r *AzurermEventhubNamespaceInvalidCapacityRule) Enabled() bool {
 }
 
 // Severity returns the rule severity
-func (r *AzurermEventhubNamespaceInvalidCapacityRule) Severity() string {
+func (r *AzurermEventhubNamespaceInvalidCapacityRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -47,19 +49,37 @@ func (r *AzurermEventhubNamespaceInvalidCapacityRule) Link() string {
 
 // Check checks the pattern is valid
 func (r *AzurermEventhubNamespaceInvalidCapacityRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val int
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			if val < r.min {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"capacity must be 0 or higher",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

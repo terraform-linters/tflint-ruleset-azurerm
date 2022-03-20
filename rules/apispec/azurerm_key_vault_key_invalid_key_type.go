@@ -5,13 +5,15 @@ package apispec
 import (
 	"fmt"
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermKeyVaultKeyInvalidKeyTypeRule checks the pattern is valid
 type AzurermKeyVaultKeyInvalidKeyTypeRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	enum          []string
@@ -43,7 +45,7 @@ func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Enabled() bool {
 }
 
 // Severity returns the rule severity
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Severity() string {
+func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -54,11 +56,24 @@ func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Link() string {
 
 // Check checks the pattern is valid
 func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val string
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			found := false
 			for _, item := range r.enum {
 				if item == val {
@@ -66,13 +81,18 @@ func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Check(runner tflint.Runner) error
 				}
 			}
 			if !found {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					fmt.Sprintf(`"%s" is an invalid value as key_type`, truncateLongMessage(val)),
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
