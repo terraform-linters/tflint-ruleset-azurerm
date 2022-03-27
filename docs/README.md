@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 265 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 229 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -80,47 +80,24 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_cosmosdb_sql_database_invalid_resource_group_name](rules/azurerm_cosmosdb_sql_database_invalid_resource_group_name.md)|✔|
 |[azurerm_cosmosdb_table_invalid_account_name](rules/azurerm_cosmosdb_table_invalid_account_name.md)|✔|
 |[azurerm_cosmosdb_table_invalid_resource_group_name](rules/azurerm_cosmosdb_table_invalid_resource_group_name.md)|✔|
-|[azurerm_cost_management_export_resource_group_invalid_recurrence_type](rules/azurerm_cost_management_export_resource_group_invalid_recurrence_type.md)|✔|
-|[azurerm_data_factory_dataset_mysql_invalid_data_factory_name](rules/azurerm_data_factory_dataset_mysql_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_dataset_mysql_invalid_linked_service_name](rules/azurerm_data_factory_dataset_mysql_invalid_linked_service_name.md)|✔|
 |[azurerm_data_factory_dataset_mysql_invalid_name](rules/azurerm_data_factory_dataset_mysql_invalid_name.md)|✔|
-|[azurerm_data_factory_dataset_mysql_invalid_resource_group_name](rules/azurerm_data_factory_dataset_mysql_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_dataset_postgresql_invalid_data_factory_name](rules/azurerm_data_factory_dataset_postgresql_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_dataset_postgresql_invalid_linked_service_name](rules/azurerm_data_factory_dataset_postgresql_invalid_linked_service_name.md)|✔|
 |[azurerm_data_factory_dataset_postgresql_invalid_name](rules/azurerm_data_factory_dataset_postgresql_invalid_name.md)|✔|
-|[azurerm_data_factory_dataset_postgresql_invalid_resource_group_name](rules/azurerm_data_factory_dataset_postgresql_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_dataset_sql_server_table_invalid_data_factory_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name.md)|✔|
 |[azurerm_data_factory_dataset_sql_server_table_invalid_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_name.md)|✔|
-|[azurerm_data_factory_dataset_sql_server_table_invalid_resource_group_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_resource_group_name.md)|✔|
 |[azurerm_data_factory_integration_runtime_managed_invalid_edition](rules/azurerm_data_factory_integration_runtime_managed_invalid_edition.md)|✔|
 |[azurerm_data_factory_integration_runtime_managed_invalid_license_type](rules/azurerm_data_factory_integration_runtime_managed_invalid_license_type.md)|✔|
 |[azurerm_data_factory_integration_runtime_managed_invalid_max_parallel_executions_per_node](rules/azurerm_data_factory_integration_runtime_managed_invalid_max_parallel_executions_per_node.md)|✔|
 |[azurerm_data_factory_integration_runtime_managed_invalid_number_of_nodes](rules/azurerm_data_factory_integration_runtime_managed_invalid_number_of_nodes.md)|✔|
 |[azurerm_data_factory_invalid_name](rules/azurerm_data_factory_invalid_name.md)|✔|
 |[azurerm_data_factory_invalid_resource_group_name](rules/azurerm_data_factory_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_data_factory_name](rules/azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name](rules/azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_resource_group_name](rules/azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_linked_service_mysql_invalid_data_factory_name](rules/azurerm_data_factory_linked_service_mysql_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_linked_service_mysql_invalid_name](rules/azurerm_data_factory_linked_service_mysql_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_mysql_invalid_resource_group_name](rules/azurerm_data_factory_linked_service_mysql_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_linked_service_postgresql_invalid_data_factory_name](rules/azurerm_data_factory_linked_service_postgresql_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_linked_service_postgresql_invalid_name](rules/azurerm_data_factory_linked_service_postgresql_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_postgresql_invalid_resource_group_name](rules/azurerm_data_factory_linked_service_postgresql_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_linked_service_sql_server_invalid_data_factory_name](rules/azurerm_data_factory_linked_service_sql_server_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_linked_service_sql_server_invalid_name](rules/azurerm_data_factory_linked_service_sql_server_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_sql_server_invalid_resource_group_name](rules/azurerm_data_factory_linked_service_sql_server_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_pipeline_invalid_data_factory_name](rules/azurerm_data_factory_pipeline_invalid_data_factory_name.md)|✔|
 |[azurerm_data_factory_pipeline_invalid_name](rules/azurerm_data_factory_pipeline_invalid_name.md)|✔|
-|[azurerm_data_factory_pipeline_invalid_resource_group_name](rules/azurerm_data_factory_pipeline_invalid_resource_group_name.md)|✔|
 |[azurerm_data_factory_trigger_schedule_invalid_frequency](rules/azurerm_data_factory_trigger_schedule_invalid_frequency.md)|✔|
-|[azurerm_data_lake_analytics_account_invalid_tier](rules/azurerm_data_lake_analytics_account_invalid_tier.md)|✔|
-|[azurerm_data_lake_store_invalid_encryption_state](rules/azurerm_data_lake_store_invalid_encryption_state.md)|✔|
-|[azurerm_data_lake_store_invalid_encryption_type](rules/azurerm_data_lake_store_invalid_encryption_type.md)|✔|
-|[azurerm_data_lake_store_invalid_firewall_allow_azure_ips](rules/azurerm_data_lake_store_invalid_firewall_allow_azure_ips.md)|✔|
-|[azurerm_data_lake_store_invalid_firewall_state](rules/azurerm_data_lake_store_invalid_firewall_state.md)|✔|
-|[azurerm_data_lake_store_invalid_tier](rules/azurerm_data_lake_store_invalid_tier.md)|✔|
 |[azurerm_database_migration_project_invalid_source_platform](rules/azurerm_database_migration_project_invalid_source_platform.md)|✔|
 |[azurerm_database_migration_project_invalid_target_platform](rules/azurerm_database_migration_project_invalid_target_platform.md)|✔|
 |[azurerm_databricks_workspace_invalid_managed_resource_group_name](rules/azurerm_databricks_workspace_invalid_managed_resource_group_name.md)|✔|
@@ -131,8 +108,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_dev_test_policy_invalid_evaluator_type](rules/azurerm_dev_test_policy_invalid_evaluator_type.md)|✔|
 |[azurerm_dev_test_policy_invalid_name](rules/azurerm_dev_test_policy_invalid_name.md)|✔|
 |[azurerm_dev_test_schedule_invalid_status](rules/azurerm_dev_test_schedule_invalid_status.md)|✔|
-|[azurerm_devspace_controller_invalid_name](rules/azurerm_devspace_controller_invalid_name.md)|✔|
-|[azurerm_devspace_controller_invalid_sku_name](rules/azurerm_devspace_controller_invalid_sku_name.md)|✔|
 |[azurerm_eventgrid_domain_invalid_input_schema](rules/azurerm_eventgrid_domain_invalid_input_schema.md)|✔|
 |[azurerm_eventgrid_event_subscription_invalid_event_delivery_schema](rules/azurerm_eventgrid_event_subscription_invalid_event_delivery_schema.md)|✔|
 |[azurerm_eventhub_namespace_invalid_capacity](rules/azurerm_eventhub_namespace_invalid_capacity.md)|✔|
@@ -147,17 +122,13 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_frontdoor_firewall_policy_invalid_custom_block_response_body](rules/azurerm_frontdoor_firewall_policy_invalid_custom_block_response_body.md)|✔|
 |[azurerm_frontdoor_firewall_policy_invalid_mode](rules/azurerm_frontdoor_firewall_policy_invalid_mode.md)|✔|
 |[azurerm_frontdoor_firewall_policy_invalid_resource_group_name](rules/azurerm_frontdoor_firewall_policy_invalid_resource_group_name.md)|✔|
-|[azurerm_frontdoor_invalid_backend_pools_send_receive_timeout_seconds](rules/azurerm_frontdoor_invalid_backend_pools_send_receive_timeout_seconds.md)|✔|
 |[azurerm_frontdoor_invalid_name](rules/azurerm_frontdoor_invalid_name.md)|✔|
 |[azurerm_frontdoor_invalid_resource_group_name](rules/azurerm_frontdoor_invalid_resource_group_name.md)|✔|
 |[azurerm_hdinsight_hadoop_cluster_invalid_tier](rules/azurerm_hdinsight_hadoop_cluster_invalid_tier.md)|✔|
 |[azurerm_hdinsight_hbase_cluster_invalid_tier](rules/azurerm_hdinsight_hbase_cluster_invalid_tier.md)|✔|
 |[azurerm_hdinsight_interactive_query_cluster_invalid_tier](rules/azurerm_hdinsight_interactive_query_cluster_invalid_tier.md)|✔|
 |[azurerm_hdinsight_kafka_cluster_invalid_tier](rules/azurerm_hdinsight_kafka_cluster_invalid_tier.md)|✔|
-|[azurerm_hdinsight_ml_services_cluster_invalid_tier](rules/azurerm_hdinsight_ml_services_cluster_invalid_tier.md)|✔|
-|[azurerm_hdinsight_rserver_cluster_invalid_tier](rules/azurerm_hdinsight_rserver_cluster_invalid_tier.md)|✔|
 |[azurerm_hdinsight_spark_cluster_invalid_tier](rules/azurerm_hdinsight_spark_cluster_invalid_tier.md)|✔|
-|[azurerm_hdinsight_storm_cluster_invalid_tier](rules/azurerm_hdinsight_storm_cluster_invalid_tier.md)|✔|
 |[azurerm_healthcare_service_invalid_cosmosdb_throughput](rules/azurerm_healthcare_service_invalid_cosmosdb_throughput.md)|✔|
 |[azurerm_healthcare_service_invalid_kind](rules/azurerm_healthcare_service_invalid_kind.md)|✔|
 |[azurerm_healthcare_service_invalid_resource_group_name](rules/azurerm_healthcare_service_invalid_resource_group_name.md)|✔|
@@ -179,8 +150,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_type](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_type.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_vm_size](rules/azurerm_kubernetes_cluster_node_pool_invalid_vm_size.md)|✔|
-|[azurerm_kusto_database_principal_invalid_role](rules/azurerm_kusto_database_principal_invalid_role.md)|✔|
-|[azurerm_kusto_database_principal_invalid_type](rules/azurerm_kusto_database_principal_invalid_type.md)|✔|
 |[azurerm_kusto_eventhub_data_connection_invalid_data_format](rules/azurerm_kusto_eventhub_data_connection_invalid_data_format.md)|✔|
 |[azurerm_lb_invalid_sku](rules/azurerm_lb_invalid_sku.md)|✔|
 |[azurerm_lb_nat_pool_invalid_protocol](rules/azurerm_lb_nat_pool_invalid_protocol.md)|✔|
@@ -203,7 +172,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_maps_account_invalid_sku_name](rules/azurerm_maps_account_invalid_sku_name.md)|✔|
 |[azurerm_mariadb_firewall_rule_invalid_end_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_end_ip_address.md)|✔|
 |[azurerm_mariadb_firewall_rule_invalid_start_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_start_ip_address.md)|✔|
-|[azurerm_mariadb_server_invalid_ssl_enforcement](rules/azurerm_mariadb_server_invalid_ssl_enforcement.md)|✔|
 |[azurerm_mariadb_server_invalid_version](rules/azurerm_mariadb_server_invalid_version.md)|✔|
 |[azurerm_monitor_scheduled_query_rules_alert_invalid_severity](rules/azurerm_monitor_scheduled_query_rules_alert_invalid_severity.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_connectivity_type](rules/azurerm_mssql_virtual_machine_invalid_sql_connectivity_type.md)|✔|
@@ -227,10 +195,8 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_network_security_rule_invalid_protocol](rules/azurerm_network_security_rule_invalid_protocol.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_namespace_type](rules/azurerm_notification_hub_namespace_invalid_namespace_type.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_sku_name](rules/azurerm_notification_hub_namespace_invalid_sku_name.md)|✔|
-|[azurerm_packet_capture_invalid_maximum_capture_duration](rules/azurerm_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_end_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_end_ip_address.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_start_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_start_ip_address.md)|✔|
-|[azurerm_postgresql_server_invalid_ssl_enforcement](rules/azurerm_postgresql_server_invalid_ssl_enforcement.md)|✔|
 |[azurerm_postgresql_server_invalid_version](rules/azurerm_postgresql_server_invalid_version.md)|✔|
 |[azurerm_public_ip_invalid_sku](rules/azurerm_public_ip_invalid_sku.md)|✔|
 |[azurerm_public_ip_prefix_invalid_sku](rules/azurerm_public_ip_prefix_invalid_sku.md)|✔|
@@ -258,12 +224,10 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|
 |[azurerm_storage_account_invalid_resource_group_name](rules/azurerm_storage_account_invalid_resource_group_name.md)|✔|
 |[azurerm_storage_account_network_rules_invalid_default_action](rules/azurerm_storage_account_network_rules_invalid_default_action.md)|✔|
-|[azurerm_storage_account_network_rules_invalid_resource_group_name](rules/azurerm_storage_account_network_rules_invalid_resource_group_name.md)|✔|
 |[azurerm_stream_analytics_job_invalid_compatibility_level](rules/azurerm_stream_analytics_job_invalid_compatibility_level.md)|✔|
 |[azurerm_stream_analytics_job_invalid_events_out_of_order_policy](rules/azurerm_stream_analytics_job_invalid_events_out_of_order_policy.md)|✔|
 |[azurerm_stream_analytics_job_invalid_output_error_policy](rules/azurerm_stream_analytics_job_invalid_output_error_policy.md)|✔|
 |[azurerm_template_deployment_invalid_deployment_mode](rules/azurerm_template_deployment_invalid_deployment_mode.md)|✔|
-|[azurerm_traffic_manager_endpoint_invalid_endpoint_status](rules/azurerm_traffic_manager_endpoint_invalid_endpoint_status.md)|✔|
 |[azurerm_traffic_manager_profile_invalid_profile_status](rules/azurerm_traffic_manager_profile_invalid_profile_status.md)|✔|
 |[azurerm_traffic_manager_profile_invalid_traffic_routing_method](rules/azurerm_traffic_manager_profile_invalid_traffic_routing_method.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_caching](rules/azurerm_virtual_machine_data_disk_attachment_invalid_caching.md)|✔|

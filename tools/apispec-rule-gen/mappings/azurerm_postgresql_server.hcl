@@ -6,5 +6,4 @@ mapping "azurerm_postgresql_server" {
   administrator_login          = ServerPropertiesForDefaultCreate.administratorLogin
   administrator_login_password = ServerPropertiesForDefaultCreate.administratorLoginPassword
   version                      = ServerVersion
-  ssl_enforcement              = SslEnforcement
 }
