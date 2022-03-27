@@ -4,13 +4,15 @@ package apispec
 
 import (
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule checks the pattern is valid
 type AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	max           int
@@ -38,7 +40,7 @@ func (r *AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule) En
 }
 
 // Severity returns the rule severity
-func (r *AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule) Severity() string {
+func (r *AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -49,26 +51,44 @@ func (r *AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule) Li
 
 // Check checks the pattern is valid
 func (r *AzurermIothubEndpointStorageContainerInvalidMaxChunkSizeInBytesRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val int
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"max_chunk_size_in_bytes must be 524288000 or less",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			if val < r.min {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"max_chunk_size_in_bytes must be 10485760 or higher",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

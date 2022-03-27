@@ -4,13 +4,15 @@ package apispec
 
 import (
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutionsPerNodeRule checks the pattern is valid
 type AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutionsPerNodeRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	min           int
@@ -36,7 +38,7 @@ func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutions
 }
 
 // Severity returns the rule severity
-func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutionsPerNodeRule) Severity() string {
+func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutionsPerNodeRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -47,19 +49,37 @@ func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutions
 
 // Check checks the pattern is valid
 func (r *AzurermDataFactoryIntegrationRuntimeManagedInvalidMaxParallelExecutionsPerNodeRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val int
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			if val < r.min {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"max_parallel_executions_per_node must be 1 or higher",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

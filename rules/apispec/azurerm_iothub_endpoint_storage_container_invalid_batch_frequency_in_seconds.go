@@ -4,13 +4,15 @@ package apispec
 
 import (
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule checks the pattern is valid
 type AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	max           int
@@ -38,7 +40,7 @@ func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule
 }
 
 // Severity returns the rule severity
-func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule) Severity() string {
+func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -49,26 +51,44 @@ func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule
 
 // Check checks the pattern is valid
 func (r *AzurermIothubEndpointStorageContainerInvalidBatchFrequencyInSecondsRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val int
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"batch_frequency_in_seconds must be 720 or less",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			if val < r.min {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"batch_frequency_in_seconds must be 60 or higher",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

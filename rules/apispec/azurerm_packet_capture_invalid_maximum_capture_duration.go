@@ -4,13 +4,15 @@ package apispec
 
 import (
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermPacketCaptureInvalidMaximumCaptureDurationRule checks the pattern is valid
 type AzurermPacketCaptureInvalidMaximumCaptureDurationRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	attributeName string
 	max           int
@@ -38,7 +40,7 @@ func (r *AzurermPacketCaptureInvalidMaximumCaptureDurationRule) Enabled() bool {
 }
 
 // Severity returns the rule severity
-func (r *AzurermPacketCaptureInvalidMaximumCaptureDurationRule) Severity() string {
+func (r *AzurermPacketCaptureInvalidMaximumCaptureDurationRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -49,26 +51,44 @@ func (r *AzurermPacketCaptureInvalidMaximumCaptureDurationRule) Link() string {
 
 // Check checks the pattern is valid
 func (r *AzurermPacketCaptureInvalidMaximumCaptureDurationRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceAttributes(r.resourceType, r.attributeName, func(attribute *hcl.Attribute) error {
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Attributes: []hclext.AttributeSchema{
+			{Name: r.attributeName},
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
+
+	for _, resource := range resources.Blocks {
+		attribute, exists := resource.Body.Attributes[r.attributeName]
+		if !exists {
+			continue
+		}
 		var val int
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		return runner.EnsureNoError(err, func() error {
+		err = runner.EnsureNoError(err, func() error {
 			if val > r.max {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"maximum_capture_duration must be 18000 or less",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			if val < r.min {
-				runner.EmitIssueOnExpr(
+				runner.EmitIssue(
 					r,
 					"maximum_capture_duration must be 0 or higher",
-					attribute.Expr,
+					attribute.Expr.Range(),
 				)
 			}
 			return nil
 		})
-	})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

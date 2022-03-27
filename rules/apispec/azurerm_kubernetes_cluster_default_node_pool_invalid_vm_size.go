@@ -3,13 +3,15 @@ package apispec
 import (
 	"fmt"
 
-	hcl "github.com/hashicorp/hcl/v2"
+	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
 // AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule checks the pattern is valid
 type AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule struct {
+	tflint.DefaultRule
+
 	resourceType  string
 	blockType     string
 	attributeName string
@@ -212,7 +214,7 @@ func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Enabled() boo
 }
 
 // Severity returns the rule severity
-func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Severity() string {
+func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
@@ -223,21 +225,32 @@ func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Link() string
 
 // Check checks whether ...
 func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Check(runner tflint.Runner) error {
-	return runner.WalkResourceBlocks(r.resourceType, r.blockType, func(block *hcl.Block) error {
-		content, _, diags := block.Body.PartialContent(&hcl.BodySchema{
-			Attributes: []hcl.AttributeSchema{
-				{Name: r.attributeName},
+	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
+		Blocks: []hclext.BlockSchema{
+			{
+				Type: r.blockType,
+				Body: &hclext.BodySchema{
+					Attributes: []hclext.AttributeSchema{
+						{Name: r.attributeName},
+					},
+				},
 			},
-		})
-		if diags.HasErrors() {
-			return diags
-		}
+		},
+	}, nil)
+	if err != nil {
+		return err
+	}
 
-		if attribute, exists := content.Attributes[r.attributeName]; exists {
+	for _, resource := range resources.Blocks {
+		for _, inner := range resource.Body.Blocks {
+			attribute, exists := inner.Body.Attributes[r.attributeName]
+			if !exists {
+				continue
+			}
 			var val string
 			err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-			return runner.EnsureNoError(err, func() error {
+			err = runner.EnsureNoError(err, func() error {
 				found := false
 				for _, item := range r.enum {
 					if item == val {
@@ -245,16 +258,19 @@ func (r *AzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule) Check(runner 
 					}
 				}
 				if !found {
-					runner.EmitIssueOnExpr(
+					runner.EmitIssue(
 						r,
 						fmt.Sprintf(`"%s" is an invalid value as vm_size`, truncateLongMessage(val)),
-						attribute.Expr,
+						attribute.Expr.Range(),
 					)
 				}
 				return nil
 			})
+			if err != nil {
+				return err
+			}
 		}
+	}
 
-		return nil
-	})
+	return nil
 }
