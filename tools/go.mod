@@ -1,6 +1,6 @@
 module github.com/terraform-linters/tflint-ruleset-azurerm/tools
 
-go 1.17
+go 1.18
 
 require (
 	github.com/hashicorp/hcl/v2 v2.11.1
