@@ -25,10 +25,10 @@ func NewAzurermApplicationInsightsAnalyticsItemInvalidTypeRule() *AzurermApplica
 		resourceType:  "azurerm_application_insights_analytics_item",
 		attributeName: "type",
 		enum: []string{
+			"none",
 			"query",
-			"function",
-			"folder",
 			"recent",
+			"function",
 		},
 	}
 }
