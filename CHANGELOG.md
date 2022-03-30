@@ -1,3 +1,22 @@
+## 0.15.0 (2022-03-30)
+
+The minimum supported version of TFLint has changed in this version. TFLint v0.35.0+ is required for this plugin to work.
+
+### Breaking Changes
+
+- [#150](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/150) [#156](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/156) [#158](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/158): Bump terraform-provider-azurerm to v3.0.2 from v2.84.0
+- [#155](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/155): Bump tflint-plugin-sdk for gRPC-based new plugin system
+
+### Chores
+
+- [#146](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/146): Bump github.com/zclconf/go-cty from 1.9.1 to 1.10.0 in /tools
+- [#148](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/148): Bump github.com/hashicorp/hcl/v2 from 2.10.1 to 2.11.1 in /tools
+- [#149](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/149): Bump github.com/hashicorp/hcl/v2 from 2.10.1 to 2.11.1
+- [#151](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/151): Bump github.com/google/go-cmp from 0.5.6 to 0.5.7
+- [#152](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/152): Bump actions/github-script from 5 to 6
+- [#153](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/153): Bump actions/checkout from 2 to 3
+- [#154](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/154): build: go 1.18
+
 ## 0.14.0 (2021-11-07)
 
 ### Breaking Changes
