@@ -1,5 +1,5 @@
 mapping "azurerm_container_registry_webhook" {
-  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json"
+  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2021-08-01-preview/containerregistry.json"
 
   name                = WebhookNameParameter
   resource_group_name = ResourceGroupParameter

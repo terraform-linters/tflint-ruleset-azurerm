@@ -5,10 +5,10 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
+- none
 - query
-- function
-- folder
 - recent
+- function
 
 ## Example
 

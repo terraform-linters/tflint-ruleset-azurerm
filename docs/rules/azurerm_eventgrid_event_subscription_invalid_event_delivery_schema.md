@@ -42,4 +42,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-10-15-preview/EventGrid.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/EventGrid.json
