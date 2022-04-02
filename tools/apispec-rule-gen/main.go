@@ -16,7 +16,6 @@ import (
 	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hclparse"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/serenize/snaker"
 	"github.com/zclconf/go-cty/cty/gocty"
 )
 
@@ -297,7 +296,7 @@ func generateRuleFile(mapping mapping, ref attributeRef, definition map[string]i
 
 	meta := &ruleMeta{
 		RuleName:      ruleName,
-		RuleNameCC:    snaker.SnakeToCamel(ruleName),
+		RuleNameCC:    toCamelCase(ruleName),
 		BlockType:     blockType,
 		ResourceType:  mapping.Resource,
 		AttributeName: ref.attribute,
@@ -372,4 +371,32 @@ func generateFile(fileName string, tmplName string, meta interface{}) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+var heading = regexp.MustCompile("(^[A-Za-z])|_([A-Za-z])")
+
+func toCamelCase(str string) string {
+	exceptions := map[string]string{
+		"ip":  "IP",
+		"sql": "SQL",
+		"vm":  "VM",
+		"os":  "OS",
+		"id":  "ID",
+		"tls": "TLS",
+	}
+	parts := strings.Split(str, "_")
+	replaced := make([]string, len(parts))
+	for i, s := range parts {
+		conv, ok := exceptions[s]
+		if ok {
+			replaced[i] = conv
+		} else {
+			replaced[i] = s
+		}
+	}
+	str = strings.Join(replaced, "_")
+
+	return heading.ReplaceAllStringFunc(str, func(s string) string {
+		return strings.ToUpper(strings.Replace(s, "_", "", -1))
+	})
 }

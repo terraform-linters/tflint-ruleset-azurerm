@@ -6,12 +6,12 @@ import (
 	"go/format"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"strings"
 	"text/template"
 
 	"github.com/dave/dst"
 	"github.com/dave/dst/decorator"
-	"github.com/serenize/snaker"
 )
 
 type metadata struct {
@@ -28,7 +28,7 @@ func main() {
 	}
 	ruleName = strings.Trim(ruleName, "\n")
 
-	meta := &metadata{RuleNameCC: snaker.SnakeToCamel(ruleName), RuleName: ruleName}
+	meta := &metadata{RuleNameCC: toCamelCase(ruleName), RuleName: ruleName}
 
 	GenerateFileWithLogs(fmt.Sprintf("rules/%s.go", ruleName), "rules/rule.go.tmpl", meta)
 	GenerateFileWithLogs(fmt.Sprintf("rules/%s_test.go", ruleName), "rules/rule_test.go.tmpl", meta)
@@ -98,4 +98,32 @@ func GenerateFile(fileName string, tmplName string, meta interface{}) {
 func GenerateFileWithLogs(fileName string, tmplName string, meta interface{}) {
 	GenerateFile(fileName, tmplName, meta)
 	fmt.Printf("Created: %s\n", fileName)
+}
+
+var heading = regexp.MustCompile("(^[A-Za-z])|_([A-Za-z])")
+
+func toCamelCase(str string) string {
+	exceptions := map[string]string{
+		"ip":  "IP",
+		"sql": "SQL",
+		"vm":  "VM",
+		"os":  "OS",
+		"id":  "ID",
+		"tls": "TLS",
+	}
+	parts := strings.Split(str, "_")
+	replaced := make([]string, len(parts))
+	for i, s := range parts {
+		conv, ok := exceptions[s]
+		if ok {
+			replaced[i] = conv
+		} else {
+			replaced[i] = s
+		}
+	}
+	str = strings.Join(replaced, "_")
+
+	return heading.ReplaceAllStringFunc(str, func(s string) string {
+		return strings.ToUpper(strings.Replace(s, "_", "", -1))
+	})
 }
