@@ -6,8 +6,6 @@ require (
 	github.com/dave/dst v0.26.2
 	github.com/google/go-cmp v0.5.7
 	github.com/hashicorp/hcl/v2 v2.11.1
-	github.com/onsi/gomega v1.14.0 // indirect
-	github.com/serenize/snaker v0.0.0-20201027110005-a7ad2135616e
 	github.com/terraform-linters/tflint-plugin-sdk v0.10.0
 )
 
@@ -24,7 +22,6 @@ require (
 	github.com/mitchellh/go-testing-interface v0.0.0-20171004221916-a61a99592b77 // indirect
 	github.com/mitchellh/go-wordwrap v0.0.0-20150314170334-ad45545899c7 // indirect
 	github.com/oklog/run v1.0.0 // indirect
-	github.com/onsi/ginkgo v1.16.4 // indirect
 	github.com/vmihailenco/msgpack/v4 v4.3.12 // indirect
 	github.com/vmihailenco/tagparser v0.1.1 // indirect
 	github.com/zclconf/go-cty v1.10.0 // indirect
