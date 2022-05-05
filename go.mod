@@ -6,7 +6,7 @@ require (
 	github.com/dave/dst v0.26.2
 	github.com/google/go-cmp v0.5.8
 	github.com/hashicorp/hcl/v2 v2.12.0
-	github.com/terraform-linters/tflint-plugin-sdk v0.10.0
+	github.com/terraform-linters/tflint-plugin-sdk v0.11.0
 )
 
 require (
@@ -33,6 +33,6 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
-	google.golang.org/grpc v1.45.0 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	google.golang.org/grpc v1.46.0 // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
 )
