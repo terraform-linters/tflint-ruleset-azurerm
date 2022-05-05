@@ -26,6 +26,7 @@ func NewAzurermStreamAnalyticsJobInvalidCompatibilityLevelRule() *AzurermStreamA
 		attributeName: "compatibility_level",
 		enum: []string{
 			"1.0",
+			"1.2",
 		},
 	}
 }

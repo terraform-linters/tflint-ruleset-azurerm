@@ -6,6 +6,7 @@ Warns about values that appear to be invalid based on [azure-rest-api-specs](htt
 
 Allowed values are:
 - 1.0
+- 1.2
 
 ## Example
 
@@ -40,4 +41,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2016-03-01/streamingjobs.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/streamingjobs.json
