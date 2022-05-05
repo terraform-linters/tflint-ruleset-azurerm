@@ -1,3 +1,20 @@
+## 0.16.0 (2022-05-05)
+
+### Enhancements
+
+- [#168](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/168): Bump terraform-provider-azurerm to v3.4.0 from v3.0.2
+- [#169](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/169): Add support for Ebdsv5/Ebsv5 series
+
+### Chores
+
+- [#159](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/159): chores: Remove snaker
+- [#160](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/160): Fix rule template for rule generator
+- [#163](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/163): Bump actions/setup-go from 2 to 3
+- [#164](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/164): Bump github.com/hashicorp/hcl/v2 from 2.11.1 to 2.12.0
+- [#165](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/165): Bump github.com/hashicorp/hcl/v2 from 2.11.1 to 2.12.0 in /tools
+- [#166](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/166): Bump github.com/google/go-cmp from 0.5.7 to 0.5.8
+- [#167](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/167): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.10.0 to 0.11.0
+
 ## 0.15.0 (2022-03-30)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.35.0+ is required for this plugin to work.
