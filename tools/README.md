@@ -50,7 +50,6 @@ $ go run ./apispec-rule-gen
 ```console
 $ cd apispec-rule-gen/schema
 $ tfenv install
-# Edit provider.tf
 $ terraform init -upgrade
 $ terraform providers schema -json > schema.json
 $ cd ../../
