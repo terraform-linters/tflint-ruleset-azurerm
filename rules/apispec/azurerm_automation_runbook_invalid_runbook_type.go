@@ -31,6 +31,8 @@ func NewAzurermAutomationRunbookInvalidRunbookTypeRule() *AzurermAutomationRunbo
 			"PowerShell",
 			"GraphPowerShellWorkflow",
 			"GraphPowerShell",
+			"Python2",
+			"Python3",
 		},
 	}
 }
