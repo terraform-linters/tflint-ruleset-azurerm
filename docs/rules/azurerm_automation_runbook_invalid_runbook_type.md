@@ -11,6 +11,8 @@ Allowed values are:
 - PowerShell
 - GraphPowerShellWorkflow
 - GraphPowerShell
+- Python2
+- Python3
 
 ## Example
 
