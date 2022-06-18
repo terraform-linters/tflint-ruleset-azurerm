@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 229 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 231 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -184,7 +184,9 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_netapp_pool_invalid_name](rules/azurerm_netapp_pool_invalid_name.md)|✔|
 |[azurerm_netapp_pool_invalid_resource_group_name](rules/azurerm_netapp_pool_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_pool_invalid_service_level](rules/azurerm_netapp_pool_invalid_service_level.md)|✔|
+|[azurerm_netapp_snapshot_invalid_pool_name](rules/azurerm_netapp_snapshot_invalid_pool_name.md)|✔|
 |[azurerm_netapp_snapshot_invalid_resource_group_name](rules/azurerm_netapp_snapshot_invalid_resource_group_name.md)|✔|
+|[azurerm_netapp_snapshot_invalid_volume_name](rules/azurerm_netapp_snapshot_invalid_volume_name.md)|✔|
 |[azurerm_netapp_volume_invalid_name](rules/azurerm_netapp_volume_invalid_name.md)|✔|
 |[azurerm_netapp_volume_invalid_pool_name](rules/azurerm_netapp_volume_invalid_pool_name.md)|✔|
 |[azurerm_netapp_volume_invalid_resource_group_name](rules/azurerm_netapp_volume_invalid_resource_group_name.md)|✔|
