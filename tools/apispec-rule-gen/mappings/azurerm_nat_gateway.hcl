@@ -1,5 +1,5 @@
 mapping "azurerm_nat_gateway" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/natGateway.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2021-08-01/natGateway.json"
 
   idle_timeout_in_minutes = NatGatewayPropertiesFormat.idleTimeoutInMinutes
   public_ip_address_ids   = NatGatewayPropertiesFormat.publicIpAddresses
