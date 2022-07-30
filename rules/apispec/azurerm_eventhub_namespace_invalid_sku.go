@@ -27,6 +27,7 @@ func NewAzurermEventhubNamespaceInvalidSkuRule() *AzurermEventhubNamespaceInvali
 		enum: []string{
 			"Basic",
 			"Standard",
+			"Premium",
 		},
 	}
 }
