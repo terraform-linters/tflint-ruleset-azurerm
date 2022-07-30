@@ -4,7 +4,7 @@
 
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
-The rule requires the value to be in the range 400 <= x <= 10000.
+The rule requires the value to be 400 or higher.
 
 ## Example
 
@@ -18,7 +18,7 @@ resource "azurerm_healthcare_service" "foo" {
 $ tflint
 1 issue(s) found:
 
-Error: cosmosdb_throughput must be 10000 or less (azurerm_healthcare_service_invalid_cosmosdb_throughput)
+Error: cosmosdb_throughput must be 400 or higher (azurerm_healthcare_service_invalid_cosmosdb_throughput)
 
   on template.tf line 2:
   2:   cosmosdb_throughput = ... // invalid value
