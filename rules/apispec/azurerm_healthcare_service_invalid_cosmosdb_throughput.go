@@ -15,7 +15,6 @@ type AzurermHealthcareServiceInvalidCosmosdbThroughputRule struct {
 
 	resourceType  string
 	attributeName string
-	max           int
 	min           int
 }
 
@@ -24,7 +23,6 @@ func NewAzurermHealthcareServiceInvalidCosmosdbThroughputRule() *AzurermHealthca
 	return &AzurermHealthcareServiceInvalidCosmosdbThroughputRule{
 		resourceType:  "azurerm_healthcare_service",
 		attributeName: "cosmosdb_throughput",
-		max:           10000,
 		min:           400,
 	}
 }
@@ -69,13 +67,6 @@ func (r *AzurermHealthcareServiceInvalidCosmosdbThroughputRule) Check(runner tfl
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
 		err = runner.EnsureNoError(err, func() error {
-			if val > r.max {
-				runner.EmitIssue(
-					r,
-					"cosmosdb_throughput must be 10000 or less",
-					attribute.Expr.Range(),
-				)
-			}
 			if val < r.min {
 				runner.EmitIssue(
 					r,
