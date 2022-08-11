@@ -1,5 +1,5 @@
 mapping "azurerm_snapshot" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/stable/2019-11-01/disk.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2019-11-01/disk.json"
 
   name                = SnapshotNameParameter
   resource_group_name = ResourceGroupNameParameter
