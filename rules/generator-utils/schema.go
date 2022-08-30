@@ -37,6 +37,7 @@ type AttributeSchema struct {
 	Sensitive bool        `json:"sensitive"`
 }
 
+// LoadProviderSchema loads provider schema file and deserialize into an object
 func LoadProviderSchema(path string) ProviderSchema {
 	src, err := ioutil.ReadFile(path)
 	if err != nil {
