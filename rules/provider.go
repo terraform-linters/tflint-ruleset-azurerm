@@ -13,4 +13,5 @@ var Rules = append([]tflint.Rule{
 	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermMysqlServerInvalidVersionRule(),
+	NewAzurermResourceMissingTagsRule(),
 }, apispec.Rules...)

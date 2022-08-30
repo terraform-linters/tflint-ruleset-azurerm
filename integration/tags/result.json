@@ -1,0 +1,45 @@
+{
+  "issues": [
+    {
+      "rule": {
+        "name": "azurerm_resource_missing_tags",
+        "severity": "info",
+        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.17.2/docs/rules/azurerm_resource_missing_tags.md"
+      },
+      "message": "The resource is missing the following tags: \"Department\", \"Environment\".",
+      "range": {
+        "filename": "main.tf",
+        "start": {
+          "line": 10,
+          "column": 10
+        },
+        "end": {
+          "line": 10,
+          "column": 25
+        }
+      },
+      "callers": []
+    },
+    {
+      "rule": {
+        "name": "azurerm_resource_missing_tags",
+        "severity": "info",
+        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.17.2/docs/rules/azurerm_resource_missing_tags.md"
+      },
+      "message": "The resource is missing the following tags: \"Department\".",
+      "range": {
+        "filename": "main.tf",
+        "start": {
+          "line": 23,
+          "column": 10
+        },
+        "end": {
+          "line": 25,
+          "column": 4
+        }
+      },
+      "callers": []
+    }
+  ],
+  "errors": []
+}

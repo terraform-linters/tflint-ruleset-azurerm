@@ -22,6 +22,11 @@ func TestIntegration(t *testing.T) {
 			Command: exec.Command("tflint", "--format", "json", "--force"),
 			Dir:     "basic",
 		},
+		{
+			Name:    "tags",
+			Command: exec.Command("tflint", "--format", "json", "--force"),
+			Dir:     "tags",
+		},
 	}
 
 	dir, _ := os.Getwd()
