@@ -26,7 +26,6 @@ type azurermResourceTagsRuleConfig struct {
 
 const (
 	tagsAttributeName = "tags"
-	tagBlockName      = "tag"
 )
 
 // NewAzurermResourceMissingTagsRule returns new rules for all resources that support tags
@@ -56,8 +55,6 @@ func (r *AzurermResourceMissingTagsRule) Link() string {
 
 // Check checks resources for missing tags
 func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
-	// TODO: Write the implementation here. See this documentation for what tflint.Runner can do.
-	//       https://pkg.go.dev/github.com/terraform-linters/tflint-plugin-sdk/tflint#Runner
 	config := azurermResourceTagsRuleConfig{}
 
 	if err := runner.DecodeRuleConfig(r.Name(), &config); err != nil {
@@ -87,7 +84,7 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 				wantType := cty.Map(cty.String)
 				err := runner.EvaluateExpr(attribute.Expr, &resourceTags, &tflint.EvaluateExprOption{WantType: &wantType})
 				err = runner.EnsureNoError(err, func() error {
-					r.emitIssue(runner, resourceTags, config, attribute.Expr.Range())
+					r.emitIssue(err, runner, resourceTags, config, attribute.Expr.Range())
 					return nil
 				})
 				if err != nil {
@@ -95,7 +92,13 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 				}
 			} else {
 				logger.Debug("checking", "resource type", resource.Labels[0], "resource name", resource.Labels[1])
-				r.emitIssue(runner, map[string]string{}, config, resource.DefRange)
+				err = runner.EnsureNoError(err, func() error {
+					r.emitIssue(err, runner, map[string]string{}, config, resource.DefRange)
+					return nil
+				})
+				if err != nil {
+					return err
+				}
 			}
 		}
 	}
@@ -103,19 +106,29 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 	return nil
 }
 
-func (r *AzurermResourceMissingTagsRule) emitIssue(runner tflint.Runner, tags map[string]string, config azurermResourceTagsRuleConfig, location hcl.Range) {
-	var missing []string
-	for _, tag := range config.Tags {
-		if _, ok := tags[tag]; !ok {
-			missing = append(missing, fmt.Sprintf("\"%s\"", tag))
+func (r *AzurermResourceMissingTagsRule) emitIssue(err error, runner tflint.Runner, tags map[string]string, config azurermResourceTagsRuleConfig, location hcl.Range) error {
+	err = runner.EnsureNoError(err, func() error {
+		var missing []string
+		for _, tag := range config.Tags {
+			if _, ok := tags[tag]; !ok {
+				missing = append(missing, fmt.Sprintf("\"%s\"", tag))
+			}
 		}
+		if len(missing) > 0 {
+			sort.Strings(missing)
+			wanted := strings.Join(missing, ", ")
+			issue := fmt.Sprintf("The resource is missing the following tags: %s.", wanted)
+			runner.EmitIssue(r, issue, location)
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return err
 	}
-	if len(missing) > 0 {
-		sort.Strings(missing)
-		wanted := strings.Join(missing, ", ")
-		issue := fmt.Sprintf("The resource is missing the following tags: %s.", wanted)
-		runner.EmitIssue(r, issue, location)
-	}
+
+	return nil
 }
 
 func stringInSlice(a string, list []string) bool {

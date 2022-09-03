@@ -21,7 +21,7 @@ type TemplateData struct {
 }
 
 func main() {
-	provider := utils.LoadProviderSchema("../../../tools/apispec-rule-gen/schema/schema.json")
+	provider := utils.LoadProviderSchema("../../tools/apispec-rule-gen/schema/schema.json")
 	resources := make([]string, 0)
 
 	for name, resource := range provider.ResourceSchemas {
