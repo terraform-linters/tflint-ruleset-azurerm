@@ -84,19 +84,14 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 				wantType := cty.Map(cty.String)
 				err := runner.EvaluateExpr(attribute.Expr, &resourceTags, &tflint.EvaluateExprOption{WantType: &wantType})
 				err = runner.EnsureNoError(err, func() error {
-					r.emitIssue(err, runner, resourceTags, config, attribute.Expr.Range())
-					return nil
+					return r.emitIssue(runner, resourceTags, config, attribute.Expr.Range())
 				})
 				if err != nil {
 					return err
 				}
 			} else {
 				logger.Debug("checking", "resource type", resource.Labels[0], "resource name", resource.Labels[1])
-				err = runner.EnsureNoError(err, func() error {
-					r.emitIssue(err, runner, map[string]string{}, config, resource.DefRange)
-					return nil
-				})
-				if err != nil {
+				if err := r.emitIssue(runner, map[string]string{}, config, resource.DefRange); err != nil {
 					return err
 				}
 			}
@@ -106,26 +101,18 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 	return nil
 }
 
-func (r *AzurermResourceMissingTagsRule) emitIssue(err error, runner tflint.Runner, tags map[string]string, config azurermResourceTagsRuleConfig, location hcl.Range) error {
-	err = runner.EnsureNoError(err, func() error {
-		var missing []string
-		for _, tag := range config.Tags {
-			if _, ok := tags[tag]; !ok {
-				missing = append(missing, fmt.Sprintf("\"%s\"", tag))
-			}
+func (r *AzurermResourceMissingTagsRule) emitIssue(runner tflint.Runner, tags map[string]string, config azurermResourceTagsRuleConfig, location hcl.Range) error {
+	var missing []string
+	for _, tag := range config.Tags {
+		if _, ok := tags[tag]; !ok {
+			missing = append(missing, fmt.Sprintf("\"%s\"", tag))
 		}
-		if len(missing) > 0 {
-			sort.Strings(missing)
-			wanted := strings.Join(missing, ", ")
-			issue := fmt.Sprintf("The resource is missing the following tags: %s.", wanted)
-			runner.EmitIssue(r, issue, location)
-		}
-
-		return nil
-	})
-
-	if err != nil {
-		return err
+	}
+	if len(missing) > 0 {
+		sort.Strings(missing)
+		wanted := strings.Join(missing, ", ")
+		issue := fmt.Sprintf("The resource is missing the following tags: %s.", wanted)
+		return runner.EmitIssue(r, issue, location)
 	}
 
 	return nil
