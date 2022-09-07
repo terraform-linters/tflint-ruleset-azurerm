@@ -27,6 +27,7 @@ func NewAzurermStorageAccountInvalidAccessTierRule() *AzurermStorageAccountInval
 		enum: []string{
 			"Hot",
 			"Cool",
+			"Premium",
 		},
 	}
 }
