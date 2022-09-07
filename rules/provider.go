@@ -7,6 +7,8 @@ import (
 
 // Rules is a list of all rules
 var Rules = append([]tflint.Rule{
+	NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
+	NewAzurermKubernetesClusterNodePoolInvalidVMSizeRule(),
 	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermVirtualMachineInvalidVMSizeRule(),

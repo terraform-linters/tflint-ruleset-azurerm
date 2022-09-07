@@ -43,42 +43,6 @@ resource "azurerm_analysis_services_server" "main" {
 }`,
 			Expected: helper.Issues{},
 		},
-		{
-			Name: "invalid (block)",
-			Rule: NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
-			Content: `
-resource "azurerm_kubernetes_cluster" "example" {
-	default_node_pool {
-		name       = "default"
-		node_count = 1
-		vm_size    = "Standard_D2_v24"
-	}
-}`,
-			Expected: helper.Issues{
-				{
-					Rule:    NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
-					Message: `"Standard_D2_v24" is an invalid value as vm_size`,
-					Range: hcl.Range{
-						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 6, Column: 16},
-						End:      hcl.Pos{Line: 6, Column: 33},
-					},
-				},
-			},
-		},
-		{
-			Name: "valid (block)",
-			Rule: NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
-			Content: `
-resource "azurerm_kubernetes_cluster" "example" {
-	default_node_pool {
-		name       = "default"
-		node_count = 1
-		vm_size    = "Standard_D2_v2"
-	}
-}`,
-			Expected: helper.Issues{},
-		},
 	}
 
 	for _, tc := range cases {

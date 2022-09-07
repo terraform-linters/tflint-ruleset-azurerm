@@ -9,6 +9,6 @@ mapping "azurerm_kubernetes_cluster" {
   node_resource_group        = ManagedClusterProperties.nodeResourceGroup
 
   default_node_pool = {
-    vm_size = ContainerServiceVMSize
+    vm_size = any //ContainerServiceVMSize
   }
 }

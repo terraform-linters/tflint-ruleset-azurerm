@@ -1,7 +1,7 @@
 mapping "azurerm_kubernetes_cluster_node_pool" {
   import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2022-03-02-preview/managedClusters.json"
 
-  vm_size               = ContainerServiceVMSize
+  vm_size               = any //ContainerServiceVMSize
   availability_zones    = ManagedClusterAgentPoolProfileProperties.availabilityZones
   enable_auto_scaling   = ManagedClusterAgentPoolProfileProperties.enableAutoScaling
   enable_node_public_ip = ManagedClusterAgentPoolProfileProperties.enableNodePublicIP
