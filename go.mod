@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dave/dst v0.27.0
-	github.com/google/go-cmp v0.5.8
+	github.com/google/go-cmp v0.5.9
 	github.com/hashicorp/hcl/v2 v2.14.0
 	github.com/terraform-linters/tflint-plugin-sdk v0.12.0
 	github.com/zclconf/go-cty v1.11.0
