@@ -9,6 +9,9 @@ Allowed values are:
 - Premium_LRS
 - StandardSSD_LRS
 - UltraSSD_LRS
+- Premium_ZRS
+- StandardSSD_ZRS
+- PremiumV2_LRS
 
 ## Example
 
@@ -43,4 +46,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2019-11-01/disk.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/disk.json
