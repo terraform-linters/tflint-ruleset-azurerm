@@ -1,3 +1,21 @@
+## 0.19.0 (2022-10-27)
+
+### Breaking Changes
+
+- [#202](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/202) [#214](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/214): Bump terraform-provider-azurerm to v3.28.0 from v3.21.1
+  - Removed `azurerm_managed_disk_invalid_create_option` and `azurerm_snapshot_invalid_create_option` rules
+
+### Enhancements
+
+- [#210](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/210): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.12.0 to 0.14.0
+
+### Chores
+
+- [#205](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/205): Bump github.com/hashicorp/hcl/v2 from 2.14.0 to 2.14.1 in /tools
+- [#208](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/208): Bump github.com/dave/dst from 0.27.0 to 0.27.2
+- [#211](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/211): Bump github.com/zclconf/go-cty from 1.11.0 to 1.11.1
+- [#212](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/212): Bump github.com/zclconf/go-cty from 1.11.0 to 1.11.1 in /tools
+
 ## 0.18.0 (2022-09-08)
 
 The minimum supported version of TFLint has changed in this version. TFLint v0.40.0+ is required for this plugin to work.
