@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 228 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 226 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -164,7 +164,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
 |[azurerm_maintenance_configuration_invalid_scope](rules/azurerm_maintenance_configuration_invalid_scope.md)|✔|
 |[azurerm_managed_application_definition_invalid_lock_level](rules/azurerm_managed_application_definition_invalid_lock_level.md)|✔|
-|[azurerm_managed_disk_invalid_create_option](rules/azurerm_managed_disk_invalid_create_option.md)|✔|
 |[azurerm_managed_disk_invalid_os_type](rules/azurerm_managed_disk_invalid_os_type.md)|✔|
 |[azurerm_managed_disk_invalid_storage_account_type](rules/azurerm_managed_disk_invalid_storage_account_type.md)|✔|
 |[azurerm_maps_account_invalid_sku_name](rules/azurerm_maps_account_invalid_sku_name.md)|✔|
@@ -217,7 +216,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_servicebus_subscription_rule_invalid_filter_type](rules/azurerm_servicebus_subscription_rule_invalid_filter_type.md)|✔|
 |[azurerm_servicebus_topic_invalid_status](rules/azurerm_servicebus_topic_invalid_status.md)|✔|
 |[azurerm_shared_image_invalid_os_type](rules/azurerm_shared_image_invalid_os_type.md)|✔|
-|[azurerm_snapshot_invalid_create_option](rules/azurerm_snapshot_invalid_create_option.md)|✔|
 |[azurerm_sql_database_invalid_create_mode](rules/azurerm_sql_database_invalid_create_mode.md)|✔|
 |[azurerm_storage_account_invalid_access_tier](rules/azurerm_storage_account_invalid_access_tier.md)|✔|
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|

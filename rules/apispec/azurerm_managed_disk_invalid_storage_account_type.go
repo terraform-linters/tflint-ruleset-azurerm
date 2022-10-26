@@ -29,6 +29,9 @@ func NewAzurermManagedDiskInvalidStorageAccountTypeRule() *AzurermManagedDiskInv
 			"Premium_LRS",
 			"StandardSSD_LRS",
 			"UltraSSD_LRS",
+			"Premium_ZRS",
+			"StandardSSD_ZRS",
+			"PremiumV2_LRS",
 		},
 	}
 }
