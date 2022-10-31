@@ -7,7 +7,7 @@ require (
 	github.com/google/go-cmp v0.5.9
 	github.com/hashicorp/hcl/v2 v2.14.1
 	github.com/terraform-linters/tflint-plugin-sdk v0.14.0
-	github.com/zclconf/go-cty v1.11.1
+	github.com/zclconf/go-cty v1.12.0
 )
 
 require (
