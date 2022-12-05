@@ -1,5 +1,5 @@
 mapping "azurerm_virtual_machine_scale_set_extension" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2021-11-01/compute.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-08-01/virtualMachineScaleSet.json"
 
   publisher                  = VirtualMachineScaleSetExtensionProperties.publisher
   type                       = VirtualMachineScaleSetExtensionProperties.type
