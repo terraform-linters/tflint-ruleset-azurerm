@@ -1,3 +1,18 @@
+## 0.20.0 (2022-12-12)
+
+### Breaking Changes
+
+- [#213](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/213) [#223](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/223) [#224](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/224): Bump terraform-provider-azurerm to v3.35.0 from v3.28.0
+  - Removed `azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode` rule
+  - Removed `azurerm_virtual_machine_scale_set_invalid_upgrade_policy_mode` rule
+  - Removed `azurerm_windows_virtual_machine_scale_set_invalid_upgrade_mode` rule
+
+### Chores
+
+- [#217](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/217): Add signatures for keyless signing
+- [#219](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/219): Bump github.com/hashicorp/hcl/v2 from 2.14.1 to 2.15.0
+- [#220](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/220): Bump github.com/hashicorp/hcl/v2 from 2.14.1 to 2.15.0 in /tools
+
 ## 0.19.0 (2022-10-27)
 
 ### Breaking Changes
