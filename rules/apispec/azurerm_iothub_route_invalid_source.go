@@ -30,7 +30,9 @@ func NewAzurermIothubRouteInvalidSourceRule() *AzurermIothubRouteInvalidSourceRu
 			"TwinChangeEvents",
 			"DeviceLifecycleEvents",
 			"DeviceJobLifecycleEvents",
+			"DigitalTwinChangeEvents",
 			"DeviceConnectionStateEvents",
+			"MqttBrokerMessages",
 		},
 	}
 }

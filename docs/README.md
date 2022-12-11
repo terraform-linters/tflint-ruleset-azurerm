@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 226 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 223 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -160,7 +160,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_linux_virtual_machine_invalid_priority](rules/azurerm_linux_virtual_machine_invalid_priority.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_priority](rules/azurerm_linux_virtual_machine_scale_set_invalid_priority.md)|✔|
-|[azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_linux_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
 |[azurerm_maintenance_configuration_invalid_scope](rules/azurerm_maintenance_configuration_invalid_scope.md)|✔|
 |[azurerm_managed_application_definition_invalid_lock_level](rules/azurerm_managed_application_definition_invalid_lock_level.md)|✔|
@@ -231,7 +230,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_virtual_machine_data_disk_attachment_invalid_create_option](rules/azurerm_virtual_machine_data_disk_attachment_invalid_create_option.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_priority](rules/azurerm_virtual_machine_scale_set_invalid_priority.md)|✔|
-|[azurerm_virtual_machine_scale_set_invalid_upgrade_policy_mode](rules/azurerm_virtual_machine_scale_set_invalid_upgrade_policy_mode.md)|✔|
 |[azurerm_virtual_network_gateway_connection_invalid_connection_protocol](rules/azurerm_virtual_network_gateway_connection_invalid_connection_protocol.md)|✔|
 |[azurerm_virtual_network_gateway_connection_invalid_type](rules/azurerm_virtual_network_gateway_connection_invalid_type.md)|✔|
 |[azurerm_virtual_network_gateway_invalid_generation](rules/azurerm_virtual_network_gateway_invalid_generation.md)|✔|
@@ -243,4 +241,3 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_windows_virtual_machine_invalid_priority](rules/azurerm_windows_virtual_machine_invalid_priority.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_priority](rules/azurerm_windows_virtual_machine_scale_set_invalid_priority.md)|✔|
-|[azurerm_windows_virtual_machine_scale_set_invalid_upgrade_mode](rules/azurerm_windows_virtual_machine_scale_set_invalid_upgrade_mode.md)|✔|

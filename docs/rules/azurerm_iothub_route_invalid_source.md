@@ -10,7 +10,9 @@ Allowed values are:
 - TwinChangeEvents
 - DeviceLifecycleEvents
 - DeviceJobLifecycleEvents
+- DigitalTwinChangeEvents
 - DeviceConnectionStateEvents
+- MqttBrokerMessages
 
 ## Example
 
@@ -45,4 +47,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/iothub/resource-manager/Microsoft.Devices/stable/2021-03-31/iothub.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/iothub/resource-manager/Microsoft.Devices/preview/2022-04-30-preview/iothub.json

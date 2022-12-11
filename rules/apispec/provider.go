@@ -152,7 +152,6 @@ var Rules = []tflint.Rule{
 	NewAzurermLinuxVirtualMachineInvalidPriorityRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidEvictionPolicyRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidPriorityRule(),
-	NewAzurermLinuxVirtualMachineScaleSetInvalidUpgradeModeRule(),
 	NewAzurermLogicAppTriggerRecurrenceInvalidFrequencyRule(),
 	NewAzurermMaintenanceConfigurationInvalidScopeRule(),
 	NewAzurermManagedApplicationDefinitionInvalidLockLevelRule(),
@@ -223,7 +222,6 @@ var Rules = []tflint.Rule{
 	NewAzurermVirtualMachineDataDiskAttachmentInvalidCreateOptionRule(),
 	NewAzurermVirtualMachineScaleSetInvalidEvictionPolicyRule(),
 	NewAzurermVirtualMachineScaleSetInvalidPriorityRule(),
-	NewAzurermVirtualMachineScaleSetInvalidUpgradePolicyModeRule(),
 	NewAzurermVirtualNetworkGatewayConnectionInvalidConnectionProtocolRule(),
 	NewAzurermVirtualNetworkGatewayConnectionInvalidTypeRule(),
 	NewAzurermVirtualNetworkGatewayInvalidGenerationRule(),
@@ -235,7 +233,6 @@ var Rules = []tflint.Rule{
 	NewAzurermWindowsVirtualMachineInvalidPriorityRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidEvictionPolicyRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidPriorityRule(),
-	NewAzurermWindowsVirtualMachineScaleSetInvalidUpgradeModeRule(),
 }
 
 func truncateLongMessage(str string) string {
