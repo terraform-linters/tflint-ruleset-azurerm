@@ -1,5 +1,5 @@
 mapping "azurerm_route" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2021-08-01/routeTable.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2022-05-01/routeTable.json"
 
   address_prefix         = RoutePropertiesFormat.addressPrefix
   next_hop_type          = RouteNextHopType

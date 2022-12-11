@@ -1,5 +1,5 @@
 mapping "azurerm_public_ip" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2021-08-01/publicIpAddress.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2022-05-01/publicIpAddress.json"
 
   sku                     = PublicIPAddressSku.name
   idle_timeout_in_minutes = PublicIPAddressPropertiesFormat.idleTimeoutInMinutes
