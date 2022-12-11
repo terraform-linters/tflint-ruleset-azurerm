@@ -1,11 +1,11 @@
 mapping "azurerm_container_group" {
-  import_path = "azure-rest-api-specs/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2019-12-01/containerInstance.json"
+  import_path = "azure-rest-api-specs/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-10-01/containerInstance.json"
 
   name                = ContainerGroupNameParameter
   resource_group_name = ResourceGroupNameParameter
   location            = LocationParameter
   dns_name_label      = IpAddress.dnsNameLabel
   ip_address_type     = IpAddress.type
-  network_profile_id  = ContainerGroupNetworkProfile.id
+  network_profile_id  = any //ContainerGroupNetworkProfile.id
 }
 
