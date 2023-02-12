@@ -4,57 +4,53 @@ package apispec
 
 import (
 	"fmt"
+	"regexp"
 
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermPostgresqlServerInvalidVersionRule checks the pattern is valid
-type AzurermPostgresqlServerInvalidVersionRule struct {
+// AzurermPostgresqlDatabaseInvalidCharsetRule checks the pattern is valid
+type AzurermPostgresqlDatabaseInvalidCharsetRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
 	attributeName string
-	enum          []string
+	pattern       *regexp.Regexp
 }
 
-// NewAzurermPostgresqlServerInvalidVersionRule returns new rule with default attributes
-func NewAzurermPostgresqlServerInvalidVersionRule() *AzurermPostgresqlServerInvalidVersionRule {
-	return &AzurermPostgresqlServerInvalidVersionRule{
-		resourceType:  "azurerm_postgresql_server",
-		attributeName: "version",
-		enum: []string{
-			"14",
-			"13",
-			"12",
-			"11",
-		},
+// NewAzurermPostgresqlDatabaseInvalidCharsetRule returns new rule with default attributes
+func NewAzurermPostgresqlDatabaseInvalidCharsetRule() *AzurermPostgresqlDatabaseInvalidCharsetRule {
+	return &AzurermPostgresqlDatabaseInvalidCharsetRule{
+		resourceType:  "azurerm_postgresql_database",
+		attributeName: "charset",
+		pattern:       regexp.MustCompile(`^[a-zA-Z]+\w*$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermPostgresqlServerInvalidVersionRule) Name() string {
-	return "azurerm_postgresql_server_invalid_version"
+func (r *AzurermPostgresqlDatabaseInvalidCharsetRule) Name() string {
+	return "azurerm_postgresql_database_invalid_charset"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermPostgresqlServerInvalidVersionRule) Enabled() bool {
+func (r *AzurermPostgresqlDatabaseInvalidCharsetRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermPostgresqlServerInvalidVersionRule) Severity() tflint.Severity {
+func (r *AzurermPostgresqlDatabaseInvalidCharsetRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermPostgresqlServerInvalidVersionRule) Link() string {
+func (r *AzurermPostgresqlDatabaseInvalidCharsetRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermPostgresqlServerInvalidVersionRule) Check(runner tflint.Runner) error {
+func (r *AzurermPostgresqlDatabaseInvalidCharsetRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -73,16 +69,10 @@ func (r *AzurermPostgresqlServerInvalidVersionRule) Check(runner tflint.Runner) 
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
 		err = runner.EnsureNoError(err, func() error {
-			found := false
-			for _, item := range r.enum {
-				if item == val {
-					found = true
-				}
-			}
-			if !found {
+			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" is an invalid value as version`, truncateLongMessage(val)),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z]+\w*$`),
 					attribute.Expr.Range(),
 				)
 			}
