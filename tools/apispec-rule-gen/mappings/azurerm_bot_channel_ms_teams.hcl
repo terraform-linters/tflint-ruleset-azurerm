@@ -3,6 +3,6 @@ mapping "azurerm_bot_channel_ms_teams" {
 
   resource_group_name = resourceGroupNameParameter
   bot_name            = resourceNameParameter
-  calling_web_hook    = MsTeamsChannelProperties.callingWebHook
+  calling_web_hook    = MsTeamsChannelProperties.callingWebhook
   enable_calling      = MsTeamsChannelProperties.enableCalling
 }

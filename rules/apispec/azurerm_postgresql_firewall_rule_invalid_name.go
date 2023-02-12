@@ -4,57 +4,53 @@ package apispec
 
 import (
 	"fmt"
+	"regexp"
 
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermPostgresqlServerInvalidVersionRule checks the pattern is valid
-type AzurermPostgresqlServerInvalidVersionRule struct {
+// AzurermPostgresqlFirewallRuleInvalidNameRule checks the pattern is valid
+type AzurermPostgresqlFirewallRuleInvalidNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
 	attributeName string
-	enum          []string
+	pattern       *regexp.Regexp
 }
 
-// NewAzurermPostgresqlServerInvalidVersionRule returns new rule with default attributes
-func NewAzurermPostgresqlServerInvalidVersionRule() *AzurermPostgresqlServerInvalidVersionRule {
-	return &AzurermPostgresqlServerInvalidVersionRule{
-		resourceType:  "azurerm_postgresql_server",
-		attributeName: "version",
-		enum: []string{
-			"14",
-			"13",
-			"12",
-			"11",
-		},
+// NewAzurermPostgresqlFirewallRuleInvalidNameRule returns new rule with default attributes
+func NewAzurermPostgresqlFirewallRuleInvalidNameRule() *AzurermPostgresqlFirewallRuleInvalidNameRule {
+	return &AzurermPostgresqlFirewallRuleInvalidNameRule{
+		resourceType:  "azurerm_postgresql_firewall_rule",
+		attributeName: "name",
+		pattern:       regexp.MustCompile(`^[-\w\._]+$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermPostgresqlServerInvalidVersionRule) Name() string {
-	return "azurerm_postgresql_server_invalid_version"
+func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Name() string {
+	return "azurerm_postgresql_firewall_rule_invalid_name"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermPostgresqlServerInvalidVersionRule) Enabled() bool {
+func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermPostgresqlServerInvalidVersionRule) Severity() tflint.Severity {
+func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermPostgresqlServerInvalidVersionRule) Link() string {
+func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermPostgresqlServerInvalidVersionRule) Check(runner tflint.Runner) error {
+func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -73,16 +69,10 @@ func (r *AzurermPostgresqlServerInvalidVersionRule) Check(runner tflint.Runner) 
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
 		err = runner.EnsureNoError(err, func() error {
-			found := false
-			for _, item := range r.enum {
-				if item == val {
-					found = true
-				}
-			}
-			if !found {
+			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" is an invalid value as version`, truncateLongMessage(val)),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-\w\._]+$`),
 					attribute.Expr.Range(),
 				)
 			}
