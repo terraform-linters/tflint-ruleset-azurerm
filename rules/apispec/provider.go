@@ -47,7 +47,6 @@ var Rules = []tflint.Rule{
 	NewAzurermCdnProfileInvalidResourceGroupNameRule(),
 	NewAzurermCdnProfileInvalidSkuRule(),
 	NewAzurermCognitiveAccountInvalidNameRule(),
-	NewAzurermContainerGroupInvalidIPAddressTypeRule(),
 	NewAzurermContainerRegistryInvalidNameRule(),
 	NewAzurermContainerRegistryInvalidSkuRule(),
 	NewAzurermContainerRegistryWebhookInvalidNameRule(),
