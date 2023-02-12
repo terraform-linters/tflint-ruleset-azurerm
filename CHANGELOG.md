@@ -1,3 +1,22 @@
+## 0.21.0 (2023-02-12)
+
+### Breaking Changes
+
+- [#235](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/235): Remove `azurerm_container_group_invalid_ip_address_type` rule
+
+### Enhancements
+
+- [#234](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/234): Bump terraform-provider-azurerm to v3.43.0 from v3.35.0
+
+### Chores
+
+- [#226](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/226): Bump goreleaser/goreleaser-action from 3 to 4
+- [#227](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/227): Pass GITHUB_TOKEN to e2e test workflow
+- [#228](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/228): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.14.0 to 0.15.0
+- [#231](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/231): Bump github.com/hashicorp/hcl/v2 from 2.15.0 to 2.16.0
+- [#232](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/232): Bump github.com/hashicorp/hcl/v2 from 2.15.0 to 2.16.0 in /tools
+- [#236](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/236): Update snapshot
+
 ## 0.20.0 (2022-12-12)
 
 ### Breaking Changes
