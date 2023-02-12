@@ -5,7 +5,7 @@ mapping "azurerm_container_group" {
   resource_group_name = ResourceGroupNameParameter
   location            = LocationParameter
   dns_name_label      = IpAddress.dnsNameLabel
-  ip_address_type     = IpAddress.type
+  ip_address_type     = any //IpAddress.type
   network_profile_id  = any //ContainerGroupNetworkProfile.id
 }
 

@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 228 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 227 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -55,7 +55,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_cdn_profile_invalid_resource_group_name](rules/azurerm_cdn_profile_invalid_resource_group_name.md)|✔|
 |[azurerm_cdn_profile_invalid_sku](rules/azurerm_cdn_profile_invalid_sku.md)|✔|
 |[azurerm_cognitive_account_invalid_name](rules/azurerm_cognitive_account_invalid_name.md)|✔|
-|[azurerm_container_group_invalid_ip_address_type](rules/azurerm_container_group_invalid_ip_address_type.md)|✔|
 |[azurerm_container_registry_invalid_name](rules/azurerm_container_registry_invalid_name.md)|✔|
 |[azurerm_container_registry_invalid_sku](rules/azurerm_container_registry_invalid_sku.md)|✔|
 |[azurerm_container_registry_webhook_invalid_name](rules/azurerm_container_registry_webhook_invalid_name.md)|✔|
