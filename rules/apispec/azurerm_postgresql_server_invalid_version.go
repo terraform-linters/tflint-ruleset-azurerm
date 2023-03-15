@@ -25,9 +25,11 @@ func NewAzurermPostgresqlServerInvalidVersionRule() *AzurermPostgresqlServerInva
 		resourceType:  "azurerm_postgresql_server",
 		attributeName: "version",
 		enum: []string{
-			"14",
-			"13",
-			"12",
+			"9.5",
+			"9.6",
+			"10",
+			"10.0",
+			"10.2",
 			"11",
 		},
 	}
