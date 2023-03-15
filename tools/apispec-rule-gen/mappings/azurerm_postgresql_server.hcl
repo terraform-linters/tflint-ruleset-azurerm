@@ -1,9 +1,9 @@
 mapping "azurerm_postgresql_server" {
-  import_path = "azure-rest-api-specs/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/FlexibleServers.json"
+  import_path = "azure-rest-api-specs/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json"
 
   name                         = any //ServerNameParameter
   sku_name                     = Sku.name
-  administrator_login          = ServerProperties.administratorLogin
-  administrator_login_password = ServerProperties.administratorLoginPassword
+  administrator_login          = ServerPropertiesForDefaultCreate.administratorLogin
+  administrator_login_password = ServerPropertiesForDefaultCreate.administratorLoginPassword
   version                      = ServerVersion
 }

@@ -5,9 +5,11 @@
 Warns about values that appear to be invalid based on [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs).
 
 Allowed values are:
-- 14
-- 13
-- 12
+- 9.5
+- 9.6
+- 10
+- 10.0
+- 10.2
 - 11
 
 ## Example
@@ -43,4 +45,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/FlexibleServers.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
