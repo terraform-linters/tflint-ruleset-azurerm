@@ -1,3 +1,27 @@
+## 0.22.0 (2023-03-21)
+
+### Enhancements
+
+- [#258](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/258): Add support for HBv4 and HX series
+
+### BugFixes
+
+- [#252](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/252): Fix `azurerm_postgresql_server` rule by correcting import path
+
+### Chores
+
+- [#238](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/238): Bump golang.org/x/net from 0.3.0 to 0.7.0
+- [#237](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/237) [#239](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/239) [#257](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/257) [#259](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/259): Bump terraform-provider-azurerm to v3.48.0 from v3.43.0
+- [#242](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/242): Bump golang.org/x/text from 0.3.7 to 0.3.8 in /tools
+- [#245](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/245): Bump sigstore/cosign-installer from 2 to 3
+- [#247](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/247): Bump github.com/hashicorp/hcl/v2 from 2.16.0 to 2.16.2 in /tools
+- [#248](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/248): Bump github.com/hashicorp/hcl/v2 from 2.16.0 to 2.16.2
+- [#254](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/254): Bump github.com/zclconf/go-cty from 1.12.1 to 1.13.1 in /tools
+- [#255](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/255): Bump github.com/zclconf/go-cty from 1.12.1 to 1.13.1
+- [#256](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/256): Bump actions/setup-go from 3 to 4
+- [#260](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/260): Fix signing for Cosign v2
+- [#261](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/261): go 1.20
+
 ## 0.21.0 (2023-02-12)
 
 ### Breaking Changes
