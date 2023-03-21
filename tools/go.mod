@@ -3,7 +3,7 @@ module github.com/terraform-linters/tflint-ruleset-azurerm/tools
 go 1.19
 
 require (
-	github.com/hashicorp/hcl/v2 v2.16.0
+	github.com/hashicorp/hcl/v2 v2.16.2
 	github.com/zclconf/go-cty v1.12.1
 )
 
