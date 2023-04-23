@@ -63,10 +63,7 @@ func (r *AzurermDedicatedHostInvalidPlatformFaultDomainRule) Check(runner tflint
 		if !exists {
 			continue
 		}
-		var val int
-		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
-
-		err = runner.EnsureNoError(err, func() error {
+		err := runner.EvaluateExpr(attribute.Expr, func (val int) error {
 			if val < r.min {
 				runner.EmitIssue(
 					r,
@@ -75,7 +72,7 @@ func (r *AzurermDedicatedHostInvalidPlatformFaultDomainRule) Check(runner tflint
 				)
 			}
 			return nil
-		})
+		}, nil)
 		if err != nil {
 			return err
 		}

@@ -65,10 +65,7 @@ func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Check(runner tflint.Runne
 		if !exists {
 			continue
 		}
-		var val string
-		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
-
-		err = runner.EnsureNoError(err, func() error {
+		err := runner.EvaluateExpr(attribute.Expr, func (val string) error {
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
@@ -77,7 +74,7 @@ func (r *AzurermPostgresqlFirewallRuleInvalidNameRule) Check(runner tflint.Runne
 				)
 			}
 			return nil
-		})
+		}, nil)
 		if err != nil {
 			return err
 		}

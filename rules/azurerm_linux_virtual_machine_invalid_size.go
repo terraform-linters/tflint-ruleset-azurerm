@@ -59,10 +59,7 @@ func (r *AzurermLinuxVirtualMachineInvalidSizeRule) Check(runner tflint.Runner) 
 			continue
 		}
 
-		var val string
-		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
-
-		err = runner.EnsureNoError(err, func() error {
+		err := runner.EvaluateExpr(attribute.Expr, func(val string) error {
 			found := false
 			for _, item := range validMachineSizes {
 				if item == val {
@@ -77,7 +74,7 @@ func (r *AzurermLinuxVirtualMachineInvalidSizeRule) Check(runner tflint.Runner) 
 				)
 			}
 			return nil
-		})
+		}, nil)
 		if err != nil {
 			return err
 		}

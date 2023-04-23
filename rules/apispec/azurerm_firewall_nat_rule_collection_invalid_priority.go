@@ -65,10 +65,7 @@ func (r *AzurermFirewallNatRuleCollectionInvalidPriorityRule) Check(runner tflin
 		if !exists {
 			continue
 		}
-		var val int
-		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
-
-		err = runner.EnsureNoError(err, func() error {
+		err := runner.EvaluateExpr(attribute.Expr, func (val int) error {
 			if val > r.max {
 				runner.EmitIssue(
 					r,
@@ -84,7 +81,7 @@ func (r *AzurermFirewallNatRuleCollectionInvalidPriorityRule) Check(runner tflin
 				)
 			}
 			return nil
-		})
+		}, nil)
 		if err != nil {
 			return err
 		}
