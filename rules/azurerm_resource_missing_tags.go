@@ -80,12 +80,10 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 
 			if attribute, ok := resource.Body.Attributes[tagsAttributeName]; ok {
 				logger.Debug("checking", "resource type", resource.Labels[0], "resource name", resource.Labels[1], "attribute", tagsAttributeName)
-				resourceTags := make(map[string]string)
 				wantType := cty.Map(cty.String)
-				err := runner.EvaluateExpr(attribute.Expr, &resourceTags, &tflint.EvaluateExprOption{WantType: &wantType})
-				err = runner.EnsureNoError(err, func() error {
+				err := runner.EvaluateExpr(attribute.Expr, func(resourceTags map[string]string) error {
 					return r.emitIssue(runner, resourceTags, config, attribute.Expr.Range())
-				})
+				}, &tflint.EvaluateExprOption{WantType: &wantType})
 				if err != nil {
 					return err
 				}
