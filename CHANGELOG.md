@@ -1,3 +1,15 @@
+## 0.23.0 (2023-04-23)
+
+### Enhancements
+
+- [#265](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/265): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.15.0 to 0.16.1
+
+### Chores
+
+- [#262](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/262) [#267](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/267): Bump terraform-provider-azurerm to v3.53.0 from v3.48.0
+- [#264](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/264): Bump peter-evans/create-pull-request from 4 to 5
+- [#268](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/268): Follow up of the EnsureNoError deprecation
+
 ## 0.22.0 (2023-03-21)
 
 ### Enhancements
