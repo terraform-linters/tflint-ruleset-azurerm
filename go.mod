@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/dave/dst v0.27.2
 	github.com/google/go-cmp v0.5.9
-	github.com/hashicorp/hcl/v2 v2.16.2
+	github.com/hashicorp/hcl/v2 v2.17.0
 	github.com/terraform-linters/tflint-plugin-sdk v0.16.1
 	github.com/zclconf/go-cty v1.13.1
 )
