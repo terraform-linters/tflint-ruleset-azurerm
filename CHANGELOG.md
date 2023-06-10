@@ -1,3 +1,18 @@
+## 0.24.0 (2023-06-10)
+
+### Enhancements
+
+- [#270](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/270): Add new instance types
+
+### Chores
+
+- [#266](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/266) [#277](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/277): Bump terraform-provider-azurerm to v3.60.0 from v3.53.0
+- [#271](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/271): Bump github.com/zclconf/go-cty from 1.13.1 to 1.13.2 in /tools
+- [#272](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/272): Bump github.com/zclconf/go-cty from 1.13.1 to 1.13.2
+- [#274](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/274): Bump github.com/hashicorp/hcl/v2 from 2.16.2 to 2.17.0 in /tools
+- [#275](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/275): Bump github.com/hashicorp/hcl/v2 from 2.16.2 to 2.17.0
+- [#278](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/278): Update snapshots
+
 ## 0.23.0 (2023-04-23)
 
 ### Enhancements
