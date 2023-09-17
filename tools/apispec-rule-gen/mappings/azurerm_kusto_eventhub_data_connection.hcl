@@ -1,9 +1,9 @@
 mapping "azurerm_kusto_eventhub_data_connection" {
-  import_path = "azure-rest-api-specs/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-12-29/kusto.json"
+  import_path = "azure-rest-api-specs/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-05-02/kusto.json"
 
   name                = DataConnectionNameParameter
-  resource_group_name = ResourceGroupParameter
-  cluster_name        = ResourceGroupParameter
+  resource_group_name = any //ResourceGroupParameter
+  cluster_name        = any //ResourceGroupParameter
   database_name       = DatabaseNameParameter
   eventhub_id         = EventHubConnectionProperties.eventHubResourceId
   consumer_group      = EventHubConnectionProperties.consumerGroup

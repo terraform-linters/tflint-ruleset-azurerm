@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 227 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 232 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -147,7 +147,12 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_kubernetes_cluster_invalid_name](rules/azurerm_kubernetes_cluster_invalid_name.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_type](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_type.md)|✔|
+|[azurerm_kusto_cluster_invalid_name](rules/azurerm_kusto_cluster_invalid_name.md)|✔|
+|[azurerm_kusto_database_invalid_cluster_name](rules/azurerm_kusto_database_invalid_cluster_name.md)|✔|
+|[azurerm_kusto_database_invalid_name](rules/azurerm_kusto_database_invalid_name.md)|✔|
 |[azurerm_kusto_eventhub_data_connection_invalid_data_format](rules/azurerm_kusto_eventhub_data_connection_invalid_data_format.md)|✔|
+|[azurerm_kusto_eventhub_data_connection_invalid_database_name](rules/azurerm_kusto_eventhub_data_connection_invalid_database_name.md)|✔|
+|[azurerm_kusto_eventhub_data_connection_invalid_name](rules/azurerm_kusto_eventhub_data_connection_invalid_name.md)|✔|
 |[azurerm_lb_invalid_sku](rules/azurerm_lb_invalid_sku.md)|✔|
 |[azurerm_lb_nat_pool_invalid_protocol](rules/azurerm_lb_nat_pool_invalid_protocol.md)|✔|
 |[azurerm_lb_nat_rule_invalid_protocol](rules/azurerm_lb_nat_rule_invalid_protocol.md)|✔|
