@@ -1,5 +1,5 @@
 mapping "azurerm_dedicated_host" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-08-01/dedicatedHost.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/dedicatedHost.json"
 
   sku_name                = any //Sku.name
   platform_fault_domain   = DedicatedHostProperties.platformFaultDomain
