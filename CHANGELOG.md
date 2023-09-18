@@ -1,3 +1,26 @@
+## 0.25.0 (2023-09-18)
+
+### Breaking Changes
+
+- [#283](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/283): Bump github.com/terraform-linters/tflint-plugin-sdk from 0.16.1 to 0.18.0
+  - TFLint v0.40/v0.41 is no longer supported
+
+### Enhancements
+
+- [#279](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/279) [#294](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/294): Bump terraform-provider-azurerm to v3.73.0 from v3.60.0
+- [#296](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/296): Add NGads V620-series
+
+### Chores
+
+- [#285](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/285): Add raw binary entries to checksums.txt
+- [#288](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/288): Bump github.com/zclconf/go-cty from 1.13.2 to 1.14.0
+- [#289](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/289): Bump github.com/hashicorp/hcl/v2 from 2.17.0 to 2.18.0
+- [#290](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/290): Bump github.com/zclconf/go-cty from 1.13.2 to 1.14.0 in /tools
+- [#291](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/291): Bump github.com/hashicorp/hcl/v2 from 2.17.0 to 2.18.0 in /tools
+- [#292](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/292): deps: Go 1.21
+- [#293](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/293): Bump actions/checkout from 3 to 4
+- [#295](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/295): Bump goreleaser/goreleaser-action from 4 to 5
+
 ## 0.24.0 (2023-06-10)
 
 ### Enhancements
