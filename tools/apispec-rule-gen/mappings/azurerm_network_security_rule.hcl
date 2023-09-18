@@ -1,5 +1,5 @@
 mapping "azurerm_network_security_rule" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-02-01/networkSecurityGroup.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/networkSecurityGroup.json"
 
   description                                = SecurityRulePropertiesFormat.description
   protocol                                   = SecurityRulePropertiesFormat.protocol
