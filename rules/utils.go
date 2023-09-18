@@ -717,5 +717,9 @@ var validMachineSizes = []string{
 	"Standard_NV6s_v2",
 	"Standard_NV72ads_A10_v5",
 	"Standard_NV8as_v4",
+	"Standard_NG8ads_V620_v1",
+	"Standard_NG16ads_V620_v1",
+	"Standard_NG32ads_V620_v1",
+	"Standard_NG32adms_V620_v1",
 	"Standard_PB6s",
 }
