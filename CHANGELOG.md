@@ -1,3 +1,9 @@
+## 0.25.1 (2023-09-25)
+
+### Enhancements
+
+- [#297](https://github.com/terraform-linters/tflint-ruleset-azurerm/pull/297): Add missing vm sizes
+
 ## 0.25.0 (2023-09-18)
 
 ### Breaking Changes

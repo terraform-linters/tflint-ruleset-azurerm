@@ -4,7 +4,7 @@
       "rule": {
         "name": "azurerm_resource_missing_tags",
         "severity": "info",
-        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.25.0/docs/rules/azurerm_resource_missing_tags.md"
+        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.25.1/docs/rules/azurerm_resource_missing_tags.md"
       },
       "message": "The resource is missing the following tags: \"Department\", \"Environment\".",
       "range": {
@@ -24,7 +24,7 @@
       "rule": {
         "name": "azurerm_resource_missing_tags",
         "severity": "info",
-        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.25.0/docs/rules/azurerm_resource_missing_tags.md"
+        "link": "https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.25.1/docs/rules/azurerm_resource_missing_tags.md"
       },
       "message": "The resource is missing the following tags: \"Department\".",
       "range": {
