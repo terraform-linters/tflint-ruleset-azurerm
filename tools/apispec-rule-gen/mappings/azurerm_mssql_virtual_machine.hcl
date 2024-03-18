@@ -1,6 +1,6 @@
 
 mapping "azurerm_mssql_virtual_machine" {
-  import_path = "azure-rest-api-specs/specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/preview/2021-11-01-preview/sqlvm.json"
+  import_path = "azure-rest-api-specs/specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/sqlvm.json"
 
   sql_license_type                 = SqlVirtualMachineProperties.sqlServerLicenseType
   r_services_enabled               = AdditionalFeaturesServerConfigurations.isRServicesEnabled

@@ -1,5 +1,5 @@
 mapping "azurerm_frontdoor_firewall_policy" {
-  import_path = "azure-rest-api-specs/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-10-01/webapplicationfirewall.json"
+  import_path = "azure-rest-api-specs/specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-04-01/webapplicationfirewall.json"
 
   name                              = PolicyNameParameter
   resource_group_name               = ResourceGroupNameParameter

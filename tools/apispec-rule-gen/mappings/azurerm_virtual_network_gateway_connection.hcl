@@ -1,5 +1,5 @@
 mapping "azurerm_virtual_network_gateway_connection" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/virtualNetworkGateway.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2022-07-01/virtualNetworkGateway.json"
 
   type                               = VirtualNetworkGatewayConnectionType
   authorization_key                  = VirtualNetworkGatewayConnectionPropertiesFormat.authorizationKey
