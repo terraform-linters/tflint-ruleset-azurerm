@@ -170,6 +170,7 @@ var Rules = []tflint.Rule{
 	NewAzurermMssqlVirtualMachineInvalidSQLLicenseTypeRule(),
 	NewAzurermMysqlFirewallRuleInvalidEndIPAddressRule(),
 	NewAzurermMysqlFirewallRuleInvalidStartIPAddressRule(),
+	NewAzurermMysqlServerInvalidVersionRule(),
 	NewAzurermNatGatewayInvalidSkuNameRule(),
 	NewAzurermNetappAccountInvalidResourceGroupNameRule(),
 	NewAzurermNetappPoolInvalidNameRule(),

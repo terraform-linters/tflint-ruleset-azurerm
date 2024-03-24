@@ -10,8 +10,8 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermMaintenanceConfigurationInvalidScopeRule checks the pattern is valid
-type AzurermMaintenanceConfigurationInvalidScopeRule struct {
+// AzurermMysqlServerInvalidVersionRule checks the pattern is valid
+type AzurermMysqlServerInvalidVersionRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
@@ -19,45 +19,41 @@ type AzurermMaintenanceConfigurationInvalidScopeRule struct {
 	enum          []string
 }
 
-// NewAzurermMaintenanceConfigurationInvalidScopeRule returns new rule with default attributes
-func NewAzurermMaintenanceConfigurationInvalidScopeRule() *AzurermMaintenanceConfigurationInvalidScopeRule {
-	return &AzurermMaintenanceConfigurationInvalidScopeRule{
-		resourceType:  "azurerm_maintenance_configuration",
-		attributeName: "scope",
+// NewAzurermMysqlServerInvalidVersionRule returns new rule with default attributes
+func NewAzurermMysqlServerInvalidVersionRule() *AzurermMysqlServerInvalidVersionRule {
+	return &AzurermMysqlServerInvalidVersionRule{
+		resourceType:  "azurerm_mysql_server",
+		attributeName: "version",
 		enum: []string{
-			"Host",
-			"Resource",
-			"OSImage",
-			"Extension",
-			"InGuestPatch",
-			"SQLDB",
-			"SQLManagedInstance",
+			"5.6",
+			"5.7",
+			"8.0",
 		},
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Name() string {
-	return "azurerm_maintenance_configuration_invalid_scope"
+func (r *AzurermMysqlServerInvalidVersionRule) Name() string {
+	return "azurerm_mysql_server_invalid_version"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Enabled() bool {
+func (r *AzurermMysqlServerInvalidVersionRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Severity() tflint.Severity {
+func (r *AzurermMysqlServerInvalidVersionRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Link() string {
+func (r *AzurermMysqlServerInvalidVersionRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Check(runner tflint.Runner) error {
+func (r *AzurermMysqlServerInvalidVersionRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -82,7 +78,7 @@ func (r *AzurermMaintenanceConfigurationInvalidScopeRule) Check(runner tflint.Ru
 			if !found {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" is an invalid value as scope`, truncateLongMessage(val)),
+					fmt.Sprintf(`"%s" is an invalid value as version`, truncateLongMessage(val)),
 					attribute.Expr.Range(),
 				)
 			}

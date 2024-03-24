@@ -25,8 +25,6 @@ func NewAzurermIotcentralApplicationInvalidSkuRule() *AzurermIotcentralApplicati
 		resourceType:  "azurerm_iotcentral_application",
 		attributeName: "sku",
 		enum: []string{
-			"F1",
-			"S1",
 			"ST0",
 			"ST1",
 			"ST2",

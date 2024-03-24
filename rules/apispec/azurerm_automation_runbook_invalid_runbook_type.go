@@ -33,6 +33,7 @@ func NewAzurermAutomationRunbookInvalidRunbookTypeRule() *AzurermAutomationRunbo
 			"GraphPowerShell",
 			"Python2",
 			"Python3",
+			"PowerShell72",
 		},
 	}
 }
