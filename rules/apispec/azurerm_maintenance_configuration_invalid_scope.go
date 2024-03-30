@@ -26,6 +26,7 @@ func NewAzurermMaintenanceConfigurationInvalidScopeRule() *AzurermMaintenanceCon
 		attributeName: "scope",
 		enum: []string{
 			"Host",
+			"Resource",
 			"OSImage",
 			"Extension",
 			"InGuestPatch",

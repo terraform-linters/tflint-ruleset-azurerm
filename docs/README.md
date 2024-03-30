@@ -14,7 +14,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 232 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 228 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -178,17 +178,18 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_mssql_virtual_machine_invalid_sql_license_type](rules/azurerm_mssql_virtual_machine_invalid_sql_license_type.md)|✔|
 |[azurerm_mysql_firewall_rule_invalid_end_ip_address](rules/azurerm_mysql_firewall_rule_invalid_end_ip_address.md)|✔|
 |[azurerm_mysql_firewall_rule_invalid_start_ip_address](rules/azurerm_mysql_firewall_rule_invalid_start_ip_address.md)|✔|
+|[azurerm_mysql_server_invalid_version](rules/azurerm_mysql_server_invalid_version.md)|✔|
 |[azurerm_nat_gateway_invalid_sku_name](rules/azurerm_nat_gateway_invalid_sku_name.md)|✔|
-|[azurerm_netapp_account_invalid_resource_group_name](rules/azurerm_netapp_account_invalid_resource_group_name.md)|✔|
+|[azurerm_netapp_account_invalid_name](rules/azurerm_netapp_account_invalid_name.md)|✔|
+|[azurerm_netapp_pool_invalid_account_name](rules/azurerm_netapp_pool_invalid_account_name.md)|✔|
 |[azurerm_netapp_pool_invalid_name](rules/azurerm_netapp_pool_invalid_name.md)|✔|
-|[azurerm_netapp_pool_invalid_resource_group_name](rules/azurerm_netapp_pool_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_pool_invalid_service_level](rules/azurerm_netapp_pool_invalid_service_level.md)|✔|
+|[azurerm_netapp_snapshot_invalid_account_name](rules/azurerm_netapp_snapshot_invalid_account_name.md)|✔|
 |[azurerm_netapp_snapshot_invalid_pool_name](rules/azurerm_netapp_snapshot_invalid_pool_name.md)|✔|
-|[azurerm_netapp_snapshot_invalid_resource_group_name](rules/azurerm_netapp_snapshot_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_snapshot_invalid_volume_name](rules/azurerm_netapp_snapshot_invalid_volume_name.md)|✔|
+|[azurerm_netapp_volume_invalid_account_name](rules/azurerm_netapp_volume_invalid_account_name.md)|✔|
 |[azurerm_netapp_volume_invalid_name](rules/azurerm_netapp_volume_invalid_name.md)|✔|
 |[azurerm_netapp_volume_invalid_pool_name](rules/azurerm_netapp_volume_invalid_pool_name.md)|✔|
-|[azurerm_netapp_volume_invalid_resource_group_name](rules/azurerm_netapp_volume_invalid_resource_group_name.md)|✔|
 |[azurerm_netapp_volume_invalid_service_level](rules/azurerm_netapp_volume_invalid_service_level.md)|✔|
 |[azurerm_network_packet_capture_invalid_maximum_capture_duration](rules/azurerm_network_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_network_security_rule_invalid_access](rules/azurerm_network_security_rule_invalid_access.md)|✔|
@@ -196,12 +197,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_network_security_rule_invalid_protocol](rules/azurerm_network_security_rule_invalid_protocol.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_namespace_type](rules/azurerm_notification_hub_namespace_invalid_namespace_type.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_sku_name](rules/azurerm_notification_hub_namespace_invalid_sku_name.md)|✔|
-|[azurerm_postgresql_configuration_invalid_name](rules/azurerm_postgresql_configuration_invalid_name.md)|✔|
-|[azurerm_postgresql_database_invalid_charset](rules/azurerm_postgresql_database_invalid_charset.md)|✔|
-|[azurerm_postgresql_database_invalid_collation](rules/azurerm_postgresql_database_invalid_collation.md)|✔|
-|[azurerm_postgresql_database_invalid_name](rules/azurerm_postgresql_database_invalid_name.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_end_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_end_ip_address.md)|✔|
-|[azurerm_postgresql_firewall_rule_invalid_name](rules/azurerm_postgresql_firewall_rule_invalid_name.md)|✔|
 |[azurerm_postgresql_firewall_rule_invalid_start_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_start_ip_address.md)|✔|
 |[azurerm_postgresql_server_invalid_version](rules/azurerm_postgresql_server_invalid_version.md)|✔|
 |[azurerm_public_ip_invalid_sku](rules/azurerm_public_ip_invalid_sku.md)|✔|

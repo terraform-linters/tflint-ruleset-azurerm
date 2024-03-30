@@ -4,53 +4,56 @@ package apispec
 
 import (
 	"fmt"
-	"regexp"
 
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermPostgresqlConfigurationInvalidNameRule checks the pattern is valid
-type AzurermPostgresqlConfigurationInvalidNameRule struct {
+// AzurermMysqlServerInvalidVersionRule checks the pattern is valid
+type AzurermMysqlServerInvalidVersionRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
 	attributeName string
-	pattern       *regexp.Regexp
+	enum          []string
 }
 
-// NewAzurermPostgresqlConfigurationInvalidNameRule returns new rule with default attributes
-func NewAzurermPostgresqlConfigurationInvalidNameRule() *AzurermPostgresqlConfigurationInvalidNameRule {
-	return &AzurermPostgresqlConfigurationInvalidNameRule{
-		resourceType:  "azurerm_postgresql_configuration",
-		attributeName: "name",
-		pattern:       regexp.MustCompile(`^[-\w\._]+$`),
+// NewAzurermMysqlServerInvalidVersionRule returns new rule with default attributes
+func NewAzurermMysqlServerInvalidVersionRule() *AzurermMysqlServerInvalidVersionRule {
+	return &AzurermMysqlServerInvalidVersionRule{
+		resourceType:  "azurerm_mysql_server",
+		attributeName: "version",
+		enum: []string{
+			"5.6",
+			"5.7",
+			"8.0",
+		},
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermPostgresqlConfigurationInvalidNameRule) Name() string {
-	return "azurerm_postgresql_configuration_invalid_name"
+func (r *AzurermMysqlServerInvalidVersionRule) Name() string {
+	return "azurerm_mysql_server_invalid_version"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermPostgresqlConfigurationInvalidNameRule) Enabled() bool {
+func (r *AzurermMysqlServerInvalidVersionRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermPostgresqlConfigurationInvalidNameRule) Severity() tflint.Severity {
+func (r *AzurermMysqlServerInvalidVersionRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermPostgresqlConfigurationInvalidNameRule) Link() string {
+func (r *AzurermMysqlServerInvalidVersionRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermPostgresqlConfigurationInvalidNameRule) Check(runner tflint.Runner) error {
+func (r *AzurermMysqlServerInvalidVersionRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -66,10 +69,16 @@ func (r *AzurermPostgresqlConfigurationInvalidNameRule) Check(runner tflint.Runn
 			continue
 		}
 		err := runner.EvaluateExpr(attribute.Expr, func (val string) error {
-			if !r.pattern.MatchString(val) {
+			found := false
+			for _, item := range r.enum {
+				if item == val {
+					found = true
+				}
+			}
+			if !found {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-\w\._]+$`),
+					fmt.Sprintf(`"%s" is an invalid value as version`, truncateLongMessage(val)),
 					attribute.Expr.Range(),
 				)
 			}

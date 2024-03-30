@@ -1,5 +1,5 @@
 mapping "azurerm_lb_rule" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/loadBalancer.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-09-01/loadBalancer.json"
 
   protocol                = TransportProtocol
   frontend_port           = LoadBalancingRulePropertiesFormat.frontendPort

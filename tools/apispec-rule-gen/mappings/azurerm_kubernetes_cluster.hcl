@@ -1,5 +1,5 @@
 mapping "azurerm_kubernetes_cluster" {
-  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-05-01/managedClusters.json"
+  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-06-02-preview/managedClusters.json"
 
   name                       = ResourceNameParameter
   resource_group_name        = any //ResourceGroupNameParameter

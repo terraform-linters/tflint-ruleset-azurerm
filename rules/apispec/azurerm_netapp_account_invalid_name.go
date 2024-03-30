@@ -11,8 +11,8 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermPostgresqlDatabaseInvalidCollationRule checks the pattern is valid
-type AzurermPostgresqlDatabaseInvalidCollationRule struct {
+// AzurermNetappAccountInvalidNameRule checks the pattern is valid
+type AzurermNetappAccountInvalidNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
@@ -20,37 +20,37 @@ type AzurermPostgresqlDatabaseInvalidCollationRule struct {
 	pattern       *regexp.Regexp
 }
 
-// NewAzurermPostgresqlDatabaseInvalidCollationRule returns new rule with default attributes
-func NewAzurermPostgresqlDatabaseInvalidCollationRule() *AzurermPostgresqlDatabaseInvalidCollationRule {
-	return &AzurermPostgresqlDatabaseInvalidCollationRule{
-		resourceType:  "azurerm_postgresql_database",
-		attributeName: "collation",
-		pattern:       regexp.MustCompile(`^[a-zA-Z\-]+([. ]|\w)*$`),
+// NewAzurermNetappAccountInvalidNameRule returns new rule with default attributes
+func NewAzurermNetappAccountInvalidNameRule() *AzurermNetappAccountInvalidNameRule {
+	return &AzurermNetappAccountInvalidNameRule{
+		resourceType:  "azurerm_netapp_account",
+		attributeName: "name",
+		pattern:       regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9\-_]{0,127}$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Name() string {
-	return "azurerm_postgresql_database_invalid_collation"
+func (r *AzurermNetappAccountInvalidNameRule) Name() string {
+	return "azurerm_netapp_account_invalid_name"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Enabled() bool {
+func (r *AzurermNetappAccountInvalidNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Severity() tflint.Severity {
+func (r *AzurermNetappAccountInvalidNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Link() string {
+func (r *AzurermNetappAccountInvalidNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Check(runner tflint.Runner) error {
+func (r *AzurermNetappAccountInvalidNameRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -69,7 +69,7 @@ func (r *AzurermPostgresqlDatabaseInvalidCollationRule) Check(runner tflint.Runn
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z\-]+([. ]|\w)*$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9][a-zA-Z0-9\-_]{0,127}$`),
 					attribute.Expr.Range(),
 				)
 			}

@@ -1,5 +1,5 @@
 mapping "azurerm_service_fabric_cluster" {
-  import_path = "azure-rest-api-specs/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2018-02-01/cluster.json"
+  import_path = "azure-rest-api-specs/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/cluster.json"
 
   name                 = clusterNameParameter
   resource_group_name  = resourceGroupNameParameter

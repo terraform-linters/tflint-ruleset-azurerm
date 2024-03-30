@@ -11,8 +11,8 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermNetappSnapshotInvalidResourceGroupNameRule checks the pattern is valid
-type AzurermNetappSnapshotInvalidResourceGroupNameRule struct {
+// AzurermNetappSnapshotInvalidAccountNameRule checks the pattern is valid
+type AzurermNetappSnapshotInvalidAccountNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
@@ -20,37 +20,37 @@ type AzurermNetappSnapshotInvalidResourceGroupNameRule struct {
 	pattern       *regexp.Regexp
 }
 
-// NewAzurermNetappSnapshotInvalidResourceGroupNameRule returns new rule with default attributes
-func NewAzurermNetappSnapshotInvalidResourceGroupNameRule() *AzurermNetappSnapshotInvalidResourceGroupNameRule {
-	return &AzurermNetappSnapshotInvalidResourceGroupNameRule{
+// NewAzurermNetappSnapshotInvalidAccountNameRule returns new rule with default attributes
+func NewAzurermNetappSnapshotInvalidAccountNameRule() *AzurermNetappSnapshotInvalidAccountNameRule {
+	return &AzurermNetappSnapshotInvalidAccountNameRule{
 		resourceType:  "azurerm_netapp_snapshot",
-		attributeName: "resource_group_name",
-		pattern:       regexp.MustCompile(`^[-\w\._\(\)]+$`),
+		attributeName: "account_name",
+		pattern:       regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9\-_]{0,127}$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Name() string {
-	return "azurerm_netapp_snapshot_invalid_resource_group_name"
+func (r *AzurermNetappSnapshotInvalidAccountNameRule) Name() string {
+	return "azurerm_netapp_snapshot_invalid_account_name"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Enabled() bool {
+func (r *AzurermNetappSnapshotInvalidAccountNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Severity() tflint.Severity {
+func (r *AzurermNetappSnapshotInvalidAccountNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Link() string {
+func (r *AzurermNetappSnapshotInvalidAccountNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Check(runner tflint.Runner) error {
+func (r *AzurermNetappSnapshotInvalidAccountNameRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -69,7 +69,7 @@ func (r *AzurermNetappSnapshotInvalidResourceGroupNameRule) Check(runner tflint.
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-\w\._\(\)]+$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9][a-zA-Z0-9\-_]{0,127}$`),
 					attribute.Expr.Range(),
 				)
 			}
