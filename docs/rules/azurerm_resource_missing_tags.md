@@ -38,7 +38,6 @@ Notice: The resource is missing the following tags: "Bar", "Foo". (azurerm_resou
    6:   }
 
 Reference: https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.17.1/docs/rules/azurerm_resource_missing_tags.md
-```
 
 ```
 
