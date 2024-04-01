@@ -17,8 +17,9 @@ jobs:
     - name: Create PR
       uses: peter-evans/create-pull-request@v6
       with:
+        branch: azure-docs
         title: 🤖 MicrosoftDocs/azure-docs changes
         commit-message: |
-          Manually edit https://github.com/terraform-linters/tflint-ruleset-azurerm/edit/create-pull-request/patch/rules/utils.go
+          Manually edit https://github.com/terraform-linters/tflint-ruleset-azurerm/edit/azure-docs/rules/utils.go
           based on https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/virtual-machines/sizes.md
         delete-branch: true
