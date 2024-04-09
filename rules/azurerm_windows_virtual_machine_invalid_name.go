@@ -45,16 +45,11 @@ func (r *AzurermWindowsVirtualMachineInvalidNameRule) Severity() tflint.Severity
 
 // Link returns the rule reference link
 func (r *AzurermWindowsVirtualMachineInvalidNameRule) Link() string {
-	// TODO: If the rule is so trivial that no documentation is needed, return "" instead.
 	return project.ReferenceLink(r.Name())
 }
 
-// TODO: Write the details of the inspection
 // Check checks the name is valid
 func (r *AzurermWindowsVirtualMachineInvalidNameRule) Check(runner tflint.Runner) error {
-	// TODO: Write the implementation here. See this documentation for what tflint.Runner can do.
-	//       https://pkg.go.dev/github.com/terraform-linters/tflint-plugin-sdk/tflint#Runner
-
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.primaryAttributeName},
