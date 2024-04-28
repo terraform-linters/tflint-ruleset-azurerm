@@ -10,6 +10,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_resource_missing_tags](rules/azurerm_resource_missing_tags.md)||
 |[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
+|[azurerm_windows_virtual_machine_invalid_name](rules/azurerm_windows_virtual_machine_invalid_name.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_sku](rules/azurerm_windows_virtual_machine_scale_set_invalid_sku.md)|✔|
 
@@ -243,7 +244,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_virtual_network_gateway_invalid_type](rules/azurerm_virtual_network_gateway_invalid_type.md)|✔|
 |[azurerm_virtual_network_gateway_invalid_vpn_type](rules/azurerm_virtual_network_gateway_invalid_vpn_type.md)|✔|
 |[azurerm_virtual_wan_invalid_office365_local_breakout_category](rules/azurerm_virtual_wan_invalid_office365_local_breakout_category.md)|✔|
-|[azurerm_windows_virtual_machine_invalid_name](rules/azurerm_windows_virtual_machine_invalid_name.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_eviction_policy](rules/azurerm_windows_virtual_machine_invalid_eviction_policy.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_priority](rules/azurerm_windows_virtual_machine_invalid_priority.md)|✔|
 |[azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_windows_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
