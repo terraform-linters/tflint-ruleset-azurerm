@@ -14,34 +14,12 @@ jobs:
     - name: Calculate diff
       run: |
         curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/main/articles/virtual-machines/sizes.md --output .github/snapshots/size.md
-        git diff > snapshot.diff
-    - name: Create an issue
-      uses: actions/github-script@v7
+    - name: Create PR
+      uses: peter-evans/create-pull-request@v6
       with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          const issues = await github.rest.issues.listForRepo({
-            owner: 'terraform-linters',
-            repo: 'tflint-ruleset-azurerm',
-            state: 'open',
-            labels: ['bot']
-          })
-          if (issues.data.length !== 0) {
-            console.log("Issue already opened. Skipped.")
-            return
-          }
-
-          const fs = require('fs')
-          const data = fs.readFileSync('snapshot.diff', 'utf-8')
-          if (data === "") {
-            console.log("No diff. Skipped.")
-            return
-          }
-
-          github.rest.issues.create({
-            owner: 'terraform-linters',
-            repo: 'tflint-ruleset-azurerm',
-            title: '🤖 MicrosoftDocs/azure-docs Changes Report',
-            body: "Changes found from the saved snapshots :eyes:\n\n```diff\n" + data + "```\n\nhttps://github.com/MicrosoftDocs/azure-docs/blob/main/articles/virtual-machines/sizes.md",
-            labels: ['bot'],
-          })
+        branch: azure-docs
+        title: 🤖 MicrosoftDocs/azure-docs changes
+        commit-message: |
+          Manually edit https://github.com/terraform-linters/tflint-ruleset-azurerm/edit/azure-docs/rules/utils.go
+          based on https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/virtual-machines/sizes.md
+        delete-branch: true
