@@ -75,7 +75,7 @@ func (r *AzurermWindowsVirtualMachineInvalidNameRule) Check(runner tflint.Runner
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, val, `^[a-zA-Z0-9]{0,1}[a-zA-Z0-9]{0,13}[a-zA-Z0-9]$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, val, `^[a-zA-Z0-9]{0,1}[a-zA-Z0-9-]{0,13}[a-zA-Z0-9]$`),
 					primaryAttribute.Expr.Range(),
 				)
 			}

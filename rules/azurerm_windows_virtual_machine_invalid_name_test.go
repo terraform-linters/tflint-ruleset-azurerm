@@ -22,7 +22,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
 			Expected: helper.Issues{
 				{
 					Rule:    NewAzurermWindowsVirtualMachineInvalidNameRule(),
-					Message: `"dummy-" does not match valid pattern ^[a-zA-Z0-9]{0,1}[a-zA-Z0-9]{0,13}[a-zA-Z0-9]$`,
+					Message: `"dummy-" does not match valid pattern ^[a-zA-Z0-9]{0,1}[a-zA-Z0-9-]{0,13}[a-zA-Z0-9]$`,
 					Range: hcl.Range{
 						Filename: "resource.tf",
 						Start:    hcl.Pos{Line: 3, Column: 10},
@@ -40,7 +40,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
 			Expected: helper.Issues{
 				{
 					Rule:    NewAzurermWindowsVirtualMachineInvalidNameRule(),
-					Message: `"dummyhostname123" does not match valid pattern ^[a-zA-Z0-9]{0,1}[a-zA-Z0-9]{0,13}[a-zA-Z0-9]$`,
+					Message: `"dummyhostname123" does not match valid pattern ^[a-zA-Z0-9]{0,1}[a-zA-Z0-9-]{0,13}[a-zA-Z0-9]$`,
 					Range: hcl.Range{
 						Filename: "resource.tf",
 						Start:    hcl.Pos{Line: 3, Column: 10},
