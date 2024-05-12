@@ -4,6 +4,7 @@ mapping "azurerm_windows_virtual_machine" {
   admin_password             = any //OSProfile.adminPassword
   admin_username             = any //OSProfile.adminUsername
   size                       = any //HardwareProfile.vmSize
+  name                       = any
   allow_extension_operations = OSProfile.allowExtensionOperations
   computer_name              = OSProfile.computerName
   custom_data                = OSProfile.customData

@@ -12,6 +12,7 @@ var Rules = append([]tflint.Rule{
 	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermVirtualMachineInvalidVMSizeRule(),
+	NewAzurermWindowsVirtualMachineInvalidNameRule(),
 	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermResourceMissingTagsRule(),
