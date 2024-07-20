@@ -42,6 +42,7 @@ func NewAzurermVirtualNetworkGatewayInvalidSkuRule() *AzurermVirtualNetworkGatew
 			"ErGw1AZ",
 			"ErGw2AZ",
 			"ErGw3AZ",
+			"ErGwScale",
 		},
 	}
 }

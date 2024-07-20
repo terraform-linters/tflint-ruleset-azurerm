@@ -27,6 +27,7 @@ func NewAzurermApplicationInsightsWebTestInvalidKindRule() *AzurermApplicationIn
 		enum: []string{
 			"ping",
 			"multistep",
+			"standard",
 		},
 	}
 }

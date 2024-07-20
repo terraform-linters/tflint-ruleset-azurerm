@@ -7,6 +7,7 @@ Warns about values that appear to be invalid based on [azure-rest-api-specs](htt
 Allowed values are:
 - ping
 - multistep
+- standard
 
 ## Example
 
@@ -41,4 +42,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/webTests_API.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/webTests_API.json
