@@ -1,5 +1,5 @@
 mapping "azurerm_kubernetes_cluster_node_pool" {
-  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-06-02-preview/managedClusters.json"
+  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-09-02-preview/managedClusters.json"
 
   vm_size               = any //ContainerServiceVMSize
   availability_zones    = ManagedClusterAgentPoolProfileProperties.availabilityZones

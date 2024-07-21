@@ -26,6 +26,9 @@ func NewAzurermDatabaseMigrationProjectInvalidSourcePlatformRule() *AzurermDatab
 		attributeName: "source_platform",
 		enum: []string{
 			"SQL",
+			"MySQL",
+			"PostgreSql",
+			"MongoDb",
 			"Unknown",
 		},
 	}

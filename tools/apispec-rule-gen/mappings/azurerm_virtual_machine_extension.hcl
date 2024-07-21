@@ -1,5 +1,5 @@
 mapping "azurerm_virtual_machine_extension" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/virtualMachine.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-03-01/virtualMachine.json"
 
   publisher                  = VirtualMachineExtensionProperties.publisher
   type                       = VirtualMachineExtensionProperties.type

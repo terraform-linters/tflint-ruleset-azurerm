@@ -28,6 +28,8 @@ func NewAzurermVirtualMachineDataDiskAttachmentInvalidCreateOptionRule() *Azurer
 			"FromImage",
 			"Empty",
 			"Attach",
+			"Copy",
+			"Restore",
 		},
 	}
 }

@@ -26,6 +26,10 @@ func NewAzurermDatabaseMigrationProjectInvalidTargetPlatformRule() *AzurermDatab
 		attributeName: "target_platform",
 		enum: []string{
 			"SQLDB",
+			"SQLMI",
+			"AzureDbForMySql",
+			"AzureDbForPostgreSql",
+			"MongoDb",
 			"Unknown",
 		},
 	}
