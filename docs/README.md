@@ -16,7 +16,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 228 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 216 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -87,10 +87,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_data_factory_dataset_postgresql_invalid_name](rules/azurerm_data_factory_dataset_postgresql_invalid_name.md)|✔|
 |[azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name.md)|✔|
 |[azurerm_data_factory_dataset_sql_server_table_invalid_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_name.md)|✔|
-|[azurerm_data_factory_integration_runtime_managed_invalid_edition](rules/azurerm_data_factory_integration_runtime_managed_invalid_edition.md)|✔|
-|[azurerm_data_factory_integration_runtime_managed_invalid_license_type](rules/azurerm_data_factory_integration_runtime_managed_invalid_license_type.md)|✔|
-|[azurerm_data_factory_integration_runtime_managed_invalid_max_parallel_executions_per_node](rules/azurerm_data_factory_integration_runtime_managed_invalid_max_parallel_executions_per_node.md)|✔|
-|[azurerm_data_factory_integration_runtime_managed_invalid_number_of_nodes](rules/azurerm_data_factory_integration_runtime_managed_invalid_number_of_nodes.md)|✔|
 |[azurerm_data_factory_invalid_name](rules/azurerm_data_factory_invalid_name.md)|✔|
 |[azurerm_data_factory_invalid_resource_group_name](rules/azurerm_data_factory_invalid_resource_group_name.md)|✔|
 |[azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name](rules/azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name.md)|✔|
@@ -172,15 +168,9 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_managed_disk_invalid_os_type](rules/azurerm_managed_disk_invalid_os_type.md)|✔|
 |[azurerm_managed_disk_invalid_storage_account_type](rules/azurerm_managed_disk_invalid_storage_account_type.md)|✔|
 |[azurerm_maps_account_invalid_sku_name](rules/azurerm_maps_account_invalid_sku_name.md)|✔|
-|[azurerm_mariadb_firewall_rule_invalid_end_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_end_ip_address.md)|✔|
-|[azurerm_mariadb_firewall_rule_invalid_start_ip_address](rules/azurerm_mariadb_firewall_rule_invalid_start_ip_address.md)|✔|
-|[azurerm_mariadb_server_invalid_version](rules/azurerm_mariadb_server_invalid_version.md)|✔|
 |[azurerm_monitor_scheduled_query_rules_alert_invalid_severity](rules/azurerm_monitor_scheduled_query_rules_alert_invalid_severity.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_connectivity_type](rules/azurerm_mssql_virtual_machine_invalid_sql_connectivity_type.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_license_type](rules/azurerm_mssql_virtual_machine_invalid_sql_license_type.md)|✔|
-|[azurerm_mysql_firewall_rule_invalid_end_ip_address](rules/azurerm_mysql_firewall_rule_invalid_end_ip_address.md)|✔|
-|[azurerm_mysql_firewall_rule_invalid_start_ip_address](rules/azurerm_mysql_firewall_rule_invalid_start_ip_address.md)|✔|
-|[azurerm_mysql_server_invalid_version](rules/azurerm_mysql_server_invalid_version.md)|✔|
 |[azurerm_nat_gateway_invalid_sku_name](rules/azurerm_nat_gateway_invalid_sku_name.md)|✔|
 |[azurerm_netapp_account_invalid_name](rules/azurerm_netapp_account_invalid_name.md)|✔|
 |[azurerm_netapp_pool_invalid_account_name](rules/azurerm_netapp_pool_invalid_account_name.md)|✔|
@@ -222,7 +212,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_servicebus_subscription_rule_invalid_filter_type](rules/azurerm_servicebus_subscription_rule_invalid_filter_type.md)|✔|
 |[azurerm_servicebus_topic_invalid_status](rules/azurerm_servicebus_topic_invalid_status.md)|✔|
 |[azurerm_shared_image_invalid_os_type](rules/azurerm_shared_image_invalid_os_type.md)|✔|
-|[azurerm_sql_database_invalid_create_mode](rules/azurerm_sql_database_invalid_create_mode.md)|✔|
 |[azurerm_storage_account_invalid_access_tier](rules/azurerm_storage_account_invalid_access_tier.md)|✔|
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|
 |[azurerm_storage_account_invalid_resource_group_name](rules/azurerm_storage_account_invalid_resource_group_name.md)|✔|
@@ -230,7 +219,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_stream_analytics_job_invalid_compatibility_level](rules/azurerm_stream_analytics_job_invalid_compatibility_level.md)|✔|
 |[azurerm_stream_analytics_job_invalid_events_out_of_order_policy](rules/azurerm_stream_analytics_job_invalid_events_out_of_order_policy.md)|✔|
 |[azurerm_stream_analytics_job_invalid_output_error_policy](rules/azurerm_stream_analytics_job_invalid_output_error_policy.md)|✔|
-|[azurerm_template_deployment_invalid_deployment_mode](rules/azurerm_template_deployment_invalid_deployment_mode.md)|✔|
 |[azurerm_traffic_manager_profile_invalid_profile_status](rules/azurerm_traffic_manager_profile_invalid_profile_status.md)|✔|
 |[azurerm_traffic_manager_profile_invalid_traffic_routing_method](rules/azurerm_traffic_manager_profile_invalid_traffic_routing_method.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_caching](rules/azurerm_virtual_machine_data_disk_attachment_invalid_caching.md)|✔|

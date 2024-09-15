@@ -65,17 +65,17 @@ func Test_generatedPatternRule(t *testing.T) {
 		{
 			Name: "invalid",
 			Content: `
-resource "azurerm_mysql_firewall_rule" "main" {
-    start_ip_address = "192.168.0.256"
+resource "azurerm_cosmosdb_mongo_database" "main" {
+    account_name = "-admin"
 }`,
 			Expected: helper.Issues{
 				{
-					Rule:    NewAzurermMysqlFirewallRuleInvalidStartIPAddressRule(),
-					Message: `"192.168.0.256" does not match valid pattern ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$`,
+					Rule:    NewAzurermCosmosdbMongoDatabaseInvalidAccountNameRule(),
+					Message: `"-admin" does not match valid pattern ^[a-z0-9]+(-[a-z0-9]+)*`,
 					Range: hcl.Range{
 						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 3, Column: 24},
-						End:      hcl.Pos{Line: 3, Column: 39},
+						Start:    hcl.Pos{Line: 3, Column: 20},
+						End:      hcl.Pos{Line: 3, Column: 28},
 					},
 				},
 			},
@@ -83,14 +83,14 @@ resource "azurerm_mysql_firewall_rule" "main" {
 		{
 			Name: "valid",
 			Content: `
-resource "azurerm_mysql_firewall_rule" "main" {
-    start_ip_address = "192.168.0.1"
+resource "azurerm_cosmosdb_mongo_database" "main" {
+    account_name = "admin-"
 }`,
 			Expected: helper.Issues{},
 		},
 	}
 
-	rule := NewAzurermMysqlFirewallRuleInvalidStartIPAddressRule()
+	rule := NewAzurermCosmosdbMongoDatabaseInvalidAccountNameRule()
 
 	for _, tc := range cases {
 		runner := helper.TestRunner(t, map[string]string{"resource.tf": tc.Content})
