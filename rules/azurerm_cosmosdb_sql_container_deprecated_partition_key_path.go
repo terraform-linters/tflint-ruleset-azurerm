@@ -8,37 +8,44 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-func NewAzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule() *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule {
-    return &AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule{
+// NewAzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule creates a new rule to check for the deprecated attribute partition_key_path.
+func NewAzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule() *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule {
+    return &AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule{
         resourceType:  "azurerm_cosmosdb_sql_container",
         attributeName: "partition_key_path",
     }
 }
 
-type AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule struct {
+// AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule defines a rule that checks for the deprecated partition_key_path in azurerm_cosmosdb_sql_container.
+type AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
 	attributeName string
 }
 
-func (r *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule) Name() string {
+// Name returns the name of the rule.
+func (r *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule) Name() string {
 	return "azurerm_cosmosdb_sql_container_deprecated_partition_key_path"
 }
 
-func (r *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule) Enabled() bool {
+// Enabled returns whether the rule is enabled by default.
+func (r *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule) Enabled() bool {
 	return true
 }
 
-func (r *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule) Severity() tflint.Severity {
+// Severity returns the severity level of the rule.
+func (r *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule) Severity() tflint.Severity {
 	return tflint.WARNING
 }
 
-func (r *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule) Link() string {
+// Link returns the documentation link for the rule.
+func (r *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
-func (r *AzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule) Check(runner tflint.Runner) error {
+// Check examines azurerm_cosmosdb_sql_container resources and emits a warning if the deprecated partition_key_path is used.
+func (r *AzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule) Check(runner tflint.Runner) error {
     resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
         Attributes: []hclext.AttributeSchema{
             {Name: r.attributeName},

@@ -16,5 +16,5 @@ var Rules = append([]tflint.Rule{
 	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermResourceMissingTagsRule(),
-	NewAzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule(),
+	NewAzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule(),
 }, apispec.Rules...)

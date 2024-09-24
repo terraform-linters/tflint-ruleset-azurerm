@@ -22,7 +22,7 @@ resource "azurerm_cosmosdb_sql_container" "example" {
 }`,
             Expected: helper.Issues{
                 {
-                    Rule:    NewAzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule(),
+                    Rule:    NewAzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule(),
                     Message: "`partition_key_path` is deprecated and should be replaced with `partition_key_paths`.",
                     Range: hcl.Range{
                         Filename: "resource.tf",
@@ -42,7 +42,7 @@ resource "azurerm_cosmosdb_sql_container" "example" {
         },
     }
 
-    rule := NewAzurermCosmosdbSqlContainerDeprecatedPartitionKeyPathRule()
+    rule := NewAzurermCosmosdbSQLContainerDeprecatedPartitionKeyPathRule()
 
     for _, tc := range cases {
         runner := helper.TestRunner(t, map[string]string{"resource.tf": tc.Content})
