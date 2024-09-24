@@ -75,6 +75,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_cosmosdb_mongo_collection_invalid_resource_group_name](rules/azurerm_cosmosdb_mongo_collection_invalid_resource_group_name.md)|✔|
 |[azurerm_cosmosdb_mongo_database_invalid_account_name](rules/azurerm_cosmosdb_mongo_database_invalid_account_name.md)|✔|
 |[azurerm_cosmosdb_mongo_database_invalid_resource_group_name](rules/azurerm_cosmosdb_mongo_database_invalid_resource_group_name.md)|✔|
+|[azurerm_cosmosdb_sql_container_deprecated_partition_key_path](rules/azurerm_cosmosdb_sql_container_deprecated_partition_key_path.md)|✔|
 |[azurerm_cosmosdb_sql_container_invalid_account_name](rules/azurerm_cosmosdb_sql_container_invalid_account_name.md)|✔|
 |[azurerm_cosmosdb_sql_container_invalid_resource_group_name](rules/azurerm_cosmosdb_sql_container_invalid_resource_group_name.md)|✔|
 |[azurerm_cosmosdb_sql_database_invalid_account_name](rules/azurerm_cosmosdb_sql_database_invalid_account_name.md)|✔|
