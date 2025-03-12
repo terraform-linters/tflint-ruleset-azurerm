@@ -3,13 +3,22 @@ package integration
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"runtime"
+	"strings"
 	"testing"
+	"text/template"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
+
+type meta struct {
+	Version string
+}
 
 func TestIntegration(t *testing.T) {
 	cases := []struct {
@@ -43,7 +52,7 @@ func TestIntegration(t *testing.T) {
 			t.Fatalf("Failed `%s`: %s, stdout=%s stderr=%s", tc.Name, err, stdout.String(), stderr.String())
 		}
 
-		ret, err := ioutil.ReadFile("result.json")
+		ret, err := readResultFile(testDir)
 		if err != nil {
 			t.Fatalf("Failed `%s`: %s", tc.Name, err)
 		}
@@ -62,4 +71,27 @@ func TestIntegration(t *testing.T) {
 			t.Fatalf("Failed `%s`: diff=%s", tc.Name, cmp.Diff(expected, got))
 		}
 	}
+}
+
+func readResultFile(dir string) ([]byte, error) {
+	resultFile := "result.json"
+	if runtime.GOOS == "windows" {
+		if _, err := os.Stat(filepath.Join(dir, "result_windows.json")); !os.IsNotExist(err) {
+			resultFile = "result_windows.json"
+		}
+	}
+	if _, err := os.Stat(fmt.Sprintf("%s.tmpl", resultFile)); !os.IsNotExist(err) {
+		resultFile = fmt.Sprintf("%s.tmpl", resultFile)
+	}
+
+	if !strings.HasSuffix(resultFile, ".tmpl") {
+		return os.ReadFile(filepath.Join(dir, resultFile))
+	}
+
+	want := new(bytes.Buffer)
+	tmpl := template.Must(template.ParseFiles(filepath.Join(dir, resultFile)))
+	if err := tmpl.Execute(want, meta{Version: project.Version}); err != nil {
+		return nil, err
+	}
+	return want.Bytes(), nil
 }
