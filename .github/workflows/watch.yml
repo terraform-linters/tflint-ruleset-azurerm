@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Calculate diff
       run: |
-        curl https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/main/articles/virtual-machines/sizes/overview.md --output .github/snapshots/size.md
+        curl https://raw.githubusercontent.com/MicrosoftDocs/azure-compute-docs/main/articles/virtual-machines/sizes/overview.md --output .github/snapshots/size.md
     - name: Create PR
       uses: peter-evans/create-pull-request@v7
       with:
@@ -21,5 +21,5 @@ jobs:
         title: 🤖 MicrosoftDocs/azure-docs changes
         commit-message: |
           Manually edit https://github.com/terraform-linters/tflint-ruleset-azurerm/edit/azure-docs/rules/utils.go
-          based on https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/virtual-machines/sizes/overview.md
+          based on https://github.com/MicrosoftDocs/azure-compute-docs/blob/main/articles/virtual-machines/sizes/overview.md
         delete-branch: true
