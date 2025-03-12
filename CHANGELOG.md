@@ -1,3 +1,5 @@
+See https://github.com/terraform-linters/tflint-ruleset-azurerm/releases for later releases.
+
 ## 0.27.0 (2024-07-22)
 
 ### Enhancements
