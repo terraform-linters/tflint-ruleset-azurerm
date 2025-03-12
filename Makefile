@@ -25,6 +25,7 @@ updateSubmodule:
 	git submodule update --init --recursive
 	cd ../../..
 
+release:
+	cd tools; go run ./release
 
-
-.PHONY: test e2e build install lint tools updateSubmodule
+.PHONY: test e2e build install lint tools updateSubmodule release
