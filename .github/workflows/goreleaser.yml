@@ -23,5 +23,5 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v6
       with:
-        version: v1.12.3
+        version: v2.7.0
         args: check
