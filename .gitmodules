@@ -1,3 +1,6 @@
 [submodule "tools/apispec-rule-gen/azure-rest-api-specs"]
 	path = tools/apispec-rule-gen/azure-rest-api-specs
 	url = https://github.com/Azure/azure-rest-api-specs
+[submodule "tools/api-version-bumper/terraform-provider-azurerm"]
+	path = tools/api-version-bumper/terraform-provider-azurerm
+	url = https://github.com/hashicorp/terraform-provider-azurerm
