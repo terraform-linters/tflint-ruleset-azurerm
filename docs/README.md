@@ -16,7 +16,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 216 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 217 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -97,8 +97,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_data_factory_trigger_schedule_invalid_frequency](rules/azurerm_data_factory_trigger_schedule_invalid_frequency.md)|✔|
 |[azurerm_database_migration_project_invalid_source_platform](rules/azurerm_database_migration_project_invalid_source_platform.md)|✔|
 |[azurerm_database_migration_project_invalid_target_platform](rules/azurerm_database_migration_project_invalid_target_platform.md)|✔|
-|[azurerm_databricks_workspace_invalid_managed_resource_group_name](rules/azurerm_databricks_workspace_invalid_managed_resource_group_name.md)|✔|
-|[azurerm_databricks_workspace_invalid_resource_group_name](rules/azurerm_databricks_workspace_invalid_resource_group_name.md)|✔|
 |[azurerm_dedicated_host_group_invalid_platform_fault_domain_count](rules/azurerm_dedicated_host_group_invalid_platform_fault_domain_count.md)|✔|
 |[azurerm_dedicated_host_invalid_license_type](rules/azurerm_dedicated_host_invalid_license_type.md)|✔|
 |[azurerm_dedicated_host_invalid_platform_fault_domain](rules/azurerm_dedicated_host_invalid_platform_fault_domain.md)|✔|
@@ -163,6 +161,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_linux_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_priority](rules/azurerm_linux_virtual_machine_scale_set_invalid_priority.md)|✔|
 |[azurerm_logic_app_trigger_recurrence_invalid_frequency](rules/azurerm_logic_app_trigger_recurrence_invalid_frequency.md)|✔|
+|[azurerm_machine_learning_workspace_invalid_name](rules/azurerm_machine_learning_workspace_invalid_name.md)|✔|
 |[azurerm_maintenance_configuration_invalid_scope](rules/azurerm_maintenance_configuration_invalid_scope.md)|✔|
 |[azurerm_managed_application_definition_invalid_lock_level](rules/azurerm_managed_application_definition_invalid_lock_level.md)|✔|
 |[azurerm_managed_disk_invalid_os_type](rules/azurerm_managed_disk_invalid_os_type.md)|✔|
@@ -212,8 +211,10 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_servicebus_subscription_rule_invalid_filter_type](rules/azurerm_servicebus_subscription_rule_invalid_filter_type.md)|✔|
 |[azurerm_servicebus_topic_invalid_status](rules/azurerm_servicebus_topic_invalid_status.md)|✔|
 |[azurerm_shared_image_invalid_os_type](rules/azurerm_shared_image_invalid_os_type.md)|✔|
+|[azurerm_signalr_service_invalid_name](rules/azurerm_signalr_service_invalid_name.md)|✔|
 |[azurerm_storage_account_invalid_access_tier](rules/azurerm_storage_account_invalid_access_tier.md)|✔|
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|
+|[azurerm_storage_account_invalid_name](rules/azurerm_storage_account_invalid_name.md)|✔|
 |[azurerm_storage_account_invalid_resource_group_name](rules/azurerm_storage_account_invalid_resource_group_name.md)|✔|
 |[azurerm_storage_account_network_rules_invalid_default_action](rules/azurerm_storage_account_network_rules_invalid_default_action.md)|✔|
 |[azurerm_stream_analytics_job_invalid_compatibility_level](rules/azurerm_stream_analytics_job_invalid_compatibility_level.md)|✔|

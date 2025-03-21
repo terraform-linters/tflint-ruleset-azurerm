@@ -28,7 +28,7 @@ func NewAzurermKeyVaultKeyInvalidCurveRule() *AzurermKeyVaultKeyInvalidCurveRule
 			"P-256",
 			"P-384",
 			"P-521",
-			"SECP256K1",
+			"P-256K",
 		},
 	}
 }

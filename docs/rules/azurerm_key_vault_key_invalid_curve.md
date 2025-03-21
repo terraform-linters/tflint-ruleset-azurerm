@@ -8,7 +8,7 @@ Allowed values are:
 - P-256
 - P-384
 - P-521
-- SECP256K1
+- P-256K
 
 ## Example
 
@@ -43,4 +43,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.4/keys.json

@@ -1,5 +1,5 @@
 mapping "azurerm_iothub_dps_certificate" {
-  import_path = "azure-rest-api-specs/specification/iothub/resource-manager/Microsoft.Devices/stable/2020-03-01/iothub.json"
+  import_path = "azure-rest-api-specs/specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/iotdps.json"
 
   name                = resourceName
   resource_group_name = resourceGroupName

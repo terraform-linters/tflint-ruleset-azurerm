@@ -11,8 +11,8 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermDatabricksWorkspaceInvalidResourceGroupNameRule checks the pattern is valid
-type AzurermDatabricksWorkspaceInvalidResourceGroupNameRule struct {
+// AzurermMachineLearningWorkspaceInvalidNameRule checks the pattern is valid
+type AzurermMachineLearningWorkspaceInvalidNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
@@ -20,37 +20,37 @@ type AzurermDatabricksWorkspaceInvalidResourceGroupNameRule struct {
 	pattern       *regexp.Regexp
 }
 
-// NewAzurermDatabricksWorkspaceInvalidResourceGroupNameRule returns new rule with default attributes
-func NewAzurermDatabricksWorkspaceInvalidResourceGroupNameRule() *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule {
-	return &AzurermDatabricksWorkspaceInvalidResourceGroupNameRule{
-		resourceType:  "azurerm_databricks_workspace",
-		attributeName: "resource_group_name",
-		pattern:       regexp.MustCompile(`^[-\w\._\(\)]+$`),
+// NewAzurermMachineLearningWorkspaceInvalidNameRule returns new rule with default attributes
+func NewAzurermMachineLearningWorkspaceInvalidNameRule() *AzurermMachineLearningWorkspaceInvalidNameRule {
+	return &AzurermMachineLearningWorkspaceInvalidNameRule{
+		resourceType:  "azurerm_machine_learning_workspace",
+		attributeName: "name",
+		pattern:       regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9_-]{2,32}$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Name() string {
-	return "azurerm_databricks_workspace_invalid_resource_group_name"
+func (r *AzurermMachineLearningWorkspaceInvalidNameRule) Name() string {
+	return "azurerm_machine_learning_workspace_invalid_name"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Enabled() bool {
+func (r *AzurermMachineLearningWorkspaceInvalidNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Severity() tflint.Severity {
+func (r *AzurermMachineLearningWorkspaceInvalidNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Link() string {
+func (r *AzurermMachineLearningWorkspaceInvalidNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Check(runner tflint.Runner) error {
+func (r *AzurermMachineLearningWorkspaceInvalidNameRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -69,7 +69,7 @@ func (r *AzurermDatabricksWorkspaceInvalidResourceGroupNameRule) Check(runner tf
 			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[-\w\._\(\)]+$`),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-zA-Z0-9][a-zA-Z0-9_-]{2,32}$`),
 					attribute.Expr.Range(),
 				)
 			}

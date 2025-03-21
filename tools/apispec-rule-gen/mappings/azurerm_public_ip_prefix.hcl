@@ -1,5 +1,5 @@
 mapping "azurerm_public_ip_prefix" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-11-01/publicIpPrefix.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/publicIpPrefix.json"
 
   sku           = PublicIPPrefixSku.name
   prefix_length = PublicIPPrefixPropertiesFormat.prefixLength

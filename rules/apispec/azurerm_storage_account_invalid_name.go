@@ -4,59 +4,53 @@ package apispec
 
 import (
 	"fmt"
+	"regexp"
 
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermKeyVaultKeyInvalidKeyTypeRule checks the pattern is valid
-type AzurermKeyVaultKeyInvalidKeyTypeRule struct {
+// AzurermStorageAccountInvalidNameRule checks the pattern is valid
+type AzurermStorageAccountInvalidNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
 	attributeName string
-	enum          []string
+	pattern       *regexp.Regexp
 }
 
-// NewAzurermKeyVaultKeyInvalidKeyTypeRule returns new rule with default attributes
-func NewAzurermKeyVaultKeyInvalidKeyTypeRule() *AzurermKeyVaultKeyInvalidKeyTypeRule {
-	return &AzurermKeyVaultKeyInvalidKeyTypeRule{
-		resourceType:  "azurerm_key_vault_key",
-		attributeName: "key_type",
-		enum: []string{
-			"EC",
-			"EC-HSM",
-			"RSA",
-			"RSA-HSM",
-			"oct",
-			"oct-HSM",
-		},
+// NewAzurermStorageAccountInvalidNameRule returns new rule with default attributes
+func NewAzurermStorageAccountInvalidNameRule() *AzurermStorageAccountInvalidNameRule {
+	return &AzurermStorageAccountInvalidNameRule{
+		resourceType:  "azurerm_storage_account",
+		attributeName: "name",
+		pattern:       regexp.MustCompile(`^[a-z0-9]+$`),
 	}
 }
 
 // Name returns the rule name
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Name() string {
-	return "azurerm_key_vault_key_invalid_key_type"
+func (r *AzurermStorageAccountInvalidNameRule) Name() string {
+	return "azurerm_storage_account_invalid_name"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Enabled() bool {
+func (r *AzurermStorageAccountInvalidNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Severity() tflint.Severity {
+func (r *AzurermStorageAccountInvalidNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Link() string {
+func (r *AzurermStorageAccountInvalidNameRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // Check checks the pattern is valid
-func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Check(runner tflint.Runner) error {
+func (r *AzurermStorageAccountInvalidNameRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
 			{Name: r.attributeName},
@@ -72,16 +66,10 @@ func (r *AzurermKeyVaultKeyInvalidKeyTypeRule) Check(runner tflint.Runner) error
 			continue
 		}
 		err := runner.EvaluateExpr(attribute.Expr, func (val string) error {
-			found := false
-			for _, item := range r.enum {
-				if item == val {
-					found = true
-				}
-			}
-			if !found {
+			if !r.pattern.MatchString(val) {
 				runner.EmitIssue(
 					r,
-					fmt.Sprintf(`"%s" is an invalid value as key_type`, truncateLongMessage(val)),
+					fmt.Sprintf(`"%s" does not match valid pattern %s`, truncateLongMessage(val), `^[a-z0-9]+$`),
 					attribute.Expr.Range(),
 				)
 			}

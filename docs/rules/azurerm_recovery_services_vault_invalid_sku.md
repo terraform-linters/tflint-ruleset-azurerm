@@ -41,4 +41,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2024-01-01/vaults.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/vaults.json

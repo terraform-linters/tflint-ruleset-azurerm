@@ -46,4 +46,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-10-01-preview/AlertRules.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2023-12-01-preview/AlertRules.json

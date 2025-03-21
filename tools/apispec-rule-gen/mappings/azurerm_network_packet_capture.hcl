@@ -1,5 +1,5 @@
 mapping "azurerm_network_packet_capture" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2023-11-01/networkWatcher.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/networkWatcher.json"
 
   target_resource_id        = PacketCaptureParameters.target
   maximum_bytes_per_packet  = any //PacketCaptureParameters.bytesToCapturePerPacket

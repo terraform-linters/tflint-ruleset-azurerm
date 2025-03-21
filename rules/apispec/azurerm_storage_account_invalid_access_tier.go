@@ -28,6 +28,7 @@ func NewAzurermStorageAccountInvalidAccessTierRule() *AzurermStorageAccountInval
 			"Hot",
 			"Cool",
 			"Premium",
+			"Cold",
 		},
 	}
 }
