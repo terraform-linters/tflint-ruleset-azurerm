@@ -1,5 +1,5 @@
 mapping "azurerm_managed_application_definition" {
-  import_path = "azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Solutions/stable/2019-07-01/managedapplications.json"
+  import_path = "azure-rest-api-specs/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/managedapplications.json"
 
   lock_level           = ApplicationLockLevel
   create_ui_definition = ApplicationDefinitionProperties.createUiDefinition
