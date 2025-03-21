@@ -1,8 +1,6 @@
 on:
-  push:
-    branches: [ master ]
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * 1"
   workflow_dispatch: # Enables on-demand/manual triggering
 jobs:
   job:
@@ -21,6 +19,7 @@ jobs:
           terraform providers schema -json > schema.json
           cd ../..
           git submodule update --remote
+          go run ./api-version-bumper
           go run ./apispec-rule-gen
       - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:

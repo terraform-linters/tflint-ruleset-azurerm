@@ -55,3 +55,22 @@ $ terraform providers schema -json > schema.json
 $ cd ../../
 $ go run ./apispec-rule-gen
 ```
+
+## api-version-bumper
+
+This script parses the [terraform-provider-azurerm](https://github.com/hashicorp/terraform-provider-azurerm) codebase and updates the mapping files with the identified API versions. The repository has been added as a Git submodule and you will update the submodule version if you want to keep up with the latest.
+
+This tool is meant to be used together with apispec-rule-gen, and a typical workflow is to update API versions in mapping files and then generate rules with apispec-rule-gen.
+
+### Update terraform-provider-azurerm
+
+```console
+$ cd api-version-bumper/terraform-provider-azurerm
+$ git pull origin main
+$ cd ../../
+$ go run ./api-version-bumper
+```
+
+##  release
+
+This script automates the release process. Run `go run ./release` and follow the instructions to modify and commit the files required for releasing and push them to the remote. The actual build and publish process is triggerd by GitHub Actions and is not the responsibility of this script.
