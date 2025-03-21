@@ -10,6 +10,7 @@ Allowed values are:
 - RSA
 - RSA-HSM
 - oct
+- oct-HSM
 
 ## Example
 
@@ -44,4 +45,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.4/keys.json

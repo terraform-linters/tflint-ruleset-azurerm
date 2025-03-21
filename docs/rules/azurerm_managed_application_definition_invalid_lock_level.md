@@ -42,4 +42,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resources/resource-manager/Microsoft.Solutions/stable/2019-07-01/managedapplications.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/managedapplications.json
