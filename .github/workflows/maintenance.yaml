@@ -1,7 +1,14 @@
+name: maintenance
+
 on:
   schedule:
     - cron: "0 0 * * 1"
   workflow_dispatch: # Enables on-demand/manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   job:
     runs-on: ubuntu-latest
