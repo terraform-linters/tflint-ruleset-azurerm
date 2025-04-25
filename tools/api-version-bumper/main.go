@@ -224,13 +224,13 @@ func findAPIVersion(resourcePath string) string {
 }
 
 // github.com/hashicorp/go-azure-sdk/resource-manager/aadb2c/2021-04-01-preview/tenants
-var goAzureSDKRE = regexp.MustCompile(`github.com/hashicorp/go-azure-sdk/resource-manager/[^/]+/([^/]+)/([^/]+)`)
+var goAzureSDKRE = regexp.MustCompile(`github\.com/hashicorp/go-azure-sdk/resource-manager/[^/]+/([^/]+)/([^/]+)`)
 
 // github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2020-09-01/cdn
-var azureSDKForGoRE = regexp.MustCompile(`github.com/Azure/azure-sdk-for-go/services/[^/]+/mgmt/([^/]+)/([^/]+)`)
+var azureSDKForGoRE = regexp.MustCompile(`github\.com/Azure/azure-sdk-for-go/services/[^/]+/mgmt/([^/]+)/([^/]+)`)
 
 // github.com/jackofallops/kermit/sdk/synapse/2019-06-01-preview/synapse
-var kermitSDKRE = regexp.MustCompile(`github.com/jackofallops/kermit/sdk/[^/]+/([^/]+)/([^/]+)`)
+var kermitSDKRE = regexp.MustCompile(`github\.com/jackofallops/kermit/sdk/[^/]+/([^/]+)/([^/]+)`)
 
 type importSpec struct {
 	apiVersion string
