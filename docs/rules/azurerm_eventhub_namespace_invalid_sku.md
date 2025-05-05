@@ -42,4 +42,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/namespaces-preview.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2024-01-01/namespaces.json

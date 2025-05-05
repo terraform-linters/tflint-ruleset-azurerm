@@ -1,5 +1,5 @@
 mapping "azurerm_netapp_snapshot" {
-  import_path = "azure-rest-api-specs/specification/netapp/resource-manager/Microsoft.NetApp/stable/2024-03-01/netapp.json"
+  import_path = "azure-rest-api-specs/specification/netapp/resource-manager/Microsoft.NetApp/stable/2025-01-01/netapp.json"
 
   name                = SnapshotName
   resource_group_name = any //ResourceGroup
