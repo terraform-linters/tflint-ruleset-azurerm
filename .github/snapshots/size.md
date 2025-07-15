@@ -4,10 +4,11 @@ description: Lists the different instance sizes available for virtual machines i
 author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.topic: conceptual
+ms.topic: concept-article
 ms.workload: infrastructure-services
-ms.date: 11/19/2024
+ms.date: 06/30/2025
 ms.author: mattmcinnes
+# Customer intent: As a cloud architect, I want to compare different virtual machine sizes and their specifications, so that I can select the most appropriate instance for my applications and workloads.
 ---
 
 # Sizes for virtual machines in Azure
@@ -83,7 +84,7 @@ General purpose VM sizes provide balanced CPU-to-memory ratio. Ideal for testing
 | [A-family](./general-purpose/a-family.md)  | Entry-level economical |  [Av2-series](./general-purpose/a-family.md#av2-series) <br> [Previous-gen A-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
 | [B-family](./general-purpose/b-family.md)  | Burstable | [Bsv2-series](./general-purpose/b-family.md#bsv2-series) <br> [Basv2-series](./general-purpose/b-family.md#basv2-series) <br> [Bpsv2-series](./general-purpose/b-family.md#bpsv2-series) <br>[Previous-gen B-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
 | [D-family](./general-purpose/d-family.md) | Enterprise-grade applications <br> Relational databases <br> In-memory caching <br> Data analytics | [Dpsv6-series and Dplsv6-series](./general-purpose/d-family.md#dpsv6-and-dplsv6-series ) <br> [Dpdsv6-series and Dpldsv6-series](./general-purpose/d-family.md#dpdsv6-and-dpldsv6-series) <br> [Dasv6 and Dadsv6-series](./general-purpose/d-family.md#dasv6-and-dadsv6-series) <br> [Dalsv6 and Daldsv6-series](./general-purpose/d-family.md#dalsv6-and-daldsv6-series) <br> [Dpsv5 and Dpdsv5-series](./general-purpose/d-family.md#dpsv5-and-dpdsv5-series) <br> [Dpldsv5 and Dpldsv5-series](./general-purpose/d-family.md#dplsv5-and-dpldsv5-series) <br> [Dlsv5 and Dldsv5-series](./general-purpose/d-family.md#dlsv5-and-dldsv5-series) <br> [Dv5 and Dsv5-series](./general-purpose/d-family.md#dv5-and-dsv5-series) <br> [Ddv5 and Ddsv5-series](./general-purpose/d-family.md#ddv5-and-ddsv5-series) <br> [Dasv5 and Dadsv5-series](./general-purpose/d-family.md#dasv5-and-dadsv5-series) <br> [Previous-gen D-family series](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes) |
-| [DC-family](./general-purpose/dc-family.md) | D-family with confidential computing | [DCasv5 and DCadsv5-series](./general-purpose/dc-family.md#dcasv5-and-dcadsv5-series) <br> [DCas_cc_v5 and DCads_cc_v5-series](./general-purpose/dc-family.md#dcas_cc_v5-and-dcads_cc_v5-series) <br> [DCesv5 and DCedsv5-series](./general-purpose/dc-family.md#dcesv5-and-dcedsv5-series) <br> [DCsv3 and DCdsv3-series](./general-purpose/dc-family.md#dcsv3-and-dcdsv3-series) <br> [Previous-gen DC-family](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes)|
+| [DC-family](./general-purpose/dc-family.md) | D-family with confidential computing | [DCasv5 and DCadsv5-series](./general-purpose/dc-family.md#dcasv5-and-dcadsv5-series) <br> [DCas_cc_v5 and DCads_cc_v5-series](./general-purpose/dc-family.md#dcas_cc_v5-and-dcads_cc_v5-series) <br> [DCesv6 and DCedsv5-series](./general-purpose/dc-family.md#dcesv6-and-dcedsv5-series) <br> [DCsv3 and DCdsv3-series](./general-purpose/dc-family.md#dcsv3-and-dcdsv3-series) <br> [Previous-gen DC-family](./previous-gen-sizes-list.md#general-purpose-previous-gen-sizes)|
 
 
 
@@ -162,7 +163,7 @@ List of memory optimized VM sizes with links to each series' family page section
 | [E-family](./memory-optimized/e-family.md)  | Relational databases <br> Medium to large caches <br> In-memory analytics |[Epsv6 and Epdsv6-series](./memory-optimized/e-family.md#epsv6-and-epdsv6-series)<br> [Easv6 and Eadsv6-series](./memory-optimized/e-family.md#easv6-and-eadsv6-series)<br> [Ev5 and Esv5-series](./memory-optimized/e-family.md#ev5-and-esv5-series)<br> [Edv5 and Edsv5-series](./memory-optimized/e-family.md#edv5-and-edsv5-series)<br> [Easv5 and Eadsv5-series](./memory-optimized/e-family.md#easv5-and-eadsv5-series)<br> [Epsv5 and Epdsv5-series](./memory-optimized/e-family.md#epsv5-and-epdsv5-series)<br> [Previous-gen families](./previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes) |
 | [Eb-family](./memory-optimized/eb-family.md)  | E-family with High remote storage performance | [Ebdsv5 and Ebsv5-series](./memory-optimized/eb-family.md#ebdsv5-and-ebsv5-series) |
 | [EC-family](./memory-optimized/ec-family.md)  | E-family with confidential computing | [ECasv5 and ECadsv5-series](./memory-optimized/ec-family.md#ecasv5-and-ecadsv5-series)<br> [ECas_cc_v5 and ECads_cc_v5-series](./memory-optimized/ec-family.md#ecas_ccv5-and-ecads_ccv5-series)<br> [ECesv5 and ECedsv5-series](./memory-optimized/ec-family.md#ecesv5-and-ecedsv5-series) |
-| [M-family](./memory-optimized/m-family.md)  | Extremely large databases <br> Large amounts of memory | [Mbsv3 and Mbdsv3-series](./memory-optimized/m-family.md#mbsv3-and-mbdsv3-series)<br> [Msv3 and Mdsv3-series](./memory-optimized/m-family.md#msv3-and-mdsv3-series)<br> [Mv2-series](./memory-optimized/m-family.md#mv2-series)<br> [Msv2 and Mdsv2-series](./memory-optimized/m-family.md#msv2-and-mdsv2-series) |
+| [M-family](./memory-optimized/m-family.md)  | Extremely large databases <br> Large amounts of memory | [Mbsv3 and Mbdsv3-series](./memory-optimized/m-family.md#mbsv3-and-mbdsv3-series)<br> [Msv3 and Mdsv3 Medium Memory series](./memory-optimized/m-family.md#msv3-and-mdsv3-medium-memory-series)<br> [Msv3 and Mdsv3 High Memory series](./memory-optimized/m-family.md#msv3-and-mdsv3-high-memory-series)<br> [Mdsv3 Very High Memory series](./memory-optimized/m-family.md#mdsv3-very-high-memory-series) <br> [Msv2 and Mdsv2-series](./memory-optimized/m-family.md#msv2-and-mdsv2-medium-memory-series) <br> [Mv2-series](./memory-optimized/m-family.md#mv2-series)<br> [M-series](./memory-optimized/m-family.md#m-series)<br> |
 | Other families | Older generation memory optimized sizes | [Previous-gen families](./previous-gen-sizes-list.md#memory-optimized-previous-gen-sizes) |
 
 To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
@@ -228,7 +229,7 @@ List of GPU optimized VM size families:
 
 | Family | Workloads | Series List |
 |----|---|---|
-| [NC-family](./gpu-accelerated/nc-family.md)  | Compute-intensive <br> Graphics-intensive <br> Visualization | [NC-series](./gpu-accelerated/nc-family.md#nc-series-v1) <br> [NCads_H100_v5-series](./gpu-accelerated/nc-family.md#ncads_h100_v5-series) <br> [NCCads_H100_v5-series](./gpu-accelerated/nc-family.md#nccads_h100_v5-series) <br> [NCv2-series](./gpu-accelerated/nc-family.md#ncv2-series) <br> [NCv3-series](./gpu-accelerated/nc-family.md#ncv3-series) <br> [NCasT4_v3-series](./gpu-accelerated/nc-family.md#ncast4_v3-series) <br> [NC_A100_v4-series](./gpu-accelerated/nc-family.md#nc_a100_v4-series)|
+| [NC-family](./gpu-accelerated/nc-family.md)  | Compute-intensive <br> Graphics-intensive <br> Visualization | [NCads_H100_v5-series](./gpu-accelerated/nc-family.md#ncads_h100_v5-series) <br> [NCCads_H100_v5-series](./gpu-accelerated/nc-family.md#nccads_h100_v5-series) <br>  [NCv3-series](./gpu-accelerated/nc-family.md#ncv3-series) <br> [NCasT4_v3-series](./gpu-accelerated/nc-family.md#ncast4_v3-series) <br> [NC_A100_v4-series](./gpu-accelerated/nc-family.md#nc_a100_v4-series)|
 | [ND-family](./gpu-accelerated/nd-family.md)  |  Large memory compute-intensive <br> Large memory graphics-intensive <br> Large memory visualization | [ND_MI300X_v5-series](./gpu-accelerated/nd-family.md#nd_mi300x_v5-series) <br> [ND-H100-v5-series](./gpu-accelerated/nd-family.md#nd_h100_v5-series) <br> [NDm_A100_v4-series](./gpu-accelerated/nd-family.md#ndm_a100_v4-series) <br> [ND_A100_v4-series](./gpu-accelerated/nd-family.md#nd_a100_v4-series) |
 | [NG-family](./gpu-accelerated/ng-family.md)  | Virtual Desktop (VDI) <br> Cloud gaming |  [NGads V620-series](./gpu-accelerated/ng-family.md#ngads-v620-series) |
 | [NV-family](./gpu-accelerated/nv-family.md)  | Virtual desktop (VDI) <br> Single-precision compute <br> Video encoding and rendering |  [NV-series](./gpu-accelerated/nv-family.md#nv-series-v1) <br> [NVv3-series](./gpu-accelerated/nv-family.md#nvv3-series) <br> [NVv4-series](./gpu-accelerated/nv-family.md#nvv4-series) <br> [NVadsA10_v5-series](./gpu-accelerated/nv-family.md#nvads-a10-v5-series) <br> [Previous-gen NV-family](./previous-gen-sizes-list.md#gpu-accelerated-previous-gen-sizes) |
@@ -297,9 +298,9 @@ List of high performance computing optimized VM size families:
 
 | Family | Workloads | Series List |
 |----|---|---|
-| [HB-family](./high-performance-compute/hb-family.md) | High memory bandwidth <br> Fluid Dynamics <br> Weather modeling |  [HB-series](./high-performance-compute/hb-family.md#hb-series-v1) <br> [HBv2-series](./high-performance-compute/hb-family.md#hbv2-series) <br> [HBv3-series](./high-performance-compute/hb-family.md#hbv3-series) <br> [HBv4-series](./high-performance-compute/hb-family.md#hbv4-series) |
-| [HC-family](./high-performance-compute/hc-family.md) | High density compute <br> Finite element analysis <br> Molecular dynamics <br> Computational chemistry | [HC-series](./high-performance-compute/hc-family.md#hc-series) |
-| [HX-family](./high-performance-compute/hx-family.md) | Large memory capacity <br> Electronic Design Automation (EDA) | [HX-series](./high-performance-compute/hx-family.md#hx-series) |
+| [HB-family](./high-performance-compute/hb-family.md) | High memory bandwidth <br> Fluid Dynamics <br> Weather modeling |  [HBv2-series](./high-performance-compute/hbv2-series.md) <br> [HBv3-series](./high-performance-compute/hbv3-series.md) <br> [HBv4-series](./high-performance-compute/hbv4-series.md) |
+| [HC-family](./high-performance-compute/hc-family.md) | High density compute <br> Finite element analysis <br> Molecular dynamics <br> Computational chemistry | [HC-series](./high-performance-compute/hc-series.md) |
+| [HX-family](./high-performance-compute/hx-family.md) | Large memory capacity <br> Electronic Design Automation (EDA) | [HX-series](./high-performance-compute/hx-series.md) |
 
 To learn more about a specific size family or series, click the tab for that family and scroll to find your desired size series. 
 
