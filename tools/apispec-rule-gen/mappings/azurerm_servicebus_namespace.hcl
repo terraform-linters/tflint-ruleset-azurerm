@@ -1,5 +1,5 @@
 mapping "azurerm_servicebus_namespace" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2024-01-01/namespace-preview.json"
 
   name                = any
   resource_group_name = any
