@@ -9,6 +9,7 @@ Allowed values are:
 - Premium
 - Ultra
 - StandardZRS
+- Flexible
 
 ## Example
 
@@ -43,4 +44,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager/Microsoft.NetApp/stable/2025-01-01/netapp.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager/Microsoft.NetApp/stable/2025-06-01/netapp.json
