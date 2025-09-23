@@ -29,6 +29,7 @@ func NewAzurermNetappVolumeInvalidServiceLevelRule() *AzurermNetappVolumeInvalid
 			"Premium",
 			"Ultra",
 			"StandardZRS",
+			"Flexible",
 		},
 	}
 }
