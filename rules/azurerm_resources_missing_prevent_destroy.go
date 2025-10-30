@@ -77,7 +77,7 @@ func (r *AzurermResourcesMissingPreventDestroyRule) Name() string {
 
 // Enabled returns whether the rule is enabled by default
 func (r *AzurermResourcesMissingPreventDestroyRule) Enabled() bool {
-	return false
+	return true
 }
 
 // Severity returns the rule severity
