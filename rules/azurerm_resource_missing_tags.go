@@ -115,12 +115,3 @@ func (r *AzurermResourceMissingTagsRule) emitIssue(runner tflint.Runner, tags ma
 
 	return nil
 }
-
-func stringInSlice(a string, list []string) bool {
-	for _, b := range list {
-		if b == a {
-			return true
-		}
-	}
-	return false
-}
