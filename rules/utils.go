@@ -1202,13 +1202,3 @@ var validMachineSizes = []string{
 	"Standard_NV8as_v4",
 	"Standard_PB6s",
 }
-
-// stringInSlice checks if a string is present in a slice
-func stringInSlice(a string, list []string) bool {
-	for _, b := range list {
-		if b == a {
-			return true
-		}
-	}
-	return false
-}

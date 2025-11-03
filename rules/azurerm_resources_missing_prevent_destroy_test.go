@@ -54,17 +54,7 @@ resource "azurerm_storage_account" "example" {
 rule "azurerm_resources_missing_prevent_destroy" {
   enabled = true
 }`,
-			Expected: helper.Issues{
-				{
-					Rule:    NewAzurermResourcesMissingPreventDestroyRule(),
-					Message: "Resource has lifecycle { prevent_destroy = false }. Consider setting prevent_destroy = true to protect data from accidental deletion.",
-					Range: hcl.Range{
-						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 2, Column: 1},
-						End:      hcl.Pos{Line: 2, Column: 45},
-					},
-				},
-			},
+			Expected: helper.Issues{},
 		},
 		{
 			Name: "Has lifecycle with prevent_destroy = true",

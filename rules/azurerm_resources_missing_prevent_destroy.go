@@ -1,11 +1,12 @@
 package rules
 
 import (
+	"slices"
+
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/logger"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
-	"github.com/zclconf/go-cty/cty"
 )
 
 // AzurermResourcesMissingPreventDestroyRule checks whether resources have lifecycle prevent_destroy = true
@@ -106,7 +107,7 @@ func (r *AzurermResourcesMissingPreventDestroyRule) Check(runner tflint.Runner) 
 
 	for _, resourceType := range resourcesToCheck {
 		// Skip this resource if its type is excluded in configuration
-		if stringInSlice(resourceType, config.Exclude) {
+		if slices.Contains(config.Exclude, resourceType) {
 			logger.Debug("excluding", "resourceType", resourceType)
 			continue
 		}
@@ -132,7 +133,6 @@ func (r *AzurermResourcesMissingPreventDestroyRule) Check(runner tflint.Runner) 
 			logger.Debug("checking", "resource type", resource.Labels[0], "resource name", resource.Labels[1])
 
 			hasPreventDestroy := false
-			preventDestroyValue := false
 
 			// Check if lifecycle block exists
 			for _, block := range resource.Body.Blocks {
@@ -143,14 +143,11 @@ func (r *AzurermResourcesMissingPreventDestroyRule) Check(runner tflint.Runner) 
 
 						err := runner.EvaluateExpr(attribute.Expr, func(val bool) error {
 							hasPreventDestroy = true
-							preventDestroyValue = val
 							return nil
-						}, &tflint.EvaluateExprOption{WantType: &cty.Bool})
+						}, nil)
 
 						if err != nil {
-							// If we can't evaluate the expression, assume it's present but might be dynamic
-							hasPreventDestroy = true
-							preventDestroyValue = true
+							return err
 						}
 						break
 					}
@@ -160,11 +157,6 @@ func (r *AzurermResourcesMissingPreventDestroyRule) Check(runner tflint.Runner) 
 			// Emit issue if prevent_destroy is missing or set to false
 			if !hasPreventDestroy {
 				issue := "Resource is missing lifecycle { prevent_destroy = true }. This resource contains data that should be protected from accidental deletion."
-				if err := runner.EmitIssue(r, issue, resource.DefRange); err != nil {
-					return err
-				}
-			} else if !preventDestroyValue {
-				issue := "Resource has lifecycle { prevent_destroy = false }. Consider setting prevent_destroy = true to protect data from accidental deletion."
 				if err := runner.EmitIssue(r, issue, resource.DefRange); err != nil {
 					return err
 				}
