@@ -2,6 +2,7 @@ package rules
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -63,7 +64,7 @@ func (r *AzurermResourceMissingTagsRule) Check(runner tflint.Runner) error {
 
 	for _, resourceType := range tags.Resources {
 		// Skip this resource if its type is excluded in configuration
-		if stringInSlice(resourceType, config.Exclude) {
+		if slices.Contains(config.Exclude, resourceType) {
 			logger.Debug("excluding", "resourceType", resourceType)
 			continue
 		}
@@ -114,13 +115,4 @@ func (r *AzurermResourceMissingTagsRule) emitIssue(runner tflint.Runner, tags ma
 	}
 
 	return nil
-}
-
-func stringInSlice(a string, list []string) bool {
-	for _, b := range list {
-		if b == a {
-			return true
-		}
-	}
-	return false
 }

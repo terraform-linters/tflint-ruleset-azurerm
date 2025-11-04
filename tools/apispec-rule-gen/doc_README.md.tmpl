@@ -9,6 +9,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 |[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_resource_missing_tags](rules/azurerm_resource_missing_tags.md)||
+|[azurerm_resources_missing_prevent_destroy](rules/azurerm_resources_missing_prevent_destroy.md)|✔|
 |[azurerm_virtual_machine_invalid_vm_size](rules/azurerm_virtual_machine_invalid_vm_size.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_name](rules/azurerm_windows_virtual_machine_invalid_name.md)|✔|
 |[azurerm_windows_virtual_machine_invalid_size](rules/azurerm_windows_virtual_machine_invalid_size.md)|✔|
