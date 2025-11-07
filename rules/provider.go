@@ -11,6 +11,7 @@ var Rules = append([]tflint.Rule{
 	NewAzurermKubernetesClusterNodePoolInvalidVMSizeRule(),
 	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidSkuRule(),
+	NewAzurermLinuxWebAppAppInsightsHiddenLinkRule(),
 	NewAzurermVirtualMachineInvalidVMSizeRule(),
 	NewAzurermWindowsVirtualMachineInvalidNameRule(),
 	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
