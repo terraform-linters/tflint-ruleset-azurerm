@@ -499,6 +499,85 @@ resource "azurerm_linux_web_app" "example" {
 				},
 			},
 		},
+		// Site Config tests
+		{
+			Name: "Linux Function App - site_config with application_insights_connection_string without ignore_changes - should fail",
+			Content: `
+resource "azurerm_linux_function_app" "example" {
+  site_config {
+    application_insights_connection_string = "example-connection"
+  }
+}
+`,
+			Expected: helper.Issues{
+				{
+					Rule:    NewAzurermAppServiceAppInsightsHiddenLinkRule(),
+					Message: "When Application Insights is configured, lifecycle { ignore_changes } should include all hidden-link tags: tags[\"hidden-link: /app-insights-conn-string\"], tags[\"hidden-link: /app-insights-instrumentation-key\"], tags[\"hidden-link: /app-insights-resource-id\"]",
+					Range: hcl.Range{
+						Filename: "resource.tf",
+						Start:    hcl.Pos{Line: 2, Column: 1},
+						End:      hcl.Pos{Line: 2, Column: 48},
+					},
+				},
+			},
+		},
+		{
+			Name: "Windows Function App - site_config with application_insights_key without ignore_changes - should fail",
+			Content: `
+resource "azurerm_windows_function_app" "example" {
+  site_config {
+    application_insights_key = "example-key"
+  }
+}
+`,
+			Expected: helper.Issues{
+				{
+					Rule:    NewAzurermAppServiceAppInsightsHiddenLinkRule(),
+					Message: "When Application Insights is configured, lifecycle { ignore_changes } should include all hidden-link tags: tags[\"hidden-link: /app-insights-conn-string\"], tags[\"hidden-link: /app-insights-instrumentation-key\"], tags[\"hidden-link: /app-insights-resource-id\"]",
+					Range: hcl.Range{
+						Filename: "resource.tf",
+						Start:    hcl.Pos{Line: 2, Column: 1},
+						End:      hcl.Pos{Line: 2, Column: 50},
+					},
+				},
+			},
+		},
+		{
+			Name: "Function App Slot - site_config with empty application_insights_connection_string - should pass",
+			Content: `
+resource "azurerm_linux_function_app_slot" "example" {
+  site_config {
+    application_insights_connection_string = ""
+  }
+}
+`,
+			Expected: helper.Issues{},
+		},
+		{
+			Name: "Mixed configuration - app_settings and site_config with Application Insights - should fail",
+			Content: `
+resource "azurerm_linux_function_app" "example" {
+  app_settings = {
+    "SOME_OTHER_SETTING" = "value"
+  }
+  
+  site_config {
+    application_insights_connection_string = "example-connection"
+  }
+}
+`,
+			Expected: helper.Issues{
+				{
+					Rule:    NewAzurermAppServiceAppInsightsHiddenLinkRule(),
+					Message: "When Application Insights is configured, lifecycle { ignore_changes } should include all hidden-link tags: tags[\"hidden-link: /app-insights-conn-string\"], tags[\"hidden-link: /app-insights-instrumentation-key\"], tags[\"hidden-link: /app-insights-resource-id\"]",
+					Range: hcl.Range{
+						Filename: "resource.tf",
+						Start:    hcl.Pos{Line: 2, Column: 1},
+						End:      hcl.Pos{Line: 2, Column: 48},
+					},
+				},
+			},
+		},
 	}
 
 	rule := NewAzurermAppServiceAppInsightsHiddenLinkRule()

@@ -15,10 +15,13 @@ type AzurermAppServiceAppInsightsHiddenLinkRule struct {
 }
 
 const (
-	appServiceIgnoreChangesAttrName    = "ignore_changes"
-	appServiceAppSettingsAttrName      = "app_settings"
-	appServiceAppInsightsConnectionKey = "APPLICATIONINSIGHTS_CONNECTION_STRING"
-	appServiceAppInsightsInstrumentKey = "APPINSIGHTS_INSTRUMENTATIONKEY"
+	appServiceIgnoreChangesAttrName              = "ignore_changes"
+	appServiceAppSettingsAttrName                = "app_settings"
+	appServiceSiteConfigAttrName                 = "site_config"
+	appServiceAppInsightsConnectionKey           = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+	appServiceAppInsightsInstrumentKey           = "APPINSIGHTS_INSTRUMENTATIONKEY"
+	appServiceSiteConfigAppInsightsConnectionKey = "application_insights_connection_string"
+	appServiceSiteConfigAppInsightsKey           = "application_insights_key"
 )
 
 var appServiceRequiredHiddenLinkTags = []string{
@@ -78,6 +81,15 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 					},
 				},
 			},
+			{
+				Type: "site_config",
+				Body: &hclext.BodySchema{
+					Attributes: []hclext.AttributeSchema{
+						{Name: appServiceSiteConfigAppInsightsConnectionKey},
+						{Name: appServiceSiteConfigAppInsightsKey},
+					},
+				},
+			},
 		},
 	}, nil)
 
@@ -90,6 +102,8 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 
 		// Check if Application Insights is configured
 		hasAppInsights := false
+
+		// Check in app_settings
 		if appSettingsAttr, exists := resource.Body.Attributes[appServiceAppSettingsAttrName]; exists {
 			err := runner.EvaluateExpr(appSettingsAttr.Expr, func(val map[string]string) error {
 				for key := range val {
@@ -103,6 +117,42 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 
 			if err != nil {
 				return err
+			}
+		}
+
+		// Check in site_config block
+		if !hasAppInsights {
+			for _, block := range resource.Body.Blocks {
+				if block.Type == "site_config" {
+					// Check for application_insights_connection_string
+					if attr, exists := block.Body.Attributes[appServiceSiteConfigAppInsightsConnectionKey]; exists {
+						err := runner.EvaluateExpr(attr.Expr, func(val string) error {
+							if val != "" {
+								hasAppInsights = true
+							}
+							return nil
+						}, nil)
+						if err != nil {
+							return err
+						}
+					}
+
+					// Check for application_insights_key
+					if !hasAppInsights {
+						if attr, exists := block.Body.Attributes[appServiceSiteConfigAppInsightsKey]; exists {
+							err := runner.EvaluateExpr(attr.Expr, func(val string) error {
+								if val != "" {
+									hasAppInsights = true
+								}
+								return nil
+							}, nil)
+							if err != nil {
+								return err
+							}
+						}
+					}
+					break
+				}
 			}
 		}
 

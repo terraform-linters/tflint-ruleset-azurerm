@@ -44,27 +44,20 @@ resource "azurerm_windows_web_app_slot" "example" {
 
 # Non-compliant: Windows Function App with Application Insights configured without ignore_changes
 resource "azurerm_windows_function_app" "example" {
-  name                = "example-func"
-  resource_group_name = "example-rg"
-  location            = "West Europe"
-  service_plan_id     = azurerm_service_plan.example.id
-  storage_account_name       = azurerm_storage_account.example.name
-  storage_account_access_key = azurerm_storage_account.example.primary_access_key
-
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = "example-key"
   }
 }
 
+# Non-compliant: Linux Function App with Application Insights in site_config without ignore_changes
+resource "azurerm_linux_function_app" "example" {
+  site_config {
+    application_insights_connection_string = "example-connection"
+  }
+}
+
 # Compliant: Linux Function App with proper ignore_changes
 resource "azurerm_linux_function_app" "example" {
-  name                = "example-func"
-  resource_group_name = "example-rg"
-  location            = "West Europe"
-  service_plan_id     = azurerm_service_plan.example.id
-  storage_account_name       = azurerm_storage_account.example.name
-  storage_account_access_key = azurerm_storage_account.example.primary_access_key
-
   app_settings = {
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = "example"
   }
@@ -80,11 +73,23 @@ resource "azurerm_linux_function_app" "example" {
 
 # Compliant: Windows Web App Slot with proper ignore_changes
 resource "azurerm_windows_web_app_slot" "example" {
-  name           = "example-slot"
-  app_service_id = azurerm_windows_web_app.example.id
-
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = "example"
+  }
+  
+  lifecycle {
+    ignore_changes = [
+      "tags[\"hidden-link: /app-insights-conn-string\"]",
+      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
+      "tags[\"hidden-link: /app-insights-resource-id\"]",
+    ]
+  }
+}
+
+# Compliant: Windows Function App with Application Insights in site_config and proper ignore_changes
+resource "azurerm_windows_function_app" "example" {
+  site_config {
+    application_insights_key = "example-key"
   }
   
   lifecycle {
@@ -101,7 +106,11 @@ resource "azurerm_windows_web_app_slot" "example" {
 
 When Application Insights is configured for Azure App Service resources (Web Apps, Web App Slots, Function Apps, or Function App Slots for both Linux and Windows), Azure automatically adds hidden-link tags to the resource. These tags can change during deployments and may cause unnecessary Terraform diffs. Using `lifecycle { ignore_changes }` for these specific tags prevents Terraform from attempting to manage these Azure-managed tags.
 
-This rule checks for the presence of Application Insights configuration (either `APPLICATIONINSIGHTS_CONNECTION_STRING` or `APPINSIGHTS_INSTRUMENTATIONKEY` in app_settings) and ensures that the corresponding hidden-link tags are properly ignored.
+Application Insights can be configured in two ways:
+1. **app_settings**: Using `APPLICATIONINSIGHTS_CONNECTION_STRING` or `APPINSIGHTS_INSTRUMENTATIONKEY` keys
+2. **site_config**: Using `application_insights_connection_string` or `application_insights_key` attributes (only applicable to Function Apps)
+
+This rule checks for the presence of Application Insights configuration in both locations and ensures that the corresponding hidden-link tags are properly ignored.
 
 ## How to Fix
 
