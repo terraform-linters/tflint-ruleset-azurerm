@@ -11,12 +11,11 @@ var Rules = append([]tflint.Rule{
 	NewAzurermKubernetesClusterNodePoolInvalidVMSizeRule(),
 	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
 	NewAzurermLinuxVirtualMachineScaleSetInvalidSkuRule(),
-	NewAzurermLinuxWebAppAppInsightsHiddenLinkRule(),
 	NewAzurermVirtualMachineInvalidVMSizeRule(),
+	NewAzurermWebAppAppInsightsHiddenLinkRule(),
 	NewAzurermWindowsVirtualMachineInvalidNameRule(),
 	NewAzurermWindowsVirtualMachineInvalidSizeRule(),
 	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
-	NewAzurermWindowsWebAppAppInsightsHiddenLinkRule(),
 	NewAzurermResourceMissingTagsRule(),
 	NewAzurermResourcesMissingPreventDestroyRule(),
 }, apispec.Rules...)
