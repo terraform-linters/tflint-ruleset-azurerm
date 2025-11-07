@@ -1,17 +1,21 @@
-# azurerm_web_app_app_insights_hidden_link
+# azurerm_app_service_app_insights_hidden_link
 
 Disallow missing lifecycle ignore_changes for Application Insights hidden-link tags.
 
-This rule applies to all Azure Web App resource types:
+This rule applies to all Azure App Service resource types (Web Apps and Function Apps):
 - `azurerm_linux_web_app`
 - `azurerm_linux_web_app_slot`
 - `azurerm_windows_web_app`
 - `azurerm_windows_web_app_slot`
+- `azurerm_linux_function_app`
+- `azurerm_linux_function_app_slot`
+- `azurerm_windows_function_app`
+- `azurerm_windows_function_app_slot`
 
 ## Configuration
 
 ```hcl
-rule "azurerm_web_app_app_insights_hidden_link" {
+rule "azurerm_app_service_app_insights_hidden_link" {
   enabled = true
 }
 ```
@@ -38,8 +42,29 @@ resource "azurerm_windows_web_app_slot" "example" {
   }
 }
 
-# Compliant: Linux Web App with proper ignore_changes
-resource "azurerm_linux_web_app" "example" {
+# Non-compliant: Windows Function App with Application Insights configured without ignore_changes
+resource "azurerm_windows_function_app" "example" {
+  name                = "example-func"
+  resource_group_name = "example-rg"
+  location            = "West Europe"
+  service_plan_id     = azurerm_service_plan.example.id
+  storage_account_name       = azurerm_storage_account.example.name
+  storage_account_access_key = azurerm_storage_account.example.primary_access_key
+
+  app_settings = {
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = "example-key"
+  }
+}
+
+# Compliant: Linux Function App with proper ignore_changes
+resource "azurerm_linux_function_app" "example" {
+  name                = "example-func"
+  resource_group_name = "example-rg"
+  location            = "West Europe"
+  service_plan_id     = azurerm_service_plan.example.id
+  storage_account_name       = azurerm_storage_account.example.name
+  storage_account_access_key = azurerm_storage_account.example.primary_access_key
+
   app_settings = {
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = "example"
   }
@@ -74,7 +99,7 @@ resource "azurerm_windows_web_app_slot" "example" {
 
 ## Why
 
-When Application Insights is configured for Azure Web Apps or Web App Slots (Linux or Windows), Azure automatically adds hidden-link tags to the resource. These tags can change during deployments and may cause unnecessary Terraform diffs. Using `lifecycle { ignore_changes }` for these specific tags prevents Terraform from attempting to manage these Azure-managed tags.
+When Application Insights is configured for Azure App Service resources (Web Apps, Web App Slots, Function Apps, or Function App Slots for both Linux and Windows), Azure automatically adds hidden-link tags to the resource. These tags can change during deployments and may cause unnecessary Terraform diffs. Using `lifecycle { ignore_changes }` for these specific tags prevents Terraform from attempting to manage these Azure-managed tags.
 
 This rule checks for the presence of Application Insights configuration (either `APPLICATIONINSIGHTS_CONNECTION_STRING` or `APPINSIGHTS_INSTRUMENTATIONKEY` in app_settings) and ensures that the corresponding hidden-link tags are properly ignored.
 

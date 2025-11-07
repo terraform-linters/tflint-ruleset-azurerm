@@ -9,68 +9,61 @@ import (
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
 )
 
-// AzurermWebAppAppInsightsHiddenLinkRule checks whether lifecycle ignore_changes includes hidden-link tags when Application Insights is configured
-type AzurermWebAppAppInsightsHiddenLinkRule struct {
+// AzurermLinuxWebAppAppInsightsHiddenLinkRule checks whether lifecycle ignore_changes includes hidden-link tags when Application Insights is configured
+type AzurermLinuxWebAppAppInsightsHiddenLinkRule struct {
 	tflint.DefaultRule
 }
 
 const (
-	webAppIgnoreChangesAttrName    = "ignore_changes"
-	webAppAppSettingsAttrName      = "app_settings"
-	webAppAppInsightsConnectionKey = "APPLICATIONINSIGHTS_CONNECTION_STRING"
-	webAppAppInsightsInstrumentKey = "APPINSIGHTS_INSTRUMENTATIONKEY"
+	ignoreChangesAttrName    = "ignore_changes"
+	appSettingsAttrName      = "app_settings"
+	appInsightsConnectionKey = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+	appInsightsInstrumentKey = "APPINSIGHTS_INSTRUMENTATIONKEY"
 )
 
-var webAppRequiredHiddenLinkTags = []string{
+var requiredHiddenLinkTags = []string{
 	"hidden-link: /app-insights-conn-string",
 	"hidden-link: /app-insights-instrumentation-key",
 	"hidden-link: /app-insights-resource-id",
 }
 
-var webAppResourceTypes = []string{
-	"azurerm_linux_web_app",
-	"azurerm_linux_web_app_slot",
-	"azurerm_windows_web_app",
-	"azurerm_windows_web_app_slot",
-}
-
-// NewAzurermWebAppAppInsightsHiddenLinkRule returns new rule for checking Application Insights hidden-link configuration
-func NewAzurermWebAppAppInsightsHiddenLinkRule() *AzurermWebAppAppInsightsHiddenLinkRule {
-	return &AzurermWebAppAppInsightsHiddenLinkRule{}
+// NewAzurermLinuxWebAppAppInsightsHiddenLinkRule returns new rule for checking Application Insights hidden-link configuration
+func NewAzurermLinuxWebAppAppInsightsHiddenLinkRule() *AzurermLinuxWebAppAppInsightsHiddenLinkRule {
+	return &AzurermLinuxWebAppAppInsightsHiddenLinkRule{}
 }
 
 // Name returns the rule name
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) Name() string {
-	return "azurerm_web_app_app_insights_hidden_link"
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) Name() string {
+	return "azurerm_linux_web_app_app_insights_hidden_link"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) Enabled() bool {
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) Severity() tflint.Severity {
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) Severity() tflint.Severity {
 	return tflint.WARNING
 }
 
 // Link returns the rule reference link
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) Link() string {
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) Link() string {
 	return project.ReferenceLink(r.Name())
 }
 
 // checkResourceType checks a specific resource type for Application Insights hidden-link configuration
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint.Runner, resourceType string) error {
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint.Runner, resourceType string) error {
 	resources, err := runner.GetResourceContent(resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{
-			{Name: webAppAppSettingsAttrName},
+			{Name: appSettingsAttrName},
 		},
 		Blocks: []hclext.BlockSchema{
 			{
 				Type: "lifecycle",
 				Body: &hclext.BodySchema{
 					Attributes: []hclext.AttributeSchema{
-						{Name: webAppIgnoreChangesAttrName},
+						{Name: ignoreChangesAttrName},
 					},
 				},
 			},
@@ -86,10 +79,10 @@ func (r *AzurermWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint
 
 		// Check if Application Insights is configured
 		hasAppInsights := false
-		if appSettingsAttr, exists := resource.Body.Attributes[webAppAppSettingsAttrName]; exists {
+		if appSettingsAttr, exists := resource.Body.Attributes[appSettingsAttrName]; exists {
 			err := runner.EvaluateExpr(appSettingsAttr.Expr, func(val map[string]string) error {
 				for key := range val {
-					if strings.EqualFold(key, webAppAppInsightsConnectionKey) || strings.EqualFold(key, webAppAppInsightsInstrumentKey) {
+					if strings.EqualFold(key, appInsightsConnectionKey) || strings.EqualFold(key, appInsightsInstrumentKey) {
 						hasAppInsights = true
 						break
 					}
@@ -113,11 +106,11 @@ func (r *AzurermWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint
 
 		for _, block := range resource.Body.Blocks {
 			if block.Type == "lifecycle" {
-				if ignoreChangesAttr, ok := block.Body.Attributes[webAppIgnoreChangesAttrName]; ok {
+				if ignoreChangesAttr, ok := block.Body.Attributes[ignoreChangesAttrName]; ok {
 					err := runner.EvaluateExpr(ignoreChangesAttr.Expr, func(val []string) error {
 						// Check if all required hidden-link tags are included in ignore_changes
 						foundTags := 0
-						for _, requiredTag := range webAppRequiredHiddenLinkTags {
+						for _, requiredTag := range requiredHiddenLinkTags {
 							for _, ignoreChange := range val {
 								if strings.Contains(ignoreChange, requiredTag) {
 									foundTags++
@@ -125,7 +118,7 @@ func (r *AzurermWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint
 								}
 							}
 						}
-						if foundTags == len(webAppRequiredHiddenLinkTags) {
+						if foundTags == len(requiredHiddenLinkTags) {
 							hasProperIgnoreChanges = true
 						}
 						return nil
@@ -152,8 +145,13 @@ func (r *AzurermWebAppAppInsightsHiddenLinkRule) checkResourceType(runner tflint
 }
 
 // Check checks whether hidden-link tags are ignored when Application Insights is configured
-func (r *AzurermWebAppAppInsightsHiddenLinkRule) Check(runner tflint.Runner) error {
-	for _, resourceType := range webAppResourceTypes {
+func (r *AzurermLinuxWebAppAppInsightsHiddenLinkRule) Check(runner tflint.Runner) error {
+	resourceTypes := []string{
+		"azurerm_linux_web_app",
+		"azurerm_linux_web_app_slot",
+	}
+
+	for _, resourceType := range resourceTypes {
 		if err := r.checkResourceType(runner, resourceType); err != nil {
 			return err
 		}
