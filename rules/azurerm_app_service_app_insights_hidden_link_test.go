@@ -35,9 +35,9 @@ resource "azurerm_linux_web_app" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -108,9 +108,9 @@ resource "azurerm_linux_web_app_slot" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -160,9 +160,9 @@ resource "azurerm_windows_web_app" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -233,9 +233,9 @@ resource "azurerm_windows_web_app_slot" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -285,9 +285,9 @@ resource "azurerm_linux_function_app" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -337,9 +337,9 @@ resource "azurerm_linux_function_app_slot" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -389,9 +389,9 @@ resource "azurerm_windows_function_app" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -441,9 +441,9 @@ resource "azurerm_windows_function_app_slot" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -482,7 +482,7 @@ resource "azurerm_linux_web_app" "example" {
 	
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
+      tags["hidden-link: /app-insights-conn-string"],
     ]
   }
 }
@@ -577,6 +577,58 @@ resource "azurerm_linux_function_app" "example" {
 					},
 				},
 			},
+		},
+		// Tests for ignoring entire tags map
+		{
+			Name: "Linux Web App - Application Insights with tags ignored - should pass",
+			Content: `
+resource "azurerm_linux_web_app" "example" {
+  app_settings = {
+    "APPLICATIONINSIGHTS_CONNECTION_STRING" = "example"
+  }
+	
+  lifecycle {
+    ignore_changes = [
+      tags,
+    ]
+  }
+}
+`,
+			Expected: helper.Issues{},
+		},
+		{
+			Name: "Windows Function App - Application Insights with tags ignored - should pass",
+			Content: `
+resource "azurerm_windows_function_app" "example" {
+  app_settings = {
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = "example"
+  }
+	
+  lifecycle {
+    ignore_changes = [
+      tags,
+    ]
+  }
+}
+`,
+			Expected: helper.Issues{},
+		},
+		{
+			Name: "Linux Function App Slot - site_config with Application Insights and tags ignored - should pass",
+			Content: `
+resource "azurerm_linux_function_app_slot" "example" {
+  site_config {
+    application_insights_connection_string = "example-connection"
+  }
+	
+  lifecycle {
+    ignore_changes = [
+      tags,
+    ]
+  }
+}
+`,
+			Expected: helper.Issues{},
 		},
 	}
 

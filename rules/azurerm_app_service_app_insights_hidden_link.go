@@ -3,10 +3,13 @@ package rules
 import (
 	"strings"
 
+	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/logger"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 	"github.com/terraform-linters/tflint-ruleset-azurerm/project"
+	"github.com/zclconf/go-cty/cty"
 )
 
 // AzurermAppServiceAppInsightsHiddenLinkRule checks whether lifecycle ignore_changes includes hidden-link tags when Application Insights is configured
@@ -168,25 +171,35 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 		for _, block := range resource.Body.Blocks {
 			if block.Type == "lifecycle" {
 				if ignoreChangesAttr, ok := block.Body.Attributes[appServiceIgnoreChangesAttrName]; ok {
-					err := runner.EvaluateExpr(ignoreChangesAttr.Expr, func(val []string) error {
-						// Check if all required hidden-link tags are included in ignore_changes
-						foundTags := 0
-						for _, requiredTag := range appServiceRequiredHiddenLinkTags {
-							for _, ignoreChange := range val {
-								if strings.Contains(ignoreChange, requiredTag) {
-									foundTags++
-									break
+					// Parse the ignore_changes expression to find ignored tag keys
+					foundTags := 0
+					tagsIgnored := false
+					if listExpr, ok := ignoreChangesAttr.Expr.(*hclsyntax.TupleConsExpr); ok {
+						for _, expr := range listExpr.Exprs {
+							if traversal, diags := hcl.AbsTraversalForExpr(expr); diags == nil {
+								if len(traversal) == 1 {
+									if root, ok := traversal[0].(hcl.TraverseRoot); ok && root.Name == "tags" {
+										tagsIgnored = true
+										break
+									}
+								} else if len(traversal) == 2 {
+									if root, ok := traversal[0].(hcl.TraverseRoot); ok && root.Name == "tags" {
+										if index, ok := traversal[1].(hcl.TraverseIndex); ok && index.Key.Type() == cty.String {
+											tagKey := index.Key.AsString()
+											for _, requiredTag := range appServiceRequiredHiddenLinkTags {
+												if tagKey == requiredTag {
+													foundTags++
+													break
+												}
+											}
+										}
+									}
 								}
 							}
 						}
-						if foundTags == len(appServiceRequiredHiddenLinkTags) {
-							hasProperIgnoreChanges = true
-						}
-						return nil
-					}, nil)
-
-					if err != nil {
-						return err
+					}
+					if tagsIgnored || foundTags == len(appServiceRequiredHiddenLinkTags) {
+						hasProperIgnoreChanges = true
 					}
 					break
 				}

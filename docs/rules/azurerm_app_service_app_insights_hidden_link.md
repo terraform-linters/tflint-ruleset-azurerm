@@ -64,9 +64,9 @@ resource "azurerm_linux_function_app" "example" {
   
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -79,9 +79,9 @@ resource "azurerm_windows_web_app_slot" "example" {
   
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
@@ -94,9 +94,9 @@ resource "azurerm_windows_function_app" "example" {
   
   lifecycle {
     ignore_changes = [
-      "tags[\"hidden-link: /app-insights-conn-string\"]",
-      "tags[\"hidden-link: /app-insights-instrumentation-key\"]",
-      "tags[\"hidden-link: /app-insights-resource-id\"]",
+      "tags["hidden-link: /app-insights-conn-string"]",
+      "tags["hidden-link: /app-insights-instrumentation-key"]",
+      "tags["hidden-link: /app-insights-resource-id"]",
     ]
   }
 }
@@ -119,9 +119,9 @@ Add a `lifecycle` block with `ignore_changes` containing the Application Insight
 ```hcl
 lifecycle {
   ignore_changes = [
-    "tags[\"hidden-link: /app-insights-conn-string\"]",
-    "tags[\"hidden-link: /app-insights-instrumentation-key\"]", 
-    "tags[\"hidden-link: /app-insights-resource-id\"]",
+    "tags["hidden-link: /app-insights-conn-string"]",
+    "tags["hidden-link: /app-insights-instrumentation-key"]", 
+    "tags["hidden-link: /app-insights-resource-id"]",
   ]
 }
 ```
