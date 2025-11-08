@@ -1,5 +1,5 @@
 mapping "azurerm_virtual_wan" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/virtualWan.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/stable/2025-01-01/virtualWan.json"
 
   disable_vpn_encryption            = VirtualWanProperties.disableVpnEncryption
   allow_branch_to_branch_traffic    = VirtualWanProperties.allowBranchToBranchTraffic
