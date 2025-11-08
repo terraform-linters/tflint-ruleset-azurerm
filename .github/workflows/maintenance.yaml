@@ -24,8 +24,9 @@ jobs:
           cd tools/apispec-rule-gen/schema
           terraform init -upgrade
           terraform providers schema -json > schema.json
-          cd ../..
+          cd ../../..
           git submodule update --remote
+          cd tools
           go run ./api-version-bumper
           go run ./apispec-rule-gen
       - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
