@@ -26,6 +26,7 @@ func NewAzurermNatGatewayInvalidSkuNameRule() *AzurermNatGatewayInvalidSkuNameRu
 		attributeName: "sku_name",
 		enum: []string{
 			"Standard",
+			"StandardV2",
 		},
 	}
 }

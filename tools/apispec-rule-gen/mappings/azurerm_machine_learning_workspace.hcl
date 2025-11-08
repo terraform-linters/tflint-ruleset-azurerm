@@ -1,5 +1,5 @@
 mapping "azurerm_machine_learning_workspace" {
-  import_path = "azure-rest-api-specs/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/workspaceRP.json"
+  import_path = "azure-rest-api-specs/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2025-06-01/workspaceRP.json"
 
   name                = WorkspaceNameParameter
   resource_group_name = any //ResourceGroupParameter

@@ -1,10 +1,10 @@
 mapping "azurerm_netapp_snapshot" {
-  import_path = "azure-rest-api-specs/specification/netapp/resource-manager/Microsoft.NetApp/stable/2025-01-01/netapp.json"
+  import_path = "azure-rest-api-specs/specification/netapp/resource-manager/Microsoft.NetApp/NetApp/stable/2025-06-01/netapp.json"
 
-  name                = SnapshotName
+  name                = any //SnapshotName
   resource_group_name = any //ResourceGroup
-  account_name        = AccountName
-  pool_name           = PoolName
-  volume_name         = VolumeName
+  account_name        = any //AccountName
+  pool_name           = any //PoolName
+  volume_name         = any //VolumeName
   location            = any //location
 }

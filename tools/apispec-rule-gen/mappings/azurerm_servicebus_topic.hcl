@@ -1,5 +1,5 @@
 mapping "azurerm_servicebus_topic" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/common/v1/definitions.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/common/v1/definitions.json"
 
   name                                    = any
   namespace_name                          = any
