@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/logger"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
@@ -174,8 +173,8 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 					// Parse the ignore_changes expression to find ignored tag keys
 					foundTags := 0
 					tagsIgnored := false
-					if listExpr, ok := ignoreChangesAttr.Expr.(*hclsyntax.TupleConsExpr); ok {
-						for _, expr := range listExpr.Exprs {
+					if exprs, diags := hcl.ExprList(ignoreChangesAttr.Expr); diags == nil {
+						for _, expr := range exprs {
 							if traversal, diags := hcl.AbsTraversalForExpr(expr); diags == nil {
 								if len(traversal) == 1 {
 									if root, ok := traversal[0].(hcl.TraverseRoot); ok && root.Name == "tags" {
