@@ -17,4 +17,5 @@ var Rules = append([]tflint.Rule{
 	NewAzurermWindowsVirtualMachineScaleSetInvalidSkuRule(),
 	NewAzurermResourceMissingTagsRule(),
 	NewAzurermResourcesMissingPreventDestroyRule(),
+	NewAzurermLinuxVirtualMachineInvalidNameRule(),
 }, apispec.Rules...)
