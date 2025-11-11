@@ -25,7 +25,7 @@ Error: "dummy-" does not match valid pattern ^[a-zA-Z0-9]{0,1}[a-zA-Z0-9-]{0,13}
 
 ## Why
 
-There are hard limitations regardong the Naming of an Windows Server Hostname. E.g.: Windows does not allow any hostname which is longer than 15 characters.
+There are hard limitations regarding the Naming of a Windows Server Hostname. E.g.: Windows does not allow any hostname which is longer than 15 characters.
 Requests containing invalid values will return an error when calling the API by `terraform apply`.
 
 More details are available in the official Microsoft documentation: https://learn.microsoft.com/de-de/troubleshoot/windows-server/active-directory/naming-conventions-for-computer-domain-site-ou#dns-host-names
