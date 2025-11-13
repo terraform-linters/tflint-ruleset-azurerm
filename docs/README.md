@@ -7,6 +7,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 |Rule|Enabled by default|
 | --- | --- |
 |[azurerm_app_service_app_insights_hidden_link](rules/azurerm_app_service_app_insights_hidden_link.md)|✔|
+|[azurerm_linux_virtual_machine_invalid_name](rules/azurerm_linux_virtual_machine_invalid_name.md)|✔|
 |[azurerm_linux_virtual_machine_invalid_size](rules/azurerm_linux_virtual_machine_invalid_size.md)|✔|
 |[azurerm_linux_virtual_machine_scale_set_invalid_sku](rules/azurerm_linux_virtual_machine_scale_set_invalid_sku.md)|✔|
 |[azurerm_resource_missing_tags](rules/azurerm_resource_missing_tags.md)||
@@ -18,7 +19,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 217 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 208 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -173,16 +174,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_mssql_virtual_machine_invalid_sql_connectivity_type](rules/azurerm_mssql_virtual_machine_invalid_sql_connectivity_type.md)|✔|
 |[azurerm_mssql_virtual_machine_invalid_sql_license_type](rules/azurerm_mssql_virtual_machine_invalid_sql_license_type.md)|✔|
 |[azurerm_nat_gateway_invalid_sku_name](rules/azurerm_nat_gateway_invalid_sku_name.md)|✔|
-|[azurerm_netapp_account_invalid_name](rules/azurerm_netapp_account_invalid_name.md)|✔|
-|[azurerm_netapp_pool_invalid_account_name](rules/azurerm_netapp_pool_invalid_account_name.md)|✔|
-|[azurerm_netapp_pool_invalid_name](rules/azurerm_netapp_pool_invalid_name.md)|✔|
 |[azurerm_netapp_pool_invalid_service_level](rules/azurerm_netapp_pool_invalid_service_level.md)|✔|
-|[azurerm_netapp_snapshot_invalid_account_name](rules/azurerm_netapp_snapshot_invalid_account_name.md)|✔|
-|[azurerm_netapp_snapshot_invalid_pool_name](rules/azurerm_netapp_snapshot_invalid_pool_name.md)|✔|
-|[azurerm_netapp_snapshot_invalid_volume_name](rules/azurerm_netapp_snapshot_invalid_volume_name.md)|✔|
-|[azurerm_netapp_volume_invalid_account_name](rules/azurerm_netapp_volume_invalid_account_name.md)|✔|
-|[azurerm_netapp_volume_invalid_name](rules/azurerm_netapp_volume_invalid_name.md)|✔|
-|[azurerm_netapp_volume_invalid_pool_name](rules/azurerm_netapp_volume_invalid_pool_name.md)|✔|
 |[azurerm_netapp_volume_invalid_service_level](rules/azurerm_netapp_volume_invalid_service_level.md)|✔|
 |[azurerm_network_packet_capture_invalid_maximum_capture_duration](rules/azurerm_network_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_network_security_rule_invalid_access](rules/azurerm_network_security_rule_invalid_access.md)|✔|
