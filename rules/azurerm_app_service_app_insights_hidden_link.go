@@ -33,6 +33,7 @@ var appServiceRequiredHiddenLinkTags = []string{
 }
 
 var appServiceResourceTypes = []string{
+	"azurerm_function_app_flex_consumption",
 	"azurerm_linux_web_app",
 	"azurerm_linux_web_app_slot",
 	"azurerm_windows_web_app",
@@ -170,6 +171,12 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 		for _, block := range resource.Body.Blocks {
 			if block.Type == "lifecycle" {
 				if ignoreChangesAttr, ok := block.Body.Attributes[appServiceIgnoreChangesAttrName]; ok {
+					// Check if ignore_changes = all (keyword)
+					if keyword := hcl.ExprAsKeyword(ignoreChangesAttr.Expr); keyword == "all" {
+						hasProperIgnoreChanges = true
+						break
+					}
+
 					// Parse the ignore_changes expression to find ignored tag keys
 					foundTags := 0
 					tagsIgnored := false

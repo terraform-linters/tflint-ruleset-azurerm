@@ -3,6 +3,7 @@
 Disallow missing lifecycle ignore_changes for Application Insights hidden-link tags.
 
 This rule applies to all Azure App Service resource types (Web Apps and Function Apps):
+- `azurerm_function_app_flex_consumption`
 - `azurerm_linux_web_app`
 - `azurerm_linux_web_app_slot`
 - `azurerm_windows_web_app`
