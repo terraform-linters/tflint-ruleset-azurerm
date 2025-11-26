@@ -45,4 +45,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/datamigration/resource-manager/Microsoft.DataMigration/stable/2021-06-30/definitions/Projects.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/datamigration/resource-manager/Microsoft.DataMigration/DataMigration/stable/2021-06-30/definitions/Projects.json

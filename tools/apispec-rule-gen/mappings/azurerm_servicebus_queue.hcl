@@ -1,5 +1,5 @@
 mapping "azurerm_servicebus_queue" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2024-01-01/Queue.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2024-01-01/Queue.json"
 
   name                                    = any
   namespace_name                          = any

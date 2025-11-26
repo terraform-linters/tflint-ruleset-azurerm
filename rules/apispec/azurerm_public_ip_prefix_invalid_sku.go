@@ -26,6 +26,7 @@ func NewAzurermPublicIPPrefixInvalidSkuRule() *AzurermPublicIPPrefixInvalidSkuRu
 		attributeName: "sku",
 		enum: []string{
 			"Standard",
+			"StandardV2",
 		},
 	}
 }
