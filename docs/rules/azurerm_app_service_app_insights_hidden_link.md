@@ -119,9 +119,9 @@ Add a `lifecycle` block with `ignore_changes` containing the Application Insight
 ```hcl
 lifecycle {
   ignore_changes = [
-    "tags["hidden-link: /app-insights-conn-string"]",
-    "tags["hidden-link: /app-insights-instrumentation-key"]", 
-    "tags["hidden-link: /app-insights-resource-id"]",
+    tags["hidden-link: /app-insights-conn-string"],
+    tags["hidden-link: /app-insights-instrumentation-key"], 
+    tags["hidden-link: /app-insights-resource-id"],
   ]
 }
 ```
