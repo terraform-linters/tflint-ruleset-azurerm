@@ -207,7 +207,7 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 
 		// Emit issue if Application Insights is configured but hidden-link tags are not properly ignored
 		if !hasProperIgnoreChanges {
-			issue := "When Application Insights is configured, lifecycle { ignore_changes } should include all hidden-link tags: tags[\"hidden-link: /app-insights-conn-string\"], tags[\"hidden-link: /app-insights-instrumentation-key\"], tags[\"hidden-link: /app-insights-resource-id\"]"
+			issue := "Application Insights hidden-link tags should be included in ignore_changes"
 			if err := runner.EmitIssue(r, issue, resource.DefRange); err != nil {
 				return err
 			}
