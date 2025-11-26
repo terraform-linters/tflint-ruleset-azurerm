@@ -173,7 +173,7 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 					// Parse the ignore_changes expression to find ignored tag keys
 					foundTags := 0
 					tagsIgnored := false
-					if exprs, diags := hcl.ExprList(ignoreChangesAttr.Expr); diags == nil {
+					if exprs, diags := hcl.ExprList(ignoreChangesAttr.Expr); !diags.HasErrors() {
 						for _, expr := range exprs {
 							if traversal, diags := hcl.AbsTraversalForExpr(expr); diags == nil {
 								if len(traversal) == 1 {
