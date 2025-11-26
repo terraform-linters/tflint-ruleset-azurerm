@@ -94,9 +94,9 @@ resource "azurerm_windows_function_app" "example" {
   
   lifecycle {
     ignore_changes = [
-      "tags["hidden-link: /app-insights-conn-string"]",
-      "tags["hidden-link: /app-insights-instrumentation-key"]",
-      "tags["hidden-link: /app-insights-resource-id"]",
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
