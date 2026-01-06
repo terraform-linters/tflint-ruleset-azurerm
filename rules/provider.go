@@ -8,6 +8,7 @@ import (
 // Rules is a list of all rules
 var Rules = append([]tflint.Rule{
 	NewAzurermAppServiceAppInsightsHiddenLinkRule(),
+	NewAzurermAppServiceMissingAutoHealSettingRule(),
 	NewAzurermKubernetesClusterDefaultNodePoolInvalidVMSizeRule(),
 	NewAzurermKubernetesClusterNodePoolInvalidVMSizeRule(),
 	NewAzurermLinuxVirtualMachineInvalidSizeRule(),
