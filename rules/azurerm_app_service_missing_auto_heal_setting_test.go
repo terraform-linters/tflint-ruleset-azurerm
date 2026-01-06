@@ -208,7 +208,7 @@ resource "azurerm_windows_web_app_slot" "example" {
         status_code {
           count             = 3
           interval          = "00:05:00"
-          status_code_range = "400-499"
+          status_code_range = "500-599"
         }
       }
     }
