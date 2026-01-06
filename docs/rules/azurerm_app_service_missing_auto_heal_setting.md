@@ -94,7 +94,7 @@ resource "azurerm_windows_web_app_slot" "example" {
 
 Configuring `auto_heal_setting` in the `site_config` block is a best practice for production Azure App Service resources. Auto-healing helps improve application resilience by automatically recycling or restarting the app when specific conditions are met, such as:
 
-- High number of HTTP errors (status codes in the 400-599 range)
+- High number of HTTP errors (status codes in the 500-599 range)
 - Excessive request volume
 - Slow response times
 - Memory threshold breaches
