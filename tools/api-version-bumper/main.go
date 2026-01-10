@@ -30,11 +30,6 @@ func main() {
 
 	var errs []error
 	for _, file := range files {
-		// As an exception, the actual name of `user_assigned_identity_resource` is `*_resource_gen`, so replace the file name.
-		// https://github.com/hashicorp/terraform-provider-azurerm/tree/v4.23.0/internal/services/managedidentity
-		if strings.HasSuffix(file, "user_assigned_identity_resource.go") {
-			file = strings.ReplaceAll(file, "user_assigned_identity_resource.go", "user_assigned_identity_resource_gen.go")
-		}
 		if err := processFile(file); err != nil {
 			errs = append(errs, err)
 		}
