@@ -1,5 +1,5 @@
 mapping "azurerm_sentinel_alert_rule_ms_security_incident" {
-  import_path = "azure-rest-api-specs/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2023-12-01-preview/AlertRules.json"
+  import_path = "azure-rest-api-specs/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/SecurityInsights/preview/2023-12-01-preview/AlertRules.json"
 
   name            = MicrosoftSecurityIncidentCreationAlertRuleProperties.alertRuleTemplateName
   display_name    = MicrosoftSecurityIncidentCreationAlertRuleProperties.displayName
