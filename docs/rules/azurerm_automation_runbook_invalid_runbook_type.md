@@ -13,6 +13,7 @@ Allowed values are:
 - GraphPowerShell
 - Python2
 - Python3
+- Python
 - PowerShell72
 
 ## Example
@@ -48,4 +49,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/runbook.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/runbook.json
