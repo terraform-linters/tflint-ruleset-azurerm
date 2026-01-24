@@ -20,7 +20,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 208 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 198 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -31,14 +31,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_automation_account_invalid_sku_name](rules/azurerm_automation_account_invalid_sku_name.md)|✔|
 |[azurerm_automation_runbook_invalid_runbook_type](rules/azurerm_automation_runbook_invalid_runbook_type.md)|✔|
 |[azurerm_automation_schedule_invalid_frequency](rules/azurerm_automation_schedule_invalid_frequency.md)|✔|
-|[azurerm_batch_account_invalid_name](rules/azurerm_batch_account_invalid_name.md)|✔|
-|[azurerm_batch_account_invalid_pool_allocation_mode](rules/azurerm_batch_account_invalid_pool_allocation_mode.md)|✔|
-|[azurerm_batch_application_invalid_account_name](rules/azurerm_batch_application_invalid_account_name.md)|✔|
-|[azurerm_batch_application_invalid_name](rules/azurerm_batch_application_invalid_name.md)|✔|
-|[azurerm_batch_certificate_invalid_account_name](rules/azurerm_batch_certificate_invalid_account_name.md)|✔|
-|[azurerm_batch_certificate_invalid_format](rules/azurerm_batch_certificate_invalid_format.md)|✔|
-|[azurerm_batch_pool_invalid_account_name](rules/azurerm_batch_pool_invalid_account_name.md)|✔|
-|[azurerm_batch_pool_invalid_name](rules/azurerm_batch_pool_invalid_name.md)|✔|
 |[azurerm_bot_channel_directline_invalid_bot_name](rules/azurerm_bot_channel_directline_invalid_bot_name.md)|✔|
 |[azurerm_bot_channel_directline_invalid_resource_group_name](rules/azurerm_bot_channel_directline_invalid_resource_group_name.md)|✔|
 |[azurerm_bot_channel_email_invalid_bot_name](rules/azurerm_bot_channel_email_invalid_bot_name.md)|✔|
@@ -215,8 +207,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_stream_analytics_job_invalid_compatibility_level](rules/azurerm_stream_analytics_job_invalid_compatibility_level.md)|✔|
 |[azurerm_stream_analytics_job_invalid_events_out_of_order_policy](rules/azurerm_stream_analytics_job_invalid_events_out_of_order_policy.md)|✔|
 |[azurerm_stream_analytics_job_invalid_output_error_policy](rules/azurerm_stream_analytics_job_invalid_output_error_policy.md)|✔|
-|[azurerm_traffic_manager_profile_invalid_profile_status](rules/azurerm_traffic_manager_profile_invalid_profile_status.md)|✔|
-|[azurerm_traffic_manager_profile_invalid_traffic_routing_method](rules/azurerm_traffic_manager_profile_invalid_traffic_routing_method.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_caching](rules/azurerm_virtual_machine_data_disk_attachment_invalid_caching.md)|✔|
 |[azurerm_virtual_machine_data_disk_attachment_invalid_create_option](rules/azurerm_virtual_machine_data_disk_attachment_invalid_create_option.md)|✔|
 |[azurerm_virtual_machine_scale_set_invalid_eviction_policy](rules/azurerm_virtual_machine_scale_set_invalid_eviction_policy.md)|✔|

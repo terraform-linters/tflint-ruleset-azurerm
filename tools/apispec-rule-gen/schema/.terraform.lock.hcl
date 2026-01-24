@@ -1,21 +1,18 @@
-# This file is maintained automatically by "terraform init".
+# This file is maintained automatically by "tofu init".
 # Manual edits may be lost in future updates.
 
-provider "registry.terraform.io/hashicorp/azurerm" {
-  version = "4.52.0"
+provider "registry.opentofu.org/hashicorp/azurerm" {
+  version = "4.57.0"
   hashes = [
-    "h1:3gPMvyr6i/DSTitAUwbIQNkxYE25jtZPUGXe1GMbEnM=",
-    "zh:0044d786ddbd6160150eef0716d1700839526200ce96cf1dc57327e2c923876e",
-    "zh:1a4db8a19a32e7e50860f31a5d2f8dc9ee247089475b4b8b0b365e5bbd5e7647",
-    "zh:1ce0c9da46ead459fe146d5b9e993ea60484506c6f5b988725c0c24af11dc53e",
-    "zh:3fa21d310ae29d3b7456447cf7316bf9659ed62158debc80df1296c6a2d0721f",
-    "zh:4944391a9751d3bc47c3d6a8c15616d3994e35f2af2e58ef56373aae560af0de",
-    "zh:745d0079473f5803dccfe4bf29292ddfe0266ee2f2ad7a80823e4f10514ddeb7",
-    "zh:78d5eefdd9e494defcb3c68d282b8f96630502cac21d1ea161f53cfe9bb483b3",
-    "zh:a8d92d4bbdd7204c54df26afc9989f32ed457735bda2e767fdd3d54935886597",
-    "zh:b5b915850fcafe7f249a4c1af64ebb3acd1ea57f268831e8d605d585793b3ea9",
-    "zh:d3784bd8813498dd70ccf6d0248a8978512d33cfe4d64bd80801345b8287e2fd",
-    "zh:e5c4b4c5740a4cb68324933eb08f7628ed1ab292bcc8251a585b9adeb0c645a6",
-    "zh:f2621b68ccd17e07fe00ce21c4a6f9680e7456decca7509d206082af6d2a1c2f",
+    "h1:3QHcmejWIQIgIbaiq7kIay1C6ymEObeO358CpI9pLbc=",
+    "zh:180d2585d2f5f88c6a2308ea3f8b2749e16a1d0c3fe91f153743534d2b672dd5",
+    "zh:1cd5beca4e0c4c32d3a75cd8db9491e6b64367e04dace4569ae7cd5414cac15d",
+    "zh:5508c45012c480fabf085f4f3b7a5bc904bb968f524484b3e75f7940ede12dd5",
+    "zh:64438b231bde02e7a282f525405e84a73e69dd4b32196ed1aa64fc9078dfbdd8",
+    "zh:7adc305c203d9816867e4b4527f773c002811f50807ed845a9c85db8d6b52d7b",
+    "zh:7d151cc53c22bfb24471c590f0385c51dc1f72b3db6e54dc32e0491b2223fd20",
+    "zh:d7b8d59f82903ac393aac1b118d82d47623acb665e5a771cb44aa50550eec3f2",
+    "zh:e053428171b1dd11a33ebbf634231cf06a2023b165ee24643c3705dcc4c5288e",
+    "zh:f89a738ecc88e2ce621e2beaef74afdb73ded22a027432f28f58b7f4b2541138",
   ]
 }

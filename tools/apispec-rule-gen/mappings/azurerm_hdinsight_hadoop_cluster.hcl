@@ -1,5 +1,5 @@
 mapping "azurerm_hdinsight_hadoop_cluster" {
-  import_path = "azure-rest-api-specs/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/cluster.json"
+  import_path = "azure-rest-api-specs/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsight/stable/2021-06-01/cluster.json"
 
   name                = ClusterNameParameter
   resource_group_name = ResourceGroupNameParameter
