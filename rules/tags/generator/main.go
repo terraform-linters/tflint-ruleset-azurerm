@@ -14,14 +14,14 @@ import (
 	utils "github.com/terraform-linters/tflint-ruleset-azurerm/rules/generator-utils"
 )
 
-const filename = "resources.go"
+const filename = "../resources.go"
 
 type TemplateData struct {
 	Resources []string
 }
 
 func main() {
-	provider := utils.LoadProviderSchema("../../tools/apispec-rule-gen/schema/schema.json")
+	provider := utils.LoadProviderSchema("../../../tools/apispec-rule-gen/schema/schema.json")
 	resources := make([]string, 0)
 
 	for name, resource := range provider.ResourceSchemas {
@@ -60,7 +60,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("error writing to file (%s): %v", filename, err)
 	}
-
 }
 
 const templateBody = `
