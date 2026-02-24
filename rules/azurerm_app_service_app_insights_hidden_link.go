@@ -85,7 +85,7 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 				},
 			},
 			{
-				Type: "site_config",
+				Type: appServiceSiteConfigAttrName,
 				Body: &hclext.BodySchema{
 					Attributes: []hclext.AttributeSchema{
 						{Name: appServiceSiteConfigAppInsightsConnectionKey},
@@ -94,7 +94,9 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 				},
 			},
 		},
-	}, nil)
+	}, &tflint.GetModuleContentOption{
+		ExpandMode: tflint.ExpandModeNone,
+	})
 
 	if err != nil {
 		return err
@@ -126,7 +128,7 @@ func (r *AzurermAppServiceAppInsightsHiddenLinkRule) checkResourceType(runner tf
 		// Check in site_config block
 		if !hasAppInsights {
 			for _, block := range resource.Body.Blocks {
-				if block.Type == "site_config" {
+				if block.Type == appServiceSiteConfigAttrName {
 					// Check for application_insights_connection_string
 					if attr, exists := block.Body.Attributes[appServiceSiteConfigAppInsightsConnectionKey]; exists {
 						err := runner.EvaluateExpr(attr.Expr, func(val string) error {
