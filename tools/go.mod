@@ -1,13 +1,13 @@
 module github.com/terraform-linters/tflint-ruleset-azurerm/tools
 
-go 1.24.1
+go 1.25
 
 require (
 	github.com/agext/levenshtein v1.2.3
 	github.com/google/go-github/v69 v69.2.0
 	github.com/hashicorp/go-version v1.8.0
 	github.com/hashicorp/hcl/v2 v2.24.0
-	github.com/zclconf/go-cty v1.17.0
+	github.com/zclconf/go-cty v1.18.0
 	golang.org/x/oauth2 v0.35.0
 )
 
