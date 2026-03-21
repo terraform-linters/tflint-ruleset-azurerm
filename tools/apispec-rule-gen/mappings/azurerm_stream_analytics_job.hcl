@@ -1,5 +1,5 @@
 mapping "azurerm_stream_analytics_job" {
-  import_path = "azure-rest-api-specs/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/streamingjobs.json"
+  import_path = "azure-rest-api-specs/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/StreamAnalytics/preview/2021-10-01-preview/streamingjobs.json"
 
   name                                     = any //StreamingJobNameParameter
   resource_group_name                      = any //ResourceGroupNameParameter

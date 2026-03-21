@@ -45,4 +45,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.4/keys.json
+https://github.com/Azure/azure-rest-api-specs/tree/master/specification/keyvault/data-plane/Legacy/stable/7.4/keys.json

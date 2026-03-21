@@ -3,8 +3,8 @@ mapping "azurerm_search_service" {
 
   location            = any //Resource.location
   name                = any //SearchServiceNameParameter
-  resource_group_name = ResourceGroupNameParameter
-  sku                 = Sku.name
+  resource_group_name = any // ResourceGroupNameParameter is now an inline path parameter.
+  sku                 = SkuName
   partition_count     = SearchServiceProperties.partitionCount
   replica_count       = SearchServiceProperties.replicaCount
 }

@@ -1,5 +1,5 @@
 mapping "azurerm_key_vault_key" {
-  import_path = "azure-rest-api-specs/specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.4/keys.json"
+  import_path = "azure-rest-api-specs/specification/keyvault/data-plane/Legacy/stable/7.4/keys.json"
 
   key_type        = KeyCreateParameters.kty
   key_size        = KeyCreateParameters.key_size
