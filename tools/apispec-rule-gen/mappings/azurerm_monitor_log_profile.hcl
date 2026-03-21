@@ -1,5 +1,5 @@
 mapping "azurerm_monitor_log_profile" {
-  import_path = "azure-rest-api-specs/specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/logProfiles_API.json"
+  import_path = "azure-rest-api-specs/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2016-03-01/logProfiles_API.json"
 
   name               = LogProfileNameParameter
   categories         = LogProfileProperties.categories

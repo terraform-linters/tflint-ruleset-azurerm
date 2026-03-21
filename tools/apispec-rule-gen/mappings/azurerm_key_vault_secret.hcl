@@ -1,5 +1,5 @@
 mapping "azurerm_key_vault_secret" {
-  import_path = "azure-rest-api-specs/specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.4/secrets.json"
+  import_path = "azure-rest-api-specs/specification/keyvault/data-plane/Legacy/stable/7.4/secrets.json"
 
   value           = SecretBundle.value
   content_type    = SecretBundle.contentType

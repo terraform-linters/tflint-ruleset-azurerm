@@ -1,5 +1,5 @@
 mapping "azurerm_linux_virtual_machine_scale_set" {
-  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/ComputeRP.json"
+  import_path = "azure-rest-api-specs/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-11-01/ComputeRP.json"
 
   admin_username                                    = any //VirtualMachineScaleSetOSProfile.adminUsername
   sku                                               = any //HardwareProfile.vmSize

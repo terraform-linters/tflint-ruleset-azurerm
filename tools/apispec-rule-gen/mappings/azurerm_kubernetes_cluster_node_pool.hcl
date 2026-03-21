@@ -1,5 +1,5 @@
 mapping "azurerm_kubernetes_cluster_node_pool" {
-  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2025-07-01/managedClusters.json"
+  import_path = "azure-rest-api-specs/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2025-10-01/managedClusters.json"
 
   vm_size               = any //ContainerServiceVMSize
   availability_zones    = ManagedClusterAgentPoolProfileProperties.availabilityZones
@@ -8,7 +8,7 @@ mapping "azurerm_kubernetes_cluster_node_pool" {
   max_pods              = ManagedClusterAgentPoolProfileProperties.maxPods
   node_labels           = ManagedClusterAgentPoolProfileProperties.nodeLabels
   node_taints           = ManagedClusterAgentPoolProfileProperties.nodeTaints
-  os_disk_size_gb       = ContainerServiceOSDisk
-  os_type               = OSType
+  os_disk_size_gb       = ManagedClusterAgentPoolProfileProperties.osDiskSizeGB
+  os_type               = ManagedClusterAgentPoolProfileProperties.osType
   vnet_subnet_id        = any //ContainerServiceVnetSubnetID
 }

@@ -1,11 +1,11 @@
 mapping "azurerm_container_registry_webhook" {
-  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-04-01/containerregistry.json"
+  import_path = "azure-rest-api-specs/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/Registry/stable/2025-11-01/containerregistry.json"
 
-  name                = WebhookNameParameter
+  name                = any // webhookName is now an inline path parameter.
   resource_group_name = any //ResourceGroupParameter
-  registry_name       = RegistryNameParameter
+  registry_name       = any // registryName is now an inline path parameter.
   service_uri         = WebhookPropertiesCreateParameters.serviceUri
   actions             = WebhookProperties.actions
-  status              = WebhookProperties.status
+  status              = WebhookStatus
   scope               = WebhookProperties.scope
 }

@@ -20,7 +20,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 198 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 181 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -53,10 +53,7 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_cdn_profile_invalid_resource_group_name](rules/azurerm_cdn_profile_invalid_resource_group_name.md)|✔|
 |[azurerm_cdn_profile_invalid_sku](rules/azurerm_cdn_profile_invalid_sku.md)|✔|
 |[azurerm_cognitive_account_invalid_name](rules/azurerm_cognitive_account_invalid_name.md)|✔|
-|[azurerm_container_registry_invalid_name](rules/azurerm_container_registry_invalid_name.md)|✔|
 |[azurerm_container_registry_invalid_sku](rules/azurerm_container_registry_invalid_sku.md)|✔|
-|[azurerm_container_registry_webhook_invalid_name](rules/azurerm_container_registry_webhook_invalid_name.md)|✔|
-|[azurerm_container_registry_webhook_invalid_registry_name](rules/azurerm_container_registry_webhook_invalid_registry_name.md)|✔|
 |[azurerm_container_registry_webhook_invalid_status](rules/azurerm_container_registry_webhook_invalid_status.md)|✔|
 |[azurerm_cosmosdb_account_invalid_kind](rules/azurerm_cosmosdb_account_invalid_kind.md)|✔|
 |[azurerm_cosmosdb_account_invalid_name](rules/azurerm_cosmosdb_account_invalid_name.md)|✔|
@@ -77,19 +74,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_cosmosdb_sql_database_invalid_resource_group_name](rules/azurerm_cosmosdb_sql_database_invalid_resource_group_name.md)|✔|
 |[azurerm_cosmosdb_table_invalid_account_name](rules/azurerm_cosmosdb_table_invalid_account_name.md)|✔|
 |[azurerm_cosmosdb_table_invalid_resource_group_name](rules/azurerm_cosmosdb_table_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_dataset_mysql_invalid_linked_service_name](rules/azurerm_data_factory_dataset_mysql_invalid_linked_service_name.md)|✔|
-|[azurerm_data_factory_dataset_mysql_invalid_name](rules/azurerm_data_factory_dataset_mysql_invalid_name.md)|✔|
-|[azurerm_data_factory_dataset_postgresql_invalid_linked_service_name](rules/azurerm_data_factory_dataset_postgresql_invalid_linked_service_name.md)|✔|
-|[azurerm_data_factory_dataset_postgresql_invalid_name](rules/azurerm_data_factory_dataset_postgresql_invalid_name.md)|✔|
-|[azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_linked_service_name.md)|✔|
-|[azurerm_data_factory_dataset_sql_server_table_invalid_name](rules/azurerm_data_factory_dataset_sql_server_table_invalid_name.md)|✔|
-|[azurerm_data_factory_invalid_name](rules/azurerm_data_factory_invalid_name.md)|✔|
-|[azurerm_data_factory_invalid_resource_group_name](rules/azurerm_data_factory_invalid_resource_group_name.md)|✔|
-|[azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name](rules/azurerm_data_factory_linked_service_data_lake_storage_gen2_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_mysql_invalid_name](rules/azurerm_data_factory_linked_service_mysql_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_postgresql_invalid_name](rules/azurerm_data_factory_linked_service_postgresql_invalid_name.md)|✔|
-|[azurerm_data_factory_linked_service_sql_server_invalid_name](rules/azurerm_data_factory_linked_service_sql_server_invalid_name.md)|✔|
-|[azurerm_data_factory_pipeline_invalid_name](rules/azurerm_data_factory_pipeline_invalid_name.md)|✔|
 |[azurerm_data_factory_trigger_schedule_invalid_frequency](rules/azurerm_data_factory_trigger_schedule_invalid_frequency.md)|✔|
 |[azurerm_database_migration_project_invalid_source_platform](rules/azurerm_database_migration_project_invalid_source_platform.md)|✔|
 |[azurerm_database_migration_project_invalid_target_platform](rules/azurerm_database_migration_project_invalid_target_platform.md)|✔|
@@ -136,7 +120,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_key_vault_invalid_sku_name](rules/azurerm_key_vault_invalid_sku_name.md)|✔|
 |[azurerm_key_vault_key_invalid_curve](rules/azurerm_key_vault_key_invalid_curve.md)|✔|
 |[azurerm_key_vault_key_invalid_key_type](rules/azurerm_key_vault_key_invalid_key_type.md)|✔|
-|[azurerm_kubernetes_cluster_invalid_name](rules/azurerm_kubernetes_cluster_invalid_name.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_disk_size_gb.md)|✔|
 |[azurerm_kubernetes_cluster_node_pool_invalid_os_type](rules/azurerm_kubernetes_cluster_node_pool_invalid_os_type.md)|✔|
 |[azurerm_kusto_cluster_invalid_name](rules/azurerm_kusto_cluster_invalid_name.md)|✔|
