@@ -23,11 +23,11 @@ resource "azurerm_linux_virtual_machine" "example" {
 			Expected: helper.Issues{
 				{
 					Rule:    NewAzurermLinuxVirtualMachineRetiredSizeRule(),
-					Message: `"Standard_B1ms" is a retired VM size and is no longer available`,
+					Message: `"Standard_B1ms" is a retired or announced-for-retirement Virtual Machine Size`,
 					Range: hcl.Range{
 						Filename: "resource.tf",
 						Start:    hcl.Pos{Line: 3, Column: 10},
-						End:      hcl.Pos{Line: 3, Column: 26},
+						End:      hcl.Pos{Line: 3, Column: 25},
 					},
 				},
 			},
