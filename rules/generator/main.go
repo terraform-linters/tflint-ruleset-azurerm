@@ -26,7 +26,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	ruleName = strings.Trim(ruleName, "\n")
+	ruleName = strings.TrimSpace(ruleName)
 
 	meta := &metadata{RuleNameCC: toCamelCase(ruleName), RuleName: ruleName}
 
