@@ -1,4 +1,4 @@
-# azurerm_linux_virtual_machine_retired_size
+# azurerm_windows_virtual_machine_retired_size
 
 Warns about size values that are retired or announced-for-retirement based on https://learn.microsoft.com/azure/virtual-machines/sizes/retirement/retired-sizes-list
 
@@ -27,7 +27,7 @@ Values that produce a warning are:
 ## Example
 
 ```hcl
-resource "azurerm_linux_virtual_machine" "foo" {
+resource "azurerm_windows_virtual_machine" "foo" {
   size = "Standard_B1ms"
 }
 ```
@@ -36,18 +36,18 @@ resource "azurerm_linux_virtual_machine" "foo" {
 $ tflint
 1 issue(s) found:
 
-Notice: "Standard_B1ms" is a retired VM size and may no longer available (azurerm_linux_virtual_machine_retired_size)
+Notice: "Standard_B1ms" is a retired VM size and may no longer available (azurerm_windows_virtual_machine_retired_size)
 
   on template.tf line 2:
   2:   size = "Standard_B1ms"
 
-Reference: https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.32.0/docs/rules/azurerm_linux_virtual_machine_retired_size.md
+Reference: https://github.com/terraform-linters/tflint-ruleset-azurerm/blob/v0.32.0/docs/rules/azurerm_windows_virtual_machine_retired_size.md
 
 ```
 
 ## Why
 
-Linux Virtual Machines configured to use these sizes may return an error when calling the API by `terraform apply`.
+Windows Virtual Machines configured to use these sizes may return an error when calling the API by `terraform apply`.
 
 ## How To Fix
 
