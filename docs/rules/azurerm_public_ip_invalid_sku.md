@@ -7,6 +7,7 @@ Warns about values that appear to be invalid based on [azure-rest-api-specs](htt
 Allowed values are:
 - Basic
 - Standard
+- StandardV2
 
 ## Example
 
