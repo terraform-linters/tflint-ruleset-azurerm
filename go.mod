@@ -3,7 +3,7 @@ module github.com/terraform-linters/tflint-ruleset-azurerm
 go 1.26.1
 
 require (
-	github.com/dave/dst v0.27.3
+	github.com/dave/dst v0.27.4
 	github.com/google/go-cmp v0.7.0
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/terraform-linters/tflint-plugin-sdk v0.24.0
