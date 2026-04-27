@@ -27,6 +27,7 @@ func NewAzurermPublicIPInvalidSkuRule() *AzurermPublicIPInvalidSkuRule {
 		enum: []string{
 			"Basic",
 			"Standard",
+			"StandardV2",
 		},
 	}
 }
