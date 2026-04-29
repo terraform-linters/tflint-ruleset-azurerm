@@ -307,7 +307,7 @@ func generateRuleFile(mapping mapping, ref attributeRef, definition map[string]i
 		SetMin:        numberExists(definition, "minimum"),
 		Pattern:       fetchString(definition, "pattern"),
 		Enum:          fetchStrings(definition, "enum"),
-		ReferenceURL:  fmt.Sprintf("https://github.com/Azure/azure-rest-api-specs/tree/master%s", strings.TrimPrefix(mapping.ImportPath, "azure-rest-api-specs")),
+		ReferenceURL:  fmt.Sprintf("https://github.com/Azure/azure-rest-api-specs/tree/main%s", strings.TrimPrefix(mapping.ImportPath, "azure-rest-api-specs")),
 	}
 
 	// Testing generated regexp
