@@ -1570,7 +1570,7 @@ var retiredMachineSizes = []string{
 	"Standard_HB120rs_v2",
 	"Standard_HC44rs",
 	"Standard_HC44-16rs",
-	"Standard_HC44-32rs"
+	"Standard_HC44-32rs",
 	"Standard_L4s",
 	"Standard_L8s",
 	"Standard_L8s_v2",
