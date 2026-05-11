@@ -1564,7 +1564,7 @@ var retiredMachineSizes = []string{
 	"Standard_GS1",
 	"Standard_GS2",
 	"Standard_HB120-16rs_v2",
-	"Standard_HB120-16rs_v2",
+	"Standard_HB120-32rs_v2",
 	"Standard_HB120-64rs_v2",
 	"Standard_HB120-96rs_v2",
 	"Standard_HB120rs_v2",
