@@ -28,6 +28,7 @@ func NewAzurermLbRuleInvalidProtocolRule() *AzurermLbRuleInvalidProtocolRule {
 			"Udp",
 			"Tcp",
 			"All",
+			"Quic",
 		},
 	}
 }

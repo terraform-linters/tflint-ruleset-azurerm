@@ -184,6 +184,7 @@ func extractResourceTypeFromResourceFunc(registrationPath, resourceFunc string) 
 var exceptions = map[string]string{
 	"key_vault":            "2023-02-01", // https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.23.0/internal/services/keyvault/key_vault_resource.go
 	"monitor_action_group": "2023-01-01", // https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.23.0/internal/services/monitor/monitor_action_group_resource.go
+	"public_ip":            "2025-01-01", // https://github.com/hashicorp/terraform-provider-azurerm/blob/072a19529b97dbaa1fae249435033cf032634a43/internal/services/network/public_ip_resource.go (publicipaddresses, not publicipprefixes)
 }
 
 func findAPIVersion(resourcePath string) string {
