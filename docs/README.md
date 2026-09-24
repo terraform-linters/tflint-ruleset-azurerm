@@ -22,7 +22,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 178 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 173 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -107,7 +107,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_healthcare_service_invalid_cosmosdb_throughput](rules/azurerm_healthcare_service_invalid_cosmosdb_throughput.md)|✔|
 |[azurerm_healthcare_service_invalid_kind](rules/azurerm_healthcare_service_invalid_kind.md)|✔|
 |[azurerm_healthcare_service_invalid_resource_group_name](rules/azurerm_healthcare_service_invalid_resource_group_name.md)|✔|
-|[azurerm_hpc_cache_invalid_name](rules/azurerm_hpc_cache_invalid_name.md)|✔|
 |[azurerm_image_invalid_hyper_v_generation](rules/azurerm_image_invalid_hyper_v_generation.md)|✔|
 |[azurerm_iotcentral_application_invalid_sku](rules/azurerm_iotcentral_application_invalid_sku.md)|✔|
 |[azurerm_iothub_endpoint_storage_container_invalid_batch_frequency_in_seconds](rules/azurerm_iothub_endpoint_storage_container_invalid_batch_frequency_in_seconds.md)|✔|
@@ -152,15 +151,11 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_nat_gateway_invalid_sku_name](rules/azurerm_nat_gateway_invalid_sku_name.md)|✔|
 |[azurerm_netapp_pool_invalid_service_level](rules/azurerm_netapp_pool_invalid_service_level.md)|✔|
 |[azurerm_netapp_volume_invalid_service_level](rules/azurerm_netapp_volume_invalid_service_level.md)|✔|
-|[azurerm_network_packet_capture_invalid_maximum_capture_duration](rules/azurerm_network_packet_capture_invalid_maximum_capture_duration.md)|✔|
 |[azurerm_network_security_rule_invalid_access](rules/azurerm_network_security_rule_invalid_access.md)|✔|
 |[azurerm_network_security_rule_invalid_direction](rules/azurerm_network_security_rule_invalid_direction.md)|✔|
 |[azurerm_network_security_rule_invalid_protocol](rules/azurerm_network_security_rule_invalid_protocol.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_namespace_type](rules/azurerm_notification_hub_namespace_invalid_namespace_type.md)|✔|
 |[azurerm_notification_hub_namespace_invalid_sku_name](rules/azurerm_notification_hub_namespace_invalid_sku_name.md)|✔|
-|[azurerm_postgresql_firewall_rule_invalid_end_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_end_ip_address.md)|✔|
-|[azurerm_postgresql_firewall_rule_invalid_start_ip_address](rules/azurerm_postgresql_firewall_rule_invalid_start_ip_address.md)|✔|
-|[azurerm_postgresql_server_invalid_version](rules/azurerm_postgresql_server_invalid_version.md)|✔|
 |[azurerm_public_ip_invalid_sku](rules/azurerm_public_ip_invalid_sku.md)|✔|
 |[azurerm_public_ip_prefix_invalid_sku](rules/azurerm_public_ip_prefix_invalid_sku.md)|✔|
 |[azurerm_recovery_services_vault_invalid_sku](rules/azurerm_recovery_services_vault_invalid_sku.md)|✔|

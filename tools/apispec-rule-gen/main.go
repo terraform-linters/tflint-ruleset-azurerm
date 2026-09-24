@@ -210,7 +210,10 @@ func processAttribute(apiSpec apiSpec, mapping mapping, ref attributeRef) {
 		definition = resolveRef(basePath, definition)
 
 		if validMapping(definition) {
-			attrSchema := extractAttrSchema(ref, definition)
+			attrSchema, ok := extractAttrSchema(ref, definition)
+			if !ok {
+				return
+			}
 			meta := generateRuleFile(mapping, ref, definition, attrSchema)
 			generatedRuleNames = append(generatedRuleNames, meta.RuleName)
 			generatedRuleNameCCs = append(generatedRuleNameCCs, meta.RuleNameCC)
@@ -425,20 +428,26 @@ func validMapping(definition map[string]interface{}) bool {
 	}
 }
 
-func extractAttrSchema(ref attributeRef, definition map[string]interface{}) attribute {
+// extractAttrSchema returns the Terraform schema of the attribute.
+// If the resource, block, or attribute has been removed from the provider, the rule is skipped
+// with a warning because it no longer applies. The mapping should be removed in that case.
+func extractAttrSchema(ref attributeRef, definition map[string]interface{}) (attribute, bool) {
 	resourceSchema, ok := terraformSchema.ResourceSchemas[ref.resource]
 	if !ok {
-		panic(fmt.Sprintf("resource `%s` not found in the Terraform schema", ref.resource))
+		fmt.Printf("WARNING: resource `%s` not found in the Terraform schema, skipped\n", ref.resource)
+		return attribute{}, false
 	}
 	if ref.block != nil {
 		resourceSchema, ok = resourceSchema.Block.BlockTypes[*ref.block]
 		if !ok {
-			panic(fmt.Sprintf("block `%s.%s` not found in the Terraform schema", ref.resource, *ref.block))
+			fmt.Printf("WARNING: block `%s.%s` not found in the Terraform schema, skipped\n", ref.resource, *ref.block)
+			return attribute{}, false
 		}
 	}
 	attrSchema, ok := resourceSchema.Block.Attributes[ref.attribute]
 	if !ok {
-		panic(fmt.Sprintf("`%s` not found in the Terraform schema", ref.String()))
+		fmt.Printf("WARNING: `%s` not found in the Terraform schema, skipped\n", ref.String())
+		return attribute{}, false
 	}
 
 	switch definition["type"].(string) {
@@ -462,7 +471,7 @@ func extractAttrSchema(ref attributeRef, definition map[string]interface{}) attr
 		// noop
 	}
 
-	return attrSchema
+	return attrSchema, true
 }
 
 func generateRuleFile(mapping mapping, ref attributeRef, definition map[string]interface{}, schema attribute) *ruleMeta {

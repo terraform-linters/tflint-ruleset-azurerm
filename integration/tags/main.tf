@@ -10,30 +10,36 @@ resource "azurerm_resource_group" "example" {
   tags = { foo = "bar" }
 }
 
-resource "azurerm_app_service_plan" "example" {
+resource "azurerm_service_plan" "example" {
   name                = "example-appserviceplan"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
+  os_type             = "Linux"
+  sku_name            = "S1"
 
   tags = {
     Environment = "Production"
   }
 }
 
-resource "azurerm_app_service" "example" {
+resource "azurerm_linux_web_app" "example" {
   name                = "example-app-service"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
+  service_plan_id     = azurerm_service_plan.example.id
 
   site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
+    auto_heal_setting {
+      action {
+        action_type = "Recycle"
+      }
+      trigger {
+        requests {
+          count    = 100
+          interval = "00:01:00"
+        }
+      }
+    }
   }
 
   app_settings = {
