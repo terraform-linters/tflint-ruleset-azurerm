@@ -174,32 +174,40 @@ func processAttribute(apiSpec apiSpec, mapping mapping, ref attributeRef) {
 			}
 		}
 
+		if props[0] == "any" {
+			return
+		}
+
+		// Look up "definitions", then "parameters" (only for attribute = Foo).
+		// Definitions may also be defined in other files referenced by the spec (e.g. common.json).
+		basePath := apiSpec.path
+		model, ok := apiSpec.definitions[props[0]].(map[string]interface{})
+		if !ok && len(props) == 1 {
+			model, ok = apiSpec.parameters[props[0]].(map[string]interface{})
+		}
+		if !ok {
+			var path string
+			if path, model, ok = findReferencedDefinition(apiSpec.path, props[0]); ok {
+				basePath = path
+			}
+		}
+
 		var definition map[string]interface{}
 		if len(props) == 1 {
-			// attribute = Foo ("definitions" or "parameters" fields)
-			if props[0] == "any" {
-				return
-			}
-			var ok bool
-			if apiSpec.definitions[props[0]] != nil {
-				definition, ok = apiSpec.definitions[props[0]].(map[string]interface{})
-			} else {
-				definition, ok = apiSpec.parameters[props[0]].(map[string]interface{})
-			}
+			// attribute = Foo
 			if !ok {
 				panic(fmt.Sprintf("`%s` not found in %s", props[0], mapping.ImportPath))
 			}
+			definition = model
 		} else {
 			// attribute = Foo.Bar ("properties" fields)
-			model, _ := apiSpec.definitions[props[0]].(map[string]interface{})
 			properties, _ := model["properties"].(map[string]interface{})
-			var ok bool
 			definition, ok = properties[props[1]].(map[string]interface{})
 			if !ok {
 				panic(fmt.Sprintf("`%s.%s` not found in %s", props[0], props[1], mapping.ImportPath))
 			}
 		}
-		definition = resolveRef(apiSpec.path, definition)
+		definition = resolveRef(basePath, definition)
 
 		if validMapping(definition) {
 			attrSchema := extractAttrSchema(ref, definition)
@@ -280,6 +288,51 @@ func collectPathParameters(specPath string, spec map[string]interface{}) map[str
 	}
 
 	return parameters
+}
+
+// findReferencedDefinition looks up a definition in other spec files referenced from the spec via "$ref".
+// Recent API specs move shared definitions such as enums into another file like common.json.
+// Returns the path of the file that defines the definition.
+func findReferencedDefinition(specPath string, name string) (string, map[string]interface{}, bool) {
+	for _, file := range referencedSpecFiles(loadSpec(specPath)) {
+		refPath := filepath.Join(filepath.Dir(specPath), file)
+		definitions, _ := loadSpec(refPath)["definitions"].(map[string]interface{})
+		if definition, ok := definitions[name].(map[string]interface{}); ok {
+			return refPath, definition, true
+		}
+	}
+	return "", nil, false
+}
+
+// referencedSpecFiles returns relative paths of files referenced via "$ref" in the spec, sorted.
+func referencedSpecFiles(spec map[string]interface{}) []string {
+	files := map[string]bool{}
+	var walk func(v interface{})
+	walk = func(v interface{}) {
+		switch v := v.(type) {
+		case map[string]interface{}:
+			if ref, ok := v["$ref"].(string); ok {
+				if file, _, _ := strings.Cut(ref, "#"); file != "" {
+					files[file] = true
+				}
+			}
+			for _, child := range v {
+				walk(child)
+			}
+		case []interface{}:
+			for _, child := range v {
+				walk(child)
+			}
+		}
+	}
+	walk(spec)
+
+	ret := make([]string, 0, len(files))
+	for file := range files {
+		ret = append(ret, file)
+	}
+	sort.Strings(ret)
+	return ret
 }
 
 var specCache = map[string]map[string]interface{}{}

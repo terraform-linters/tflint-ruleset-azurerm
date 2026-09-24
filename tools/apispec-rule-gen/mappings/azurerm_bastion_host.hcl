@@ -1,6 +1,6 @@
 mapping "azurerm_bastion_host" {
-  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-01-01/bastionHost.json"
+  import_path = "azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/virtualNetwork.json"
 
-  name                = BastionHostName
-  resource_group_name = ResourceGroupName
+  name                = bastionHostName
+  resource_group_name = ResourceGroupNameParameter
 }
