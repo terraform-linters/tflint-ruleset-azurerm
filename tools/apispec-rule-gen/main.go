@@ -30,6 +30,7 @@ type mapping struct {
 }
 
 type apiSpec struct {
+	path        string
 	definitions map[string]interface{}
 	parameters  map[string]interface{}
 }
@@ -132,22 +133,16 @@ func main() {
 
 	for _, mappingFile := range mappingFiles {
 		for _, mapping := range mappingFile.Mappings {
-			raw, err := ioutil.ReadFile(fmt.Sprintf(getFullPath("%s"), mapping.ImportPath))
-			if err != nil {
-				panic(err)
-			}
-
-			var spec map[string]interface{}
-			err = json.Unmarshal(raw, &spec)
-			if err != nil {
-				panic(err)
-			}
+			specPath := getFullPath(mapping.ImportPath)
+			spec := loadSpec(specPath)
 			definitions := spec["definitions"].(map[string]interface{})
-			parameters := map[string]interface{}{}
+			parameters := collectPathParameters(specPath, spec)
 			if params, exists := spec["parameters"]; exists {
-				parameters = params.(map[string]interface{})
+				for name, param := range params.(map[string]interface{}) {
+					parameters[name] = param
+				}
 			}
-			apiSpec := apiSpec{definitions: definitions, parameters: parameters}
+			apiSpec := apiSpec{path: specPath, definitions: definitions, parameters: parameters}
 
 			for attribute, value := range mapping.Attrs {
 				processAttribute(apiSpec, mapping, attributeRef{resource: mapping.Resource, attribute: attribute, value: value.Expr})
@@ -185,15 +180,26 @@ func processAttribute(apiSpec apiSpec, mapping mapping, ref attributeRef) {
 			if props[0] == "any" {
 				return
 			}
+			var ok bool
 			if apiSpec.definitions[props[0]] != nil {
-				definition = apiSpec.definitions[props[0]].(map[string]interface{})
+				definition, ok = apiSpec.definitions[props[0]].(map[string]interface{})
 			} else {
-				definition = apiSpec.parameters[props[0]].(map[string]interface{})
+				definition, ok = apiSpec.parameters[props[0]].(map[string]interface{})
+			}
+			if !ok {
+				panic(fmt.Sprintf("`%s` not found in %s", props[0], mapping.ImportPath))
 			}
 		} else {
 			// attribute = Foo.Bar ("properties" fields)
-			definition = apiSpec.definitions[props[0]].(map[string]interface{})["properties"].(map[string]interface{})[props[1]].(map[string]interface{})
+			model, _ := apiSpec.definitions[props[0]].(map[string]interface{})
+			properties, _ := model["properties"].(map[string]interface{})
+			var ok bool
+			definition, ok = properties[props[1]].(map[string]interface{})
+			if !ok {
+				panic(fmt.Sprintf("`%s.%s` not found in %s", props[0], props[1], mapping.ImportPath))
+			}
 		}
+		definition = resolveRef(apiSpec.path, definition)
 
 		if validMapping(definition) {
 			attrSchema := extractAttrSchema(ref, definition)
@@ -223,8 +229,127 @@ func processAttribute(apiSpec apiSpec, mapping mapping, ref attributeRef) {
 	}
 }
 
+// collectPathParameters collects parameters defined in operations.
+// Recent API specs define parameters inline in operations or refer to common types,
+// instead of defining them in the top-level "parameters" field.
+// Inline parameters are keyed by their name (e.g. "accountName"), and referenced parameters
+// are keyed by the last segment of the reference (e.g. "ResourceGroupNameParameter").
+func collectPathParameters(specPath string, spec map[string]interface{}) map[string]interface{} {
+	parameters := map[string]interface{}{}
+
+	paths, _ := spec["paths"].(map[string]interface{})
+	pathNames := make([]string, 0, len(paths))
+	for name := range paths {
+		pathNames = append(pathNames, name)
+	}
+	sort.Strings(pathNames)
+
+	for _, pathName := range pathNames {
+		pathItem, _ := paths[pathName].(map[string]interface{})
+		var params []interface{}
+		if list, ok := pathItem["parameters"].([]interface{}); ok {
+			params = append(params, list...)
+		}
+		for _, method := range []string{"get", "put", "post", "patch", "delete", "head", "options"} {
+			operation, _ := pathItem[method].(map[string]interface{})
+			if list, ok := operation["parameters"].([]interface{}); ok {
+				params = append(params, list...)
+			}
+		}
+
+		for _, raw := range params {
+			param, ok := raw.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			var key string
+			if ref, ok := param["$ref"].(string); ok {
+				key = ref[strings.LastIndex(ref, "/")+1:]
+				param = resolveRef(specPath, param)
+			} else if name, ok := param["name"].(string); ok {
+				key = name
+			}
+			if in, _ := param["in"].(string); in != "path" {
+				continue
+			}
+			if _, exists := parameters[key]; !exists {
+				parameters[key] = param
+			}
+		}
+	}
+
+	return parameters
+}
+
+var specCache = map[string]map[string]interface{}{}
+
+func loadSpec(specPath string) map[string]interface{} {
+	specPath = filepath.Clean(specPath)
+	if spec, ok := specCache[specPath]; ok {
+		return spec
+	}
+
+	raw, err := ioutil.ReadFile(specPath)
+	if err != nil {
+		panic(err)
+	}
+	var spec map[string]interface{}
+	if err := json.Unmarshal(raw, &spec); err != nil {
+		panic(err)
+	}
+	specCache[specPath] = spec
+	return spec
+}
+
+// resolveRef follows "$ref" in the definition and returns the referenced definition.
+// Properties in API specs converted from TypeSpec often refer to enum definitions via "$ref".
+// Sibling keys of "$ref" (e.g. description) take precedence over the referenced definition.
+func resolveRef(specPath string, definition map[string]interface{}) map[string]interface{} {
+	ref, ok := definition["$ref"].(string)
+	if !ok {
+		return definition
+	}
+
+	file, pointer, _ := strings.Cut(ref, "#")
+	if file != "" {
+		specPath = filepath.Join(filepath.Dir(specPath), file)
+	}
+	var resolved interface{} = loadSpec(specPath)
+	for _, token := range strings.Split(strings.TrimPrefix(pointer, "/"), "/") {
+		if token == "" {
+			continue
+		}
+		token = strings.ReplaceAll(strings.ReplaceAll(token, "~1", "/"), "~0", "~")
+		m, ok := resolved.(map[string]interface{})
+		if !ok {
+			panic(fmt.Sprintf("failed to resolve `%s` in %s", ref, specPath))
+		}
+		resolved, ok = m[token]
+		if !ok {
+			panic(fmt.Sprintf("failed to resolve `%s` in %s", ref, specPath))
+		}
+	}
+	resolvedDef, ok := resolved.(map[string]interface{})
+	if !ok {
+		panic(fmt.Sprintf("failed to resolve `%s` in %s", ref, specPath))
+	}
+
+	ret := map[string]interface{}{}
+	for k, v := range resolveRef(specPath, resolvedDef) {
+		ret[k] = v
+	}
+	for k, v := range definition {
+		if k != "$ref" {
+			ret[k] = v
+		}
+	}
+	return ret
+}
+
 func validMapping(definition map[string]interface{}) bool {
-	switch definition["type"].(string) {
+	ty, _ := definition["type"].(string)
+	switch ty {
 	case "string":
 		if _, ok := definition["enum"]; ok {
 			return true

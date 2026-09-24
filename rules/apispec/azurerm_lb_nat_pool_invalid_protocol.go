@@ -28,6 +28,7 @@ func NewAzurermLbNatPoolInvalidProtocolRule() *AzurermLbNatPoolInvalidProtocolRu
 			"Udp",
 			"Tcp",
 			"All",
+			"Quic",
 		},
 	}
 }

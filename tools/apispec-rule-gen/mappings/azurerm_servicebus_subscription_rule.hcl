@@ -1,5 +1,5 @@
 mapping "azurerm_servicebus_subscription_rule" {
-  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2024-01-01/Rules.json"
+  import_path = "azure-rest-api-specs/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2026-01-01/servicebus.json"
 
   namespace_name      = any
   topic_name          = any

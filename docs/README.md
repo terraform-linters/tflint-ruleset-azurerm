@@ -22,7 +22,7 @@ This documentation describes a list of rules available by enabling this ruleset.
 
 ## API Specification Rules
 
-These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 181 rules are available.
+These are the rules that warn against invalid values generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). Currently, 178 rules are available.
 
 |Rule|Enabled by default|
 | --- | --- |
@@ -51,8 +51,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_bot_web_app_invalid_sku](rules/azurerm_bot_web_app_invalid_sku.md)|✔|
 |[azurerm_cdn_endpoint_invalid_optimization_type](rules/azurerm_cdn_endpoint_invalid_optimization_type.md)|✔|
 |[azurerm_cdn_endpoint_invalid_querystring_caching_behaviour](rules/azurerm_cdn_endpoint_invalid_querystring_caching_behaviour.md)|✔|
-|[azurerm_cdn_endpoint_invalid_resource_group_name](rules/azurerm_cdn_endpoint_invalid_resource_group_name.md)|✔|
-|[azurerm_cdn_profile_invalid_resource_group_name](rules/azurerm_cdn_profile_invalid_resource_group_name.md)|✔|
 |[azurerm_cdn_profile_invalid_sku](rules/azurerm_cdn_profile_invalid_sku.md)|✔|
 |[azurerm_cognitive_account_invalid_name](rules/azurerm_cognitive_account_invalid_name.md)|✔|
 |[azurerm_container_registry_invalid_sku](rules/azurerm_container_registry_invalid_sku.md)|✔|
@@ -187,7 +185,6 @@ These are the rules that warn against invalid values generated from [azure-rest-
 |[azurerm_storage_account_invalid_access_tier](rules/azurerm_storage_account_invalid_access_tier.md)|✔|
 |[azurerm_storage_account_invalid_account_kind](rules/azurerm_storage_account_invalid_account_kind.md)|✔|
 |[azurerm_storage_account_invalid_name](rules/azurerm_storage_account_invalid_name.md)|✔|
-|[azurerm_storage_account_invalid_resource_group_name](rules/azurerm_storage_account_invalid_resource_group_name.md)|✔|
 |[azurerm_storage_account_network_rules_invalid_default_action](rules/azurerm_storage_account_network_rules_invalid_default_action.md)|✔|
 |[azurerm_stream_analytics_job_invalid_compatibility_level](rules/azurerm_stream_analytics_job_invalid_compatibility_level.md)|✔|
 |[azurerm_stream_analytics_job_invalid_events_out_of_order_policy](rules/azurerm_stream_analytics_job_invalid_events_out_of_order_policy.md)|✔|

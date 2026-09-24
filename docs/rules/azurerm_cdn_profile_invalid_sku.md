@@ -11,7 +11,6 @@ Allowed values are:
 - Standard_Akamai
 - Standard_ChinaCdn
 - Standard_Microsoft
-- Premium_ChinaCdn
 - Standard_AzureFrontDoor
 - Premium_AzureFrontDoor
 - Standard_955BandWidth_ChinaCdn
@@ -53,4 +52,4 @@ Replace the warned value with a valid value.
 
 This rule is automatically generated from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs). If you are uncertain about the warning, check the following API schema referenced by this rule.
 
-https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2020-09-01/cdn.json
+https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2025-12-01/openapi.json
