@@ -65,6 +65,14 @@ func processFile(filePath string) error {
 		panic(err)
 	}
 	new := apiVersionRE.ReplaceAll(content, []byte(apiVersion))
+	if string(new) == string(content) {
+		return nil
+	}
+	new, ok := resolveImportPath(new)
+	if !ok {
+		fmt.Printf("WARNING: %s: no API spec in %s defines all mapped references; keeping the current API version\n", mappingFile, apiVersion)
+		return nil
+	}
 	if err := os.WriteFile(mappingFile, new, os.ModePerm); err != nil {
 		return err
 	}

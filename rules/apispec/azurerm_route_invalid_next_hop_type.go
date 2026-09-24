@@ -29,6 +29,7 @@ func NewAzurermRouteInvalidNextHopTypeRule() *AzurermRouteInvalidNextHopTypeRule
 			"VnetLocal",
 			"Internet",
 			"VirtualAppliance",
+			"VirtualApplianceEcmp",
 			"None",
 		},
 	}
