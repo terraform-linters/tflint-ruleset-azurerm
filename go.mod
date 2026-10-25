@@ -1,6 +1,6 @@
 module github.com/terraform-linters/tflint-ruleset-azurerm
 
-go 1.26.2
+go 1.27.3
 
 require (
 	github.com/dave/dst v0.28.0
