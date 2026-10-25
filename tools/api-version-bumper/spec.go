@@ -44,6 +44,11 @@ func resolveImportPath(content []byte) ([]byte, bool) {
 		return content, true
 	}
 	importPath := string(match[1])
+	if moved := relocateImportPath(importPath); moved != importPath {
+		fmt.Printf("%s has been moved to %s\n", importPath, moved)
+		content = []byte(strings.Replace(string(content), importPath, moved, 1))
+		importPath = moved
+	}
 
 	refs, err := mappingReferences(content)
 	if err != nil {
@@ -72,6 +77,31 @@ func resolveImportPath(content []byte) ([]byte, bool) {
 	newPath := filepath.ToSlash(filepath.Join(filepath.Dir(importPath), filepath.Base(best)))
 	fmt.Printf("%s is not available, use %s instead\n", importPath, newPath)
 	return []byte(strings.Replace(string(content), importPath, newPath, 1)), true
+}
+
+// relocateImportPath follows the spec directory if it has been moved one level deeper
+// (e.g. Microsoft.Storage/stable/2025-08-01 -> Microsoft.Storage/Storage/stable/2025-08-01).
+// Returns the given path as is if the directory exists or the destination cannot be determined.
+func relocateImportPath(importPath string) string {
+	versionDir := filepath.Dir(importPath)
+	if _, err := os.Stat(specFullPath(versionDir)); err == nil {
+		return importPath
+	}
+
+	stabilityDir := filepath.Dir(versionDir)
+	pattern := filepath.Join(filepath.Dir(stabilityDir), "*", filepath.Base(stabilityDir), filepath.Base(versionDir))
+	matches, err := filepath.Glob(specFullPath(pattern))
+	if err != nil {
+		panic(err)
+	}
+	if len(matches) != 1 {
+		return importPath
+	}
+	newVersionDir, err := filepath.Rel(specFullPath(""), matches[0])
+	if err != nil {
+		panic(err)
+	}
+	return filepath.ToSlash(filepath.Join(newVersionDir, filepath.Base(importPath)))
 }
 
 func specFullPath(importPath string) string {
