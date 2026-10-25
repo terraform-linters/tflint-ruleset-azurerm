@@ -34,10 +34,39 @@ func main() {
 			errs = append(errs, err)
 		}
 	}
+	relocateMappings()
+
 	if errs != nil {
 		fmt.Print("\n!!!!!!!!!! Failed to parse some files !!!!!!!!!!\n\n")
 		for _, err := range errs {
 			fmt.Println(err)
+		}
+	}
+}
+
+// Spec files may be moved even if the API version is not changed,
+// so make sure that all mappings point to existing specs.
+func relocateMappings() {
+	files, err := filepath.Glob("apispec-rule-gen/mappings/*.hcl")
+	if err != nil {
+		panic(err)
+	}
+
+	for _, file := range files {
+		content, err := os.ReadFile(file)
+		if err != nil {
+			panic(err)
+		}
+		new, ok := resolveImportPath(content)
+		if !ok {
+			fmt.Printf("WARNING: %s: the API spec does not define all mapped references\n", file)
+			continue
+		}
+		if string(new) == string(content) {
+			continue
+		}
+		if err := os.WriteFile(file, new, os.ModePerm); err != nil {
+			panic(err)
 		}
 	}
 }
