@@ -267,6 +267,7 @@ var Resources = []string{
 	"azurerm_oracle_autonomous_database",
 	"azurerm_oracle_autonomous_database_clone_from_backup",
 	"azurerm_oracle_autonomous_database_clone_from_database",
+	"azurerm_oracle_autonomous_database_cross_region_disaster_recovery",
 	"azurerm_oracle_cloud_vm_cluster",
 	"azurerm_oracle_exadata_infrastructure",
 	"azurerm_oracle_exascale_database_storage_vault",
