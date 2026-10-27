@@ -30,6 +30,14 @@ jobs:
           go run ./apispec-rule-gen
           cd ../rules/tags/generator
           go run -tags generators .
+      - name: Generate resource provider mappings
+        run: |
+          version=$(awk '/hashicorp\/azurerm/ { found = 1 } found && /version/ { gsub(/"/, "", $3); print $3; exit }' tools/apispec-rule-gen/schema/.terraform.lock.hcl)
+          git -c advice.detachedHead=false clone --quiet --depth 1 --filter=blob:none --sparse --branch "v${version}" \
+            https://github.com/hashicorp/terraform-provider-azurerm.git "${RUNNER_TEMP}/azurerm"
+          git -C "${RUNNER_TEMP}/azurerm" sparse-checkout set website/docs/r internal/resourceproviders
+          cd rules/resourceproviders
+          go run -tags generators ./generator -azurerm-dir "${RUNNER_TEMP}/azurerm"
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           commit-message: |
