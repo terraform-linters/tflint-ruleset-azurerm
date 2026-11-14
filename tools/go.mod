@@ -7,7 +7,7 @@ require (
 	github.com/google/go-github/v69 v69.2.0
 	github.com/hashicorp/go-version v1.9.0
 	github.com/hashicorp/hcl/v2 v2.25.0
-	github.com/zclconf/go-cty v1.19.0
+	github.com/zclconf/go-cty v1.20.0
 	golang.org/x/oauth2 v0.37.0
 )
 
